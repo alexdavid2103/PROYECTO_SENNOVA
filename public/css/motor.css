@@ -1,0 +1,291 @@
+
+.title {
+    max-width: max-content;
+    margin: auto;
+    font-size: 48px;
+    position: relative;
+    padding-top: 1em;
+}
+
+.title::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: var(--green-primary);
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+}
+
+.delete_motor,
+.edit_motor,
+.add_motor {
+    padding: 0.75em 2.25em;
+    border: 2px solid var(--green-primary);
+    border-radius: 0.25em;
+    background: transparent;
+    color: var(--green-primary);
+    font-weight: bold;
+    display: block;
+    margin: 2em auto;
+    cursor: pointer;
+    transition: .5s;
+    font-size: 1em;
+}
+
+.edit_delete {
+    display: flex;
+    gap: 1em;
+}
+
+.edit_motor {
+    padding: 0.5em 1em;
+    margin: auto;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+}
+
+.delete_motor {
+    padding: 0.5em 1em;
+    margin: auto;
+    border: 2px solid var(--red);
+    color: var(--red);
+}
+
+.add_motor:hover {
+    background: var(--green-primary);
+    color: var(--white);
+}
+
+.edit_motor:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.delete_motor:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.motor {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    align-content: center;
+}
+
+.motor h2 {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.motor h2::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: var(--green-primary);
+    display: block;
+    position: absolute;
+    border-radius: 0 50px 50px 0;
+}
+
+.motor .flex_box {
+    display: flex;
+    align-items: center;
+    gap: 4em;
+}
+
+.motor .info_motor {
+    width: 259px;
+}
+
+.motor .info_motor li {
+    list-style: none;
+    position: relative;
+    margin: 2.5em;
+}
+
+.motor .info_2 li::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: var(--green-primary);
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+}
+
+.motor .temperatura_ext,
+.motor .tecnico {
+    left: -50px;
+}
+
+.motor .tipo_base,
+.motor .registro {
+    left: -100px;
+}
+
+.motor .info_1 li::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: var(--green-primary);
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+}
+
+.motor .año,
+.motor .posicion {
+    right: -50px;
+}
+
+.motor .modelo,
+.motor .humedad {
+    right: -100px;
+}
+
+.motor_img img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.cont_form {
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.form {
+    margin: 3em 1.5em;
+}
+
+/* .form_add_motor .grid_box {
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 2em;
+} */
+
+.form_edit_motor .grid_box {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2em;
+}
+
+.cont_input {
+    margin-bottom: 1em;
+}
+
+.cont_input input,
+.cont_input select {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    outline: 0;
+    border: 2px solid var(--black);
+    border-radius: 0.25em;
+    font-size: 1em;
+    transition: .5s;
+}
+
+.cont_input input:focus,
+.cont_input select:focus {
+    border-color: var(--green-primary);
+}
+
+.cont_input button {
+    padding: 0.5em 1em;
+    border: 0;
+    border-radius: 0.25em;
+    font-size: 1em;
+    margin: auto;
+    width: 49%;
+    cursor: pointer;
+    background: transparent;
+    transition: .5s;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.cont_input .btn_add {
+    background: var(--green-primary);
+    border: 2px solid var(--green-primary);
+}
+
+.cont_input .btn_edit {
+    background: var(--blue);
+    border: 2px solid var(--blue);
+}
+
+.cont_input .btn_back {
+    background: var(--red);
+    border: 2px solid var(--red);
+}
+
+.cont_input .btn_add:hover {
+    color: var(--green-primary);
+    background: transparent;
+}
+
+.cont_input .btn_edit:hover {
+    color: var(--blue);
+    background: transparent;
+}
+
+.cont_input .btn_back:hover {
+    color: var(--red);
+    background: transparent;
+}
+
+.form_title {
+    position: relative;
+    font-size: 2em;
+    text-align: center;
+    width: max-content;
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+.form_title::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: var(--green-primary);
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+}
+
+@media (max-width: 1160px) {
+    .motor .info_motor {
+        width: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .form_edit_motor .grid_box {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 550px){
+    .form_edit_motor .grid_box {
+        grid-template-columns: auto;
+    }
+
+    .cont_input button {
+        width: 100%;
+    }
+
+    .cont_input .btn_back {
+        margin: .5em 0;
+    }
+}
+
+@media (max-width: 350px) {
+    
+
+}

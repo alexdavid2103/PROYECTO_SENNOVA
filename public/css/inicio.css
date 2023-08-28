@@ -1,0 +1,267 @@
+.landing {
+    height: calc(100vh - 56px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5em;
+}
+
+.landing img {
+    width: 100%;
+    max-width: 510px;
+    transition: .5s;
+}
+
+.landing h2 {
+    font-size: 64px;
+    line-height: 55px;
+}
+
+.landing h2 span {
+    color: #39a900;
+
+}
+
+.landing p {
+    margin-top: 1em;
+}
+
+.acerca_de {
+    min-height: 100vh;
+    text-align: center;
+    padding: 7em 2.5em 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+}
+
+.acerca_de h2 {
+    font-size: 38px;
+    position: relative;
+    margin: auto;
+    width: max-content;
+}
+
+.acerca_de h2::after {
+    content: "";
+    width: 100%;
+    height: 7px;
+    background: #39a900;
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+}
+
+.acerca_de p {
+    padding: 45px 0;
+}
+
+.acerca_de img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.funcionamiento {
+    min-height: 100vh;
+    background: #fff;
+    padding: 7em 0;
+    display: grid;
+    place-content: center;
+}
+
+.funcionamiento h2 {
+    font-size: 38px;
+    position: relative;
+    width: max-content;
+    margin: auto;
+}
+
+.funcionamiento h2::after {
+    content: "";
+    width: 100%;
+    height: 7px;
+    background: #39a900;
+    display: block;
+    position: absolute;
+    border-radius: 50px;
+}
+
+.funcionamiento .grid_box {
+    /* height: 100%; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 3em;
+    padding-top: 4em;
+}
+
+.card {
+    width: 250px;
+    min-height: 350px;
+    background: linear-gradient(to top, #39a900, #1b4900);
+    border-radius: .25em;
+    padding: 3em 1em;
+    animation: 2s ease-in infinite alternate-reverse;
+    position: relative;
+    transition: .25s;
+    text-align: center;
+    color: #fff;
+}
+
+/* 
+.card:nth-child(2n) {
+    animation-name: animation_1;
+    bottom: -10px;
+}
+
+.card:nth-child(2n-1) {
+    top: -10px;
+    animation-name: animation_2;
+} */
+
+.card:hover {
+    inset: 0;
+    animation: none;
+    scale: 1.15;
+}
+
+.card .fa {
+    margin: auto;
+    font-size: 100px;
+    color: #fff;
+
+}
+
+.card h3 {
+    padding: 1.5em 0 .5em;
+    text-align: center;
+}
+
+.card p {
+    text-align: center;
+}
+
+@keyframes animation_1 {
+    to {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes animation_2 {
+    to {
+        transform: translateY(30px);
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .landing {
+        padding: 2em;
+        flex-direction: column;
+        min-height: calc(100vh);
+    }
+
+    .funcionamiento .grid_box {
+        grid-template-columns: auto auto;
+        justify-content: center;
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    .landing h2 {
+        text-align: center;
+    }
+
+    .landing p {
+        text-align: center;
+    }
+
+    .funcionamiento .grid_box {
+        grid-template-columns: auto auto;
+        gap: 3em;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .landing img {
+        max-width: 320px;
+    }
+
+    .landing h2 {
+        font-size: 40px;
+        line-height: 35px;
+    }
+
+    .acerca_de h2 {
+        width: auto;
+        font-size: 30px;
+    }
+
+    .funcionamiento h2 {
+        /* width: auto; */
+        font-size: 30px;
+    }
+
+    .funcionamiento .grid_box {
+        grid-template-columns: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .landing {
+        justify-content: start;
+    }
+}
+
+/*  */
+
+.direcciones {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+}
+
+.direcciones a {
+    color: #000;
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.direcciones a:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+}
+
+.barras {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin-bottom:15px; */
+}
+
+.barra {
+    cursor: pointer;
+    height: 2px;
+    width: 25px;
+    margin: 0 2px;
+    background: #dcdde1;
+    display: inline-block;
+    margin-left: 3px;
+}
+
+.active {
+    background-color: #39a900;
+}
