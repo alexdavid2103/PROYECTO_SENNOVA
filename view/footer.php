@@ -3,7 +3,7 @@
             <div class="box descripcion">
                 <h2>Motors Insight</h2>
                 <p>Somos una empresa para el cuidado de los motores electrico-industriales que le permite saber todo lo
-                    que ocurre en cualquier momento, solo basta una conexion a internet.</p>
+                    que ocurre en cualquier momentazo, solo basta una conexion a internet.</p>
             </div>
             <div class="box secciones">
                 <h2>Secciones</h2>
