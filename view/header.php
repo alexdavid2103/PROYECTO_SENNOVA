@@ -14,8 +14,8 @@
         <nav class="nav">
             <a href="?controller=main&action=index">
                 <div class="logo">
-                    <img src="public/img/Logo-1.png" alt="">
-                    <p>Motors Insight</p>
+                    <img src="public/img/SenaTech-8.png" alt="">
+                    <!-- <p>SenaTech</p> -->
                 </div>
             </a>
 

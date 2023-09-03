@@ -1,7 +1,7 @@
 .footer {
     height: auto;
     padding: 2em;
-    background: #39a900;
+    background: #1d3557;
     color: #fff;
 }
 
@@ -89,7 +89,7 @@
     place-items: center;
     background: #fff;
     border-radius: .25em;
-    color: #39a900;
+    color: #1d3557;
     text-decoration: none;
     margin-bottom: .5em;
     transition: .25s;
@@ -102,7 +102,7 @@
 .copyright {
     padding: 1em;
     text-align: center;
-    background: #39a900;
+    background: #1d3557;
     color: #fff;
 }
 
