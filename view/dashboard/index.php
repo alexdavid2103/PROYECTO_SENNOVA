@@ -33,6 +33,9 @@
     <!-- Main CSS-->
     <link href="public/css/theme.css" rel="stylesheet" media="all">
 
+    <!--  -->
+    <link rel="stylesheet" href="public/css/dashboard.css">
+
 </head>
 
 <body class="animsition">

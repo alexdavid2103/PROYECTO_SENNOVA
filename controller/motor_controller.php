@@ -1,6 +1,6 @@
 <?php
 require_once "modelo/motor_modelo.php";
-require_once "modelo/cliente_modelo.php";
+require_once "modelo/empresa_modelo.php";
 require_once "modelo/tecnico_modelo.php";
 
 class motor_controller

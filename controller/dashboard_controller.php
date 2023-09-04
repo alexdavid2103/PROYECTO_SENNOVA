@@ -1,6 +1,6 @@
 <?php
 require_once "modelo/motor_modelo.php";
-require_once "modelo/cliente_modelo.php";
+require_once "modelo/empresa_modelo.php";
 require_once "modelo/tecnico_modelo.php";
 
 class dashboard_controller
@@ -19,7 +19,7 @@ class dashboard_controller
         //     exit();
         // }
         $this->obj->motores = motor_modelo::listar();
-        $this->obj->clientes = cliente_modelo::listar();
+        // $this->obj->empresa = empresa_modelo::listar();
         // $this->obj->tecnicos = tecnico_modelo::listar();
         // Cargar la plantilla de vista "motor/index"
         $this->obj->loadTemplate("dashboard/index");
