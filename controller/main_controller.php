@@ -30,4 +30,3 @@ class main_controller
         $this->obj->loadTemplate("main/login");
     }
 }
-?>

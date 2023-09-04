@@ -60,4 +60,3 @@ class admin_controller
         }
     }
 }
-?>

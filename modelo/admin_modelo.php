@@ -86,4 +86,3 @@ class admin_modelo
         return $st->fetch(); // Retornar el primer resultado de la consulta
     }
 }
-?>
