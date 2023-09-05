@@ -1249,7 +1249,7 @@ section {
     -webkit-justify-content: space-between;
     -moz-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: end;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
