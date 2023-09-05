@@ -45,7 +45,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="?controller=main&action=index">
                             <img src="public/img/senatech.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -100,7 +100,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
+                <a href="?controller=main&action=index">
                     <img src="public/img/senatech.png" alt="Cool Admin" />
                 </a>
             </div>
@@ -382,7 +382,7 @@
                                     <div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
+                                                <i class="fas fa-user"></i>
                                             </div>
                                             <div class="text">
                                                 <h2>668</h2>
@@ -409,7 +409,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
                                         <h3 class="title-2">recent reports</h3>
@@ -443,46 +443,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="au-card chart-percent-card">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 tm-b-5">char by %</h3>
-                                        <div class="row no-gutters">
-                                            <div class="col-xl-6">
-                                                <div class="chart-note-wrap">
-                                                    <div class="chart-note mr-0 d-block">
-                                                        <span class="dot dot--blue"></span>
-                                                        <span>products</span>
-                                                    </div>
-                                                    <div class="chart-note mr-0 d-block">
-                                                        <span class="dot dot--red"></span>
-                                                        <span>services</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="percent-chart">
-                                                    <canvas id="percent-chart"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Earnings By Items</h2>
+                                <h2 class="title-1 m-b-25">Motores registrados</h2>
                                 <div class="table-responsive table--no-card m-b-40">
                                     <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
-                                                <th>date</th>
+                                                <th>Serie</th>
                                                 <th>order ID</th>
                                                 <th>name</th>
-                                                <th class="text-right">price</th>
-                                                <th class="text-right">quantity</th>
-                                                <th class="text-right">total</th>
+                                                <th class="text-right">Empresa</th>
+                                                <th class="text-right">Tecnico</th>
+                                                <th class="text-right">Ubicación</th>
+                                                <th class="text-right">Estado</th>
+                                                <th class="text-right">Registro</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -493,6 +469,8 @@
                                                 <td class="text-right">$999.00</td>
                                                 <td class="text-right">1</td>
                                                 <td class="text-right">$999.00</td>
+                                                <td class="text-right">x</td>
+                                                <td class="text-right">x</td>
                                             </tr>
                                             <tr>
                                                 <td>2018-09-28 01:22</td>
@@ -501,6 +479,8 @@
                                                 <td class="text-right">$756.00</td>
                                                 <td class="text-right">1</td>
                                                 <td class="text-right">$756.00</td>
+                                                <td class="text-right">x</td>
+                                                <td class="text-right">x</td>
                                             </tr>
                                             <tr>
                                                 <td>2018-09-27 02:12</td>
@@ -509,6 +489,8 @@
                                                 <td class="text-right">$22.00</td>
                                                 <td class="text-right">2</td>
                                                 <td class="text-right">$44.00</td>
+                                                <td class="text-right">x</td>
+                                                <td class="text-right">x</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -520,12 +502,7 @@
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
                                     <div class="au-card-title" style="background-image:url('public/images/bg-title-01.jpg');">
                                         <div class="bg-overlay bg-overlay--blue"></div>
-                                        <h3>
-                                            <i class="zmdi zmdi-account-calendar"></i>26 April, 2018
-                                        </h3>
-                                        <button class="au-btn-plus">
-                                            <i class="zmdi zmdi-plus"></i>
-                                        </button>
+                                        <h3><i class="fas fa-building"></i>Empresas</h3>
                                     </div>
                                     <div class="au-task js-list-load">
                                         <div class="au-task__title">
@@ -591,12 +568,7 @@
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
                                     <div class="au-card-title" style="background-image:url('public/images/bg-title-02.jpg');">
                                         <div class="bg-overlay bg-overlay--blue"></div>
-                                        <h3>
-                                            <i class="zmdi zmdi-comment-text"></i>New Messages
-                                        </h3>
-                                        <button class="au-btn-plus">
-                                            <i class="zmdi zmdi-plus"></i>
-                                        </button>
+                                        <h3><i class="fas fa-users"></i>Tecnicos</h3>
                                     </div>
                                     <div class="au-inbox-wrap js-inbox-wrap">
                                         <div class="au-message js-list-load">

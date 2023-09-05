@@ -27,13 +27,6 @@
                     <li><span class="fa fa-phone"></span>0000000000</li>
                 </ul>
             </div>
-            <div class="box siguenos">
-                <h2>Siguenos</h2>
-                <a href="https://es-la.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                <a href="" class="fa fa-instagram"></a>
-                <a href="" class="fa fa-twitter"></a>
-                <a href="" class="fa fa-linkedin"></a>
-            </div>
         </div>
     </footer>
 

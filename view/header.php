@@ -14,7 +14,7 @@
         <nav class="nav">
             <a href="?controller=main&action=index">
                 <div class="logo">
-                    <img src="public/img/SenaTech-8.png" alt="">
+                    <img src="public/img/senatech.png" alt="">
                     <!-- <p>SenaTech</p> -->
                 </div>
             </a>
@@ -26,13 +26,11 @@
                 <li><a class="link" href="?controller=main&action=index">Inicio</a></li>
                 <?php
                 if (isset($_SESSION['id'])) {
-                    echo '<li><a class="link" href="?controller=motor&action=index">Panel</a></li>';
                     echo '<li><a class="link" href="?controller=usuario&action=salir">Salir</a></li>';
                 } else {
-                    echo '<li><a class="link" href="#acerca_de_nosotros">Acerca de nosotros</a></li>';
-                    echo '<li><a class="link" href="#funcionamiento">Funcionamiento</a></li>';
-                    echo '<li><a class="link" href="#footer">Contactanos</a></li>';
+                    echo '<li><a class="link" href="?controller=dashboard&action=index">Dashboard</a></li>';
                     echo '<li><a class="link" href="?controller=main&action=login">Iniciar sesión</a></li>';
+                    echo '<li><a class="link" href="?controller=main&action=register">Registrarse</a></li>';
                 }
                 ?>
             </ul>

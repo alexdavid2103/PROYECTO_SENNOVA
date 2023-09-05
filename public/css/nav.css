@@ -9,12 +9,12 @@
 }
 
 :root {
-    --green-primary: #1d3557;
-    --green-secondary: #457b9d;
-    --white: #FFFFFF;
-    --black: #000000;
-    --red: #ff0000;
-    --blue: #0000ff;
+    --primary: #F1FAEE;
+    --secondary: #A8DADC;
+    --tertiary: #457B9D;
+    --quaternary: #1D3557;
+    --quinary: #E63946;
+    --senary: #39A900;
 }
 
 h2,
@@ -28,7 +28,7 @@ h3 {
 }
 
 .nav {
-    background: var(--green-primary);
+    background: var(--primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
