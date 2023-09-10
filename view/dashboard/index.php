@@ -82,15 +82,6 @@
                         <li>
                             <a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a>
                         </li>
-
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#"><i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -109,17 +100,9 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
                             <a href="chart.html"><i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li>
-                            <a href="table.html"><i class="fas fa-table"></i>Tables</a>
                         </li>
                         <li>
                             <a href="form.html"><i class="far fa-check-square"></i>Forms</a>
@@ -144,15 +127,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#"><i class="fas fa-desktop"></i>UI Elements
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav>
             </div>
@@ -171,42 +145,7 @@
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <!-- Icono de notificaciones -->
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span> <!-- Cantidad de notificaciones -->
-                                        <!-- Lista de mensajes desplegable -->
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
-                                            <!-- Mensaje individual -->
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="public/images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Michelle Moreno</h6>
-                                                    <p>Have sent a photo</p>
-                                                    <span class="time">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <!-- Otra notificación de mensaje individual -->
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="public/images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
-                                                    <span class="time">Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <!-- Enlace para ver todos los mensajes -->
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                        
                                     <!-- Icono de correo electrónico -->
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-email"></i>
@@ -263,16 +202,6 @@
                                             </div>
                                             <!-- Otra notificación individual -->
                                             <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <!-- Otra notificación individual -->
-                                            <div class="notifi__item">
                                                 <div class="bg-c3 img-cir img-40">
                                                     <i class="zmdi zmdi-file-text"></i>
                                                 </div>
@@ -321,10 +250,6 @@
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
                                                         <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
                                                 </div>
                                             </div>
                                             <!-- Opción para cerrar sesión -->
