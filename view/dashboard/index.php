@@ -82,15 +82,6 @@
                         <li>
                             <a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a>
                         </li>
-
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#"><i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -113,11 +104,36 @@
                         <li class="">
                             <a href="?controller=dashboard&action=empresas"><i class="fas fa-chart-bar"></i>Empresas</a>
                         </li>
+<<<<<<< HEAD
                         <li class="">
                             <a href="?controller=dashboard&action=tecnicos"><i class="fas fa-table"></i>Tecnicos</a>
                         </li>
                         <li class="">
                             <a href="?controller=dashboard&action=motores"><i class="far fa-check-square"></i>Motores</a>
+=======
+                        <li>
+                            <a href="form.html"><i class="far fa-check-square"></i>Forms</a>
+                        </li>
+                        <li>
+                            <a href="calendar.html"><i class="fas fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li>
+                            <a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#"><i class="fas fa-copy"></i>Pages</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="login.html">Login</a>
+                                </li>
+                                <li>
+                                    <a href="register.html">Register</a>
+                                </li>
+                                <li>
+                                    <a href="forget-pass.html">Forget Password</a>
+                                </li>
+                            </ul>
+>>>>>>> 2cbeb64aa46772b2e171a9c14c1b5c5f71478bc1
                         </li>
                     </ul>
                 </nav>
@@ -137,6 +153,46 @@
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <!-- Icono de notificaciones -->
+<<<<<<< HEAD
+=======
+                        
+                                    <!-- Icono de correo electrónico -->
+                                    <div class="noti__item js-item-menu">
+                                        <i class="zmdi zmdi-email"></i>
+                                        <span class="quantity">1</span> <!-- Cantidad de correos electrónicos -->
+                                        <!-- Lista de correos electrónicos desplegable -->
+                                        <div class="email-dropdown js-dropdown">
+                                            <div class="email__title">
+                                                <p>You have 3 New Emails</p>
+                                            </div>
+                                            <!-- Correo electrónico individual -->
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="public/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                                </div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard...</p>
+                                                    <span>Cynthia Harvey, 3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <!-- Otra notificación de correo electrónico individual -->
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="public/images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
+                                                </div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard...</p>
+                                                    <span>Cynthia Harvey, Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <!-- Enlace para ver todos los correos electrónicos -->
+                                            <div class="email__footer">
+                                                <a href="#">See all emails</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Icono de notificaciones -->
+>>>>>>> 2cbeb64aa46772b2e171a9c14c1b5c5f71478bc1
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
                                         <span class="quantity">3</span> <!-- Cantidad de notificaciones -->
@@ -152,16 +208,6 @@
                                                 </div>
                                                 <div class="content">
                                                     <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
-                                                </div>
-                                            </div>
-                                            <!-- Otra notificación individual -->
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
                                                     <span class="date">April 12, 2018 06:50</span>
                                                 </div>
                                             </div>
@@ -215,10 +261,6 @@
                                                 <div class="account-dropdown__item">
                                                     <a href="#">
                                                         <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
                                                 </div>
                                             </div>
                                             <!-- Opción para cerrar sesión -->
@@ -326,7 +368,7 @@
                                         </div>
                                         <div class="recent-report__chart">
 
-                                        <?xml version="1.0" encoding="utf-8"?>
+                                        
 <!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 829.4 1137.6" style="enable-background:new 0 0 829.4 1137.6;" xml:space="preserve">
