@@ -62,13 +62,13 @@ class empresa_modelo
     }
 
     // Función para obtener una lista de todos los registros de empresas
-    public static function listar()
+    public static function listarEmpresas()
     {
         $obj = new connection();
         $c = $obj->getConnection();
         
         // Consulta SQL para seleccionar todos los registros de la tabla empresa
-        $sql = "SELECT * FROM empresa ";
+        $sql = "SELECT * FROM empresas";
         $st = $c->prepare($sql);
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo

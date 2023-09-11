@@ -91,13 +91,13 @@ class tecnico_modelo
     }
 
     // Función para obtener una lista de todos los técnicos
-    public static function listar()
+    public static function listarTecnicos()
     {
         $obj = new connection();
         $c = $obj->getConnection();
         
         // Consulta SQL para seleccionar todos los registros de la tabla tecnico
-        $sql = "SELECT * FROM tecnico ";
+        $sql = "SELECT * FROM tecnicos ";
         $st = $c->prepare($sql);
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo

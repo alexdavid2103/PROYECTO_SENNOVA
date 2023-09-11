@@ -3,3 +3,17 @@
 .copyright {
   display: none;
 }
+
+.dep {
+  fill: blueviolet;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.dep:hover {
+  fill: #00000078;
+}
