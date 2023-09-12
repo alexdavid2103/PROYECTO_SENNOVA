@@ -40,16 +40,16 @@ class dashboard_controller
     }
 
     // Función para cargar la vista principal de motores
-    // public function index()
-    // {
-    //     // if (!isset($_SESSION['id'])) {
-    //     //     header("Location: /PROYECTO_SENOVA");
-    //     //     exit();
-    //     // }
-    //     $this->obj->motores = motor_modelo::listar();
-    //     // $this->obj->empresa = empresa_modelo::listar();
-    //     // $this->obj->tecnicos = tecnico_modelo::listar();
-    //     // Cargar la plantilla de vista "motor/index"
-    //     $this->obj->loadTemplate("dashboard/index");
-    // }
+    public function maps()
+    {
+        // if (!isset($_SESSION['id'])) {
+        //     header("Location: /PROYECTO_SENOVA");
+        //     exit();
+        // }
+        // $this->obj->motores = motor_modelo::listar();
+        // $this->obj->empresa = empresa_modelo::listar();
+        // $this->obj->tecnicos = tecnico_modelo::listar();
+        // Cargar la plantilla de vista "motor/index"
+        $this->obj->loadTemplate("calendar/index");
+    }
 }
