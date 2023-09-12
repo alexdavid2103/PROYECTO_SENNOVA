@@ -17,3 +17,7 @@
 .dep:hover {
   fill: #00000078;
 }
+
+.logo img {
+  height: 100%;
+}
