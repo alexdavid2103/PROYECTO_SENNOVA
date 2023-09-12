@@ -147,12 +147,12 @@ body {
 }
 
 ::selection {
-  background: #03a4ed;
+  background: #457B9D;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #03a4ed;
+  background: #457B9D;
   color: #fff;
 }
 
@@ -190,7 +190,7 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #03a4ed;
+  color: #457B9D;
 }
 
 .section-heading h2 span {
@@ -199,7 +199,7 @@ body {
 
 .main-blue-button a {
   display: inline-block;
-  background-color: #03a4ed;
+  background-color: #457B9D;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -299,7 +299,7 @@ header
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #03a4ed;
+    color: #457B9D;
     line-height: 100px;
     float: left;
     -webkit-transition: all 0.3s ease 0s;
@@ -388,7 +388,7 @@ header
 
 .header-area .main-nav .nav li:last-child a:hover ,
 .background-header .main-nav .nav li:last-child a:hover {
-  background-color: #03a4ed;
+  background-color: #457B9D;
 }
 
 .header-area .main-nav .nav li.submenu {
@@ -882,7 +882,7 @@ Banner Style
 }
 
 .main-banner .left-content h2 em {
-  color: #03a4ed;
+  color: #457B9D;
   font-style: normal;
   font-weight: 300;
 }
@@ -922,7 +922,7 @@ Banner Style
 .main-banner .left-content form input {
   width: 470px;
   height: 66px;
-  background-color: #03a4ed;
+  background-color: #457B9D;
   border-radius: 33px;
   border: none;
   outline: none;
@@ -1021,7 +1021,7 @@ Services Style
   top: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #03a4ed;
+  color: #457B9D;
 }
 
 .our-services .first-bar span {
@@ -1054,7 +1054,7 @@ Services Style
 
 .our-services .progress-skill-bar .filled-bar {
   background: rgb(56, 169, 0);
-  background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(255,44,109,1) 100%);
+  background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(69, 123, 157,1) 100%);
   height: 6px;
   border-radius: 3px;
   margin-bottom: -6px;
@@ -1110,7 +1110,7 @@ Portfolio
 
 .our-portfolio .hidden-content {
   background: rgb(56, 169, 0 );
-  background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(255,44,109,1) 100%);
+  background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(69, 123, 157,1) 100%);
   padding: 30px;
   border-radius: 20px;
   text-align: center;
@@ -1479,7 +1479,7 @@ responsive
   }
   .about-us .services .item  {
     background: rgb(56, 169, 0 );
-    background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(255,44,109,1) 100%);
+    background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(69, 123, 157,1) 100%);
     padding: 30px;
     border-radius: 20px;
     display: inline-block;
