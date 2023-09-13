@@ -1,9 +1,14 @@
+/* .slider_landing {
+    display: flex;
+} */
+
 .landing {
     height: calc(100vh - 56px);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2.5em;
+    transition: .5s;
 }
 
 .landing img {

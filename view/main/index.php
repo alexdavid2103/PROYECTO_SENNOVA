@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="public/css/inicio.css">
 <title>Inicio</title>
 
-<div class="">
+<div class="slider_landing">
 
     <div class="landing miSlider">
         <img src="public/img/slider-img.png" alt="">

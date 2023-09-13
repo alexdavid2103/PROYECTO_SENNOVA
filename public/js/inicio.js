@@ -25,23 +25,32 @@ function muestraSlides(n) {
 
   // Si 'n' es mayor que el número de slides, vuelve al primer slide.
   if (n > slides.length) {
-    indice = 1;
+    n = 1;
   }
   // Si 'n' es menor que 1, muestra el último slide.
   if (n < 1) {
-    indice = slides.length;
+    n = slides.length;
   }
 
-  // Oculta todos los slides.
+  // Oculta todos los slides con transición de opacidad.
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.transition = "opacity 2s"; // Transición de 2 segundos
+    slides[i].style.opacity = "0";
+    setTimeout(() => {
+      slides[i].style.display = "none";
+    }, 2000); // Ocultar después de 2 segundos
   }
+
   // Remueve la clase 'active' de todas las barras.
   for (i = 0; i < barras.length; i++) {
     barras[i].className = barras[i].className.replace(" active", "");
   }
 
-  // Muestra el slide en la posición 'indice - 1' y agrega la clase 'active' a la barra correspondiente.
-  slides[indice - 1].style.display = "flex";
-  barras[indice - 1].className += " active";
+  // Muestra el slide en la posición 'n - 1' con una transición de opacidad.
+  slides[n - 1].style.display = "flex";
+  setTimeout(() => {
+    slides[n - 1].style.opacity = "1";
+  }, 0); // Mostrar con opacidad 1 después de un pequeño retraso
+  barras[n - 1].className += " active";
 }
+
