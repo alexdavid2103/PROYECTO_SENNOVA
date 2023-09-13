@@ -1109,8 +1109,8 @@ Portfolio
 }
 
 .our-portfolio .hidden-content {
-  background: rgb(56, 169, 0 );
-  background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(69, 123, 157,1) 100%);
+  background: rgb(168, 218, 220);
+  background: linear-gradient(105deg, rgba(168, 218, 220) 0%, rgba(69, 123, 157,1) 100%);
   padding: 30px;
   border-radius: 20px;
   text-align: center;
@@ -1126,13 +1126,13 @@ Portfolio
   width: 20px;
   height: 20px;
   position: absolute;
-  background: rgb(56, 169, 0 );
+  background: rgb(168, 218, 220 );
   content: '';
   left: 50%;
   bottom: -8px;
   margin-left: -5px;
   transform: rotate(45deg);
-  background: linear-gradient(105deg, rgba(56, 169, 0 ,1) 0%, rgba(56, 169, 10 ,1) 100%);
+  background: linear-gradient(105deg, rgba(168, 218, 220 ,1) 0%, rgba(168, 218, 250 ,1) 100%);
   z-index: -1;
 }
 
@@ -1291,7 +1291,7 @@ contact
 
 .contact-us {
   padding: 160px 0px;
-  background-image: url(../images/contact-bg.png);
+  background-image: url(../images/constac.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1398,7 +1398,7 @@ form#contact textarea::placeholder {
 
 form#contact button {
   display: inline-block;
-  background-color: #03a4ed;
+  background-color: #A8DADC;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
