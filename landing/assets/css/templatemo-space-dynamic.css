@@ -1505,48 +1505,17 @@ footer p a {
 
 .cont_robot {
   position: relative;
-  margin-bottom: 15em;
-
+  
   .robot {
     position: relative;
-    z-index: 3;
     animation: flotar 2s infinite ease-in alternate-reverse;
   }
 
-  .tuerca_grande,
-  .tuerca_pequeña,
-  .tablet {
-    position: absolute;
-  }
-
-  .tuerca_grande {
-    right: -105px;
-    top: -80px;
-    /* animation: rotar_tuercas infinite 3s ease; */
-  }
-
-  .tuerca_pequeña {
-    right: -54px;
-    top: 190px;
-    width: 360px;
-    z-index: 1;
-    /* animation: rotar_tuercas infinite 2s ease; */
-  }
-
-  .tablet {
-    left: -6px;
-    bottom: -135px;
-  }
 }
 
 @keyframes flotar {
   to {
     transform: translateY(20px);
-  }
-}
-@keyframes rotar_tuercas {
-  to {
-    transform: rotate(360deg);
   }
 }
 
