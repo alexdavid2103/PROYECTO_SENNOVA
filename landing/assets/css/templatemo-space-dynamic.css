@@ -1036,8 +1036,15 @@ About Us Style
   margin-right: 25px;
 }
 
-.about-us .services .item .icon img {
-  max-width: 70px;
+.about-us .services .item .icon i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  width: 70px;
+  height: 70px;
+  background: #f7f7f7;
+  border-radius: 50%;
 }
 
 .about-us .services .item h4 {
