@@ -14,27 +14,27 @@
 
     <!-- Fontfaces CSS-->
     <!-- <link href="css/font-face.css" rel="stylesheet" media="all"> -->
-    <link href="public/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="public/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="public/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="public/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
-    <!-- Vendor CSS-->
-    <link href="public/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="public/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="public/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="public/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="public/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="public/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="public/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <!-- dashboard/Vendor CSS-->
+    <link href="public/dashboard/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="public/css/theme.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/css/theme.css" rel="stylesheet" media="all">
 
     <!--  -->
-    <link rel="stylesheet" href="public/css/dashboard.css">
+    <link rel="stylesheet" href="public/dashboard/css/dashboard.css">
 
 </head>
 
@@ -46,7 +46,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="?controller=main&action=index">
-                            <img src="public/img/senatech.png" alt="SenaTech" />
+                            <img src="public/dashboard/images/senatech.png" alt="SenaTech" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -92,7 +92,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="?controller=main&action=index">
-                    <img src="public/img/senatech.png" alt="Cool Admin" />
+                    <img src="public/dashboard/images/senatech.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -141,7 +141,7 @@
                                             <!-- Correo electrónico individual -->
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="public/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                                    <img src="public/dashboard/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -151,7 +151,7 @@
                                             <!-- Otra notificación de correo electrónico individual -->
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="public/images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
+                                                    <img src="public/dashboard/images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -204,7 +204,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="public/images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="public/dashboard/images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">john doe</a> <!-- Nombre del usuario -->
@@ -214,7 +214,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="public/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="public/dashboard/images/icon/avatar-01.jpg" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -1207,7 +1207,7 @@
                                                         <div class="au-message__item-text">
                                                             <div class="avatar-wrap">
                                                                 <div class="avatar">
-                                                                    <img src="public/images/icon/avatar-02.jpg" alt="John Smith">
+                                                                    <img src="public/dashboard/images/icon/avatar-02.jpg" alt="John Smith">
                                                                 </div>
                                                             </div>
                                                             <div class="text">
@@ -1224,7 +1224,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title" style="background-image:url('public/images/bg-title-02.jpg');">
+                                    <div class="au-card-title" style="background-image:url('public/landing_page/images/bg-title-02.jpg');">
                                         <div class="bg-overlay bg-overlay--blue"></div>
                                         <h3><i class="fas fa-users"></i>Tecnicos</h3>
                                     </div>
@@ -1245,7 +1245,7 @@
                                                         <div class="au-message__item-text">
                                                             <div class="avatar-wrap online">
                                                                 <div class="avatar">
-                                                                    <img src="public/images/icon/avatar-03.jpg" alt="Nicholas Martinez">
+                                                                    <img src="public/dashboard/images/icon/avatar-03.jpg" alt="Nicholas Martinez">
                                                                 </div>
                                                             </div>
                                                             <div class="text">
@@ -1279,28 +1279,28 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="public/vendor/jquery-3.2.1.min.js"></script>
+    <script src="public/dashboard/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <script src="public/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="public/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="public/vendor/slick/slick.min.js">
+    <script src="public/dashboard/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="public/dashboard/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- dashboard/Vendor JS       -->
+    <script src="public/dashboard/vendor/slick/slick.min.js">
     </script>
-    <script src="public/vendor/wow/wow.min.js"></script>
-    <script src="public/vendor/animsition/animsition.min.js"></script>
-    <script src="public/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="public/dashboard/vendor/wow/wow.min.js"></script>
+    <script src="public/dashboard/vendor/animsition/animsition.min.js"></script>
+    <script src="public/dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
-    <script src="public/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="public/vendor/counter-up/jquery.counterup.min.js">
+    <script src="public/dashboard/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="public/dashboard/vendor/counter-up/jquery.counterup.min.js">
     </script>
-    <script src="public/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="public/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="public/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="public/vendor/select2/select2.min.js">
+    <script src="public/dashboard/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="public/dashboard/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="public/dashboard/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="public/dashboard/vendor/select2/select2.min.js">
     </script>
 
     <!-- Main JS-->
-    <script src="public/js/main.js"></script>
+    <script src="public/dashboard/js/main.js"></script>
 
 </body>
 
