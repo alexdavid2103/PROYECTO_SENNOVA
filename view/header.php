@@ -12,14 +12,14 @@
     <title>SenaTech</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="public/landing_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css" />
-    <link rel="stylesheet" href="assets/css/templatemo-space-dynamic.css" />
-    <link rel="stylesheet" href="assets/css/animated.css" />
-    <link rel="stylesheet" href="assets/css/owl.css" />
-    <link rel="shortcut icon" href="assets/images/Logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="public/landing_page/assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="public/landing_page/assets/css/templatemo-space-dynamic.css" />
+    <link rel="stylesheet" href="public/landing_page/assets/css/animated.css" />
+    <link rel="stylesheet" href="public/landing_page/assets/css/owl.css" />
+    <link rel="shortcut icon" href="public/landing_page/assets/images/Logo.png" type="image/x-icon" />
     <!--
     
 TemplateMo 562 Space Dynamic

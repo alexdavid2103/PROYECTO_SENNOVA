@@ -15,13 +15,13 @@
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/575d3461ce.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/animation.js"></script>
-    <script src="assets/js/imagesloaded.js"></script>
-    <script src="assets/js/templatemo-custom.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="public/landing_page/vendor/jquery/jquery.min.js"></script>
+    <script src="public/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/landing_page/assets/js/owl-carousel.js"></script>
+    <script src="public/landing_page/assets/js/animation.js"></script>
+    <script src="public/landing_page/assets/js/imagesloaded.js"></script>
+    <script src="public/landing_page/assets/js/templatemo-custom.js"></script>
+    <script src="public/landing_page/assets/js/custom.js"></script>
     </body>
 
     </html>

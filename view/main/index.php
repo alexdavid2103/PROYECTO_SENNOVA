@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <img src="assets/images/banner-right-image.png" alt="team meeting" />
+                            <img src="public/landing_page/assets/images/banner-right-image.png" alt="team meeting" />
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-lg-4 position-relative">
                 <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <img src="assets/images/9.png" alt="person graphic" />
+                    <img src="public/landing_page/assets/images/9.png" alt="person graphic" />
                     <!-- <i class="fa-solid fa-gear fa-spin" style="color: #fff; font-size: 10em; position: absolute;"></i> -->
                 </div>
             </div>
@@ -363,7 +363,7 @@
                             <p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
                         </div>
                         <div class="showed-content">
-                            <img src="assets/images/10.png" alt="" />
+                            <img src="public/landing_page/assets/images/10.png" alt="" />
                         </div>
                     </div>
                 </a>
@@ -376,7 +376,7 @@
                             <p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
                         </div>
                         <div class="showed-content">
-                            <img src="assets/images/12.png" alt="" />
+                            <img src="public/landing_page/assets/images/12.png" alt="" />
                         </div>
                     </div>
                 </a>
@@ -389,7 +389,7 @@
                             <p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
                         </div>
                         <div class="showed-content">
-                            <img src="assets/images/3.png" alt="" />
+                            <img src="public/landing_page/assets/images/3.png" alt="" />
                         </div>
                     </div>
                 </a>
@@ -402,7 +402,7 @@
                             <p>Lorem ipsum dolor sit ameti ctetur aoi adipiscing eto.</p>
                         </div>
                         <div class="showed-content">
-                            <img src="assets/images/4.png" alt="" />
+                            <img src="public/landing_page/assets/images/4.png" alt="" />
                         </div>
                     </div>
                 </a>
@@ -423,14 +423,14 @@
             </div>
             <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
                 <div class="top-dec">
-                    <img src="assets/images/Motor.png" alt="" />
+                    <img src="public/landing_page/assets/images/Motor.png" alt="" />
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.25s">
                 <div class="left-image">
-                    <a href="#"><img src="assets/images/Funciones.png" alt="Workspace Desktop" /></a>
+                    <a href="#"><img src="public/landing_page/assets/images/Funciones.png" alt="Workspace Desktop" /></a>
                     <div class="info">
                         <div class="inner-content">
                             <ul>
@@ -467,7 +467,7 @@
                                 </p>
                             </div>
                             <div class="right-image">
-                                <a href="#"><img src="assets/images/Rasberry.png" alt="" /></a>
+                                <a href="#"><img src="public/landing_page/assets/images/Rasberry.png" alt="" /></a>
                             </div>
                         </li>
                         <li>
@@ -482,7 +482,7 @@
                                 </p>
                             </div>
                             <div class="right-image">
-                                <a href="#"><img src="assets/images/Computadora.png" alt="" /></a>
+                                <a href="#"><img src="public/landing_page/assets/images/Computadora.png" alt="" /></a>
                             </div>
                         </li>
                         <li>
@@ -497,7 +497,7 @@
                                 </p>
                             </div>
                             <div class="right-image">
-                                <a href="#"><img src="assets/images/Nuve.png" alt="" /></a>
+                                <a href="#"><img src="public/landing_page/assets/images/Nuve.png" alt="" /></a>
                             </div>
                         </li>
                     </ul>
@@ -558,10 +558,23 @@
                         </div>
                     </div>
                     <div class="contact-dec">
-                        <img src="assets/images/contact-decoration.png" alt="" />
+                        <img src="public/landing_page/assets/images/contact-decoration.png" alt="" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Scripts -->
+<script
+      src="https://kit.fontawesome.com/575d3461ce.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="public/landing_page/vendor/jquery/jquery.min.js"></script>
+    <script src="public/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/landing_page/js/owl-carousel.js"></script>
+    <script src="public/landing_page/js/animation.js"></script>
+    <script src="public/landing_page/js/imagesloaded.js"></script>
+    <script src="public/landing_page/js/templatemo-custom.js"></script>
+    <script src="public/landing_page/js/custom.js"></script>
