@@ -1,6 +1,5 @@
-.cont_nav,
-.footer,
-.copyright {
+#nav,
+#footer {
     display: none;
 }
 

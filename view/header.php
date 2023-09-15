@@ -44,7 +44,7 @@ https://templatemo.com/tm-562-space-dynamic
     <!-- ***** Preloader End ***** -->
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <header id="nav" class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -82,6 +82,10 @@ https://templatemo.com/tm-562-space-dynamic
                             </li>
                             <li class="scroll-to-section">
                                 <a href="#contact">Contacto</a>
+                            </li>
+
+                            <li class="scroll-to-section">
+                                <a href="?controller=main&action=login">Iniciar sesión</a>
                             </li>
 
                             <li class="scroll-to-section">
