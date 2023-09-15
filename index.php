@@ -2,7 +2,7 @@
 // Iniciar sesión para utilizar variables de sesión
 session_start();
 
-// Incluir los archivos necesarios para la funcionalidad de la aplicación
+// Incluir los archivos necesarios para la funcionalidad de la aplicació
 require_once "Libs/routes.php"; 	// Archivo que contiene la clase de enrutamiento (Routes)
 require_once "Libs/template.php"; 	// Archivo que contiene la clase de plantilla (template)
 require_once "Libs/connection.php"; // Archivo que contiene la clase de conexión a la base de datos (connection)
