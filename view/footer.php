@@ -1,44 +1,27 @@
-    <footer class="footer" id="footer">
-        <div class="grid_box">
-            <div class="box descripcion">
-                <h2>SenaTech</h2>
-                <p>Somos una empresa para el cuidado de los motores electrico-industriales que le permite saber todo lo
-                    que ocurre en cualquier momentazo, solo basta una conexion a internet.</p>
-            </div>
-            <div class="box secciones">
-                <h2>Secciones</h2>
-                <ul>
-                    <li><a class="link" href="?controller=main&action=index">Inicio</a></li>
-                    <li><a class="link" href="?controller=main&action=index#acerca_de_nosotros">Acerca de nosotros</a></li>
-                    <li><a class="link" href="?controller=main&action=index#funcionamiento">Funcionamiento</a></li>
-                    <?php if (isset($_SESSION['id'])) {
-                        echo '<li><a class="link" href="?controller=usuario&action=salir">Salir</a></li>';
-                    } else {
-                        echo '<li><a class="link" href="?controller=main&action=login">Iniciar sesión</a></li>';
-                    }?>
-                </ul>
-            </div>
-            <div class="box contactanos">
-                <h2>Contactanos</h2>
-                <ul>
-                    <li>Correo</li>
-                    <li><span class="fa fa-envelope"></span>motorsinsight@gmail.com</li>
-                    <li>Atencion al cliente</li>
-                    <li><span class="fa fa-phone"></span>0000000000</li>
-                </ul>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>
+                        © Copyright 2023 <strong>SenaTech.co</strong> Todos los derechos
+                        reservados.
+
+                        <br />Diseñado: <a rel="nofollow" href="">SENNOVA.</a>
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
-
-    <div class="copyright">
-        Copyright &copy; 2023 Todos los derechos reservados.
-    </div>
-
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/575d3461ce.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="public/js/scripts.js"></script>
-    <script src="public/js/nav.js"></script>
-    
-</body>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/imagesloaded.js"></script>
+    <script src="assets/js/templatemo-custom.js"></script>
+    <script src="assets/js/custom.js"></script>
+    </body>
 
-</html>
+    </html>
