@@ -24,6 +24,6 @@ new FinisherHeader({
     center: 1,
     edge: 0.1,
   },
-  skew: -2,
+  skew: 0,
   shapes: ["c"],
 });

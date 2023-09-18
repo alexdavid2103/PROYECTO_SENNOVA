@@ -36,29 +36,34 @@ class main_controller
         extract($_POST);
 
         // Inicializar variables
-        $data = compact('id', 'password'); // Crear un array asociativo con los datos
         $mensaje = ""; // Mensaje de error por defecto
         $estado = 0; // Estado de validación (0 para no validado, 1 para validado)
         $url = "?controller=main&action=index"; // Valor por defecto para URL de redirección
 
         // Define un array de roles y modelos correspondientes
         $roles = [
-            'adm' => 'admin_modelo',
-            'tec' => 'tecnico_modelo',
-            'emp' => 'empresa_modelo',
+            'adm' => 'admin_model',
+            'tec' => 'tecnico_model',
+            'emp' => 'empresa_model'
         ];
 
         // Itera a través de los roles y modelos para validar
         foreach ($roles as $rol => $model) {
-            $r = $model::validar($data); // Llama al método de validación del modelo
-            if (is_array($r)) {
-                // Si las credenciales son válidas, establecer variables de sesión
-                $_SESSION['id'] = $r["{$rol}_id"];
-                $_SESSION['nombre'] = $r["{$rol}_nombre1"];
-                $_SESSION['apellido'] = $r["{$rol}_apellido1"];
-                $_SESSION['rol'] = $rol;
-                $estado = 1; // Cambia el estado de validación a 1 (validado)
-                break; // Si se encuentra una coincidencia, sal del bucle
+            // Verifica si las claves "id" y "password" están definidas en $_POST
+            if (isset($_POST['id']) && isset($_POST['password'])) {
+                // Crear un array asociativo con los datos
+                $data = compact('id', 'password');
+                // Llama al método de validación del modelo
+                $r = $model::validar($data);
+                if (is_array($r)) {
+                    // Si las credenciales son válidas, establecer variables de sesión
+                    $_SESSION['id'] = $r["{$rol}_id"];
+                    $_SESSION['nombre'] = $r["{$rol}_nombre1"];
+                    $_SESSION['apellido'] = $r["{$rol}_apellido1"];
+                    $_SESSION['rol'] = $rol;
+                    $estado = 1; // Cambia el estado de validación a 1 (validado)
+                    break; // Si se encuentra una coincidencia, sal del bucle
+                }
             }
         }
 
@@ -77,9 +82,10 @@ class main_controller
         );
     }
 
+
     public function salir()
     {
         session_destroy();
-        header("Location: /PROYECTO_SENNOVA");
+        header("Location: ?controller=main&action=login");
     }
 }
