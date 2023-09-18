@@ -237,7 +237,7 @@
                                             </div>
                                             <!-- Opción para cerrar sesión -->
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="?controller=main&action=salir">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

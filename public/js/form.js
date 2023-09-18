@@ -60,11 +60,11 @@ window.addEventListener("load", () => {
     step4.classList.remove("active");
   });
 
-  // stepPrev4.addEventListener("click", () => {
-  //     stepGroup4.style.display = "none";
-  //     stepGroup3.style.display = "block";
-  //     step4.classList.remove("active");
-  // })
+  stepPrev4.addEventListener("click", () => {
+      stepGroup4.style.display = "none";
+      stepGroup3.style.display = "block";
+      step4.classList.remove("active");
+  })
 
   stepNext4.addEventListener("click", () => {
     formContainerBox.style.display = "none";

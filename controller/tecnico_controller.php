@@ -1,5 +1,5 @@
 <?php
-require_once "modelo/tecnico_modelo.php";
+require_once "model/tecnico_modelo.php";
 class tecnico_controller
 {
     // Constructor de la clase, inicializa un objeto de la clase template

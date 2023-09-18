@@ -1,7 +1,7 @@
 <?php
-require_once "modelo/motor_modelo.php";
-require_once "modelo/empresa_modelo.php";
-require_once "modelo/tecnico_modelo.php";
+require_once "model/motor_modelo.php";
+require_once "model/empresa_modelo.php";
+require_once "model/tecnico_modelo.php";
 
 class motor_controller
 {
@@ -18,8 +18,8 @@ class motor_controller
         //     header("Location: /PROYECTO_SENOVA");
         //     exit();
         // }
-        $this->obj->motores = motor_modelo::listar();
-        $this->obj->clientes = cliente_modelo::listar();
+        $this->obj->motores = motor_modelo::listarMotorInfo();
+        $this->obj->clientes = empresa_modelo::listarEmpresas();
         // $this->obj->tecnicos = tecnico_modelo::listar();
         // Cargar la plantilla de vista "motor/index"
         $this->obj->loadTemplate("motor/index");

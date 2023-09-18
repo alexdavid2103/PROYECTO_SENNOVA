@@ -1,5 +1,5 @@
 <?php
-require_once "modelo/empresa_modelo.php";
+require_once "model/empresa_modelo.php";
 
 class empresa_controller
 {

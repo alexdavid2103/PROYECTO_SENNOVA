@@ -1,7 +1,7 @@
 <?php
-require_once "modelo/motor_modelo.php";
-require_once "modelo/empresa_modelo.php";
-require_once "modelo/tecnico_modelo.php";
+require_once "model/motor_modelo.php";
+require_once "model/empresa_modelo.php";
+require_once "model/tecnico_modelo.php";
 
 class dashboard_controller
 {

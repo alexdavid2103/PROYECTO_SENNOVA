@@ -9,10 +9,10 @@ add_motor.addEventListener("click", () => {
   cont_form_add_motor.style.display = "grid";
 });
 
-btn_back_add_motor.addEventListener("click", () => {
-  motors.style.display = "grid";
-  cont_form_add_motor.style.display = "none";
-});
+// btn_back_add_motor.addEventListener("click", () => {
+//   motors.style.display = "grid";
+//   cont_form_add_motor.style.display = "none";
+// });
 
 let cont_form_edit_motor = document.querySelector(".cont_form_edit_motor");
 let edit_motor = document.querySelectorAll(".edit_motor");
@@ -65,7 +65,7 @@ edit_motor.forEach((motor) => {
   });
 });
 
-btn_back_edit_motor.addEventListener("click", () => {
-  motors.style.display = "grid";
-  cont_form_edit_motor.style.display = "none";
-});
+// btn_back_edit_motor.addEventListener("click", () => {
+//   motors.style.display = "grid";
+//   cont_form_edit_motor.style.display = "none";
+// });

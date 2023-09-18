@@ -5,295 +5,204 @@
 <div class="motors">
     <h1 class="title">Motores Registrados</h1>
     <button type="button" class="add_motor">Agregar</button>
-    <?php foreach ($this->motores as $motor) {
-
-        echo '<div class="motor">
-
-            <h2>' . $motor["infmot_serie"] . '</h2>
-
-            <div class="flex_box">
-
-                <ul class="info_motor info_1">
-                    <li class="modelo">Modelo <br> ' . $motor["infmot_modelo"] . '</li>
-                    <li class="año">Año <br> ' . $motor["infmot_año"] . '</li>
-                    <li class="marca">Marca <br> ' . $motor["infmot_marca"] . '</li>
-                    <li class="voltaje">Voltaje <br> ' . $motor["infmot_voltaje"] . '</li>
-                    <li class="posicion">Posicion <br> ' . $motor["infmot_posicion"] . '</li>
-                    <li class="humedad">Humedad <br> ' . $motor["infmot_humedad"] . '</li>
-                    <!-- <li class="descripcion">descripcion <br> ' . $motor["infmot_descripcion"] . '</li> -->
-                </ul>
-
-                <figure class="motor_img">
-                    <img src="public/img/slider-img.png" alt="">
-                </figure>
-
-                <ul class="info_motor info_2">
-                    <li class="tipo_base">Tipo de base <br> ' . $motor["infmot_tipo_base"] . '</li>
-                    <li class="temperatura_ext">Temperatura externa <br> ' . $motor["infmot_temperatura_ext"] . '</li>
-                    <li class="ventilacion_ext">Ventilacion externa <br> ' . $motor["infmot_ventilacion_ext"] . '</li>
-                    <li class="cliente">cliente <br> ';
-        foreach ($this->clientes as $cliente) {
-            if ($cliente["usu_id"] == $motor["infmot_usuarioFK"]) {
-                echo $cliente["usu_nombre1"] . " " . $cliente["usu_apellido1"];
-            }
-        }
-        echo '</li>
-                    <li class="tecnico">Tecnico a cargo<br> ';
-        foreach ($this->tecnicos as $tecnico) {
-            if ($tecnico["tec_id"] == $motor["infmot_tecnicoFK"]) {
-                echo $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"];
-            }
-        }
-        echo '</li>
-                    <li class="registro">Fecha de registro <br> ' . $motor["infmot_registro_tec"] . '</li>
-                </ul>
-
-            </div>
-            <div class="edit_delete">
-                <button type="button" class="edit_motor"
-                data-serie = "' . $motor["infmot_serie"] . '";
-                data-modelo = "' . $motor["infmot_modelo"] . '";
-                data-año = "' . $motor["infmot_año"] . '";
-                data-marca = "' . $motor["infmot_marca"] . '";
-                data-voltaje = "' . $motor["infmot_voltaje"] . '";
-                data-posicion = "' . $motor["infmot_posicion"] . '";
-                data-humedad = "' . $motor["infmot_humedad"] . '";
-                data-descripcion = "" ' . $motor["infmot_descripcion"] . ';
-                data-tipo_base = "' . $motor["infmot_tipo_base"] . '";
-                data-temperatura = "' . $motor["infmot_temperatura_ext"] . '";
-                data-ventilacion = "' . $motor["infmot_ventilacion_ext"] . '";
-                data-cliente-id = "' . $motor["infmot_usuarioFK"] . '";
-                data-cliente-nom = "';
-        foreach ($this->clientes as $cliente) {
-            if ($cliente["usu_id"] == $motor["infmot_usuarioFK"]) {
-                echo $cliente["usu_nombre1"] . " " . $cliente["usu_apellido1"];
-            }
-        }
-        echo '";
-                data-tecnico-id = "' . $motor["infmot_tecnicoFK"] . '";
-                data-tecnico-nom = "';
-        foreach ($this->tecnicos as $tecnico) {
-            if ($tecnico["tec_id"] == $motor["infmot_tecnicoFK"]) {
-                echo $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"];
-            }
-        }
-        echo '";
-                data-registro = "' . $motor["infmot_registro_tec"] . '";
-                >Editar</button>
-                <button type="button" class="delete_motor" onclick="deleteMotor(' . $motor['infmot_id'] . ')">Eliminar</button>
-            </div>
-
-        </div>';
-    } ?>
 </div>
 
 <div class="cont_form cont_form_add_motor">
     <form action="?controller=motor&action=add" id="multi-step-form" class="form form_add_motor" onsubmit="return false">
-                <div id="form-container-box">
-                    <h1 class="form-title">REGISTRAR MOTOR</h1>
-                    <ul class="progress-bar">
-                        <li id="step1" class="active">User Info</li>
-                        <li id="step2">Address</li>
-                        <li id="step3">Comments</li>
-                        <li id="step4">sig</li>
-                    </ul>
+        <div id="form-container-box">
+            <h1 class="form-title">REGISTRAR MOTOR</h1>
+            <ul class="progress-bar">
+                <li id="step1" class="active">User Info</li>
+                <li id="step2">Address</li>
+                <li id="step3">Comments</li>
+                <li id="step4">sig</li>
+            </ul>
 
-                    <!-- ======================Step Group 1============== -->
-                    <div class="step-group" id="step-group-1">
-                        <div class="form-box">
-                            <div class="form-group">
-                                <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
-                                    <option value="">Seleccione el cliente al que pertenece el motor</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_serie" class="form-field" placeholder="Serie">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="add_mot_norma" class="form-field" placeholder="Norma">
-                            </div>
-                        </div>
+            <!-- ======================Step Group 1============== -->
+            <div class="step-group" id="step-group-1">
+                <div class="form-box">
+                    <div class="form-group">
+                        <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
+                            <option value="">Seleccione el cliente al que pertenece el motor</option>
 
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_polos" class="form-field" placeholder="Polos">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="add_mot_potencia" class="form-field" placeholder="Potencia">
-                            </div>
-                        </div>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_serie" class="form-field" placeholder="Serie">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="add_mot_norma" class="form-field" placeholder="Norma">
+                    </div>
+                </div>
 
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_IpIn" class="form-field" placeholder="IpIn">
-                            </div>
-                        </div>
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_polos" class="form-field" placeholder="Polos">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="add_mot_potencia" class="form-field" placeholder="Potencia">
+                    </div>
+                </div>
 
-                        <!-- <div class="form-box">
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_IpIn" class="form-field" placeholder="IpIn">
+                    </div>
+                </div>
+
+                <!-- <div class="form-box">
                             <div class="form-group">
                                 <input type="text" id="add_mot_potencia" class="form-field" placeholder="Potencia">
                             </div>
                         </div>  -->
 
-                        <div class="form-box">
-                            <div class="btn-step">
-                                <button id="step-next-1">Next ￫</button>
-                            </div>
-                        </div>
+                <div class="form-box">
+                    <div class="btn-step">
+                        <button id="step-next-1">Next ￫</button>
                     </div>
-                    <!-- ======================Step Group 2============== -->
-                    <div class="step-group" id="step-group-2">
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_par_maxima" class="form-field" placeholder="Par máxima">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="add_mot_par_arranque" class="form-field" placeholder="Par de arranque">
-                            </div>
-
-                        </div>
-
-                        <div class="form-box">
-                            <div class="form-box">
-                                <div class="form-group">
-                                    <input type="text" id="add_mot_peso" class="form-field" placeholder="Peso">
-                                </div>
-    
-                                <div class="form-group">
-                                    <input type="text" id="add_mot_mom_inercia" class="form-field" placeholder="Momento de inercia">
-                                </div>
-    
-                            </div>
-                        </div>
-
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_tiempo_rotor_bloq" class="form-field" placeholder="Tiempo de rotor bloqueado">
-                            </div>
-                        </div>
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_carcasaFK" class="form-field" placeholder="Carcasa">
-                            </div>
-                        </div>
-
-                        <div class="form-box">
-                            <div class="btn-step">
-                                <button id="step-prev-1">￩ Prev</button>
-                                <button id="step-next-2">Next ￫</button>
-                            </div>
-                        </div>
-
-
+                </div>
+            </div>
+            <!-- ======================Step Group 2============== -->
+            <div class="step-group" id="step-group-2">
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_par_maxima" class="form-field" placeholder="Par máxima">
                     </div>
 
-                    <!-- ======================Step Group 3============== -->
-                    <div class="step-group" id="step-group-3">
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_niv_ruido" class="form-field" placeholder="Nivel de ruido">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="add_mot_factor_servicio" class="form-field" placeholder="Factor de servicio">
-                            </div>
-
-                        </div>
-
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_rotacion_nominal" class="form-field" placeholder="Rotación nominal">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="add_mot_corriente_nominal" class="form-field" placeholder="Corriente nominal">
-                            </div>   
-                        </div>
-
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_altitud" class="form-field" placeholder="Altitud">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="add_mot_temp_ambiente" class="form-field" placeholder="Temperatura ambiente">
-                            </div>   
-                        </div>
-                        <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_proteccion" class="form-field" placeholder="Protección">
-                            </div>
-                        </div>
-
-                        <div class="form-box">
-                            <div class="btn-step">
-                                <button id="step-prev-2">￩ Prev</button>
-                                <button id="step-next-3">Next ￫</button>
-                            </div>
-                        </div>
-
-
+                    <div class="form-group">
+                        <input type="text" id="add_mot_par_arranque" class="form-field" placeholder="Par de arranque">
                     </div>
 
-                    <!-- ======================Step Group 4============== -->
-                    <div class="step-group" id="step-group-4">
-                        <div class="form-box">
-                            <div class="form-group">
-                                <select name="" class="form-field" id="add_mot_eficiencia_porcentaje" required>
-                                    <option value="">Seleccione el porcentaje de eficiencia</option>
-                                        <option value="50">50%</option>
-                                        <option value="75">75%</option>
-                                        <option value="100">100%</option>
-                                    </select>
-                            </div>
+                </div>
 
-                            <div class="form-group">
-                                <input type="text" id="add_mot_eficiencia_valor" class="form-field" placeholder="Valor de eficiencia">
-                            </div>
+                <div class="form-box">
+                    <div class="form-box">
+                        <div class="form-group">
+                            <input type="text" id="add_mot_peso" class="form-field" placeholder="Peso">
                         </div>
 
-                        <div class="form-box">
-                            <div class="form-group">
-                                <select name="" class="form-field" id="add_mot_fac_potencia_porcentaje" required>
-                                    <option value="">Seleccione el factor de potencia</option>
-                                    <option value="50">50%</option>
-                                    <option value="75">75%</option>
-                                    <option value="100">100%</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="add_mot_fac_potencia_valor" class="form-field" placeholder="valor del factor de potencia">
-                            </div>
-
+                        <div class="form-group">
+                            <input type="text" id="add_mot_mom_inercia" class="form-field" placeholder="Momento de inercia">
                         </div>
 
-                        <div class="form-box">
-                            <div class="form-group">
-                                <select name="add_mot_clienteFK"  class="form-field"  id="add_mot_clienteFK">
-                                    <option value="">Seleccione el tecnico a cargo del motor</option>
-                                    <!-- <?php // foreach ($this->tecnicos as $tecnico) {
-                                    // echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . ' ' . $tecnico["tec_apellido1"] . '</option>';
-                                    // }  -->
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- <div class="form-box">
-                            <div class="form-group">
-                                <textarea class="form-field" placeholder="Message" cols="30" rows="10"></textarea>
-                            </div>
-                        </div> -->
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_tiempo_rotor_bloq" class="form-field" placeholder="Tiempo de rotor bloqueado">
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_carcasaFK" class="form-field" placeholder="Carcasa">
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <div class="btn-step">
+                        <button id="step-prev-1">￩ Prev</button>
+                        <button id="step-next-2">Next ￫</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- ======================Step Group 3============== -->
+            <div class="step-group" id="step-group-3">
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_niv_ruido" class="form-field" placeholder="Nivel de ruido">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="add_mot_factor_servicio" class="form-field" placeholder="Factor de servicio">
+                    </div>
+
+                </div>
+
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_rotacion_nominal" class="form-field" placeholder="Rotación nominal">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="add_mot_corriente_nominal" class="form-field" placeholder="Corriente nominal">
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_altitud" class="form-field" placeholder="Altitud">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="add_mot_temp_ambiente" class="form-field" placeholder="Temperatura ambiente">
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_proteccion" class="form-field" placeholder="Protección">
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <div class="btn-step">
+                        <button id="step-prev-2">￩ Prev</button>
+                        <button id="step-next-3">Next ￫</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- ======================Step Group 4============== -->
+            <div class="step-group" id="step-group-4">
+                <div class="form-box">
+                    <div class="form-group">
+                        <select name="" class="form-field" id="add_mot_eficiencia_porcentaje" required>
+                            <option value="">Seleccione el porcentaje de eficiencia</option>
+                            <option value="50">50%</option>
+                            <option value="75">75%</option>
+                            <option value="100">100%</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="add_mot_eficiencia_valor" class="form-field" placeholder="Valor de eficiencia">
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <div class="form-group">
+                        <select name="" class="form-field" id="add_mot_fac_potencia_porcentaje" required>
+                            <option value="">Seleccione el factor de potencia</option>
+                            <option value="50">50%</option>
+                            <option value="75">75%</option>
+                            <option value="100">100%</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="add_mot_fac_potencia_valor" class="form-field" placeholder="valor del factor de potencia">
+                    </div>
+
+                </div>
+
+                <div class="form-box">
+                    <div class="form-group">
+                        <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
+                            <option value="">Seleccione el tecnico a cargo del motor</option>
+                        </select>
 
                         <div class="form-box">
                             <div class="btn-step">
                                 <button id="step-prev-3">￩ Prev</button>
                                 <!-- <button type="submit" id="step-next-4">Send ￫</button> -->
-                                 <button type="submit" id="step-next-4" class="btn_add btn_add_motor" onsubmit="RegMotor(event)">Agregar</button>
+                                <button type="submit" id="step-next-4" class="btn_add btn_add_motor" onsubmit="RegMotor(event)">Agregar</button>
                             </div>
                         </div>
 
@@ -303,11 +212,11 @@
 
                 <div id="sucess-box">
                     <span class="done">✔</span>
-                    <p class="sucess-text">Moto agregado exitosamente. Gracias.</p>
+                    <p class="sucess-text">Motor agregado exitosamente. Gracias.</p>
                     <button id="reset-btn" type="reset">Regresar</button>
                 </div>
 
-            </form>
+    </form>
     <!-- <form action="?controller=motor&action=add" class="form form_add_motor" onsubmit="return false">
 
         <h2 class="form_title">REGISTRAR MOTOR</h2>

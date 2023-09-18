@@ -1,8 +1,8 @@
 <?php
-require_once "modelo/admin_modelo.php";
-require_once "modelo/empresa_modelo.php";
-require_once "modelo/tecnico_modelo.php";
-require_once "modelo/motor_modelo.php";
+require_once "model/admin_modelo.php";
+require_once "model/empresa_modelo.php";
+require_once "model/tecnico_modelo.php";
+require_once "model/motor_modelo.php";
 class main_controller
 {
     // Constructor de la clase, inicializa un objeto de la clase template
@@ -75,5 +75,11 @@ class main_controller
                 "url" => $url
             )
         );
+    }
+
+    public function salir()
+    {
+        session_destroy();
+        header("Location: /PROYECTO_SENNOVA");
     }
 }

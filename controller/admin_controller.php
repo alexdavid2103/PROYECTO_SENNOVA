@@ -1,5 +1,5 @@
 <?php
-require_once "modelo/admin_modelo.php";
+require_once "model/admin_modelo.php";
 class admin_controller
 {
 

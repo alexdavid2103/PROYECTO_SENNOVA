@@ -557,24 +557,8 @@
                             </fieldset>
                         </div>
                     </div>
-                    <div class="contact-dec">
-                        <img src="public/landing_page/assets/images/contact-decoration.png" alt="" />
-                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Scripts -->
-<script
-      src="https://kit.fontawesome.com/575d3461ce.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="public/landing_page/vendor/jquery/jquery.min.js"></script>
-    <script src="public/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="public/landing_page/js/owl-carousel.js"></script>
-    <script src="public/landing_page/js/animation.js"></script>
-    <script src="public/landing_page/js/imagesloaded.js"></script>
-    <script src="public/landing_page/js/templatemo-custom.js"></script>
-    <script src="public/landing_page/js/custom.js"></script>
