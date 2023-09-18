@@ -6,7 +6,7 @@ class admin_modelo
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para insertar datos en la tabla administrador
         $sql = "INSERT INTO administrador (
                                         adm_id, 
@@ -14,7 +14,7 @@ class admin_modelo
                                         adm_contraseña
                                         )
 		                            VALUES (?, ?, ?)";
-        
+
         $st = $c->prepare($sql);
         $v = array(
             $data["id"],                 // Valor para adm_id
@@ -29,13 +29,13 @@ class admin_modelo
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para actualizar los datos en la tabla administrador
         $sql = "UPDATE administrador SET  
                                     adm_nombre = ?,
                                     adm_contraseña = ?
                                     WHERE adm_id = ?";
-        
+
         $st = $c->prepare($sql);
         $v = array(
             $data["nombre"],             // Nuevo valor para adm_nombre
@@ -51,7 +51,7 @@ class admin_modelo
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para eliminar un registro de la tabla administrador
         $sql = "DELETE FROM administrador WHERE adm_id = ?";
         $st = $c->prepare($sql);
@@ -64,7 +64,7 @@ class admin_modelo
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para seleccionar todos los registros de la tabla administrador
         $sql = "SELECT * FROM administrador ";
         $st = $c->prepare($sql);
@@ -77,11 +77,14 @@ class admin_modelo
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para verificar si existen las credenciales en la tabla administrador
-        $sql = "SELECT * FROM administrador WHERE adm_id = ? AND adm_contraseña = ?";
+        $sql = "SELECT * FROM administradores WHERE adm_id = ? AND adm_contrasena = ?";
         $st = $c->prepare($sql);
-        $v = array($data["id"], sha1($data["password"])); // Valores para adm_id y adm_contraseña
+        $v = array(
+            $data["id"],
+            sha1($data["password"])
+        ); 
         $st->execute($v);
         return $st->fetch(); // Retornar el primer resultado de la consulta
     }

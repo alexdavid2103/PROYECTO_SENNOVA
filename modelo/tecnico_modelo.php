@@ -83,7 +83,7 @@ class tecnico_modelo
         $c = $obj->getConnection();
         
         // Consulta SQL para verificar si existen las credenciales en la tabla tecnico
-        $sql = "SELECT * FROM tecnico WHERE tec_id = ? AND tec_contraseña = ?";
+        $sql = "SELECT * FROM tecnicos WHERE tec_id = ? AND tec_contrasena = ?";
         $st = $c->prepare($sql);
         $v = array($data["id"], sha1($data["password"])); // Valores para tec_id y tec_contraseña
         $st->execute($v);

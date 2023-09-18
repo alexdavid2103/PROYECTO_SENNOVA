@@ -1,3 +1,35 @@
+const alertWarning = (text) => {
+  swal({
+    title: "Advertencia!!",
+    text: text,
+    icon: "warning",
+    button: "Ok",
+  });
+};
+
+const advanceAlertWarning = () => {
+  swal({
+    title: "¿Estás seguro?",
+    text: "¡Una vez eliminado, no podrás recuperarlo!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  });
+};
+
+const alertSuccess = () => {};
+
+const alertInfo = () => {};
+
+const alertError = (text) => {
+  swal({
+    title: "Oh no",
+    text: text,
+    icon: "error",
+    button: "Ok",
+  });
+};
+
 // INICIAR SESIÓN -------------------------------------------------
 let login = async (event) => {
   let id = document.getElementById("id").value;
@@ -5,23 +37,13 @@ let login = async (event) => {
 
   if (id == "") {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Ingrese su numero de documento",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning((text = "Ingrese su numero de documento"));
     return false;
   }
 
   if (password == "") {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Ingrese su contraseña",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning((text = "Ingrese su contraseña"));
     return false;
   }
 
@@ -29,29 +51,24 @@ let login = async (event) => {
   datos.append("id", id);
   datos.append("password", password);
 
-  let respuesta = await fetch("?controller=usuario&action=validar", {
+  let respuesta = await fetch("?controller=main&action=validar", {
     method: "POST",
     body: datos,
   });
 
   let info = await respuesta.json();
 
-  if (info.estado == 1) {
+  if (info.estado === 1) {
     window.location.href = info.url;
   } else {
-    swal({
-      title: "Oh no",
-      text: "Usuario o Contraseña incorrecta",
-      icon: "error",
-      button: "Ok",
-    });
+    alertError((text = "Usuario o contraseña incorrecta"));
   }
 };
 
 // FUNCIONES PARA LOS CLIENTES ----------------------------------------------------------------
 
-// Función para registrar un cliente
-let RegCliente = async (event) => {
+// Función para registrar una empresa
+let addEmpresa = async (event) => {
   // Obtener los valores de los campos del formulario
   let id = document.getElementById("add_cli_id").value;
   let nombre1 = document.getElementById("add_cli_nombre1").value;
@@ -140,8 +157,8 @@ let RegCliente = async (event) => {
   }
 };
 
-// Función para editar un cliente
-let editCliente = async (event) => {
+// Función para editar una empresa
+let editEmpresa = async (event) => {
   // Obtener los valores de los campos del formulario
   let id = document.getElementById("edit_cli_id").value;
   let nombre1 = document.getElementById("edit_cli_nombre1").value;
@@ -233,22 +250,16 @@ let editCliente = async (event) => {
   }
 };
 
-// Función para eliminar un cliente
-function deleteCliente(id) {
+// Función para eliminar una empresa
+function deleteEmpresa(id) {
   try {
-    swal({
-      title: "¿Estás seguro?",
-      text: "¡Una vez eliminado, no podrás recuperarlo!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then(async (willDelete) => {
+    advanceAlertWarning().then(async (willDelete) => {
       if (willDelete) {
         let datos = new FormData();
         datos.append("id", id);
 
         // Enviar la solicitud POST al servidor para eliminar el cliente
-        let respuesta = await fetch("?controller=cliente&action=delete", {
+        let respuesta = await fetch("?controller=empresa&action=delete", {
           method: "POST",
           body: datos,
         });
@@ -265,12 +276,7 @@ function deleteCliente(id) {
             window.location.reload();
           });
         } else {
-          swal({
-            title: "Error",
-            text: "No se pudo eliminar",
-            icon: "error",
-            button: "Ok",
-          });
+          alertError((text = "No se pudo eliminar"));
         }
       } else {
         swal("No ha sido eliminado");
@@ -546,13 +552,7 @@ let editMotor = async (event) => {
 // Función para eliminar un motor
 function deleteMotor(id) {
   try {
-    swal({
-      title: "¿Estás seguro?",
-      text: "¡Una vez eliminado, no podrás recuperarlo!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then(async (willDelete) => {
+    advanceAlertWarning().then(async (willDelete) => {
       if (willDelete) {
         let datos = new FormData();
         datos.append("id", id);
@@ -575,12 +575,7 @@ function deleteMotor(id) {
             window.location.reload();
           });
         } else {
-          swal({
-            title: "Error",
-            text: "No se pudo eliminar",
-            icon: "error",
-            button: "Ok",
-          });
+          alertError((text = "No se pudo eliminar"));
         }
       } else {
         swal("No ha sido eliminado");

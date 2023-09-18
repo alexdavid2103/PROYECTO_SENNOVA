@@ -83,14 +83,19 @@ https://templatemo.com/tm-562-space-dynamic
                             <li class="scroll-to-section">
                                 <a href="#contact">Contacto</a>
                             </li>
+                            <?php if (isset($_SESSION['id'])) {
+                                echo '<li class="scroll-to-section">
+                                    <a href="?controller=dashboard&action=index">Inicio</a>
+                                </li>';
+                            } else {
+                                echo '<li class="scroll-to-section">
+                                    <a href="?controller=main&action=login">Iniciar sesión</a>
+                                </li>';
 
-                            <li class="scroll-to-section">
-                                <a href="?controller=main&action=login">Iniciar sesión</a>
-                            </li>
-
-                            <li class="scroll-to-section">
-                                <div class="main-red-button"><a href="">Registrarse</a></div>
-                            </li>
+                                echo '<li class="scroll-to-section">
+                                    <div class="main-red-button"><a href="">Registrarse</a></div>
+                                </li>';
+                            } ?>
                         </ul>
                         <a class="menu-trigger">
                             <span>Menu</span>
