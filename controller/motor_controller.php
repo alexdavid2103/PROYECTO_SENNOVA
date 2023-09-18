@@ -1,7 +1,7 @@
 <?php
-require_once "model/motor_modelo.php";
-require_once "model/empresa_modelo.php";
-require_once "model/tecnico_modelo.php";
+require_once "model/motor_model.php";
+require_once "model/empresa_model.php";
+require_once "model/tecnico_model.php";
 
 class motor_controller
 {
@@ -18,9 +18,9 @@ class motor_controller
         //     header("Location: /PROYECTO_SENOVA");
         //     exit();
         // }
-        $this->obj->motores = motor_modelo::listarMotorInfo();
-        $this->obj->clientes = empresa_modelo::listarEmpresas();
-        // $this->obj->tecnicos = tecnico_modelo::listar();
+        $this->obj->motores = motor_model::listarMotorInfo();
+        $this->obj->clientes = empresa_model::listarEmpresas();
+        // $this->obj->tecnicos = tecnico_model::listar();
         // Cargar la plantilla de vista "motor/index"
         $this->obj->loadTemplate("motor/index");
     }
@@ -58,7 +58,7 @@ class motor_controller
         );
 
         // Llamar a la función estática add en el modelo motor_modelo
-        $r = motor_modelo::add($data);
+        $r = motor_model::add($data);
 
         if ($r) {
             echo json_encode(array("mensaje" => "Se registró", "estado" => 1));
@@ -103,7 +103,7 @@ class motor_controller
         );
 
         // Llamar a la función estática edit en el modelo motor_modelo
-        $r = motor_modelo::edit($data);
+        $r = motor_model::edit($data);
 
         if ($r) {
             echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1));
@@ -119,7 +119,7 @@ class motor_controller
             $serie = $_POST["id"];
             
             // Llamar a la función estática delete en el modelo motor_modelo
-            $r = motor_modelo::delete($serie);
+            $r = motor_model::delete($serie);
 
             if ($r) {
                 echo json_encode(array("mensaje" => "Se eliminó", "estado" => 1));

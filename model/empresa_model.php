@@ -1,5 +1,5 @@
 <?php
-class empresa_modelo
+class empresa_model
 {
     // Función para agregar información de una empresa a la base de datos
     public static function add($data)

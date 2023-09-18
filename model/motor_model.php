@@ -1,5 +1,5 @@
 <?php
-class motor_modelo
+class motor_model
 {
     // Función para agregar información de un motor a la base de datos
     public static function add($data)

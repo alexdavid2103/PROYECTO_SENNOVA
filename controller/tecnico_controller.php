@@ -1,5 +1,5 @@
 <?php
-require_once "model/tecnico_modelo.php";
+require_once "model/tecnico_model.php";
 class tecnico_controller
 {
     // Constructor de la clase, inicializa un objeto de la clase template
@@ -29,7 +29,7 @@ class tecnico_controller
         $data["id"] = $id;
 
         // Llamar a la función estática add en el modelo tecnico_modelo
-        $r = tecnico_modelo::add($data);
+        $r = tecnico_model::add($data);
 
         if ($r > 0) {
             echo json_encode(array("mensaje" => "Se registró", "estado" => 1));
@@ -52,7 +52,7 @@ class tecnico_controller
         $data["id"] = $id;
 
         // Llamar a la función estática edit en el modelo tecnico_modelo
-        $r = tecnico_modelo::edit($data);
+        $r = tecnico_model::edit($data);
 
         if ($r > 0) {
             echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1));
@@ -68,7 +68,7 @@ class tecnico_controller
             $id = $_POST["id"];
 
             // Llamar a la función estática delete en el modelo tecnico_modelo
-            $r = tecnico_modelo::delete($id);
+            $r = tecnico_model::delete($id);
 
             if ($r) {
                 echo json_encode(array("mensaje" => "Se eliminó", "estado" => 1));

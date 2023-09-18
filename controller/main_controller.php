@@ -1,8 +1,8 @@
 <?php
-require_once "model/admin_modelo.php";
-require_once "model/empresa_modelo.php";
-require_once "model/tecnico_modelo.php";
-require_once "model/motor_modelo.php";
+require_once "model/admin_model.php";
+require_once "model/empresa_model.php";
+require_once "model/tecnico_model.php";
+require_once "model/motor_model.php";
 class main_controller
 {
     // Constructor de la clase, inicializa un objeto de la clase template
@@ -49,8 +49,8 @@ class main_controller
         ];
 
         // Itera a través de los roles y modelos para validar
-        foreach ($roles as $rol => $modelo) {
-            $r = $modelo::validar($data); // Llama al método de validación del modelo
+        foreach ($roles as $rol => $model) {
+            $r = $model::validar($data); // Llama al método de validación del modelo
             if (is_array($r)) {
                 // Si las credenciales son válidas, establecer variables de sesión
                 $_SESSION['id'] = $r["{$rol}_id"];

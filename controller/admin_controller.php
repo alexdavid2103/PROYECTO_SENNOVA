@@ -1,5 +1,5 @@
 <?php
-require_once "model/admin_modelo.php";
+require_once "model/admin_model.php";
 class admin_controller
 {
 
@@ -13,7 +13,7 @@ class admin_controller
         $data["id"] = $id;
 
         // Llamar a la función estática add en el modelo admin_modelo
-        $r = admin_modelo::add($data);
+        $r = admin_model::add($data);
 
         if ($r > 0) {
             echo json_encode(array("mensaje" => "Se registró", "estado" => 1));
@@ -32,7 +32,7 @@ class admin_controller
         $data["id"] = $id;
 
         // Llamar a la función estática edit en el modelo admin_modelo
-        $r = admin_modelo::edit($data);
+        $r = admin_model::edit($data);
 
         if ($r > 0) {
             echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1));
@@ -48,7 +48,7 @@ class admin_controller
             $id = $_POST["id"];
 
             // Llamar a la función estática delete en el modelo admin_modelo
-            $r = admin_modelo::delete($id);
+            $r = admin_model::delete($id);
 
             if ($r) {
                 echo json_encode(array("mensaje" => "Se eliminó", "estado" => 1));

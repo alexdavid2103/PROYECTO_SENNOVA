@@ -1,7 +1,7 @@
 <?php
-require_once "model/motor_modelo.php";
-require_once "model/empresa_modelo.php";
-require_once "model/tecnico_modelo.php";
+require_once "model/motor_model.php";
+require_once "model/empresa_model.php";
+require_once "model/tecnico_model.php";
 
 class dashboard_controller
 {
@@ -18,10 +18,10 @@ class dashboard_controller
         //     header("Location: /PROYECTO_SENOVA");
         //     exit();
         // }
-        $this->obj->motores = motor_modelo::listarMotorInfo();
-        $this->obj->estados = motor_modelo::listarMotorEstado();
-        $this->obj->tecnicos = tecnico_modelo::listarTecnicos();
-        $this->obj->empresas = empresa_modelo::listarEmpresas();
+        $this->obj->motores = motor_model::listarMotorInfo();
+        $this->obj->estados = motor_model::listarMotorEstado();
+        $this->obj->tecnicos = tecnico_model::listarTecnicos();
+        $this->obj->empresas = empresa_model::listarEmpresas();
         $this->obj->loadTemplate("dashboard/index");
     }
 
@@ -32,10 +32,10 @@ class dashboard_controller
         //     header("Location: /PROYECTO_SENOVA");
         //     exit();
         // }
-        $this->obj->motores = motor_modelo::listarMotorInfo();
-        $this->obj->estados = motor_modelo::listarMotorEstado();
-        $this->obj->tecnicos = tecnico_modelo::listarTecnicos();
-        $this->obj->empresas = empresa_modelo::listarEmpresas();
+        $this->obj->motores = motor_model::listarMotorInfo();
+        $this->obj->estados = motor_model::listarMotorEstado();
+        $this->obj->tecnicos = tecnico_model::listarTecnicos();
+        $this->obj->empresas = empresa_model::listarEmpresas();
         $this->obj->loadTemplate("empresa/index");
     }
 
@@ -46,9 +46,9 @@ class dashboard_controller
         //     header("Location: /PROYECTO_SENOVA");
         //     exit();
         // }
-        // $this->obj->motores = motor_modelo::listar();
-        // $this->obj->empresa = empresa_modelo::listar();
-        // $this->obj->tecnicos = tecnico_modelo::listar();
+        // $this->obj->motores = motor_model::listar();
+        // $this->obj->empresa = empresa_model::listar();
+        // $this->obj->tecnicos = tecnico_model::listar();
         // Cargar la plantilla de vista "motor/index"
         $this->obj->loadTemplate("calendar/index");
     }

@@ -1,5 +1,5 @@
 <?php
-class tecnico_modelo
+class tecnico_model
 {
     // Función para agregar un técnico a la base de datos
     public static function add($data)

@@ -1,5 +1,5 @@
 <?php
-require_once "model/empresa_modelo.php";
+require_once "model/empresa_model.php";
 
 class empresa_controller
 {
@@ -27,7 +27,7 @@ class empresa_controller
         $data["ceo"] = $ceo;
 
         // Llamar a la función estática add en el modelo empresa_modelo
-        $r = empresa_modelo::add($data);
+        $r = empresa_model::add($data);
 
         if ($r > 0) {
             echo json_encode(array("mensaje" => "Se registró", "estado" => 1));
@@ -47,7 +47,7 @@ class empresa_controller
         $data["ceo"] = $ceo;
 
         // Llamar a la función estática edit en el modelo empresa_modelo
-        $r = empresa_modelo::edit($data);
+        $r = empresa_model::edit($data);
 
         if ($r > 0) {
             echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1));
@@ -63,7 +63,7 @@ class empresa_controller
             $id = $_POST["id"];
 
             // Llamar a la función estática delete en el modelo empresa_modelo
-            $r = empresa_modelo::delete($id);
+            $r = empresa_model::delete($id);
 
             if ($r) {
                 echo json_encode(array("mensaje" => "Se eliminó", "estado" => 1));

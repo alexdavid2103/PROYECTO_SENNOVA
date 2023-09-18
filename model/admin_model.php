@@ -1,5 +1,5 @@
 <?php
-class admin_modelo
+class admin_model
 {
     // Función para agregar un administrador a la base de datos
     public static function add($data)
