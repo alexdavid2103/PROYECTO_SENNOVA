@@ -23,7 +23,7 @@ const alertSuccess = (text) => {
     text: text,
     icon: "success",
     button: "Ok",
-  })
+  });
 };
 
 const alertInfo = () => {};
@@ -72,7 +72,7 @@ let login = async (event) => {
   }
 };
 
-// FUNCIONES PARA LOS CLIENTES ----------------------------------------------------------------
+// FUNCIONES PARA LAS EMPRESAS ----------------------------------------------------------------
 
 // Función para registrar una empresa
 let addEmpresa = async (event) => {
@@ -295,258 +295,169 @@ function deleteEmpresa(id) {
   }
 }
 
-// ----------------------------------------------------------------
+// ---------------------------------------------------------------- //
 
-// Función para registrar un motor
-let RegMotor = async (event) => {
-  // Obtener los valores de los campos del formulario
-  let serie = document.getElementById("add_mot_serie").value;
-  let norma = document.getElementById("add_mot_norma").value;
-  let polos = document.getElementById("add_mot_polos").value;
-  let potencia = document.getElementById("add_mot_potencia").value;
-  let IpIn = document.getElementById("add_mot_IpIn").value;
-  let par_arranque = document.getElementById("add_mot_par_arranque").value;
-  let par_maxima = document.getElementById("add_mot_par_maxima").value;
-  let mom_inercia = document.getElementById("add_mot_mom_inercia").value;
-  let tiempo_rotor_bloq = document.getElementById(
-    "add_mot_tiempo_rotor_bloq"
-  ).value;
-  let peso = document.getElementById("add_mot_peso").value;
-  let niv_ruido = document.getElementById("add_mot_niv_ruido").value;
-  let factor_servicio = document.getElementById(
-    "add_mot_factor_servicio"
-  ).value;
-  let rotacion_nominal = document.getElementById(
-    "add_mot_rotacion_nominal"
-  ).value;
-  let corriente_nominal = document.getElementById(
-    "add_mot_corriente_nominal"
-  ).value;
-  let altitud = document.getElementById("add_mot_altitud").value;
-  let regimen = document.getElementById("add_mot_regimen").value;
-  let temp_ambiente = document.getElementById("add_mot_temp_ambiente").value;
-  let proteccion = document.getElementById("add_mot_proteccion").value;
-  let carcasaFK = document.getElementById("add_mot_carcasaFK").value;
-  let eficienciaFK = document.getElementById("add_mot_eficienciaFK").value;
-  let fac_potenciaFK = document.getElementById("add_mot_fac_potenciaFK").value;
-  let clienteFK = document.getElementById("add_mot_clienteFK").value;
-  let tecnicoFK = document.getElementById("add_mot_tecnicoFK").value;
+// Función para obtener el valor de un campo
+const getField = (fieldName) =>
+  document.getElementById(`add_mot_${fieldName}`).value;
+// Objeto FormData para almacenar los datos del formulario
+const formData = new FormData();
 
-  // Obtener el formulario
-  let form_reg_motor = document.getElementById("reg_motor");
+// Lista de campos obligatorios
+const requiredFields = [
+  "serie",
+  "norma",
+  "polos",
+  "potencia",
+  "IpIn",
+  "par_arranque",
+  "par_maxima",
+  "mom_inercia",
+  "tiempo_rotor_bloq",
+  "peso",
+  "niv_ruido",
+  "factor_servicio",
+  "rotacion_nominal",
+  "corriente_nominal",
+  "altitud",
+  "regimen",
+  "temp_ambiente",
+  "proteccion",
+  "carcasaFK",
+  "eficienciaFK",
+  "fac_potenciaFK",
+  "clienteFK",
+  "tecnicoFK",
+];
 
-  // Validar si los campos están vacíos
-  if (
-    serie == "" ||
-    norma == "" ||
-    polos == "" ||
-    potencia == "" ||
-    IpIn == "" ||
-    par_arranque == "" ||
-    par_maxima == "" ||
-    mom_inercia == "" ||
-    tiempo_rotor_bloq == "" ||
-    peso == "" ||
-    niv_ruido == "" ||
-    factor_servicio == "" ||
-    rotacion_nominal == "" ||
-    corriente_nominal == "" ||
-    altitud == "" ||
-    regimen == "" ||
-    temp_ambiente == "" ||
-    proteccion == "" ||
-    carcasaFK == "" ||
-    eficienciaFK == "" ||
-    fac_potenciaFK == "" ||
-    clienteFK == "" ||
-    tecnicoFK == "" ||
-    estadoFK == ""
-  ) {
-    event.preventDefault();
+// Variable para verificar si todos los campos están llenos
+let areAllFieldsFilled = true;
+
+// Validar si todos los campos obligatorios están llenos
+for (const field of requiredFields) {
+  const fieldValue = getField(field);
+  if (fieldValue === "") {
+    areAllFieldsFilled = false;
+    break; // Detener el bucle si se encuentra un campo vacío
+  }
+  formData.append(field, fieldValue); // Agregar campo y valor al FormData
+}
+
+// Manejar el evento de envío del formulario
+const form_reg_motor = document.getElementById("reg_motor");
+form_reg_motor.addEventListener("submit", async (event) => {
+  event.preventDefault(); // Evitar el envío del formulario por defecto
+
+  if (!areAllFieldsFilled) {
+    // Mostrar una alerta si no se llenaron todos los campos
     alertWarning(
       (text =
         "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente")
     );
-    return false;
+    return false; // Evitar que se envíe el formulario
   }
 
-  // Crear objeto FormData para enviar los datos al servidor
-  let datos = new FormData();
-  datos.append("serie", serie);
-  datos.append("norma", norma);
-  datos.append("polos", polos);
-  datos.append("potencia", potencia);
-  datos.append("IpIn", IpIn);
-  datos.append("par_arranque", par_arranque);
-  datos.append("par_maxima", par_maxima);
-  datos.append("mom_inercia", mom_inercia);
-  datos.append("tiempo_rotor_bloq", tiempo_rotor_bloq);
-  datos.append("peso", peso);
-  datos.append("niv_ruido", niv_ruido);
-  datos.append("factor_servicio", factor_servicio);
-  datos.append("rotacion_nominal", rotacion_nominal);
-  datos.append("corriente_nominal", corriente_nominal);
-  datos.append("altitud", altitud);
-  datos.append("regimen", regimen);
-  datos.append("temp_ambiente", temp_ambiente);
-  datos.append("proteccion", proteccion);
-  datos.append("carcasaFK", carcasaFK);
-  datos.append("eficienciaFK", eficienciaFK);
-  datos.append("fac_potenciaFK", fac_potenciaFK);
-  datos.append("clienteFK", clienteFK);
-  datos.append("tecnicoFK", tecnicoFK);
-
-  // Enviar la solicitud POST al servidor para registrar el motor
+  // Realizar la solicitud POST para registrar el motor
   let respuesta = await fetch("?controller=motor&action=add", {
     method: "POST",
-    body: datos,
+    body: formData, // Enviar los datos del formulario
   });
 
   // Obtener la respuesta del servidor en formato JSON
   let info = await respuesta.json();
 
-  // Mostrar mensaje de éxito o error según la respuesta del servidor
+  // Mostrar un mensaje de éxito o error según la respuesta del servidor
   if (info.estado == 1) {
-    swal({
-      title: "Felicidades",
-      text: "Se ha registrado correctamente",
-      icon: "success",
-      button: "Ok",
-    }).then(() => {
-      form_reg_motor.reset();
+    alertSuccess((text = "Se ha registrado correctamente")).then(() => {
+      form_reg_motor.reset(); // Limpiar el formulario
     });
   } else {
-    swal({
-      title: "Oh no",
-      text: "Error al registrar",
-      icon: "error",
-      button: "Ok",
-    });
+    alertError((text = "Error al registrar"));
   }
-};
+});
 
 // Función para editar un motor
-let editMotor = async (event) => {
-  // Obtener los valores de los campos del formulario
-  let serie = document.getElementById("edit_mot_serie").value;
-  let norma = document.getElementById("edit_mot_norma").value;
-  let polos = document.getElementById("edit_mot_polos").value;
-  let potencia = document.getElementById("edit_mot_potencia").value;
-  let IpIn = document.getElementById("edit_mot_IpIn").value;
-  let par_arranque = document.getElementById("edit_mot_par_arranque").value;
-  let par_maxima = document.getElementById("edit_mot_par_maxima").value;
-  let mom_inercia = document.getElementById("edit_mot_mom_inercia").value;
-  let tiempo_rotor_bloq = document.getElementById(
-    "edit_mot_tiempo_rotor_bloq"
-  ).value;
-  let peso = document.getElementById("edit_mot_peso").value;
-  let niv_ruido = document.getElementById("edit_mot_niv_ruido").value;
-  let factor_servicio = document.getElementById(
-    "edit_mot_factor_servicio"
-  ).value;
-  let rotacion_nominal = document.getElementById(
-    "edit_mot_rotacion_nominal"
-  ).value;
-  let corriente_nominal = document.getElementById(
-    "edit_mot_corriente_nominal"
-  ).value;
-  let altitud = document.getElementById("edit_mot_altitud").value;
-  let regimen = document.getElementById("edit_mot_regimen").value;
-  let temp_ambiente = document.getElementById("edit_mot_temp_ambiente").value;
-  let proteccion = document.getElementById("edit_mot_proteccion").value;
-  let carcasaFK = document.getElementById("edit_mot_carcasaFK").value;
-  let eficienciaFK = document.getElementById("edit_mot_eficienciaFK").value;
-  let fac_potenciaFK = document.getElementById("edit_mot_fac_potenciaFK").value;
-  let clienteFK = document.getElementById("edit_mot_clienteFK").value;
-  let tecnicoFK = document.getElementById("edit_mot_tecnicoFK").value;
-  let estadoFK = document.getElementById("edit_mot_estadoFK").value;
+let editMotor = async () => {
+  // Función para obtener el valor de un campo del formulario
+  const getField = (fieldName) =>
+    document.getElementById(`edit_mot_${fieldName}`).value;
 
-  // Validar si los campos están vacíos
-  if (
-    serie == "" ||
-    norma == "" ||
-    polos == "" ||
-    potencia == "" ||
-    IpIn == "" ||
-    par_arranque == "" ||
-    par_maxima == "" ||
-    mom_inercia == "" ||
-    tiempo_rotor_bloq == "" ||
-    peso == "" ||
-    niv_ruido == "" ||
-    factor_servicio == "" ||
-    rotacion_nominal == "" ||
-    corriente_nominal == "" ||
-    altitud == "" ||
-    regimen == "" ||
-    temp_ambiente == "" ||
-    proteccion == "" ||
-    carcasaFK == "" ||
-    eficienciaFK == "" ||
-    fac_potenciaFK == "" ||
-    clienteFK == "" ||
-    tecnicoFK == "" ||
-    estadoFK == ""
-  ) {
-    event.preventDefault();
-    alertWarning((text = "Todos los campos son obligatorios"));
-    return false;
+  // Objeto FormData para almacenar los datos del formulario
+  const formData = new FormData();
+
+  // Lista de campos obligatorios que deben estar llenos
+  const requiredFields = [
+    "serie",
+    "norma",
+    "polos",
+    "potencia",
+    "IpIn",
+    "par_arranque",
+    "par_maxima",
+    "mom_inercia",
+    "tiempo_rotor_bloq",
+    "peso",
+    "niv_ruido",
+    "factor_servicio",
+    "rotacion_nominal",
+    "corriente_nominal",
+    "altitud",
+    "regimen",
+    "temp_ambiente",
+    "proteccion",
+    "carcasaFK",
+    "eficienciaFK",
+    "fac_potenciaFK",
+    "clienteFK",
+    "tecnicoFK",
+    "estadoFK",
+  ];
+
+  // Variable para verificar si todos los campos obligatorios están llenos
+  let areAllFieldsFilled = true;
+
+  // Validar si todos los campos obligatorios están llenos
+  for (const field of requiredFields) {
+    const fieldValue = getField(field);
+    if (fieldValue === "") {
+      areAllFieldsFilled = false;
+      break; // Si se encuentra un campo vacío, se detiene la validación
+    }
+    formData.append(field, fieldValue); // Agregar campo y valor al FormData
   }
 
-  // Crear objeto FormData para enviar los datos al servidor
-  let datos = new FormData();
-  datos.append("serie", serie);
-  datos.append("norma", norma);
-  datos.append("polos", polos);
-  datos.append("potencia", potencia);
-  datos.append("IpIn", IpIn);
-  datos.append("par_arranque", par_arranque);
-  datos.append("par_maxima", par_maxima);
-  datos.append("mom_inercia", mom_inercia);
-  datos.append("tiempo_rotor_bloq", tiempo_rotor_bloq);
-  datos.append("peso", peso);
-  datos.append("niv_ruido", niv_ruido);
-  datos.append("factor_servicio", factor_servicio);
-  datos.append("rotacion_nominal", rotacion_nominal);
-  datos.append("corriente_nominal", corriente_nominal);
-  datos.append("altitud", altitud);
-  datos.append("regimen", regimen);
-  datos.append("temp_ambiente", temp_ambiente);
-  datos.append("proteccion", proteccion);
-  datos.append("carcasaFK", carcasaFK);
-  datos.append("eficienciaFK", eficienciaFK);
-  datos.append("fac_potenciaFK", fac_potenciaFK);
-  datos.append("clienteFK", clienteFK);
-  datos.append("tecnicoFK", tecnicoFK);
-  datos.append("estadoFK", estadoFK);
+  // Obtener el formulario de edición por su ID
+  const form_edit_motor = document.getElementById("edit_motor");
 
-  // Enviar la solicitud POST al servidor para editar el motor
-  let respuesta = await fetch("?controller=motor&action=edit", {
-    method: "POST",
-    body: datos,
+  // Manejar el evento de envío del formulario
+  form_edit_motor.addEventListener("submit", async (event) => {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
+
+    if (!areAllFieldsFilled) {
+      // Mostrar una alerta si no se llenaron todos los campos
+      alertWarning((text = "Todos los campos son obligatorios"));
+      return false; // Evitar que se envíe el formulario
+    }
+
+    // Realizar una solicitud POST al servidor para editar el motor
+    let respuesta = await fetch("?controller=motor&action=edit", {
+      method: "POST",
+      body: formData, // Enviar los datos del formulario
+    });
+
+    // Obtener la respuesta del servidor en formato JSON
+    let info = await respuesta.json();
+
+    if (info.estado == 1) {
+      // Mostrar mensaje de éxito si la edición fue exitosa
+      alertSuccess((text = "Se ha editado correctamente")).then(() => {
+        window.location.reload(); // Recargar la página después de la edición
+      });
+    } else {
+      // Mostrar mensaje de error si hubo un problema durante la edición
+      alertError((text = "Error al editar"));
+    }
   });
-
-  // Obtener la respuesta del servidor en formato JSON
-  let info = await respuesta.json();
-
-  // Mostrar mensaje de éxito o error según la respuesta del servidor
-  if (info.estado == 1) {
-    swal({
-      title: "Felicidades",
-      text: "Se ha editado correctamente",
-      icon: "success",
-      button: "Ok",
-    }).then(() => {
-      window.location.reload();
-    });
-  } else {
-    swal({
-      title: "Oh no",
-      text: "Error al editar",
-      icon: "error",
-      button: "Ok",
-    });
-  }
 };
 
 // Función para eliminar un motor

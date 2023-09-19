@@ -30,7 +30,7 @@ class dashboard_controller
     public function empresas()
     {
         // if (!isset($_SESSION['id'])) {
-        //     header("Location: /PROYECTO_SENOVA");
+        //     header("Location: /PROYECTO_SENNOVA");
         //     exit();
         // }
         $this->obj->motores = motor_model::listarMotorInfo();
