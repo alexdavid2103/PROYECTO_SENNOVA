@@ -313,6 +313,16 @@
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
+                                        <h3 class="title-2 mb-4 text-center"></h3>
+                                        <div class="recent-report__chart">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card recent-report">
+                                    <div class="au-card-inner">
                                         <h3 class="title-2 mb-4 text-center">Registros por regiones</h3>
                                         <!-- <div class="chart-info">
                                             <div class="chart-info__left">
