@@ -313,8 +313,8 @@
                             <div class="col-lg-6">
                                 <div class="au-card recent-report">
                                     <div class="au-card-inner">
-                                        <h3 class="title-2">recent reports</h3>
-                                        <div class="chart-info">
+                                        <h3 class="title-2 mb-4 text-center">Registros por regiones</h3>
+                                        <!-- <div class="chart-info">
                                             <div class="chart-info__left">
                                                 <div class="chart-note">
                                                     <span class="dot dot--blue"></span>
@@ -337,7 +337,7 @@
                                                     <span class="label">services</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="recent-report__chart">
                                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 829.4 1137.6" style="enable-background:new 0 0 829.4 1137.6;" xml:space="preserve">
                                                 <style type="text/css">
@@ -1173,8 +1173,20 @@
                                                     }
                                                 }
                                                 echo '</td>';
-                                                echo '<td>' . $motor["infmot_ubicacionFK"] . '</td>';
-                                                echo '<td>' . $motor["infmot_estadoFK"] . '</td>';
+                                                echo '<td>';
+                                                foreach ($this->ubicaciones as $ubicacion) {
+                                                    if ($motor["infmot_ubicacionFK"] == $ubicacion["ubimot_id"]) {
+                                                        echo $ubicacion["ubimot_area"];
+                                                    }
+                                                }
+                                                echo '</td>';
+                                                echo '<td>';
+                                                foreach ($this->estados as $estado) {
+                                                    if ($motor["infmot_estadoFK"] == $estado["est_id"]) {
+                                                        echo $estado["est_nombre"];
+                                                    }
+                                                }
+                                                echo '</td>';
                                                 echo '<td>' . $motor["infmot_registro"] . '</td>';
                                                 echo '</tr>';
                                             } ?>
@@ -1272,7 +1284,7 @@
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
-            
+
             <!-- END PAGE CONTAINER-->
         </div>
 

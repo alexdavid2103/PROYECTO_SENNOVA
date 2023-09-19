@@ -17,7 +17,14 @@ const advanceAlertWarning = () => {
   });
 };
 
-const alertSuccess = () => {};
+const alertSuccess = (text) => {
+  swal({
+    title: "Success",
+    text: text,
+    icon: "success",
+    button: "Ok",
+  })
+};
 
 const alertInfo = () => {};
 
@@ -356,12 +363,10 @@ let RegMotor = async (event) => {
     estadoFK == ""
   ) {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning(
+      (text =
+        "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente")
+    );
     return false;
   }
 
@@ -484,12 +489,7 @@ let editMotor = async (event) => {
     estadoFK == ""
   ) {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Todos los campos son obligatorios",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning((text = "Todos los campos son obligatorios"));
     return false;
   }
 
