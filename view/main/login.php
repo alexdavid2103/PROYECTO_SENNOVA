@@ -14,7 +14,7 @@
             <div class="cont_input">
                 <label>Numero de documento</label>
                 <i class="fa fa-user"></i>
-                <input type="number" id="id" required>
+                <input type="number" id="id" inputmode="none" pattern="[0-9]*" required>
             </div>
 
             <div class="cont_input">

@@ -86,7 +86,6 @@ body {
     border: 0;
     color: #fff;
     border-bottom: 2px solid #fff;
-    border-radius: 5px;
     background: transparent;
     padding-bottom: 5px;
     padding-left: 1.5em;
@@ -97,6 +96,12 @@ body {
     transition: .5s;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 
 .cont_input .login {
     padding: 0.5em 1em;
@@ -119,6 +124,7 @@ body {
 
 .cont_input p{
     color: #fff;
+    text-align: center;
 }
 .cont_input a{
     color: aqua;
