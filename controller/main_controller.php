@@ -38,7 +38,7 @@ class main_controller
         // Inicializar variables
         $mensaje = ""; // Mensaje de error por defecto
         $estado = 0; // Estado de validación (0 para no validado, 1 para validado)
-        $url = "?controller=main&action=index"; // Valor por defecto para URL de redirección
+        $url = "?controller=dashboard&action=index"; // Valor por defecto para URL de redirección
 
         // Define un array de roles y modelos correspondientes
         $roles = [
@@ -86,6 +86,6 @@ class main_controller
     public function salir()
     {
         session_destroy();
-        header("Location: ?controller=main&action=login");
+        header("Location: ?controller=main&action=index");
     }
 }

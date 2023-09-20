@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="public\css\login.css">
 <title>Iniciar sesión</title>
-<div class="container finisher-header">
+<div class="container">
     <div class="cont_form" id="">
 
-        <figure class="login_img">
-            <img src="public\img/Logo-1.png" alt="">
-        </figure>
+        <!-- <figure class="login_img">
+            <img src="public\img/Logo_blanco.png" alt="">
+        </figure> -->
 
         <form method="POST" action="?controller=usuario&action=validar" class="form" onsubmit="return false">
 
