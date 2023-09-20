@@ -31,6 +31,10 @@
                 <button type="submit" class="login" id="" onclick="login(event)">Ingresar</button>
             </div>
 
+            <div class="cont_input">
+                <p>No tienes cuenta? <a href="#">Registrate</a></p>
+            </div>
+
         </form>
     </div>
 </div>

@@ -4,7 +4,7 @@
     padding: 0;
 }
 body {
-    background-image: url(../img/motor.jpg);
+    background-image: url(../img/login_fondo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -28,7 +28,7 @@ body {
     max-width: 400px;
     height: 500px; 
     background: #0000006e;
-    backdrop-filter: blur(3px); 
+    backdrop-filter: blur(1px); 
     border-radius: .75em;
     overflow: hidden;
 }
@@ -50,20 +50,22 @@ body {
     width: 360px;
     display: grid;
     place-content: center;
-    gap: 2em;
 }
 
 .form .title {
     width: max-content;
     position: relative;
     margin: auto;
+    margin-bottom: 30px;
+    text-transform: uppercase;
     padding-bottom: 5px;
     font-size: 30px;
     color: #fff;
-    border-bottom: 3px solid #fff;
+    border-bottom: 2px solid #fff;
 }
 .cont_input {
     position: relative;
+    margin-bottom: 15px;
 }
 
 .cont_form .fa {
@@ -84,14 +86,17 @@ body {
     border: 0;
     color: #fff;
     border-bottom: 2px solid #fff;
+    border-radius: 5px;
     background: transparent;
     padding-bottom: 5px;
     padding-left: 1.5em;
+    padding-top: 5px;
     outline: 0;
     width: 250px;
     font-size: 1em;
     transition: .5s;
 }
+
 
 .cont_input .login {
     padding: 0.5em 1em;
@@ -112,11 +117,26 @@ body {
 
 }
 
-.password a {
-    padding-top: 20px;
+.cont_input p{
     color: #fff;
 }
+.cont_input a{
+    color: aqua;
+}
+.password p{
+    text-align: right;
+    margin-bottom: 15px;
+}
+.password a {
+    font-size: 13px;
+    color: #fff;
+    transition: .25s;
+}
 
+.password a:hover{
+    text-decoration: solid;
+    color: aqua;
+}
 @media (max-width:825px){
     .cont_form {
         flex-direction: column;
