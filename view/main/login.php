@@ -38,5 +38,4 @@
         </form>
     </div>
 </div>
-<script src="public/js/finisher-header.es5.min.js" type="text/javascript"></script>
 <script src="public/js/login.js" type="text/javascript"></script>
