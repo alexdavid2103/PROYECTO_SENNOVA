@@ -23,6 +23,10 @@
                 <input type="password" id="password" required>
             </div>
 
+            <div class="password">
+                <p><a href="#">Olvidaste tu contraseña?</a></p>
+            </div>
+
             <div class="cont_input">
                 <button type="submit" class="login" id="" onclick="login(event)">Ingresar</button>
             </div>

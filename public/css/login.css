@@ -57,6 +57,7 @@ body {
     width: max-content;
     position: relative;
     margin: auto;
+    padding-bottom: 5px;
     font-size: 30px;
     color: #fff;
     border-bottom: 3px solid #fff;
@@ -109,6 +110,11 @@ body {
     background: #fff;
     color: #000;
 
+}
+
+.password a {
+    padding-top: 20px;
+    color: #fff;
 }
 
 @media (max-width:825px){
