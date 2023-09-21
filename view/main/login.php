@@ -32,7 +32,7 @@
             </div>
 
             <div class="cont_input">
-                <p>No tienes cuenta? <a href="#">Registrate</a></p>
+                <p>¿No tienes cuenta? <a href="?controller=main&action=registro">Registrate</a></p>
             </div>
 
         </form>

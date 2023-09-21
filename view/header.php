@@ -96,7 +96,7 @@ https://templatemo.com/tm-562-space-dynamic
                                 </li>';
 
                                 echo '<li class="btn-register">
-                                    <div class="main-red-button"><a href="">Registrarse</a></div>
+                                    <div class="main-red-button"><a href="?controller=main&action=registro">Registrarse</a></div>
                                 </li>';
                             } ?>
                         </ul>

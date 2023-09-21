@@ -30,6 +30,17 @@ class main_controller
         $this->obj->loadTemplate("main/login");
     }
 
+    public function registro()
+    {
+        if (isset($_SESSION['id'])) {
+            header("Location: index.php");
+            exit();
+        }
+
+        // Cargar la plantilla de vista "main/registro"
+        $this->obj->loadTemplate("main/registro");
+    }
+
     public function validar()
     {
         // Extraer datos del formulario
