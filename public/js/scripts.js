@@ -42,7 +42,7 @@ let login = async (event) => {
   let id = document.getElementById("id").value;
   let password = document.getElementById("password").value;
 
-  if (id == "") {
+  if (id <= "") {
     event.preventDefault();
     alertWarning((text = "Ingrese su numero de documento"));
     return false;

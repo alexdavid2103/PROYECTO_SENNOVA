@@ -3,35 +3,40 @@ class tecnico_model
 {
     // Función para agregar un técnico a la base de datos
     public static function add($data)
-    {
-        $obj = new connection();
-        $c = $obj->getConnection();
-        
-        // Consulta SQL para insertar datos en la tabla tecnico
-        $sql = "INSERT INTO tecnico (
-                                        tec_id, 
-                                        tec_empresa,
-                                        tec_contraseña, 
-                                        tec_nombre, 
-                                        tec_apellido, 
-                                        tec_direccion, 
-                                        tec_telefono, 
-                                        tec_registro)
-		        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        $st = $c->prepare($sql);
-        $v = array(
-            $data["id"],                  // Valor para tec_id
-            $data["empresa"],             // Valor para tec_empresa
-            sha1($data["password"]),      // Valor encriptado para tec_contraseña
-            $data["nombre"],              // Valor para tec_nombre
-            $data["apellido"],            // Valor para tec_apellido
-            $data["direccion"],           // Valor para tec_direccion
-            $data["telefono"],            // Valor para tec_telefono
-            $data["registro"]             // Valor para tec_registro
-        );
-        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
-    }
+{
+    $obj = new connection();
+    $c = $obj->getConnection();
+
+    // Consulta SQL para insertar datos en la tabla tecnico
+    $sql = "INSERT INTO tecnico (
+                                    tec_id, 
+                                    tec_empresa,
+                                    tec_contraseña, 
+                                    tec_nombre, 
+                                    tec_apellido, 
+                                    tec_direccion, 
+                                    tec_telefono, 
+                                    tec_registro)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $st = $c->prepare($sql);
+    
+    // Encriptar la contraseña con Argon2
+    $hashed_password = password_hash($data["password"], PASSWORD_ARGON2I);
+
+    $v = array(
+        $data["id"],                  // Valor para tec_id
+        $data["empresa"],             // Valor para tec_empresa
+        $hashed_password,             // Valor encriptado para tec_contraseña
+        $data["nombre"],              // Valor para tec_nombre
+        $data["apellido"],            // Valor para tec_apellido
+        $data["direccion"],           // Valor para tec_direccion
+        $data["telefono"],            // Valor para tec_telefono
+        $data["registro"]             // Valor para tec_registro
+    );
+    
+    return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+}
 
     // Función para editar los datos de un técnico en la base de datos
     public static function edit($data)
@@ -103,4 +108,3 @@ class tecnico_model
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
 }
-?>
