@@ -383,7 +383,7 @@ header
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #457b9d;
+  color: #000;
   line-height: 100px;
   float: left;
   -webkit-transition: all 0.3s ease 0s;
@@ -394,6 +394,7 @@ header
 
 .logo h4 span {
   color: #38a900;
+  font-weight: 500;
 }
 
 .background-header .main-nav .logo h4 {
