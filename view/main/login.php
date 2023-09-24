@@ -13,13 +13,13 @@
 
             <div class="cont_input">
                 <label>Numero de documento</label>
-                <i class="fa fa-user"></i>
+                <!-- <i class="fa fa-user"></i> -->
                 <input type="number" id="id" inputmode="none" pattern="[0-9]*" required>
             </div>
 
             <div class="cont_input">
                 <label>Contraseña</label>
-                <i class="fa fa-lock"></i>
+                <!-- <i class="fa fa-lock"></i> -->
                 <input type="password" id="password" required>
             </div>
 
@@ -27,11 +27,11 @@
                 <p><a href="#">Olvidaste tu contraseña?</a></p>
             </div>
 
-            <div class="cont_input">
-                <button type="submit" class="login" id="" onclick="login(event)">Ingresar</button>
+            <div class="button">
+                <button type="submit" id="" onclick="login(event)"><span>Ingresar</span></button>
             </div>
 
-            <div class="cont_input">
+            <div class="registro_seccion">
                 <p>¿No tienes cuenta? <a href="?controller=main&action=registro">Registrate</a></p>
             </div>
 

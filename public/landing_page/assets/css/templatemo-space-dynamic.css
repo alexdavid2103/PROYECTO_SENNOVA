@@ -105,6 +105,22 @@ figcaption {
   clear: both;
 }
 
+/*=============== SCROLL BAR ===============*/
+/* ::-webkit-scrollbar {
+    width: .6rem;
+    border-radius: .5rem;
+    background-color: hsl(103, 20%, 93%); 
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: hsl(100, 100%, 33%);  
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(203, 56%, 44%);    
+} */
+
 /* ---- .grid-item ---- */
 
 .grid-sizer,

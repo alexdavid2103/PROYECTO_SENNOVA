@@ -83,31 +83,36 @@ body {
   margin-bottom: 15px;
 }
 
-.cont_form .fa {
-  position: absolute;
-  left: 5px;
-  bottom: 10px;
-  color: #fff;
-}
-
 .cont_input label {
   display: block;
-  margin-bottom: 0.25em;
+  font-weight: 500;
+  margin-bottom: 5px;
   color: #fff;
 }
 
+.cont_input::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  bottom: -3px;
+  height: 51px;
+  width: calc(100% + 6px);
+  border-radius: 5px;
+  background: linear-gradient(135deg, #a8dadc, #457b9d);
+}
 .cont_input input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  color: #a09e9e;
+  position: relative;
   border: 0;
-  color: #fff;
-  border-bottom: 2px solid #fff;
-  background: transparent;
-  padding-bottom: 5px;
-  padding-left: 1.5em;
-  padding-top: 5px;
-  outline: 0;
-  width: 250px;
-  font-size: 1em;
-  transition: 0.5s;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -117,7 +122,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.cont_input .login {
+/* .cont_input .login {
   padding: 0.5em 1em;
   border-radius: 0.25em;
   background: transparent;
@@ -128,42 +133,64 @@ input[type="number"]::-webkit-outer-spin-button {
   transition: 0.5s;
   display: block;
   width: 100%;
-}
+} */
 
-.cont_input .login:hover {
+/* .cont_input .login:hover {
   background: #fff;
   color: #000;
-}
+} */
 
-.cont_input p {
-  color: #fff;
-  text-align: center;
-}
-
-.cont_input a {
-  color: aquamarine;
+form .button {
+  height: 45px;
+  margin: 35px 0;
   position: relative;
 }
 
-.cont_input a::before {
+form .button button::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 2px;
+  height: 45px;
   width: 0;
   border-radius: 5px;
   background: linear-gradient(135deg, #a8dadc, #457b9d);
-  transition: 0.5s;
+  transition: .5s;
+  z-index: 1;
 }
 
-.cont_input:hover a::before {
+form .button:hover button::before {
   width: 100%;
+}
+
+form .button input,
+form .button button {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #457b9d;
+  position: relative;
+}
+
+form .button button span {
+  position: relative;
+  z-index: 10;
+}
+
+form .button input:hover {
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #457b9d, #a8dadc);
 }
 
 .password p {
   text-align: right;
-  margin-bottom: 15px;
 }
 
 .password a {
@@ -176,6 +203,33 @@ input[type="number"]::-webkit-outer-spin-button {
   text-decoration: solid;
   color: aquamarine;
 }
+
+.registro_seccion p {
+  color: #fff;
+  text-align: center;
+}
+
+.registro_seccion a {
+  color: aquamarine;
+  position: relative;
+}
+
+.registro_seccion a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #a8dadc, #457b9d);
+  transition: 0.5s;
+}
+
+.registro_seccion:hover a::before {
+  width: 100%;
+}
+
 @media (max-width: 825px) {
   .cont_form {
     flex-direction: column;
