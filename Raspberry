@@ -1,26 +1,17 @@
 import serial
 
-# Nombre del dispositivo serial: dmesg | grep -v disconnect | grep -Eo "tty(ACM|USB)." | tail -1
-ser = serial.Serial('/dev/ttyACM0', 9600)
-ser.flushInput()
+ser = serial.Serial('/dev/ttyACM0', 9600)  # Asegúrate de que '/dev/ttyACM0' sea el puerto serial correcto
 
-while True:
-    try:
-        lineBytes = ser.readline()
-        line = lineBytes.decode('utf-8').strip()
-        print("Línea completa:", line)
+try:
+    while True:
+        line = ser.readline().decode('utf-8').strip()  # Leer una línea desde Arduino y decodificarla
+        valores = line.split()  # Dividir la línea en valores
         
-        # Dividir la línea en dos valores separados por espacio en blanco
-        valores = line.split()
-        
-        if len(valores) >= 2:
-            valor1 = valores[0]
-            valor2 = valores[1]
+        if len(valores) == 2:  # Verificar que se hayan recibido dos valores
+            valor1 = int(valores[0])  # Convertir el primer valor a entero
+            valor2 = int(valores[1])  # Convertir el segundo valor a entero
             
             print("Valor 1:", valor1)
             print("Valor 2:", valor2)
-        
-    except KeyboardInterrupt:
-        break
-
-ser.close()  # Cerrar la conexión serial al finalizar
+except KeyboardInterrupt:
+    ser.close()  # Cerrar la conexión serial al finalizar el programa
