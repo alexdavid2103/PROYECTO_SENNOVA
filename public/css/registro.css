@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   height: 100vh;
   display: flex;
@@ -16,6 +18,7 @@ body {
   background-size: cover;
   background-position: center;
 }
+
 #nav,
 #footer {
   display: none;
@@ -186,7 +189,7 @@ form .button button::before {
   width: 0;
   border-radius: 5px;
   background: linear-gradient(135deg, #a8dadc, #457b9d);
-  transition: .5s;
+  transition: 0.5s;
   z-index: 1;
 }
 
