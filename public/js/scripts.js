@@ -1,3 +1,5 @@
+// |================================== ALERTAS ==================================|//
+
 const alertWarning = (text) => {
   swal({
     title: "Advertencia!!",
@@ -37,18 +39,19 @@ const alertError = (text) => {
   });
 };
 
-// INICIAR SESIÓN -------------------------------------------------
+// |================================== LOGIN ==================================| //
+
 let login = async (event) => {
   let id = document.getElementById("id").value;
   let password = document.getElementById("password").value;
 
-  if (id <= "") {
+  if (id === "") {
     event.preventDefault();
-    alertWarning((text = "Ingrese su numero de documento"));
+    alertWarning(("Ingrese su numero de documento"));
     return false;
   }
 
-  if (password == "") {
+  if (password === "") {
     event.preventDefault();
     alertWarning((text = "Ingrese su contraseña"));
     return false;
@@ -72,97 +75,67 @@ let login = async (event) => {
   }
 };
 
-// FUNCIONES PARA LAS EMPRESAS ----------------------------------------------------------------
+// |================================== EMPRESAS ==================================| //
 
-// Función para registrar una empresa
-let addEmpresa = async (event) => {
+// AGREGAR <----------------------------------------------------------------------|
+
+// Obtén el formulario por su ID
+const form_add_empresa = document.getElementById("form_add_empresa");
+
+// Asigna la función addEmpresa al evento submit del formulario
+form_add_empresa.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
   // Obtener los valores de los campos del formulario
-  let id = document.getElementById("add_cli_id").value;
-  let nombre1 = document.getElementById("add_cli_nombre1").value;
-  let nombre2 = document.getElementById("add_cli_nombre2").value;
-  let apellido1 = document.getElementById("add_cli_apellido1").value;
-  let apellido2 = document.getElementById("add_cli_apellido2").value;
-  let correo = document.getElementById("add_cli_correo").value;
-  let telefono = document.getElementById("add_cli_telefono").value;
-  let direccion = document.getElementById("add_cli_direccion").value;
-  let municipioFK = document.getElementById("add_cli_municipioFK").value;
+  const id = document.getElementById("add_emp_id").value;
+  const nombre = document.getElementById("add_emp_nombre").value;
+  const correo = document.getElementById("add_emp_correo").value;
+  const telefono = document.getElementById("add_emp_telefono").value;
+  const direccion = document.getElementById("add_emp_direccion").value;
+  const municipio = document.getElementById("add_emp_municipio").value;
 
-  // Obtener el formulario
-  let form_reg_cliente = document.getElementById("reg_cliente");
-
-  // Validar si los campos están vacíos
-  if (
-    id == "" ||
-    nombre1 == "" ||
-    apellido1 == "" ||
-    correo == "" ||
-    telefono == "" ||
-    direccion == "" ||
-    municipioFK == ""
-  ) {
-    event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente",
-      icon: "error",
-      button: "Ok",
-    });
+  // Validar si algún campo está vacío
+  if ([id, nombre, correo, telefono, direccion, municipio].some((campo) => campo === "")) {
+    alertWarning("Todos los campos son obligatorios");
     return false;
   }
 
-  // Validar formato de correo electrónico
-  let correoValido = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  // Validar el formato de correo electrónico
+  const correoValido = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (!correo.match(correoValido)) {
-    event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Ingrese un correo electrónico válido",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning("Ingrese un correo electrónico válido");
     return false;
   }
 
   // Crear objeto FormData para enviar los datos al servidor
-  let datos = new FormData();
+  const datos = new FormData();
   datos.append("id", id);
-  datos.append("nombre1", nombre1);
-  datos.append("nombre2", nombre2);
-  datos.append("apellido1", apellido1);
-  datos.append("apellido2", apellido2);
+  datos.append("nombre", nombre);
   datos.append("correo", correo);
   datos.append("telefono", telefono);
   datos.append("direccion", direccion);
-  datos.append("municipioFK", municipioFK);
+  datos.append("municipio", municipio);
 
   // Enviar la solicitud POST al servidor para registrar el cliente
-  let respuesta = await fetch("?controller=cliente&action=add", {
+  const respuesta = await fetch("?controller=empresa&action=add", {
     method: "POST",
     body: datos,
   });
 
   // Obtener la respuesta del servidor en formato JSON
-  let info = await respuesta.json();
+  const info = await respuesta.json();
 
   // Mostrar mensaje de éxito o error según la respuesta del servidor
-  if (info.estado == 1) {
-    swal({
-      title: "Felicidades",
-      text: "Se ha registrado correctamente",
-      icon: "success",
-      button: "Ok",
-    }).then(() => {
-      form_reg_cliente.reset();
+  if (info.estado === 1) {
+    alertSuccess("Se ha registrado correctamente").then(() => {
+      form_add_empresa.reset();
     });
   } else {
-    swal({
-      title: "Oh no",
-      text: "El ID ya existe en la base de datos",
-      icon: "error",
-      button: "Ok",
-    });
+    alertError("La empresa ya se encuentra registrada");
   }
-};
+});
+
+// EDITAR <-----------------------------------------------------------------------|
 
 // Función para editar una empresa
 let editEmpresa = async (event) => {
@@ -180,17 +153,17 @@ let editEmpresa = async (event) => {
 
   // Validar si los campos están vacíos
   if (
-    id == "" ||
-    nombre1 == "" ||
-    nombre2 == "" ||
-    apellido1 == "" ||
-    apellido2 == "" ||
-    correo == "" ||
-    telefono == "" ||
-    direccion == "" ||
-    password == "" ||
-    municipioFK == "" ||
-    estadoFK == ""
+    id === "" ||
+    nombre1 === "" ||
+    nombre2 === "" ||
+    apellido1 === "" ||
+    apellido2 === "" ||
+    correo === "" ||
+    telefono === "" ||
+    direccion === "" ||
+    password === "" ||
+    municipioFK === "" ||
+    estadoFK === ""
   ) {
     event.preventDefault();
     swal({
@@ -238,7 +211,7 @@ let editEmpresa = async (event) => {
   let info = await respuesta.json();
 
   // Mostrar mensaje de éxito o error según la respuesta del servidor
-  if (info.estado == 1) {
+  if (info.estado === 1) {
     swal({
       title: "Felicidades",
       text: "Se ha editado correctamente",
@@ -256,6 +229,8 @@ let editEmpresa = async (event) => {
     });
   }
 };
+
+// ELIMINAR <---------------------------------------------------------------------|
 
 // Función para eliminar una empresa
 function deleteEmpresa(id) {
@@ -275,7 +250,7 @@ function deleteEmpresa(id) {
         let info = await respuesta.json();
 
         // Mostrar mensaje de éxito o error según la respuesta del servidor
-        if (info.estado == 1) {
+        if (info.estado === 1) {
           swal({
             title: "Ha sido eliminado correctamente",
             icon: "success",
@@ -295,7 +270,9 @@ function deleteEmpresa(id) {
   }
 }
 
-// ---------------------------------------------------------------- //
+// |================================== MOTORES ==================================| //
+
+// AGREGAR <----------------------------------------------------------------------|
 
 // Función para obtener el valor de un campo
 const getField = (fieldName) =>
@@ -367,7 +344,7 @@ form_reg_motor.addEventListener("submit", async (event) => {
   let info = await respuesta.json();
 
   // Mostrar un mensaje de éxito o error según la respuesta del servidor
-  if (info.estado == 1) {
+  if (info.estado === 1) {
     alertSuccess((text = "Se ha registrado correctamente")).then(() => {
       form_reg_motor.reset(); // Limpiar el formulario
     });
@@ -375,6 +352,8 @@ form_reg_motor.addEventListener("submit", async (event) => {
     alertError((text = "Error al registrar"));
   }
 });
+
+// EDITAR <-----------------------------------------------------------------------|
 
 // Función para editar un motor
 let editMotor = async () => {
@@ -448,7 +427,7 @@ let editMotor = async () => {
     // Obtener la respuesta del servidor en formato JSON
     let info = await respuesta.json();
 
-    if (info.estado == 1) {
+    if (info.estado === 1) {
       // Mostrar mensaje de éxito si la edición fue exitosa
       alertSuccess((text = "Se ha editado correctamente")).then(() => {
         window.location.reload(); // Recargar la página después de la edición
@@ -459,6 +438,8 @@ let editMotor = async () => {
     }
   });
 };
+
+// ELIMINAR <---------------------------------------------------------------------|
 
 // Función para eliminar un motor
 function deleteMotor(id) {
@@ -478,7 +459,7 @@ function deleteMotor(id) {
         let info = await respuesta.json();
 
         // Mostrar mensaje de éxito o error según la respuesta del servidor
-        if (info.estado == 1) {
+        if (info.estado === 1) {
           swal({
             title: "Ha sido eliminado correctamente",
             icon: "success",
@@ -531,7 +512,7 @@ let UpdatePasswordApr = async (event) => {
 
     let info = await respuesta.json();
 
-    if (info.estado == 1) {
+    if (info.estado === 1) {
       swal({
         title: "Felicidades",
         text: "Se ha editado correctamente",
@@ -551,3 +532,8 @@ let UpdatePasswordApr = async (event) => {
     }
   }
 };
+
+// |================================== X ==================================| //
+// AGREGAR <----------------------------------------------------------------------|
+// EDITAR <-----------------------------------------------------------------------|
+// ELIMINAR <---------------------------------------------------------------------|

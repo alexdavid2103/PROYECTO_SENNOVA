@@ -19,22 +19,33 @@ class empresa_controller
     // Función para agregar una empresa a la base de datos
     public function add()
     {
-        extract($_POST); // Extraer los datos del formulario POST
+        // Obtener los datos del formulario POST
+        extract($_POST);
 
         // Crear un arreglo asociativo con los datos de la empresa
-        $data["nombre"] = $nombre;
-        $data["telefono"] = $telefono;
-        $data["ceo"] = $ceo;
+        $data = array(
+            "id" => $id,
+            "nombre" => $nombre,
+            "correo" => $correo,
+            "telefono" => $telefono,
+            "direccion" => $direccion,
+            "municipio" => $municipio
+        );
 
         // Llamar a la función estática add en el modelo empresa_modelo
         $r = empresa_model::add($data);
 
-        if ($r > 0) {
-            echo json_encode(array("mensaje" => "Se registró", "estado" => 1));
-        } else {
-            echo json_encode(array("mensaje" => "Error al registrar", "estado" => 0));
-        }
+        // Preparar la respuesta en formato JSON
+        $response = array(
+            "mensaje" => ($r > 0) ? "Se registró" : "Error al registrar",
+            "estado" => ($r > 0) ? 1 : 0
+        );
+
+        // Enviar la respuesta como JSON
+        echo json_encode($response);
     }
+
+
 
     // Función para editar los datos de una empresa en la base de datos
     public function edit()

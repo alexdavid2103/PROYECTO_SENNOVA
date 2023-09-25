@@ -7,22 +7,33 @@ class empresa_model
         $obj = new connection();
         $c = $obj->getConnection();
 
-        // Consulta SQL para insertar datos en la tabla empresa
+        // Consulta SQL para insertar datos en la tabla empresas, incluyendo la contraseña encriptada
         $sql = "INSERT INTO empresas (
-                                    emp_nombre,
-                                    emp_telefono,
-                                    emp_ceo)
-                                    VALUES (?,?,?)";
+                            emp_id,
+                            emp_nombre,
+                            emp_correo,
+                            emp_telefono,
+                            emp_direccion,
+                            emp_municipio,
+                            emp_contrasena) 
+                            VALUES (?,?,?,?,?,?,?)";
 
         $st = $c->prepare($sql);
 
         $v = array(
+            $data["id"],             // Valor para emp_id
             $data["nombre"],         // Valor para emp_nombre
+            $data["correo"],         // Valor para emp_correo
             $data["telefono"],       // Valor para emp_telefono
-            $data["ceo"]             // Valor para emp_ceo
+            $data["direccion"],      // Valor para emp_direccion
+            $data["municipio"],      // Valor para emp_municipio
+            password_hash($data["id"], PASSWORD_ARGON2I) // Encriptar la contraseña con Argon2
         );
+
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
+
+
 
     // Función para editar la información de una empresas en la base de datos
     public static function edit($data)
