@@ -1,0 +1,26 @@
+import serial
+
+# Nombre del dispositivo serial: dmesg | grep -v disconnect | grep -Eo "tty(ACM|USB)." | tail -1
+ser = serial.Serial('/dev/ttyACM0', 9600)
+ser.flushInput()
+
+while True:
+    try:
+        lineBytes = ser.readline()
+        line = lineBytes.decode('utf-8').strip()
+        print("Línea completa:", line)
+        
+        # Dividir la línea en dos valores separados por espacio en blanco
+        valores = line.split()
+        
+        if len(valores) >= 2:
+            valor1 = valores[0]
+            valor2 = valores[1]
+            
+            print("Valor 1:", valor1)
+            print("Valor 2:", valor2)
+        
+    except KeyboardInterrupt:
+        break
+
+ser.close()  # Cerrar la conexión serial al finalizar
