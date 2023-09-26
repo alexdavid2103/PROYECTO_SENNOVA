@@ -36,7 +36,9 @@ class main_controller
             header("Location: index.php");
             exit();
         }
-
+        
+        $this->obj->departamentos = empresa_model::listarDepartamentos();
+        $this->obj->municipios = empresa_model::listarMunicipios(5);
         // Cargar la plantilla de vista "main/registro"
         $this->obj->loadTemplate("main/registro");
     }

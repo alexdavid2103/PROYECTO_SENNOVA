@@ -33,8 +33,6 @@ class empresa_model
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 
-
-
     // Función para editar la información de una empresas en la base de datos
     public static function edit($data)
     {
@@ -107,5 +105,31 @@ class empresa_model
         $v = array($data["id"], sha1($data["password"])); // Valores para tec_id y tec_contraseña
         $st->execute($v);
         return $st->fetch(); // Retornar el primer resultado de la consulta
+    }
+
+    // Función para obtener una lista de todos los registros de departamentos
+    public static function listarDepartamentos()
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla departamentos
+        $sql = "SELECT * FROM departamentos";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
+
+    // Función para obtener una lista de todos los registros de municipios
+    public static function listarMunicipios($id)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla municipios
+        $sql = "SELECT * FROM municipios WHERE mun_departamentoFK = $id";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
 }

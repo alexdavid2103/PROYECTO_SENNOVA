@@ -23,7 +23,7 @@
     <script src="public/landing_page/assets/js/imagesloaded.js"></script>
     <script src="public/landing_page/assets/js/templatemo-custom.js"></script>
     <script src="public/landing_page/assets/js/custom.js"></script>
-    <script src="public/js/scripts.js"></script>
+    <!-- <script src="public/js/scripts.js"></script> -->
     </body>
 
     </html>

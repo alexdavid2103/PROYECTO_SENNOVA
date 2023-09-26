@@ -85,4 +85,11 @@ class empresa_controller
             echo json_encode(array("mensaje" => "ID no encontrado", "estado" => 2));
         }
     }
+
+    public function APImunicipios()
+    {
+        $id = $_GET["id"];
+        $municipios = empresa_model::listarMunicipios($id);
+        echo json_encode($municipios);
+    }
 }
