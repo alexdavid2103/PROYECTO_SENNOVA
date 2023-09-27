@@ -40,6 +40,19 @@ class dashboard_controller
         $this->obj->loadTemplate("empresa/index");
     }
 
+    public function motores()
+    {
+        // if (!isset($_SESSION['id'])) {
+        //     header("Location: /PROYECTO_SENNOVA");
+        //     exit();
+        // }
+        $this->obj->motores = motor_model::listarMotorInfo();
+        $this->obj->estados = motor_model::listarMotorEstado();
+        $this->obj->tecnicos = tecnico_model::listarTecnicos();
+        $this->obj->empresas = empresa_model::listarEmpresas();
+        $this->obj->loadTemplate("motor/index");
+    }
+
     // Función para cargar la vista principal de motores
     public function maps()
     {
