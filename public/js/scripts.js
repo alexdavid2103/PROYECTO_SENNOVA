@@ -47,7 +47,7 @@ let login = async (event) => {
 
   if (id === "") {
     event.preventDefault();
-    alertWarning(("Ingrese su numero de documento"));
+    alertWarning("Ingrese su numero de documento");
     return false;
   }
 
@@ -95,7 +95,11 @@ form_add_empresa.addEventListener("submit", async (event) => {
   const municipio = document.getElementById("add_emp_municipio").value;
 
   // Validar si algún campo está vacío
-  if ([id, nombre, correo, telefono, direccion, municipio].some((campo) => campo === "")) {
+  if (
+    [id, nombre, correo, telefono, direccion, municipio].some(
+      (campo) => campo === ""
+    )
+  ) {
     alertWarning("Todos los campos son obligatorios");
     return false;
   }
@@ -166,12 +170,7 @@ let editEmpresa = async (event) => {
     estadoFK === ""
   ) {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Todos los campos son obligatorios",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning((text = "Todos los campos son obligatorios"));
     return false;
   }
 
@@ -179,12 +178,7 @@ let editEmpresa = async (event) => {
   let correoValido = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (!correo.match(correoValido)) {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "Ingrese un correo electrónico válido",
-      icon: "error",
-      button: "Ok",
-    });
+    alertWarning((text = "Ingrese un correo electrónico válido"));
     return false;
   }
 
