@@ -24,7 +24,7 @@
             </div>
 
             <div class="password">
-                <p><a href="#">Olvidaste tu contraseña?</a></p>
+                <p><a href="?controller=main&action=contrasena">Olvidaste tu contraseña?</a></p>
             </div>
 
             <div class="button">

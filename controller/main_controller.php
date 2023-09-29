@@ -43,6 +43,19 @@ class main_controller
         $this->obj->loadTemplate("main/registro");
     }
 
+    public function contrasena()
+    {
+        if (isset($_SESSION['id'])) {
+            header("Location: index.php");
+            exit();
+        }
+        
+        $this->obj->departamentos = empresa_model::listarDepartamentos();
+        $this->obj->municipios = empresa_model::listarMunicipios(5);
+        // Cargar la plantilla de vista "main/contrasena"
+        $this->obj->loadTemplate("main/contrasena");
+    }
+
     public function validar()
     {
         // Extraer datos del formulario
