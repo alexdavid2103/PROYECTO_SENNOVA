@@ -54,8 +54,8 @@
         </div>
 
         <div class="input-box">
-          <span class="details">Dirección</span>
-          <input type="text" id="emp_direccion" placeholder="Ingrese su dirección" required>
+          <span class="details">Ubicación<nav></nav></span>
+          <input type="text" id="emp_ubicacion" placeholder="Ingrese la ubicacion del motor" required>
         </div>
       </div>
 
