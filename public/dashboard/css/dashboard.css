@@ -4,20 +4,63 @@
   display: none;
 }
 
-.dep {
-  fill: blueviolet;
+.municipios {
+  fill: #457b9d;
   stroke: #ffffff;
-  stroke-width: 2;
+  /* stroke-width: 210px; */
+  stroke-width: 3px;
   stroke-linecap: round;
   stroke-linejoin: round;
   cursor: pointer;
-  transition: .25s;
+  transition: .5s;
+  position: relative;
 }
 
-.dep:hover {
-  fill: #00000078;
+.municipios:hover {
+  fill: #1d3557;
 }
+
+/* svg:hover .municipios {
+  stroke-width: 3px;
+} */
 
 .logo img {
   height: 100%;
 }
+
+.municipios::before {
+  content: "Barranquilla"; /* Texto a mostrar */
+  position: absolute;
+  top: -20px; /* Ajusta la posición vertical según sea necesario */
+  left: 50%; /* Ajusta la posición horizontal según sea necesario */
+  transform: translateX(-50%); /* Centra horizontalmente */
+  background-color: #fff; /* Color de fondo */
+  padding: 5px 10px; /* Espaciado interno */
+  border: 1px solid #000; /* Borde */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+/* #suan,
+#santa_lucia,
+#campo_de_la_cruz,
+#candelaria,
+#manati,
+#repelon,
+#sabanalarga,
+#ponedera,
+#palmar,
+#santo_tomas,
+#sabanagrande,
+#polonuevo,
+#malambo,
+#soledad,
+#barranquilla,
+#puerto_colombia,
+#galapa,
+#baranoa,
+#tubara,
+#juan_de_acosta,
+#usiacuri,
+#piojo,
+#luruaco {
+} */
