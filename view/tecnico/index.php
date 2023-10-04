@@ -23,7 +23,8 @@
 
     <!-- dashboard/Vendor CSS-->
     <link href="public/dashboard/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="public/dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="public/dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"
+        media="all">
     <link href="public/dashboard/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="public/dashboard/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="public/dashboard/vendor/slick/slick.css" rel="stylesheet" media="all">
@@ -99,16 +100,17 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="?controller=dashboard&action=index"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            <a class="js-arrow" href="?controller=dashboard&action=index"><i
+                                    class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="">
-                            <a href="?controller=dashboard&action=empresas"><i class="fas fa-chart-bar"></i>Empresas</a>
+                            <a href="?controller=dashboard&action=empresas"><i class="far fa-building"></i>Empresas</a>
                         </li>
                         <li class="">
-                            <a href="?controller=dashboard&action=tecnicos"><i class="fas fa-table"></i>Tecnicos</a>
+                            <a href="?controller=dashboard&action=tecnicos"><i class="fas fa-user"></i>Tecnicos</a>
                         </li>
                         <li class="">
-                            <a href="?controller=dashboard&action=motores"><i class="far fa-check-square"></i>Motores</a>
+                            <a href="?controller=dashboard&action=motores"><i class="fas fa-cogs"></i>Motores</a>
                         </li>
                     </ul>
                 </nav>
@@ -141,7 +143,8 @@
                                             <!-- Correo electrónico individual -->
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="public/dashboard/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                                    <img src="public/dashboard/images/icon/avatar-06.jpg"
+                                                        alt="Cynthia Harvey" />
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -151,7 +154,8 @@
                                             <!-- Otra notificación de correo electrónico individual -->
                                             <div class="email__item">
                                                 <div class="image img-cir img-40">
-                                                    <img src="public/dashboard/images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
+                                                    <img src="public/dashboard/images/icon/avatar-05.jpg"
+                                                        alt="Cynthia Harvey" />
                                                 </div>
                                                 <div class="content">
                                                     <p>Meeting about new dashboard...</p>
@@ -214,14 +218,16 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="public/dashboard/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="public/dashboard/images/icon/avatar-01.jpg"
+                                                            alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
                                                         <a href="#">john doe</a>
                                                     </h5>
-                                                    <span class="email">johndoe@example.com</span> <!-- Correo electrónico del usuario -->
+                                                    <span class="email">johndoe@example.com</span>
+                                                    <!-- Correo electrónico del usuario -->
                                                 </div>
                                             </div>
                                             <!-- Opciones de la cuenta del usuario -->
@@ -324,67 +330,59 @@
                 </div>
             </div> -->
             <section class="container">
-                <header>Registration Form</header>
+                <header>Registrar Tecnico</header>
                 <form action="#" class="form">
-                    <div class="input-box">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="Enter full name" required />
-                    </div>
+                    <div class="column">
+                        <div class="input-box">
+                            <label>Nombre</label>
+                            <input type="text" id="" placeholder="Ingrese su primer nombre" required />
+                        </div>
 
-                    <div class="input-box">
-                        <label>Email Address</label>
-                        <input type="text" placeholder="Enter email address" required />
+                        <div class="input-box">
+                            <label>Segundo Nombre</label>
+                            <input type="text" id="" placeholder="Ingrese su segundo nombre" required />
+                        </div>
                     </div>
 
                     <div class="column">
                         <div class="input-box">
-                            <label>Phone Number</label>
-                            <input type="number" placeholder="Enter phone number" required />
+                            <label>Apellido</label>
+                            <input type="text" id="" placeholder="Ingrese su primer apellido" required />
                         </div>
                         <div class="input-box">
-                            <label>Birth Date</label>
-                            <input type="date" placeholder="Enter birth date" required />
+                            <label>Segundo Apellido</label>
+                            <input type="text" id="" placeholder="Ingrese su segundo apellido" required />
                         </div>
                     </div>
-                    <div class="gender-box">
-                        <h3>Gender</h3>
-                        <div class="gender-option">
-                            <div class="gender">
-                                <input type="radio" id="check-male" name="gender" checked />
-                                <label for="check-male">male</label>
-                            </div>
-                            <div class="gender">
-                                <input type="radio" id="check-female" name="gender" />
-                                <label for="check-female">Female</label>
-                            </div>
-                            <div class="gender">
-                                <input type="radio" id="check-other" name="gender" />
-                                <label for="check-other">prefer not to say</label>
-                            </div>
+
+                    <div class="input-box">
+                        <label>Correo Electronico</label>
+                        <input type="text" id="" placeholder="Ingrese su correo electronico" required />
+                    </div>
+
+                    <div class="column">
+                        <div class="input-box">
+                            <label>Telefono</label>
+                            <input type="number" id="" placeholder="Ingrese su numero de telefono" required />
+                        </div>
+                        <div class="input-box">
+                            <label>Dirección</label>
+                            <input type="text" placeholder="Ingrese su dirección" required />
                         </div>
                     </div>
-                    <div class="input-box address">
-                        <label>Address</label>
-                        <input type="text" placeholder="Enter street address" required />
-                        <input type="text" placeholder="Enter street address line 2" required />
-                        <div class="column">
-                            <div class="select-box">
-                                <select>
-                                    <option hidden>Country</option>
-                                    <option>America</option>
-                                    <option>Japan</option>
-                                    <option>India</option>
-                                    <option>Nepal</option>
-                                </select>
-                            </div>
-                            <input type="text" placeholder="Enter your city" required />
+
+                    <div class="column">
+                        <div class="input-box">
+                            <label>Foto</label>
+                            <input type="file" id="" placeholder="Ingrese su foto" required />
                         </div>
-                        <div class="column">
-                            <input type="text" placeholder="Enter your region" required />
-                            <input type="number" placeholder="Enter postal code" required />
+                        <div class="input-box">
+                            <label>Contraseña</label>
+                            <input type="text" id="" placeholder="Digite su contraseña" required />
                         </div>
                     </div>
-                    <button>Submit</button>
+
+                    <button>Guardar Datos</button>
                 </form>
             </section>
             <!-- END MAIN CONTENT-->
