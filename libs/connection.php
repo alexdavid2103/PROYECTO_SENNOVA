@@ -5,7 +5,7 @@ class connection
 	private $con;
 	private $user = "root"; // Usuario de la base de datos
 	private $pass = ""; // Contraseña del usuario de la base de datos
-	private $server = "mysql:host=localhost;dbname=senatech;port=3307"; // Información del servidor y la base de datos
+	private $server = "mysql:host=localhost;dbname=senatech;port=3306"; // Información del servidor y la base de datos
 
 	public function __construct()
 	{
