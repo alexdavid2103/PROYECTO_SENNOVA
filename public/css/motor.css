@@ -152,15 +152,14 @@
 }
 
 .cont_form {
-    min-height: 100vh;
     display: grid;
     justify-content: center;
     align-items: center;
-    display: none;
+    display: block;
 }
 
 .form {
-    margin: 3em 1.5em;
+    margin: 6em 6em 0 6em;
 }
 
 /* .form_add_motor .grid_box {

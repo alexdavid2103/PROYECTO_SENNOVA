@@ -1,53 +1,53 @@
 // =============================== VISTAS =============================== \\
 
-const vistaDashboard = document.getElementById("viewDashboard");
-const vistaEmpresas = document.getElementById("viewEmpresas");
-const vistaTecnico = document.getElementById("viewTecnico");
-const vistaMotores = document.getElementById("viewMotores");
+// Constantes para almacenar las referencias a las vistas
+const vistas = {
+  dashboard: document.getElementById("viewDashboard"),
+  empresas: document.getElementById("viewEmpresas"),
+  tecnico: document.getElementById("viewTecnico"),
+  motores: document.getElementById("viewMotores")
+};
 
 // =============================== ENLACES =============================== \\
 
-const linkDashboard = document.getElementById("dashboardLink");
-const linkEmpresas = document.getElementById("empresasLink");
-const linkTecnico = document.getElementById("tecnicoLink");
-const linkMotores = document.getElementById("motoresLink");
-
-// Buscamos el elemento con la clase "active"
-const elemento = document.querySelector(".active");
-
-const viewDashboard = () => {
-  vistaDashboard.classList.add("d-block");
-  //   vistaEmpresas.classList.add("d-none");
-  vistaTecnico.classList.remove("d-block");
-  vistaTecnico.classList.add("d-none");
-  //   vistaMotores.classList.add("d-none");
-  elemento.classList.remove("active");
-  linkDashboard.classList.add("active");
+// Constantes para almacenar las referencias a los enlaces
+const enlaces = {
+  dashboard: document.getElementById("dashboardLink"),
+  empresas: document.getElementById("empresasLink"),
+  tecnico: document.getElementById("tecnicosLink"),
+  motores: document.getElementById("motoresLink")
 };
 
-const viewEmpresas = () => {
-  vistaDashboard.classList.add("d-none");
-  vistaEmpresas.classList.add("d-block");
-  vistaTecnico.classList.add("d-none");
-  vistaMotores.classList.add("d-none");
-  elemento.classList.remove("active");
-  linkEmpresas.classList.add("active");
-};
+// =============================== FUNCIONES =============================== \\
 
-const viewTecnicos = () => {
-  vistaDashboard.classList.remove("d-block");
-  vistaDashboard.classList.add("d-none");
-  vistaTecnico.classList.add("d-block");
-  //   vistaMotores.classList.add("d-none");
-  elemento.classList.remove("active");
-  linkTecnico.classList.add("active");
-};
+// Función para mostrar una vista y activar un enlace utilizando toggle
+function mostrarVistaYEnlace(vista, enlace) {
+  for (const key in vistas) {
+    if (vistas.hasOwnProperty(key)) {
+      const v = vistas[key];
+      const e = enlaces[key];
+      const isSelected = v === vista && e === enlace;
+      
+      v.classList.toggle("d-none", !isSelected);
+      e.classList.toggle("active", isSelected);
+    }
+  }
+}
 
-const viewMotores = () => {
-  vistaDashboard.classList.add("d-none");
-  vistaEmpresas.classList.add("d-none");
-  vistaTecnico.classList.add("d-none");
-  vistaMotores.classList.add("d-block");
-  elemento.classList.remove("active");
-  linkMotores.classList.add("active");
-};
+// Event listeners para los enlaces
+
+enlaces.dashboard.addEventListener("click", () => {
+  mostrarVistaYEnlace(vistas.dashboard, enlaces.dashboard);
+});
+
+enlaces.empresas.addEventListener("click", () => {
+  mostrarVistaYEnlace(vistas.empresas, enlaces.empresas);
+});
+
+enlaces.tecnico.addEventListener("click", () => {
+  mostrarVistaYEnlace(vistas.tecnico, enlaces.tecnico);
+});
+
+enlaces.motores.addEventListener("click", () => {
+  mostrarVistaYEnlace(vistas.motores, enlaces.motores);
+});

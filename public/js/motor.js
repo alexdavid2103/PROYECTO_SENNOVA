@@ -1,18 +1,7 @@
 let motors = document.querySelector(".motors");
 
 let cont_form_add_motor = document.querySelector(".cont_form_add_motor");
-let add_motor = document.querySelector(".add_motor");
 let btn_back_add_motor = document.querySelector(".btn_back_add_motor");
-
-add_motor.addEventListener("click", () => {
-  motors.style.display = "none";
-  cont_form_add_motor.style.display = "grid";
-});
-
-// btn_back_add_motor.addEventListener("click", () => {
-//   motors.style.display = "grid";
-//   cont_form_add_motor.style.display = "none";
-// });
 
 let cont_form_edit_motor = document.querySelector(".cont_form_edit_motor");
 let edit_motor = document.querySelectorAll(".edit_motor");

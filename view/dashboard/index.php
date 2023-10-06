@@ -37,6 +37,8 @@
 
     <!--  -->
     <link rel="stylesheet" href="public/dashboard/css/dashboard.css">
+    <link rel="stylesheet" href="public/css/motor.css">
+    <link rel="stylesheet" href="public/css/form.css">
 
 </head>
 
@@ -101,16 +103,16 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active" id="dashboardLink" onclick="viewDashboard()">
+                        <li class="active" id="dashboardLink">
                             <a class="" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="" id="empresasLink" onclick="viewEmpresas()">
+                        <li class="" id="empresasLink">
                             <a class="" href="#"><i class="fas fa-chart-bar"></i>Empresas</a>
                         </li>
-                        <li class="" id="tecnicosLink" onclick="viewTecnicos()">
+                        <li class="" id="tecnicosLink">
                             <a class="" href="#"><i class="fas fa-table"></i>Tecnicos</a>
                         </li>
-                        <li class="" id="motoresLink" onclick="viewMotores()">
+                        <li class="" id="motoresLink">
                             <a class="" href="#"><i class="far fa-check-square"></i>Motores</a>
                         </li>
                     </ul>
@@ -256,7 +258,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- PAGE CONTAINER-->
-        <div class="page-container d-block" id="viewDashboard">
+        <div class="page-container" id="viewDashboard">
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
@@ -727,9 +729,21 @@
         </div>
         <!-- END PAGE CONTAINER-->
 
-        <div class="page-container d-none p-l-245" id="viewTecnico">
+        <div class="page-container d-none" id="viewEmpresas">
             <?php
-            include("tecnico.php");
+            include("view/empresa/index.php");
+            ?>
+        </div>
+
+        <div class="page-container d-none" id="viewTecnico">
+            <?php
+            include("view/tecnico/index.php");
+            ?>
+        </div>
+
+        <div class="page-container d-none" id="viewMotores">
+            <?php
+            include("view/motor/index.php");
             ?>
         </div>
 
@@ -743,20 +757,16 @@
     <script src="public/dashboard/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="public/dashboard/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- dashboard/Vendor JS       -->
-    <script src="public/dashboard/vendor/slick/slick.min.js">
-    </script>
+    <script src="public/dashboard/vendor/slick/slick.min.js"></script>
     <script src="public/dashboard/vendor/wow/wow.min.js"></script>
     <script src="public/dashboard/vendor/animsition/animsition.min.js"></script>
-    <script src="public/dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
+    <script src="public/dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="public/dashboard/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="public/dashboard/vendor/counter-up/jquery.counterup.min.js">
-    </script>
+    <script src="public/dashboard/vendor/counter-up/jquery.counterup.min.js"></script>
     <script src="public/dashboard/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="public/dashboard/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="public/dashboard/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="public/dashboard/vendor/select2/select2.min.js">
-    </script>
+    <script src="public/dashboard/vendor/select2/select2.min.js"></script>
 
     <!-- Main JS-->
     <script src="public/dashboard/js/main.js"></script>
