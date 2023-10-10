@@ -13,7 +13,6 @@
     </div>
 </footer>
 <!-- Scripts -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://kit.fontawesome.com/575d3461ce.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="public/landing_page/vendor/jquery/jquery.min.js"></script>

@@ -37,7 +37,7 @@
 
     <!--  -->
     <link rel="stylesheet" href="public/dashboard/css/dashboard.css">
-    <link rel="stylesheet" href="public/css/motor.css">
+    
     <link rel="stylesheet" href="public/css/form.css">
 
 </head>
@@ -107,13 +107,13 @@
                             <a class="" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li class="" id="empresasLink">
-                            <a class="" href="#"><i class="fas fa-chart-bar"></i>Empresas</a>
+                            <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
                         </li>
                         <li class="" id="tecnicosLink">
-                            <a class="" href="#"><i class="fas fa-table"></i>Tecnicos</a>
+                            <a class="" href="#"><i class="fas fa-users"></i>Tecnicos</a>
                         </li>
                         <li class="" id="motoresLink">
-                            <a class="" href="#"><i class="far fa-check-square"></i>Motores</a>
+                            <a class="" href="#"><i class="fas fa-gears"></i>Motores</a>
                         </li>
                     </ul>
                 </nav>

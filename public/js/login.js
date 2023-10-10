@@ -1,4 +1,4 @@
-import { alertWarning, alertError } from "alertas.js";
+// import { alertWarning, alertError } from "alertas.js";
 
 // |================================== LOGIN ==================================| //
 

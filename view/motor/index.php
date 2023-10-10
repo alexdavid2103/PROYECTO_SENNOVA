@@ -1,3 +1,12 @@
+<link rel="stylesheet" href="public/css/motor.css">
+<div class="charts">
+    <h2>IEC44</h2>
+    <div class="flex-box">
+        <div id="chart_div" style="width: 400px; height: 200px;"></div>
+        <div id="Medidores" style="width: 400px; height: 200px;"></div>
+    </div>
+</div>
+
 <div class="cont_form cont_form_add_motor">
     <form action="?controller=motor&action=add" id="multi-step-form" class="form form_add_motor"
         onsubmit="return false">
@@ -220,5 +229,8 @@
     </form>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="public/js/motores.js"></script>
 <script src="public/js/form.js"></script>
+<script src="public/js/graficos.js"></script>
