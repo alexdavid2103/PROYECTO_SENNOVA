@@ -1,3 +1,5 @@
+import { alertWarning, alertError } from "alertas.js";
+
 // |================================== LOGIN ==================================| //
 
 let login = async (event) => {
@@ -30,6 +32,6 @@ let login = async (event) => {
   if (info.estado === 1) {
     window.location.href = info.url;
   } else {
-    alertError((text = "Usuario o contraseña incorrecta"));
+    alertError("Usuario o contraseña incorrecta");
   }
 };

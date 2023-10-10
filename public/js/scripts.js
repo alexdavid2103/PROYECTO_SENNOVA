@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------
+import { alertSuccess, alertError } from "alertas.js";
 
 // CAMBIAR CONTRASEÑA USUARIO -------------------------------------------------
 const validarContrasenaAprendiz = (contrasena) => {
@@ -13,12 +13,9 @@ let UpdatePasswordApr = async (event) => {
 
   if (!validarContrasenaAprendiz(Npassword) || Npassword !== NCpassword) {
     event.preventDefault();
-    swal({
-      title: "Error",
-      text: "La contraseña debe cumplir los siguientes requisitos: tener al menos una letra mayúscula, una letra minúscula, un carácter numérico, no contener espacios en blanco y tener al menos 7 dígitos. Asegúrate de que las contraseñas coincidan.",
-      icon: "error",
-      button: "Ok",
-    });
+    alertError(
+      "La contraseña debe cumplir los siguientes requisitos: tener al menos una letra mayúscula, una letra minúscula, un carácter numérico, no contener espacios en blanco y tener al menos 7 dígitos. Asegúrate de que las contraseñas coincidan."
+    );
   } else {
     let datos = new FormData();
     datos.append("password", password);
@@ -32,22 +29,12 @@ let UpdatePasswordApr = async (event) => {
     let info = await respuesta.json();
 
     if (info.estado === 1) {
-      swal({
-        title: "Felicidades",
-        text: "Se ha editado correctamente",
-        icon: "success",
-        button: "Ok",
-      }).then(() => {
+      alertSuccess("Se ha editado correctamente").then(() => {
         window.location.href = info.url;
         info.logout;
       });
     } else {
-      swal({
-        title: "Oh no",
-        text: "Error al editar",
-        icon: "error",
-        button: "Ok",
-      });
+      alertError("Error al editar");
     }
   }
 };

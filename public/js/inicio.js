@@ -53,4 +53,3 @@ function muestraSlides(n) {
   }, 0); // Mostrar con opacidad 1 después de un pequeño retraso
   barras[n - 1].className += " active";
 }
-

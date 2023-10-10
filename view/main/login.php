@@ -38,3 +38,5 @@
         </form>
     </div>
 </div>
+
+<script src="public/js/login.js"></script>

@@ -54,3 +54,5 @@
         <button>Guardar Datos</button>
     </form>
 </section>
+
+<script src="public/js/tecnicos.js"></script>

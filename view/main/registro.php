@@ -71,4 +71,5 @@
   </div>
 </div>
 
-<script src="public/js/registro.js"></script>
+<script src="public/js/filtroMunicipios.js"></script>
+<script src="public/js/empresa.js"></script>

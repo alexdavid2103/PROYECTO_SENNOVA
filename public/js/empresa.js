@@ -2,7 +2,6 @@ import {
   alertWarning,
   advanceAlertWarning,
   alertSuccess,
-  alertInfo,
   alertError,
 } from "alertas.js";
 
@@ -101,7 +100,7 @@ let editEmpresa = async (event) => {
     estadoFK === ""
   ) {
     event.preventDefault();
-    alertWarning((text = "Todos los campos son obligatorios"));
+    alertWarning("Todos los campos son obligatorios");
     return false;
   }
 
@@ -109,7 +108,7 @@ let editEmpresa = async (event) => {
   let correoValido = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (!correo.match(correoValido)) {
     event.preventDefault();
-    alertWarning((text = "Ingrese un correo electrónico válido"));
+    alertWarning("Ingrese un correo electrónico válido");
     return false;
   }
 
