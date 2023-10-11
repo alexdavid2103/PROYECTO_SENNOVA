@@ -19,6 +19,7 @@ class motor_controller
         //     exit();
         // }
         $this->obj->motores = motor_model::listarMotorInfo();
+        $this->obj->capturas = motor_model::listarMotorCaptura();
         $this->obj->clientes = empresa_model::listarEmpresas();
         // $this->obj->tecnicos = tecnico_model::listar();
         // Cargar la plantilla de vista "motor/index"

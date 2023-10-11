@@ -1,11 +1,13 @@
 <link rel="stylesheet" href="public/css/motor.css">
-<div class="charts">
-    <h2>IEC44</h2>
-    <div class="flex-box">
-        <div id="chart_temperatura" style="width: 400px; height: 200px;"></div>
-        <div id="chart_vibracion" style="width: 400px; height: 200px;"></div>
-    </div>
-</div>
+<?php foreach ($this->motores as $captura) {
+    echo '<div class="charts m-lg-l-100">
+        <h2>' . $captura['infmot_serie'] . '</h2>
+        <div class="flex-box">
+            <div class="chart_temperatura" style="width: 400px; height: 200px;"></div>
+            <div class="chart_vibracion" style="width: 400px; height: 200px;"></div>
+        </div>
+    </div>';
+} ?>
 
 <div class="cont_form cont_form_add_motor">
     <form action="?controller=motor&action=add" id="multi-step-form" class="form form_add_motor"

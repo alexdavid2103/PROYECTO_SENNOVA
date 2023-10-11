@@ -229,6 +229,17 @@ class motor_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
+    public static function listarMotorCaptura()
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla motor_informacion
+        $sql = "SELECT * FROM motor_captura";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
 
     // Función para obtener información de un motor por su serie
     public static function findBySerie($serie)
