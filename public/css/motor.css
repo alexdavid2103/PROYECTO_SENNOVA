@@ -1,8 +1,10 @@
 .charts {
+  margin-top: 7em;
   background: #fff;
   max-width: max-content;
   padding: 1em;
   border-radius: 10px;
+  margin-left: 3em;
 }
 
 .charts h2 {
@@ -188,7 +190,7 @@
 }
 
 .form {
-  margin: 6em 6em 0 6em;
+  margin: 3em 3em 0 3em;
 }
 
 /* .form_add_motor .grid_box {

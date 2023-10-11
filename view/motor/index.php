@@ -2,8 +2,8 @@
 <div class="charts">
     <h2>IEC44</h2>
     <div class="flex-box">
-        <div id="chart_div" style="width: 400px; height: 200px;"></div>
-        <div id="Medidores" style="width: 400px; height: 200px;"></div>
+        <div id="chart_temperatura" style="width: 400px; height: 200px;"></div>
+        <div id="chart_vibracion" style="width: 400px; height: 200px;"></div>
     </div>
 </div>
 

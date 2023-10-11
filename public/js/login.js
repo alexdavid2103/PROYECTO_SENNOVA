@@ -1,8 +1,9 @@
-// import { alertWarning, alertError } from "alertas.js";
+import { alertWarning, alertError } from "./alertas.js";
 
-// |================================== LOGIN ==================================| //
+// |==================================> LOGIN <==================================| \\
+let form = document.querySelector(".form");
 
-let login = async (event) => {
+form.addEventListener("submit", async (event) => {
   let id = document.getElementById("id").value;
   let password = document.getElementById("password").value;
 
@@ -34,4 +35,4 @@ let login = async (event) => {
   } else {
     alertError("Usuario o contraseña incorrecta");
   }
-};
+});

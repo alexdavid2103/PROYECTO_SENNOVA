@@ -14,13 +14,13 @@
             <div class="cont_input">
                 <label>Numero de documento</label>
                 <!-- <i class="fa fa-user"></i> -->
-                <input type="number" id="id" inputmode="none" pattern="[0-9]*" required>
+                <input type="number" id="id" inputmode="none" pattern="[0-9]*">
             </div>
 
             <div class="cont_input">
                 <label>Contraseña</label>
                 <!-- <i class="fa fa-lock"></i> -->
-                <input type="password" id="password" required>
+                <input type="password" id="password">
             </div>
 
             <div class="password">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="button">
-                <button type="submit" id="" onclick="login(event)"><span>Ingresar</span></button>
+                <button type="submit" id=""><span>Ingresar</span></button>
             </div>
 
             <div class="registro_seccion">
@@ -39,4 +39,6 @@
     </div>
 </div>
 
-<script src="public/js/login.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
+<!-- <script type="module" src="public/js/alertas.js"></script> -->
+<script type="module" src="public/js/login.js"></script>

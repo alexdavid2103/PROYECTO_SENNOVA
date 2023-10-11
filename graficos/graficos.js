@@ -25,7 +25,7 @@ function drawChart() {
   function realizarSolicitud() {
     // Realizar una solicitud AJAX para obtener datos de temperatura desde el servidor
     $.ajax({
-      url: "http://localhost/PROYECTO_SENNOVA/?controller=motor&action=graficas",
+      url: "http://localhost/graficos/graficos.php?q=1",
       dataType: "json",
     })
       .done(function (responseData) {
@@ -80,7 +80,7 @@ function drawBasic() {
   function realizarSolicitud() {
     // Realizar una solicitud AJAX para obtener datos de vibración desde el servidor
     $.ajax({
-      url: "http://localhost/PROYECTO_SENNOVA/?controller=motor&action=graficas",
+      url: "http://localhost/graficos/graficos.php?q=1",
       dataType: "json",
     })
       .done(function (responseData) {

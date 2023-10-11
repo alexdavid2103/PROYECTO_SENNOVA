@@ -1,8 +1,6 @@
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
-
 // |================================== ALERTAS ==================================|//
 
-function alertWarning(text) {
+export function alertWarning(text) {
   swal({
     title: "Advertencia!!",
     text: text,
@@ -11,7 +9,7 @@ function alertWarning(text) {
   });
 }
 
-const advanceAlertWarning = () => {
+export function advanceAlertWarning() {
   swal({
     title: "¿Estás seguro?",
     text: "¡Una vez eliminado, no podrás recuperarlo!",
@@ -19,24 +17,24 @@ const advanceAlertWarning = () => {
     buttons: true,
     dangerMode: true,
   });
-};
+}
 
-const alertSuccess = (text) => {
+export function alertSuccess(text) {
   swal({
     title: "Success",
     text: text,
     icon: "success",
     button: "Ok",
   });
-};
+}
 
-const alertInfo = () => {};
+export function alertInfo() {}
 
-const alertError = (text) => {
+export function alertError(text) {
   swal({
     title: "Oh no",
     text: text,
     icon: "error",
     button: "Ok",
   });
-};
+}
