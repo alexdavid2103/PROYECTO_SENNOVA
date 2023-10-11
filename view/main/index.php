@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <img src="public/landing_page/assets/images/banner-right-image.png" alt="team meeting" />
+                            <img src="public/landing_page/assets/images/Logo.png" alt="team meeting" />
                         </div>
                     </div>
                 </div>
