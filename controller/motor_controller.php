@@ -19,6 +19,7 @@ class motor_controller
         //     exit();
         // }
         $this->obj->motores = motor_model::listarMotorInfo();
+        $this->obj->capturas = motor_model::listarMotorCaptura();
         $this->obj->clientes = empresa_model::listarEmpresas();
         // $this->obj->tecnicos = tecnico_model::listar();
         // Cargar la plantilla de vista "motor/index"
@@ -117,7 +118,7 @@ class motor_controller
     {
         if (isset($_POST["id"])) {
             $serie = $_POST["id"];
-            
+
             // Llamar a la función estática delete en el modelo motor_modelo
             $r = motor_model::delete($serie);
 
@@ -129,6 +130,14 @@ class motor_controller
         } else {
             echo json_encode(array("mensaje" => "ID no encontrado", "estado" => 2));
         }
+    }
+
+    public function graficas()
+    {
+        // Llamar a la función estática delete en el modelo motor_modelo
+        $r = motor_model::graficas();
+        $json = json_encode($r);
+        echo $json;
     }
 }
 ?>
