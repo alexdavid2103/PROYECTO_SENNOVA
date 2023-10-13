@@ -66,26 +66,15 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
                             <a class="js-arrow" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                            </ul>
                         </li>
-                        <li>
-                            <a href="?controller=dashboard&action=charts"><i class="fas fa-chart-bar"></i>Charts</a>
+                        <li class="" id="empresasLink">
+                            <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
                         </li>
-                        <li>
-                            <a href="table.html"><i class="fas fa-table"></i>Tables</a>
+                        <li class="" id="tecnicosLink">
+                            <a class="" href="#"><i class="fas fa-users"></i>Tecnicos</a>
                         </li>
-                        <li>
-                            <a href="form.html"><i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                        <li>
-                            <a href="calendar.html"><i class="fas fa-calendar-alt"></i>Calendar</a>
-                        </li>
-                        <li>
-                            <a href="map.html"><i class="fas fa-map-marker-alt"></i>Maps</a>
+                        <li class="" id="motoresLink">
+                            <a class="" href="#"><i class="fas fa-gears"></i>Motores</a>
                         </li>
                     </ul>
                 </div>
