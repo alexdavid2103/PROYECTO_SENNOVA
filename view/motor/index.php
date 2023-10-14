@@ -7,6 +7,7 @@
             <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
         </div>
     </div>';
+    break;
 } ?>
 
 <div class="cont_form cont_form_add_motor">

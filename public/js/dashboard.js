@@ -4,8 +4,8 @@
 const vistas = {
   dashboard: document.getElementById("viewDashboard"),
   empresas: document.getElementById("viewEmpresas"),
-  tecnico: document.getElementById("viewTecnico"),
-  motores: document.getElementById("viewMotores")
+  tecnico: document.getElementById("viewTecnicos"),
+  motores: document.getElementById("viewMotores"),
 };
 
 // =============================== ENLACES =============================== \\
@@ -15,7 +15,7 @@ const enlaces = {
   dashboard: document.getElementById("dashboardLink"),
   empresas: document.getElementById("empresasLink"),
   tecnico: document.getElementById("tecnicosLink"),
-  motores: document.getElementById("motoresLink")
+  motores: document.getElementById("motoresLink"),
 };
 
 // =============================== FUNCIONES =============================== \\
@@ -26,10 +26,15 @@ function mostrarVistaYEnlace(vista, enlace) {
     if (vistas.hasOwnProperty(key)) {
       const v = vistas[key];
       const e = enlaces[key];
-      const isSelected = v === vista && e === enlace;
-      
-      v.classList.toggle("d-none", !isSelected);
-      e.classList.toggle("active", isSelected);
+      const isSelected = v.id === vista.id && e.id === enlace.id;
+
+      if (isSelected) {
+        v.classList.remove("d-none");
+        e.classList.add("active");
+      } else {
+        v.classList.add("d-none");
+        e.classList.remove("active");
+      }
     }
   }
 }
