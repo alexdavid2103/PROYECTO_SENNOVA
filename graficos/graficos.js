@@ -12,9 +12,13 @@ function drawChart() {
 
   // Opciones de configuración del gráfico de temperatura
   let options = {
-    title: "",
+    title: "Gráfico de Temperatura",
     curveType: "function",
-    legend: { position: "bottom" },
+    legend: { position: "none" },
+    hAxis: {
+      title: "",
+      textPosition: "none", // Oculta la etiqueta de texto en el eje horizontal
+    },
   };
 
   // Crear un objeto LineChart para el gráfico de temperatura
@@ -25,7 +29,7 @@ function drawChart() {
   function realizarSolicitud() {
     // Realizar una solicitud AJAX para obtener datos de temperatura desde el servidor
     $.ajax({
-      url: "http://localhost/graficos/graficos.php?q=1",
+      url: "http://localhost/PROYECTO_SENNOVA/?controller=motor&action=graficas",
       dataType: "json",
     })
       .done(function (responseData) {
@@ -68,8 +72,12 @@ function drawBasic() {
 
   // Opciones de configuración del gráfico de vibración
   let options = {
-    title: "",
-    legend: { position: "bottom" },
+    title: "Gráfico de Vibración",
+    legend: { position: "none" },
+    hAxis: {
+      title: "",
+      textPosition: "none", // Oculta la etiqueta de texto en el eje horizontal
+    },
   };
 
   // Crear un objeto LineChart para el gráfico de vibración
@@ -80,7 +88,7 @@ function drawBasic() {
   function realizarSolicitud() {
     // Realizar una solicitud AJAX para obtener datos de vibración desde el servidor
     $.ajax({
-      url: "http://localhost/graficos/graficos.php?q=1",
+      url: "http://localhost/PROYECTO_SENNOVA/?controller=motor&action=graficas",
       dataType: "json",
     })
       .done(function (responseData) {

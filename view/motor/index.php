@@ -3,8 +3,8 @@
     echo '<div class="charts m-lg-l-100">
         <h2>' . $captura['infmot_serie'] . '</h2>
         <div class="flex-box">
-            <div class="chart_temperatura" style="width: 400px; height: 200px;"></div>
-            <div class="chart_vibracion" style="width: 400px; height: 200px;"></div>
+            <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
+            <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
         </div>
     </div>';
 } ?>

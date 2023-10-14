@@ -12,7 +12,11 @@ function drawCharts() {
   let optionsTemperatura = {
     title: "Gráfico de Temperatura",
     curveType: "function",
-    legend: { position: "bottom" },
+    legend: { position: "none" },
+    hAxis: {
+      title: "",
+      textPosition: "none", // Oculta la etiqueta de texto en el eje horizontal
+    },
   };
 
   // Crear un objeto DataTable para almacenar los datos del gráfico de vibración
@@ -23,7 +27,11 @@ function drawCharts() {
   // Opciones de configuración del gráfico de vibración
   let optionsVibracion = {
     title: "Gráfico de Vibración",
-    legend: { position: "bottom" },
+    legend: { position: "none" },
+    hAxis: {
+      title: "",
+      textPosition: "none", // Oculta la etiqueta de texto en el eje horizontal
+    },
   };
 
   // Obtener los elementos con la clase .chart_temperatura y .chart_vibracion
@@ -34,6 +42,7 @@ function drawCharts() {
   // Crear arreglos para los gráficos
   let chartsTemperatura = [];
   let chartsVibracion = [];
+  let serie;
 
   // Función para realizar la solicitud y dibujar los gráficos
   function realizarSolicitud() {
@@ -48,14 +57,15 @@ function drawCharts() {
           dataVibracion.removeRows(0, dataVibracion.getNumberOfRows()); // Limpia los datos actuales en el gráfico de vibración
 
           // Iterar sobre los datos recibidos y agregarlos a los objetos DataTable
-          for (let i = 0; i < responseData.length; i++) {
-            let temperatura = parseFloat(responseData[i].capmot_temperatura);
-            let vibracion = parseFloat(responseData[i].capmot_vibracion);
-            let hora = responseData[i].capmot_hora;
-
-            dataTemperatura.addRow([hora, temperatura]);
-            dataVibracion.addRow([hora, vibracion]);
-          }
+          responseData.forEach((item) => {
+            if (item.capmot_serie === "IEC44") {
+              let temperatura = parseFloat(item.capmot_temperatura);
+              let vibracion = parseFloat(item.capmot_vibracion);
+              let hora = item.capmot_hora;
+              dataTemperatura.addRow([hora, temperatura]);
+              dataVibracion.addRow([hora, vibracion]);
+            }
+          });
 
           // Dibujar los gráficos de temperatura y vibración
           chartsTemperatura.forEach((chart) => {
@@ -76,14 +86,22 @@ function drawCharts() {
 
   // Crear gráficos de temperatura
   chartTemperaturaElements.forEach((element) => {
-    let chart = new google.visualization.LineChart(element);
-    chartsTemperatura.push(chart);
+    let getAttribute = element.getAttribute("data-serie");
+    if (getAttribute === "IEC44") {
+      console.log(` data-serie: ${getAttribute} es igual a IEC44`);
+      let chart = new google.visualization.LineChart(element);
+      chartsTemperatura.push(chart);
+    }
   });
 
   // Crear gráficos de vibración
   chartVibracionElements.forEach((element) => {
-    let chart = new google.visualization.LineChart(element);
-    chartsVibracion.push(chart);
+    let getAttribute = element.getAttribute("data-serie");
+    if (getAttribute === "IEC44") {
+      console.log(` data-serie: ${getAttribute} es igual a IEC44`);
+      let chart = new google.visualization.LineChart(element);
+      chartsVibracion.push(chart);
+    }
   });
 
   // Iniciar la primera solicitud al cargar la página

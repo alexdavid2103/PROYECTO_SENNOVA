@@ -260,7 +260,7 @@ class motor_model
         $c = $obj->getConnection();
 
         // Consulta SQL para seleccionar todos los registros de la tabla motor_informacion
-        $sql = "SELECT capmot_vibracion, capmot_temperatura, capmot_hora FROM motor_captura";
+        $sql = "SELECT capmot_serie, capmot_vibracion, capmot_temperatura, capmot_hora FROM motor_captura";
         $st = $c->prepare($sql);
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
