@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="public/css/motor.css">
 <?php foreach ($this->motores as $captura) {
-    echo '<div class="charts m-lg-l-100">
-        <h2>' . $captura['infmot_serie'] . '</h2>
+    echo '<div class="charts m-lg-l-100" data-serie="' . $captura['infmot_serie'] . '">
+        <h2 class="">' . $captura['infmot_serie'] . '</h2>
         <div class="flex-box">
-            <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
-            <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
+            <div class="chart_temperatura" style="width: 400px; height: 200px;"></div>
+            <div class="chart_vibracion" style="width: 400px; height: 200px;"></div>
         </div>
     </div>';
-    break;
+    // break;
 } ?>
 
 <div class="cont_form cont_form_add_motor">
