@@ -1,109 +1,99 @@
-// Cargar la biblioteca de Google Charts y establecer la devolución de llamada al cargar
 google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawCharts);
+    google.charts.setOnLoadCallback(drawCharts);
 
-function drawCharts() {
-  // Crear un objeto DataTable para almacenar los datos del gráfico de temperatura
-  let dataTemperatura = new google.visualization.DataTable();
-  dataTemperatura.addColumn("string", "Hora"); // Definir la columna de las horas como "string"
-  dataTemperatura.addColumn("number", "Temperatura"); // Definir la columna de la temperatura como "number"
+    function drawCharts() {
+      let dataTemperaturaFiltered = {};
+      let dataVibracionFiltered = {};
 
-  // Opciones de configuración del gráfico de temperatura
-  let optionsTemperatura = {
-    title: "Gráfico de Temperatura",
-    curveType: "function",
-    legend: { position: "none" },
-    hAxis: {
-      title: "",
-      textPosition: "none", // Oculta la etiqueta de texto en el eje horizontal
-    },
-  };
+      let optionsTemperatura = {
+        title: "Gráfico de Temperatura",
+        curveType: "function",
+        legend: { position: "none" },
+        hAxis: {
+          title: "",
+          textPosition: "none",
+        },
+      };
 
-  // Crear un objeto DataTable para almacenar los datos del gráfico de vibración
-  let dataVibracion = new google.visualization.DataTable();
-  dataVibracion.addColumn("string", "Hora"); // Definir la columna de las horas como "string"
-  dataVibracion.addColumn("number", "Vibración"); // Definir la columna de la vibración como "number"
+      let optionsVibracion = {
+        title: "Gráfico de Vibración",
+        legend: { position: "none" },
+        hAxis: {
+          title: "",
+          textPosition: "none",
+        },
+      };
 
-  // Opciones de configuración del gráfico de vibración
-  let optionsVibracion = {
-    title: "Gráfico de Vibración",
-    legend: { position: "none" },
-    hAxis: {
-      title: "",
-      textPosition: "none", // Oculta la etiqueta de texto en el eje horizontal
-    },
-  };
+      let chartTemperaturaElements = document.querySelectorAll(".chart_temperatura");
+      let chartVibracionElements = document.querySelectorAll(".chart_vibracion");
 
-  // Obtener los elementos con la clase .chart_temperatura y .chart_vibracion
-  let chartTemperaturaElements =
-    document.querySelectorAll(".chart_temperatura");
-  let chartVibracionElements = document.querySelectorAll(".chart_vibracion");
-
-  // Crear arreglos para los gráficos
-  let chartsTemperatura = [];
-  let chartsVibracion = [];
-  let serie;
-
-  // Función para realizar la solicitud y dibujar los gráficos
-  function realizarSolicitud() {
-    // Realizar una solicitud AJAX para obtener datos desde el servidor
-    $.ajax({
-      url: "http://localhost/PROYECTO_SENNOVA/?controller=motor&action=graficas",
-      dataType: "json",
-    })
-      .done(function (responseData) {
-        if (responseData && responseData.length > 0) {
-          dataTemperatura.removeRows(0, dataTemperatura.getNumberOfRows()); // Limpia los datos actuales en el gráfico de temperatura
-          dataVibracion.removeRows(0, dataVibracion.getNumberOfRows()); // Limpia los datos actuales en el gráfico de vibración
-
-          // Iterar sobre los datos recibidos y agregarlos a los objetos DataTable
-          responseData.forEach((item) => {
-            if (item.capmot_serie === "IEC44") {
-              let temperatura = parseFloat(item.capmot_temperatura);
-              let vibracion = parseFloat(item.capmot_vibracion);
-              let hora = item.capmot_hora;
-              dataTemperatura.addRow([hora, temperatura]);
-              dataVibracion.addRow([hora, vibracion]);
-            }
-          });
-
-          // Dibujar los gráficos de temperatura y vibración
-          chartsTemperatura.forEach((chart) => {
-            chart.draw(dataTemperatura, optionsTemperatura);
-          });
-
-          chartsVibracion.forEach((chart) => {
-            chart.draw(dataVibracion, optionsVibracion);
-          });
-        }
-        setTimeout(realizarSolicitud, 1300); // Realizar la próxima solicitud después de 1300 ms
-      })
-      .fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("Error en la solicitud AJAX:", errorThrown);
-        setTimeout(realizarSolicitud, 1300); // Intentar nuevamente después de 1300 ms en caso de error
+      chartTemperaturaElements.forEach((element) => {
+        let getAttribute = element.getAttribute("data-serie");
+        dataTemperaturaFiltered[getAttribute] = new google.visualization.DataTable();
+        dataTemperaturaFiltered[getAttribute].addColumn("string", "Hora");
+        dataTemperaturaFiltered[getAttribute].addColumn("number", "Temperatura");
       });
-  }
 
-  // Crear gráficos de temperatura
-  chartTemperaturaElements.forEach((element) => {
-    let getAttribute = element.getAttribute("data-serie");
-    if (getAttribute === "IEC44") {
-      console.log(` data-serie: ${getAttribute} es igual a IEC44`);
-      let chart = new google.visualization.LineChart(element);
-      chartsTemperatura.push(chart);
+      chartVibracionElements.forEach((element) => {
+        let getAttribute = element.getAttribute("data-serie");
+        dataVibracionFiltered[getAttribute] = new google.visualization.DataTable();
+        dataVibracionFiltered[getAttribute].addColumn("string", "Hora");
+        dataVibracionFiltered[getAttribute].addColumn("number", "Vibración");
+      });
+
+      function realizarSolicitud() {
+        $.ajax({
+          url: "http://localhost/PROYECTO_SENNOVA/?controller=motor&action=graficas",
+          dataType: "json",
+        })
+          .done(function (responseData) {
+            if (responseData && responseData.length > 0) {
+              chartTemperaturaElements.forEach((element) => {
+                let getAttribute = element.getAttribute("data-serie");
+                dataTemperaturaFiltered[getAttribute].removeRows(0, dataTemperaturaFiltered[getAttribute].getNumberOfRows());
+              });
+
+              chartVibracionElements.forEach((element) => {
+                let getAttribute = element.getAttribute("data-serie");
+                dataVibracionFiltered[getAttribute].removeRows(0, dataVibracionFiltered[getAttribute].getNumberOfRows());
+              });
+
+              responseData.forEach((item) => {
+                if (item.capmot_serie) {
+                  let temperatura = parseFloat(item.capmot_temperatura);
+                  let vibracion = parseFloat(item.capmot_vibracion);
+                  let hora = item.capmot_hora;
+
+                  if (dataTemperaturaFiltered[item.capmot_serie]) {
+                    dataTemperaturaFiltered[item.capmot_serie].addRow([hora, temperatura]);
+                  }
+
+                  if (dataVibracionFiltered[item.capmot_serie]) {
+                    dataVibracionFiltered[item.capmot_serie].addRow([hora, vibracion]);
+                  }
+                }
+              });
+
+              chartTemperaturaElements.forEach((element) => {
+                let getAttribute = element.getAttribute("data-serie");
+                let chart = new google.visualization.LineChart(element);
+                chart.draw(dataTemperaturaFiltered[getAttribute], optionsTemperatura);
+              });
+
+              chartVibracionElements.forEach((element) => {
+                let getAttribute = element.getAttribute("data-serie");
+                let chart = new google.visualization.LineChart(element);
+                chart.draw(dataVibracionFiltered[getAttribute], optionsVibracion);
+              });
+            }
+
+            setTimeout(realizarSolicitud, 1300);
+          })
+          .fail(function (jqXHR, textStatus, errorThrown) {
+            console.error("Error en la solicitud AJAX:", errorThrown);
+            setTimeout(realizarSolicitud, 1300);
+          });
+      }
+
+      realizarSolicitud();
     }
-  });
-
-  // Crear gráficos de vibración
-  chartVibracionElements.forEach((element) => {
-    let getAttribute = element.getAttribute("data-serie");
-    if (getAttribute === "IEC44") {
-      console.log(` data-serie: ${getAttribute} es igual a IEC44`);
-      let chart = new google.visualization.LineChart(element);
-      chartsVibracion.push(chart);
-    }
-  });
-
-  // Iniciar la primera solicitud al cargar la página
-  realizarSolicitud();
-}
