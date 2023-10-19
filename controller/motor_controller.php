@@ -11,21 +11,6 @@ class motor_controller
         $this->obj = new template();
     }
 
-    // Función para cargar la vista principal de motores
-    public function index()
-    {
-        // if (!isset($_SESSION['id'])) {
-        //     header("Location: /PROYECTO_SENOVA");
-        //     exit();
-        // }
-        $this->obj->motores = motor_model::listarMotorInfo();
-        $this->obj->capturas = motor_model::listarMotorCaptura();
-        $this->obj->clientes = empresa_model::listarEmpresas();
-        // $this->obj->tecnicos = tecnico_model::listar();
-        // Cargar la plantilla de vista "motor/index"
-        $this->obj->loadTemplate("motor/index");
-    }
-
     // Función para agregar un motor a la base de datos
     public function add()
     {

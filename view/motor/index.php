@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="public/css/motor.css">
-<?php foreach ($this->motores as $captura) {
-    echo '<div class="charts m-lg-l-100">
-        <h2 class="">' . $captura['infmot_serie'] . '</h2>
-        <div class="flex-box">
-            <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
-            <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
-        </div>
-    </div>';
-    // break;
-} ?>
+<div class="cont_charts">
+    <?php foreach ($this->motores as $captura) {
+        echo '<div class="charts m-lg-l-100">
+            <h2 class="">' . $captura['infmot_serie'] . '</h2>
+            <div class="flex-box">
+                <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
+                <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
+            </div>
+        </div>';
+    } ?>
+</div>
 
 <div class="cont_form cont_form_add_motor">
     <form action="?controller=motor&action=add" id="multi-step-form" class="form form_add_motor"
@@ -27,8 +28,10 @@
                 <div class="form-box">
                     <div class="form-group">
                         <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
-                            <option value="">Seleccione el cliente al que pertenece el motor</option>
-
+                            <option value="">Seleccione la empresa a la que pertenece el motor</option>
+                            <?php foreach ($this->empresas as $empresa) {
+                                echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                            } ?>
                         </select>
                     </div>
                 </div>
@@ -175,9 +178,9 @@
                     <div class="form-group">
                         <select name="" class="form-field" id="add_mot_eficiencia_porcentaje" required>
                             <option value="">Seleccione el porcentaje de eficiencia</option>
-                            <option value="50">50%</option>
-                            <option value="75">75%</option>
-                            <option value="100">100%</option>
+                            <?php foreach ($this->porcentajes as $porcentaje) {
+                                echo '<option value="' . $porcentaje["por_id"] . '">' . $porcentaje["por_nombre"] . '</option>';
+                            } ?>
                         </select>
                     </div>
 
@@ -191,9 +194,9 @@
                     <div class="form-group">
                         <select name="" class="form-field" id="add_mot_fac_potencia_porcentaje" required>
                             <option value="">Seleccione el factor de potencia</option>
-                            <option value="50">50%</option>
-                            <option value="75">75%</option>
-                            <option value="100">100%</option>
+                            <?php foreach ($this->porcentajes as $porcentaje) {
+                                echo '<option value="' . $porcentaje["por_id"] . '">' . $porcentaje["por_nombre"] . '</option>';
+                            } ?>
                         </select>
                     </div>
 
@@ -208,6 +211,9 @@
                     <div class="form-group">
                         <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
+                            <?php foreach ($this->tecnicos as $tecnico) {
+                                echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . '</option>';
+                            } ?>
                         </select>
 
                         <div class="form-box">

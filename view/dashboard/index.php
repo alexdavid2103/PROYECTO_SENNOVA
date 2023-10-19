@@ -247,7 +247,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- PAGE CONTAINER-->
-        <div class="page-container d-none" id="viewDashboard">
+        <div class="page-container" id="viewDashboard">
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
@@ -730,7 +730,7 @@
             ?>
         </div>
 
-        <div class="page-container" id="viewMotores">
+        <div class="page-container d-none" id="viewMotores">
             <?php
             include("view/motor/index.php");
             ?>
