@@ -46,7 +46,7 @@
     <div class="page-wrapper">
 
         <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
+        <!-- <header class="header-mobile d-block d-lg-block">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
@@ -79,8 +79,28 @@
                     </ul>
                 </div>
             </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
+        </header> -->
+        <nav class="nav_mobile d-lg-none">
+            <ul>
+                <li class="dashboardLink active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="empresasLink">
+                    <i class="fas fa-building"></i>
+                    <span>Empresas</span>
+                </li>
+                <li class="tecnicosLink">
+                    <i class="fas fa-user"></i>
+                    <span>Tecnicos</span>
+                </li>
+                <li class="motoresLink">
+                    <i class="fas fa-gear"></i>
+                    <span>Motores</span>
+                </li>
+            </ul>
+        </nav>
+        <!-- END HEADER MOBILE -->
 
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
@@ -92,16 +112,16 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active" id="dashboardLink">
+                        <li class="dashboardLink active">
                             <a class="" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="" id="empresasLink">
+                        <li class="empresasLink">
                             <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
                         </li>
-                        <li class="" id="tecnicosLink">
+                        <li class="tecnicosLink">
                             <a class="" href="#"><i class="fas fa-users"></i>Tecnicos</a>
                         </li>
-                        <li class="" id="motoresLink">
+                        <li class="motoresLink">
                             <a class="" href="#"><i class="fas fa-gears"></i>Motores</a>
                         </li>
                     </ul>

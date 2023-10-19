@@ -12,7 +12,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
   position: relative;
 }
 
@@ -64,3 +64,55 @@
 #piojo,
 #luruaco {
 } */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #e5e5e5;
+}
+
+.nav_mobile {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 10;
+}
+
+.nav_mobile ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  /* border-top: 3px solid black; */
+  padding: 0.5em;
+  background: #fff;
+}
+
+.nav_mobile ul li {
+  border-radius: 50%;
+  /* background: #39a900; */
+  color: #555;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25em;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.nav_mobile ul li span {
+  font-size: 11px;
+}
+
+.nav_mobile ul li:hover {
+  color: #4272d7;
+}
+
+.active {
+  color: #4272d7 !important;
+}
