@@ -14,20 +14,27 @@ class empresa_model
                             emp_correo,
                             emp_telefono,
                             emp_direccion,
-                            emp_municipio,
+                            emp_municipioFK,
                             emp_contrasena) 
                             VALUES (?,?,?,?,?,?,?)";
 
         $st = $c->prepare($sql);
 
         $v = array(
-            $data["id"],             // Valor para emp_id
-            $data["nombre"],         // Valor para emp_nombre
-            $data["correo"],         // Valor para emp_correo
-            $data["telefono"],       // Valor para emp_telefono
-            $data["direccion"],      // Valor para emp_direccion
-            $data["municipio"],      // Valor para emp_municipio
-            password_hash($data["id"], PASSWORD_ARGON2I) // Encriptar la contraseña con Argon2
+            // Valor para emp_id
+            $data["id"],
+            // Valor para emp_nombre
+            $data["nombre"],
+            // Valor para emp_correo
+            $data["correo"],
+            // Valor para emp_telefono
+            $data["telefono"],
+            // Valor para emp_direccion
+            $data["direccion"],
+            // Valor para emp_municipio
+            $data["municipio"],
+            // Encriptar la contraseña con Argon2
+            password_hash($data["id"], PASSWORD_ARGON2I)
         );
 
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado

@@ -40,5 +40,4 @@
 </div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
-<!-- <script type="module" src="public/js/alertas.js"></script> -->
 <script type="module" src="public/js/login.js"></script>

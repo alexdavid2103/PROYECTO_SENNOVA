@@ -1,10 +1,10 @@
 // Obtén una referencia al elemento departamentos
-let departamentosSelect = document.getElementById("emp_departamento");
+let departamentosSelect = document.getElementById("add_emp_departamento");
 
 // Agrega un manejador de eventos onchange al elemento departamentos
 departamentosSelect.addEventListener("change", async () => {
   let departamentos = departamentosSelect.value;
-  let municipios = document.getElementById("emp_municipio");
+  let municipios = document.getElementById("add_emp_municipio");
 
   let respuesta = await fetch(
     `?controller=empresa&action=APImunicipios&id=${departamentos}`

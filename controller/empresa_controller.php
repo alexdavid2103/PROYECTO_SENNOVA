@@ -21,7 +21,7 @@ class empresa_controller
     {
         // Obtener los datos del formulario POST
         extract($_POST);
-
+        $url = "?controller=dashboard&action=index";
         // Crear un arreglo asociativo con los datos de la empresa
         $data = array(
             "id" => $id,
@@ -35,17 +35,29 @@ class empresa_controller
         // Llamar a la función estática add en el modelo empresa_modelo
         $r = empresa_model::add($data);
 
+        if ($r > 0) {
+            // Si se registró correctamente, inicia sesión automáticamente con los datos registrados
+            $_SESSION['id'] = $id;
+            $_SESSION['nombre'] = $nombre;
+            $_SESSION['rol'] = 'emp'; // Suponiendo que 'emp' es el rol para la empresa
+
+            $estado = 1; // Cambia el estado de validación a 1 (validado)
+            $mensaje = "Se registró"; // Mensaje de éxito
+        } else {
+            $estado = 0; // Estado de validación en 0 (no validado)
+            $mensaje = "Error al registrar"; // Mensaje de error
+        }
+
         // Preparar la respuesta en formato JSON
         $response = array(
-            "mensaje" => ($r > 0) ? "Se registró" : "Error al registrar",
-            "estado" => ($r > 0) ? 1 : 0
+            "mensaje" => $mensaje,
+            "estado" => $estado,
+            "url" => $url,
         );
 
         // Enviar la respuesta como JSON
         echo json_encode($response);
     }
-
-
 
     // Función para editar los datos de una empresa en la base de datos
     public function edit()
