@@ -289,7 +289,13 @@
                                                 <i class="fas fa-building"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>388</h2>
+                                                <?php
+                                                    $count = 0;
+                                                    foreach ($this->empresas as $empresa) {
+                                                        $count++;
+                                                    }
+                                                    echo '<h2>' . $count . '</h2>';
+                                                ?>
                                                 <span>Empresas</span>
                                             </div>
                                         </div>
@@ -304,7 +310,13 @@
                                                 <i class="fas fa-user"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>668</h2>
+                                                <?php
+                                                $count = 0;
+                                                foreach ($this->tecnicos as $tecnico) {
+                                                    $count++;
+                                                }
+                                                echo '<h2>' . $count . '</h2>';
+                                                ?>
                                                 <span>Tecnicos</span>
                                             </div>
                                         </div>
@@ -319,7 +331,13 @@
                                                 <i class="fas fa-cog"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>1,086</h2>
+                                                <?php
+                                                $count = 0;
+                                                foreach ($this->motores as $motor) {
+                                                    $count++;
+                                                }
+                                                echo '<h2>' . $count . '</h2>';
+                                                ?>
                                                 <span>Motores</span>
                                             </div>
                                         </div>
