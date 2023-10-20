@@ -119,10 +119,10 @@
                             <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
                         </li>
                         <li class="tecnicosLink">
-                            <a class="" href="#"><i class="fas fa-users"></i>Tecnicos</a>
+                            <a class="" href="#"><i class="fas fa-user"></i>Tecnicos</a>
                         </li>
                         <li class="motoresLink">
-                            <a class="" href="#"><i class="fas fa-gears"></i>Motores</a>
+                            <a class="" href="#"><i class="fas fa-gear"></i>Motores</a>
                         </li>
                     </ul>
                 </nav>
@@ -738,19 +738,19 @@
         </div>
         <!-- END PAGE CONTAINER-->
 
-        <div class="page-container d-none" id="viewEmpresas">
+        <div class="page-container d-none p-sm-b-100" id="viewEmpresas">
             <?php
             include("view/empresa/index.php");
             ?>
         </div>
 
-        <div class="page-container d-none" id="viewTecnicos">
+        <div class="page-container d-none p-sm-b-100" id="viewTecnicos">
             <?php
             include("view/tecnico/index.php");
             ?>
         </div>
 
-        <div class="page-container d-none" id="viewMotores">
+        <div class="page-container d-none p-sm-b-100" id="viewMotores">
             <?php
             include("view/motor/index.php");
             ?>

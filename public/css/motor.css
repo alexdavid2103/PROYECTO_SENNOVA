@@ -1,8 +1,6 @@
 .cont_charts {
   display: flex;
   flex-direction: column;
-  margin-top: 7em;
-  margin-left: 3em;
   gap: 2em;
 }
 

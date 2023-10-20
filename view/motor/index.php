@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="public/css/motor.css">
-<div class="cont_charts">
+<div class="cont_charts  p-t-100">
     <?php foreach ($this->motores as $captura) {
-        echo '<div class="charts m-lg-l-100">
+        echo '<div class="charts m-auto">
             <h2 class="">' . $captura['infmot_serie'] . '</h2>
             <div class="flex-box">
                 <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
