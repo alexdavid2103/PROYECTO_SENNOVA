@@ -109,7 +109,7 @@ class empresa_model
         // Consulta SQL para verificar si existen las credenciales en la tabla tecnico
         $sql = "SELECT * FROM empresas WHERE emp_id = ? AND emp_contrasena = ?";
         $st = $c->prepare($sql);
-        $v = array($data["id"], sha1($data["password"])); // Valores para tec_id y tec_contraseña
+        $v = array($data["id"], password_hash($data["password"], PASSWORD_ARGON2I)); // Valores para tec_id y tec_contraseña
         $st->execute($v);
         return $st->fetch(); // Retornar el primer resultado de la consulta
     }
