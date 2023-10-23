@@ -106,13 +106,19 @@ class empresa_model
         $obj = new connection();
         $c = $obj->getConnection();
 
-        // Consulta SQL para verificar si existen las credenciales en la tabla tecnico
-        $sql = "SELECT * FROM empresas WHERE emp_id = ? AND emp_contrasena = ?";
+        // Consulta SQL para verificar si existen las credenciales en la tabla empresas
+        $sql = "SELECT * FROM empresas WHERE emp_id = ? LIMIT 1";
         $st = $c->prepare($sql);
-        $v = array($data["id"], password_hash($data["password"], PASSWORD_ARGON2I)); // Valores para tec_id y tec_contraseña
-        $st->execute($v);
-        return $st->fetch(); // Retornar el primer resultado de la consulta
+        $st->execute(array($data["id"]));
+        $result = $st->fetch();
+
+        if ($result && password_verify($data["password"], $result["emp_contrasena"])) {
+            return $result; // Retornar el resultado si las credenciales son válidas
+        } else {
+            return false; // Retornar falso si las credenciales no son válidas
+        }
     }
+
 
     // Función para obtener una lista de todos los registros de departamentos
     public static function listarDepartamentos()

@@ -36,7 +36,7 @@ class main_controller
             header("Location: index.php");
             exit();
         }
-        
+
         $this->obj->departamentos = empresa_model::listarDepartamentos();
         $this->obj->municipios = empresa_model::listarMunicipios(5);
         // Cargar la plantilla de vista "main/registro"
@@ -49,7 +49,7 @@ class main_controller
             header("Location: index.php");
             exit();
         }
-        
+
         $this->obj->departamentos = empresa_model::listarDepartamentos();
         $this->obj->municipios = empresa_model::listarMunicipios(5);
         // Cargar la plantilla de vista "main/contrasena"
@@ -84,8 +84,8 @@ class main_controller
                 if (is_array($r)) {
                     // Si las credenciales son válidas, establecer variables de sesión
                     $_SESSION['id'] = $r["{$rol}_id"];
-                    $_SESSION['nombre'] = $r["{$rol}_nombre1"];
-                    $_SESSION['apellido'] = $r["{$rol}_apellido1"];
+                    $model === $roles['emp'] ? $_SESSION['nombre'] = $r["{$rol}_nombre"] : $_SESSION['nombre'] = $r["{$rol}_nombre1"];
+                    $model === $roles['emp'] ? $_SESSION['apellido'] = "" : $_SESSION['apellido'] = $r["{$rol}_apellido1"];
                     $_SESSION['rol'] = $rol;
                     $estado = 1; // Cambia el estado de validación a 1 (validado)
                     break; // Si se encuentra una coincidencia, sal del bucle
