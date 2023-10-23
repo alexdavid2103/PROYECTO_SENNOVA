@@ -1,3 +1,28 @@
+<link rel="stylesheet" href="public/css/tecnico.css">
+<div class="container">
+    <div class="grid-box">
+        <?php foreach ($this->tecnicos as $tecnico) {
+            echo '<div class="card">
+            <div class="card-info">
+                <div class="card-avatar"><i class="fas fa-user"></i></div>
+                <div class="card-title">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</div>
+                <div class="card-subtitle">';
+            foreach ($this->empresas as $empresa) {
+                if ($tecnico["tec_empresaFK"] === $empresa["emp_id"]) {
+                    echo $empresa["emp_nombre"];
+                }
+            }
+            echo '</div>
+            </div>
+            <ul class="card-social">
+                <li class="card-social__item">
+                </li>
+            </ul>
+        </div>';
+        } ?>
+    </div>
+</div>
+
 <section class="container">
     <header>Registrar Tecnico</header>
     <form action="#" class="form">

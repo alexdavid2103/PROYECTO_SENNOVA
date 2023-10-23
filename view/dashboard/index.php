@@ -44,42 +44,6 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-
-        <!-- HEADER MOBILE-->
-        <!-- <header class="header-mobile d-block d-lg-block">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="?controller=main&action=index">
-                            <img src="public/dashboard/images/senatech.png" alt="SenaTech" />
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        </li>
-                        <li class="" id="">
-                            <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
-                        </li>
-                        <li class="" id="">
-                            <a class="" href="#"><i class="fas fa-users"></i>Tecnicos</a>
-                        </li>
-                        <li class="" id="">
-                            <a class="" href="#"><i class="fas fa-gears"></i>Motores</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header> -->
         <nav class="nav_mobile d-lg-none">
             <ul>
                 <li class="dashboardLink active">
@@ -221,7 +185,11 @@
                                         <img src="public/dashboard/images/icon/avatar-01.jpg" alt="John Doe" />
                                     </div>
                                     <div class="content">
-                                        <a class="js-acc-btn" href="#">john doe</a> <!-- Nombre del usuario -->
+                                        <a class="js-acc-btn" href="#">
+                                            <?php if (isset($_SESSION['id'])) {
+                                                echo $_SESSION['nombre'] . " " . $_SESSION['apellido'];
+                                            } ?>
+                                        </a> <!-- Nombre del usuario -->
                                     </div>
                                     <!-- Opciones de la cuenta del usuario desplegable -->
                                     <div class="account-dropdown js-dropdown">
@@ -234,9 +202,17 @@
                                             </div>
                                             <div class="content">
                                                 <h5 class="name">
-                                                    <a href="#">john doe</a>
+                                                    <a href="#">
+                                                        <?php if (isset($_SESSION['id'])) {
+                                                            echo $_SESSION['nombre'] . " " . $_SESSION['apellido'];
+                                                        } ?>
+                                                    </a>
                                                 </h5>
-                                                <span class="email">johndoe@example.com</span>
+                                                <span class="email">
+                                                    <?php if (isset($_SESSION['id'])) {
+                                                        echo $_SESSION['correo'];
+                                                    } ?>
+                                                </span>
                                                 <!-- Correo electrónico del usuario -->
                                             </div>
                                         </div>
@@ -290,11 +266,11 @@
                                             </div>
                                             <div class="text">
                                                 <?php
-                                                    $count = 0;
-                                                    foreach ($this->empresas as $empresa) {
-                                                        $count++;
-                                                    }
-                                                    echo '<h2>' . $count . '</h2>';
+                                                $count = 0;
+                                                foreach ($this->empresas as $empresa) {
+                                                    $count++;
+                                                }
+                                                echo '<h2>' . $count . '</h2>';
                                                 ?>
                                                 <span>Empresas</span>
                                             </div>
@@ -678,35 +654,35 @@
                                                 </form>
                                             </div>
                                             <div class="au-message-list">
-                                        
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap">
-                                                                <div class="avatar">
-                                                                    <img src="public/dashboard/images/icon/avatar-02.jpg"
-                                                                        alt="John Smith">
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">John Smith</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap">
-                                                                <div class="avatar">
-                                                                    <img src="public/dashboard/images/icon/avatar-06.jpg"
-                                                                        alt="John Smith">
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">John Smith</h5>
+                                                <div class="au-message__item-inner">
+                                                    <div class="au-message__item-text">
+                                                        <div class="avatar-wrap">
+                                                            <div class="avatar">
+                                                                <img src="public/dashboard/images/icon/avatar-02.jpg"
+                                                                    alt="John Smith">
                                                             </div>
                                                         </div>
+                                                        <div class="text">
+                                                            <h5 class="name">John Smith</h5>
+                                                        </div>
                                                     </div>
-                                            
+                                                </div>
+
+                                                <div class="au-message__item-inner">
+                                                    <div class="au-message__item-text">
+                                                        <div class="avatar-wrap">
+                                                            <div class="avatar">
+                                                                <img src="public/dashboard/images/icon/avatar-06.jpg"
+                                                                    alt="John Smith">
+                                                            </div>
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5 class="name">John Smith</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="au-message__footer"></div>
                                         </div>
@@ -733,35 +709,35 @@
                                                 </form>
                                             </div>
                                             <div class="au-message-list">
-                                                
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap online">
-                                                                <div class="avatar">
-                                                                    <img src="public/dashboard/images/icon/avatar-03.jpg"
-                                                                        alt="Nicholas Martinez">
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Nicholas Martinez</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="au-message__item-inner">
-                                                        <div class="au-message__item-text">
-                                                            <div class="avatar-wrap online">
-                                                                <div class="avatar">
-                                                                    <img src="public/dashboard/images/icon/avatar-04.jpg"
-                                                                        alt="Nicholas Martinez">
-                                                                </div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <h5 class="name">Nicholas Martinez</h5>
+                                                <div class="au-message__item-inner">
+                                                    <div class="au-message__item-text">
+                                                        <div class="avatar-wrap online">
+                                                            <div class="avatar">
+                                                                <img src="public/dashboard/images/icon/avatar-03.jpg"
+                                                                    alt="Nicholas Martinez">
                                                             </div>
                                                         </div>
+                                                        <div class="text">
+                                                            <h5 class="name">Nicholas Martinez</h5>
+                                                        </div>
                                                     </div>
-                                             
+                                                </div>
+
+                                                <div class="au-message__item-inner">
+                                                    <div class="au-message__item-text">
+                                                        <div class="avatar-wrap online">
+                                                            <div class="avatar">
+                                                                <img src="public/dashboard/images/icon/avatar-04.jpg"
+                                                                    alt="Nicholas Martinez">
+                                                            </div>
+                                                        </div>
+                                                        <div class="text">
+                                                            <h5 class="name">Nicholas Martinez</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="au-message__footer"></div>
                                         </div>

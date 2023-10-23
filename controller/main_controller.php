@@ -87,6 +87,7 @@ class main_controller
                     $model === $roles['emp'] ? $_SESSION['nombre'] = $r["{$rol}_nombre"] : $_SESSION['nombre'] = $r["{$rol}_nombre1"];
                     $model === $roles['emp'] ? $_SESSION['apellido'] = "" : $_SESSION['apellido'] = $r["{$rol}_apellido1"];
                     $_SESSION['rol'] = $rol;
+                    $_SESSION['correo'] = $r["{$rol}_correo"];
                     $estado = 1; // Cambia el estado de validación a 1 (validado)
                     break; // Si se encuentra una coincidencia, sal del bucle
                 }
