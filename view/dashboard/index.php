@@ -678,7 +678,7 @@
                                                 </form>
                                             </div>
                                             <div class="au-message-list">
-                                                <div class="au-message__item unread">
+                                        
                                                     <div class="au-message__item-inner">
                                                         <div class="au-message__item-text">
                                                             <div class="avatar-wrap">
@@ -692,7 +692,21 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+
+                                                    <div class="au-message__item-inner">
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap">
+                                                                <div class="avatar">
+                                                                    <img src="public/dashboard/images/icon/avatar-06.jpg"
+                                                                        alt="John Smith">
+                                                                </div>
+                                                            </div>
+                                                            <div class="text">
+                                                                <h5 class="name">John Smith</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            
                                             </div>
                                             <div class="au-message__footer"></div>
                                         </div>
@@ -719,7 +733,7 @@
                                                 </form>
                                             </div>
                                             <div class="au-message-list">
-                                                <div class="au-message__item unread">
+                                                
                                                     <div class="au-message__item-inner">
                                                         <div class="au-message__item-text">
                                                             <div class="avatar-wrap online">
@@ -733,7 +747,21 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+
+                                                    <div class="au-message__item-inner">
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap online">
+                                                                <div class="avatar">
+                                                                    <img src="public/dashboard/images/icon/avatar-04.jpg"
+                                                                        alt="Nicholas Martinez">
+                                                                </div>
+                                                            </div>
+                                                            <div class="text">
+                                                                <h5 class="name">Nicholas Martinez</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                             
                                             </div>
                                             <div class="au-message__footer"></div>
                                         </div>
@@ -744,8 +772,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
-                                            href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Copyright © 2023 SENNOVA. Todos los derechos reservados. <a
+                                            href="#">SENNOVA</a>.co</p>
                                 </div>
                             </div>
                         </div>
