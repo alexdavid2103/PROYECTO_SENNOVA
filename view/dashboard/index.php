@@ -219,7 +219,7 @@
                                         <!-- Opciones de la cuenta del usuario -->
                                         <div class="account-dropdown__body">
                                             <div class="account-dropdown__item">
-                                                <a href="#">
+                                                <a href="#" class="">
                                                     <i class="zmdi zmdi-account"></i>Account</a>
                                             </div>
                                             <div class="account-dropdown__item">
@@ -655,33 +655,21 @@
                                             </div>
                                             <div class="au-message-list">
 
-                                                <div class="au-message__item-inner">
-                                                    <div class="au-message__item-text">
-                                                        <div class="avatar-wrap">
-                                                            <div class="avatar">
-                                                                <img src="public/dashboard/images/icon/avatar-02.jpg"
-                                                                    alt="John Smith">
+                                                <?php foreach ($this->empresas as $empresa) {
+                                                    echo '<div class="au-message__item-inner">
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap online">
+                                                                <div class="avatar">
+                                                                    <img src="public/dashboard/images/icon/avatar-03.jpg"
+                                                                        alt="Nicholas Martinez">
+                                                                </div>
+                                                            </div>
+                                                            <div class="text">
+                                                                <h5 class="name">' . $empresa["emp_nombre"] . '</h5>
                                                             </div>
                                                         </div>
-                                                        <div class="text">
-                                                            <h5 class="name">John Smith</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="au-message__item-inner">
-                                                    <div class="au-message__item-text">
-                                                        <div class="avatar-wrap">
-                                                            <div class="avatar">
-                                                                <img src="public/dashboard/images/icon/avatar-06.jpg"
-                                                                    alt="John Smith">
-                                                            </div>
-                                                        </div>
-                                                        <div class="text">
-                                                            <h5 class="name">John Smith</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </div>';
+                                                } ?>
 
                                             </div>
                                             <div class="au-message__footer"></div>
@@ -710,33 +698,21 @@
                                             </div>
                                             <div class="au-message-list">
 
-                                                <div class="au-message__item-inner">
-                                                    <div class="au-message__item-text">
-                                                        <div class="avatar-wrap online">
-                                                            <div class="avatar">
-                                                                <img src="public/dashboard/images/icon/avatar-03.jpg"
-                                                                    alt="Nicholas Martinez">
+                                                <?php foreach ($this->tecnicos as $tecnico) {
+                                                    echo '<div class="au-message__item-inner">
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap">
+                                                                <div class="avatar">
+                                                                    <img src="public/dashboard/images/icon/avatar-03.jpg"
+                                                                        alt="Nicholas Martinez">
+                                                                </div>
+                                                            </div>
+                                                            <div class="text">
+                                                                <h5 class="name">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] .'</h5>
                                                             </div>
                                                         </div>
-                                                        <div class="text">
-                                                            <h5 class="name">Nicholas Martinez</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="au-message__item-inner">
-                                                    <div class="au-message__item-text">
-                                                        <div class="avatar-wrap online">
-                                                            <div class="avatar">
-                                                                <img src="public/dashboard/images/icon/avatar-04.jpg"
-                                                                    alt="Nicholas Martinez">
-                                                            </div>
-                                                        </div>
-                                                        <div class="text">
-                                                            <h5 class="name">Nicholas Martinez</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </div>';
+                                                } ?>
 
                                             </div>
                                             <div class="au-message__footer"></div>
@@ -760,19 +736,19 @@
         </div>
         <!-- END PAGE CONTAINER-->
 
-        <div class="page-container d-none p-sm-b-100" id="viewEmpresas">
+        <div class="page-container d-none p-md-b-100" id="viewEmpresas">
             <?php
             include("view/empresa/index.php");
             ?>
         </div>
 
-        <div class="page-container d-none p-sm-b-100" id="viewTecnicos">
+        <div class="page-container d-none p-md-b-100" id="viewTecnicos">
             <?php
             include("view/tecnico/index.php");
             ?>
         </div>
 
-        <div class="page-container d-none p-sm-b-100" id="viewMotores">
+        <div class="page-container d-none p-md-b-100" id="viewMotores">
             <?php
             include("view/motor/index.php");
             ?>

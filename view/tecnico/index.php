@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="public/css/tecnico.css">
 <div class="container">
-    <div class="grid-box">
+    <div class="flex-box flex-wrap gap-4">
         <?php foreach ($this->tecnicos as $tecnico) {
-            echo '<div class="card">
+            echo '<div class="card m-0">
             <div class="card-info">
                 <div class="card-avatar"><i class="fas fa-user"></i></div>
                 <div class="card-title">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</div>
@@ -25,59 +25,67 @@
 
 <section class="container">
     <header>Registrar Tecnico</header>
-    <form action="#" class="form">
+    <form action="?controller=tecnicos&action=add" class="form" id="form_add_tecnico" onsubmit="return false">
         <div class="column">
             <div class="input-box">
-                <label>Nombre</label>
-                <input type="text" id="" placeholder="Ingrese su primer nombre" required />
+                <label>Numero de documenro</label>
+                <input type="number" id="add_tec_id" placeholder="Ingrese su numero de documento" />
+            </div>
+        </div>
+        <div class="column">
+            <div class="input-box">
+                <label>Primer nombre</label>
+                <input type="text" id="add_tec_nombre1" placeholder="Ingrese su primer nombre" />
             </div>
 
             <div class="input-box">
                 <label>Segundo Nombre</label>
-                <input type="text" id="" placeholder="Ingrese su segundo nombre" required />
+                <input type="text" id="add_tec_nombre2" placeholder="Ingrese su segundo nombre" />
             </div>
         </div>
 
         <div class="column">
             <div class="input-box">
-                <label>Apellido</label>
-                <input type="text" id="" placeholder="Ingrese su primer apellido" required />
+                <label>Primer apellido</label>
+                <input type="text" id="add_tec_apellido1" placeholder="Ingrese su primer apellido" />
             </div>
             <div class="input-box">
                 <label>Segundo Apellido</label>
-                <input type="text" id="" placeholder="Ingrese su segundo apellido" required />
+                <input type="text" id="add_tec_apellido2" placeholder="Ingrese su segundo apellido" />
             </div>
         </div>
 
         <div class="input-box">
             <label>Correo Electronico</label>
-            <input type="text" id="" placeholder="Ingrese su correo electronico" required />
+            <input type="text" id="add_tec_correo" placeholder="Ingrese su correo electronico" />
         </div>
 
         <div class="column">
             <div class="input-box">
                 <label>Telefono</label>
-                <input type="number" id="" placeholder="Ingrese su numero de telefono" required />
+                <input type="number" id="add_tec_telefono" placeholder="Ingrese su numero de telefono" />
             </div>
             <div class="input-box">
                 <label>Dirección</label>
-                <input type="text" placeholder="Ingrese su dirección" required />
+                <input type="text" id="add_tec_direccion" placeholder="Ingrese su dirección" />
             </div>
         </div>
 
         <div class="column">
             <div class="input-box">
-                <label>Foto</label>
-                <input type="file" id="" placeholder="Ingrese su foto" required />
-            </div>
-            <div class="input-box">
-                <label>Contraseña</label>
-                <input type="text" id="" placeholder="Digite su contraseña" required />
+                <label>Empresa</label>
+                <select name="" id="add_tec_empresa" class="">
+                    <option value="">Seleccione la empresa a la que pertenece</option>
+                    <?php foreach ($this->empresas as $empresa) {
+                        echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                    } ?>
+                </select>
             </div>
         </div>
 
-        <button>Guardar Datos</button>
+        <button type="submit">Guardar Datos</button>
     </form>
 </section>
 
-<script src="public/js/tecnicos.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
+<script type="module" src="public/js/tecnicos.js"></script>

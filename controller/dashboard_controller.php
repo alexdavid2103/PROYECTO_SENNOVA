@@ -14,10 +14,10 @@ class dashboard_controller
     // Función para cargar la vista principal de motores
     public function index()
     {
-        // if (!isset($_SESSION['id'])) {
-        //     header("Location: /PROYECTO_SENOVA");
-        //     exit();
-        // }
+        if (!isset($_SESSION['id'])) {
+            header("Location: /PROYECTO_SENNOVA");
+            exit();
+        }
         $this->obj->motores = motor_model::listarMotorInfo();
         $this->obj->estados = motor_model::listarMotorEstado();
         $this->obj->ubicaciones = motor_model::listarMotorUbicacion();

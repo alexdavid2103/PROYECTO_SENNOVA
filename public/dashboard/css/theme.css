@@ -3654,11 +3654,17 @@ section {
   font-size: 14px;
   color: #808080;
 }
+.au-message__item-text {
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  gap: 1em;
+}
 
 .au-message__item-text .text {
-  margin-left: 60px;
+  /* margin-left: 60px; */
   padding: 20px 0;
-  padding-left: 23px;
+  /* padding-left: 23px; */
 }
 
 .au-message__item-text .text .name {
@@ -3688,7 +3694,7 @@ section {
   .avatar-wrap {
     float: none;
     display: inline-block;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
 }
 
@@ -3704,7 +3710,7 @@ section {
   border-radius: 100%;
   overflow: hidden;
 }
-
+/* 
 .avatar::after {
   content: "";
   display: block;
@@ -3718,7 +3724,8 @@ section {
   position: absolute;
   bottom: 0;
   right: 0;
-}
+} 
+*/
 
 .avatar--small {
   height: 50px;

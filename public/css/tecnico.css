@@ -1,9 +1,9 @@
-.grid-box {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(2, max-content);
-    gap: 1.5em;
-}
+/* .grid-box {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, max-content);
+  gap: 1.5em;
+} */
 
 .card {
   width: 190px;
@@ -35,7 +35,7 @@
 }
 
 .card-avatar .fa-user {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 /*Card footer*/

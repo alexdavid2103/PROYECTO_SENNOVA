@@ -3,49 +3,50 @@ class tecnico_model
 {
     // Función para agregar un técnico a la base de datos
     public static function add($data)
-{
-    $obj = new connection();
-    $c = $obj->getConnection();
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
 
-    // Consulta SQL para insertar datos en la tabla tecnico
-    $sql = "INSERT INTO tecnico (
+        // Consulta SQL para insertar datos en la tabla tecnico
+        $sql = "INSERT INTO tecnicos (
                                     tec_id, 
-                                    tec_empresa,
-                                    tec_contraseña, 
-                                    tec_nombre, 
-                                    tec_apellido, 
-                                    tec_direccion, 
+                                    tec_nombre1,
+                                    tec_nombre2, 
+                                    tec_apellido1,
+                                    tec_apellido2, 
+                                    tec_correo, 
                                     tec_telefono, 
-                                    tec_registro)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                                    tec_direccion, 
+                                    tec_contrasena, 
+                                    tec_empresaFK)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $st = $c->prepare($sql);
-    
-    // Encriptar la contraseña con Argon2
-    $hashed_password = password_hash($data["password"], PASSWORD_ARGON2I);
+        $st = $c->prepare($sql);
 
-    $v = array(
-        $data["id"],                  // Valor para tec_id
-        $data["empresa"],             // Valor para tec_empresa
-        $hashed_password,             // Valor encriptado para tec_contraseña
-        $data["nombre"],              // Valor para tec_nombre
-        $data["apellido"],            // Valor para tec_apellido
-        $data["direccion"],           // Valor para tec_direccion
-        $data["telefono"],            // Valor para tec_telefono
-        $data["registro"]             // Valor para tec_registro
-    );
-    
-    return $st->execute($v); // Ejecutar la consulta y retornar el resultado
-}
+        $v = array(
+            $data["id"],
+            $data["nombre1"],
+            $data["nombre2"],
+            $data["apellido1"],
+            $data["apellido2"],
+            $data["correo"],
+            $data["telefono"],
+            $data["direccion"],
+            password_hash($data["id"], PASSWORD_ARGON2I),
+            $data["empresa"],
+        );
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+    }
 
     // Función para editar los datos de un técnico en la base de datos
     public static function edit($data)
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para actualizar datos en la tabla tecnico
-        $sql = "UPDATE tecnico SET 
+        $sql = "UPDATE tecnicos SET 
                                     tec_empresa = ?,
                                     tec_nombre = ?,
                                     tec_apellido = ?,
@@ -53,16 +54,22 @@ class tecnico_model
                                     tec_telefono = ?,
                                     tec_registro = ?
                                     WHERE tec_id = ?";
-        
+
         $st = $c->prepare($sql);
         $v = array(
-            $data["empresa"],             // Nuevo valor para tec_empresa
-            $data["nombre"],              // Nuevo valor para tec_nombre
-            $data["apellido"],            // Nuevo valor para tec_apellido
-            $data["direccion"],           // Nuevo valor para tec_direccion
-            $data["telefono"],            // Nuevo valor para tec_telefono
-            $data["registro"],            // Nuevo valor para tec_registro
-            $data["id"]                   // Valor para ubicar el registro a actualizar (tec_id)
+            $data["empresa"],
+            // Nuevo valor para tec_empresa
+            $data["nombre"],
+            // Nuevo valor para tec_nombre
+            $data["apellido"],
+            // Nuevo valor para tec_apellido
+            $data["direccion"],
+            // Nuevo valor para tec_direccion
+            $data["telefono"],
+            // Nuevo valor para tec_telefono
+            $data["registro"],
+            // Nuevo valor para tec_registro
+            $data["id"] // Valor para ubicar el registro a actualizar (tec_id)
         );
 
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
@@ -73,9 +80,9 @@ class tecnico_model
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para eliminar un registro de la tabla tecnico
-        $sql = "DELETE FROM tecnico WHERE tec_id = ?";
+        $sql = "DELETE FROM tecnicos WHERE tec_id = ?";
         $st = $c->prepare($sql);
         $v = array($id); // Valor para ubicar el registro a eliminar (tec_id)
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
@@ -86,13 +93,18 @@ class tecnico_model
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
-        // Consulta SQL para verificar si existen las credenciales en la tabla tecnico
-        $sql = "SELECT * FROM tecnicos WHERE tec_id = ? AND tec_contrasena = ?";
+
+        // Consulta SQL para verificar si existen las credenciales en la tabla empresas
+        $sql = "SELECT * FROM tecnicos WHERE tec_id = ? LIMIT 1";
         $st = $c->prepare($sql);
-        $v = array($data["id"], sha1($data["password"])); // Valores para tec_id y tec_contraseña
-        $st->execute($v);
-        return $st->fetch(); // Retornar el primer resultado de la consulta
+        $st->execute(array($data["id"]));
+        $result = $st->fetch();
+
+        if ($result && password_verify($data["password"], $result["tec_contrasena"])) {
+            return $result; // Retornar el resultado si las credenciales son válidas
+        } else {
+            return false; // Retornar falso si las credenciales no son válidas
+        }
     }
 
     // Función para obtener una lista de todos los técnicos
@@ -100,7 +112,7 @@ class tecnico_model
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        
+
         // Consulta SQL para seleccionar todos los registros de la tabla tecnico
         $sql = "SELECT * FROM tecnicos ";
         $st = $c->prepare($sql);

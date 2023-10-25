@@ -6,16 +6,22 @@
   display: none;
 }
 
-
 .container {
   position: relative;
-  max-width: 700px;
+  max-width: 800px;
   width: 100%;
   background: #fff;
   padding: 25px;
   margin-top: 100px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: calc(100% - 2em);
+    margin-top: 0;
+  }
 }
 
 .container header {
@@ -37,7 +43,9 @@
 .input-box label {
   color: #333;
 }
-.form :where(.input-box input, .select-box) {
+
+.form :where(.input-box input, .select-box),
+.form :where(.input-box select, .select-box) {
   position: relative;
   height: 50px;
   width: 100%;
@@ -50,40 +58,50 @@
   padding: 0 15px;
 }
 
+.input-box input:focus,
 .input-box input:focus {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
+
 .form .column {
   display: flex;
   column-gap: 15px;
 }
+
 .form .gender-box {
   margin-top: 20px;
 }
+
 .gender-box h3 {
   color: #333;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 8px;
 }
+
 .form :where(.gender-option, .gender) {
   display: flex;
   align-items: center;
   column-gap: 50px;
   flex-wrap: wrap;
 }
+
 .form .gender {
   column-gap: 5px;
 }
+
 .form :where(.gender input, .gender label) {
   cursor: pointer;
 }
+
 .gender label {
   color: #707070;
 }
+
 .address :where(input, .select-box) {
   margin-top: 15px;
 }
+
 .select-box select {
   height: 100%;
   width: 100%;
@@ -103,11 +121,13 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #457B9D;
+  background: #457b9d;
 }
+
 .form button:hover {
-  background: #1D3557;
+  background: #1d3557;
 }
+
 /*Responsive*/
 @media screen and (max-width: 500px) {
   .form .column {

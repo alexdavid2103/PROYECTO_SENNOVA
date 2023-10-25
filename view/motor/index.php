@@ -240,6 +240,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="public/js/motores.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
+<script type="module" src="public/js/motores.js"></script>
 <script src="public/js/form.js"></script>
 <script src="public/js/graficos.js"></script>
