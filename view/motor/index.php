@@ -212,7 +212,7 @@
                         <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
                             <?php foreach ($this->tecnicos as $tecnico) {
-                                echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . '</option>';
+                                echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] .'</option>';
                             } ?>
                         </select>
 
@@ -234,7 +234,8 @@
                     <p class="sucess-text">Motor agregado exitosamente. Gracias.</p>
                     <button id="reset-btn" type="reset">Regresar</button>
                 </div>
-
+            </div>
+        </div>
     </form>
 </div>
 
