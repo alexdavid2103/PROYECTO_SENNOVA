@@ -24,10 +24,6 @@ form_add_tecnico.addEventListener("submit", async (event) => {
     "add_tec_empresa",
   ];
 
-campos.forEach((campo) => {
-    console.log(campo)
-})
-
   const camposLabels = {
     add_tec_id: "numero de documento",
     add_tec_nombre1: "Primer nombre",
