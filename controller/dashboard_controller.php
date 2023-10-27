@@ -18,6 +18,7 @@ class dashboard_controller
             header("Location: /PROYECTO_SENNOVA");
             exit();
         }
+        $this->obj->setLoadHeaderFooter(false);
         $this->obj->motores = motor_model::listarMotorInfo();
         $this->obj->estados = motor_model::listarMotorEstado();
         $this->obj->ubicaciones = motor_model::listarMotorUbicacion();

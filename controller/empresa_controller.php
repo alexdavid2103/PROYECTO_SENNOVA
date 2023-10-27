@@ -12,8 +12,15 @@ class empresa_controller
     // Función para cargar la vista principal de empresas
     public function index()
     {
+        $this->obj->setLoadHeaderFooter(false);
         // Cargar la plantilla de vista "empresa/index"
         $this->obj->loadTemplate("empresa/index");
+    }
+    public function ubicacionMotor()
+    {
+        $this->obj->setLoadHeaderFooter(false);
+        // Cargar la plantilla de vista "empresa/index"
+        $this->obj->loadTemplate("empresa/ubicacion_motor");
     }
 
     // Función para agregar una empresa a la base de datos
@@ -21,7 +28,7 @@ class empresa_controller
     {
         // Obtener los datos del formulario POST
         extract($_POST);
-        $url = "?controller=dashboard&action=index";
+        $url = "?controller=empresa&action=ubicacionMotor";
         // Crear un arreglo asociativo con los datos de la empresa
         $data = array(
             "id" => $id,
@@ -100,10 +107,10 @@ class empresa_controller
         }
     }
 
-    public function APImunicipios()
-    {
-        $id = $_GET["id"];
-        $municipios = empresa_model::listarMunicipios($id);
-        echo json_encode($municipios);
-    }
+    // public function APImunicipios()
+    // {
+    //     $id = $_GET["id"];
+    //     $municipios = empresa_model::listarMunicipios($id);
+    //     echo json_encode($municipios);
+    // }
 }

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Work Sans", sans-serif;
+}
+
+body {
+  background: #e5e5e5;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.form-add-ubimot {
+  width: 100%;
+  max-width: min-content;
+}
+
+.form-add-ubimot-label {
+  font-size: 1em;
+}
+
+.form-add-ubimot-textArea {
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+  height: 100%;
+  max-height: 150px;
+  min-height: 100px;
+  outline: 0;
+  border: 2px solid grey;
+  border-radius: 5px;
+  transition: 0.5s border;
+  display: block;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  font-size: 1.05em;
+}
+
+.form-add-ubimot-textArea:focus {
+  border: 2px solid #39a900;
+}
+
+.form-add-ubimot-text {
+  font-size: 13px;
+  margin: 0.5em 0 1em 0;
+}
+
+.form-add-ubimot-button {
+  padding: 0.35em;
+  border-radius: 5px;
+  border: 0;
+  border: 2px solid #39a900;
+  background: #39a900;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.5s;
+  /* margin-left: calc(100% - 85.2px); */
+  width: 100%;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.form-add-ubimot-button:hover {
+  background: none;
+  color: #39a900;
+}

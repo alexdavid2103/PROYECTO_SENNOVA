@@ -28,12 +28,7 @@
           <input type="text" id="add_emp_telefono" placeholder="Ingrese su telefono">
         </div>
 
-        <div class="input-box">
-          <span class="details">Dirección</span>
-          <input type="text" id="add_emp_direccion" placeholder="Ingrese su dirección">
-        </div>
-
-        <div class="input-box">
+        <!-- <div class="input-box">
           <span class="details" for="Sexo">Departamento</span>
           <select class="select" name="Sexo" id="add_emp_departamento">
             <option value="" selected>Seleciona tu departamento</option>
@@ -41,7 +36,7 @@
               echo '<option value="' . $departamento['dep_id'] . '">' . $departamento['dep_nombre'] . '</option>';
             } ?>
           </select>
-        </div>
+        </div> -->
 
         <div class="input-box">
           <span class="details" for="Sexo">Municipio</span>
@@ -53,10 +48,15 @@
           </select>
         </div>
 
+        <div class="input-box">
+          <span class="details">Dirección</span>
+          <input type="text" id="add_emp_direccion" placeholder="Ingrese su dirección">
+        </div>
+
         <!-- <div class="input-box">
-          <span class="details">Ubicación<nav></nav></span>
-          <input type="text" id="emp_ubicacion" placeholder="Ingrese la ubicacion del motor" >
-        </div> -->
+            <span class="details">Ubicación<nav></nav></span>
+            <input type="text" id="emp_ubicacion" placeholder="Ingrese la ubicacion del motor" >
+          </div> -->
       </div>
 
       <div class="button">
@@ -72,5 +72,5 @@
 </div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
-<script src="public/js/filtroMunicipios.js"></script>
+<!-- <script src="public/js/filtroMunicipios.js"></script> -->
 <script type="module" src="public/js/registro.js"></script>

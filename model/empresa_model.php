@@ -140,7 +140,7 @@ class empresa_model
         $c = $obj->getConnection();
 
         // Consulta SQL para seleccionar todos los registros de la tabla municipios
-        $sql = "SELECT * FROM municipios WHERE mun_departamentoFK = $id";
+        $sql = "SELECT * FROM municipios WHERE mun_departamentoFK = 8";
         $st = $c->prepare($sql);
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo

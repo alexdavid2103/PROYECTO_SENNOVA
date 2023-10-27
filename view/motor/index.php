@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="public/css/motor.css">
+
 <div class="cont_charts  p-t-100">
     <?php foreach ($this->motores as $captura) {
         echo '<div class="charts m-auto">

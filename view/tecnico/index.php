@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="public/css/tecnico.css">
+
 <div class="container">
-    <div class="flex-box flex-wrap gap-4">
+    <div class="flex-box">
         <?php foreach ($this->tecnicos as $tecnico) {
             echo '<div class="card m-0">
             <div class="card-info">

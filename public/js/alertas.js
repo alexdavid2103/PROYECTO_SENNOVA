@@ -1,5 +1,3 @@
-// ... (código anterior)
-
 // |================================== ALERTAS ==================================|//
 
 export function alertWarning(text) {
@@ -60,5 +58,3 @@ export function alertError(text) {
     });
   });
 }
-
-// ... (código posterior)

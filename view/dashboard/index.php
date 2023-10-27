@@ -636,8 +636,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title"
-                                        style="background-image:url('public/images/bg-title-01.jpg');">
+                                    <div class="au-card-title">
                                         <div class="bg-overlay bg-overlay--blue"></div>
                                         <h3><i class="fas fa-building"></i>Empresas</h3>
                                     </div>
@@ -679,8 +678,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                                    <div class="au-card-title"
-                                        style="background-image:url('public/landing_page/images/bg-title-02.jpg');">
+                                    <div class="au-card-title">
                                         <div class="bg-overlay bg-overlay--blue"></div>
                                         <h3><i class="fas fa-users"></i>Tecnicos</h3>
                                     </div>
@@ -708,7 +706,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="text">
-                                                                <h5 class="name">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] .'</h5>
+                                                                <h5 class="name">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</h5>
                                                             </div>
                                                         </div>
                                                     </div>';
