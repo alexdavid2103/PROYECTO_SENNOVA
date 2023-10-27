@@ -39,6 +39,8 @@ class empresa_controller
             // Si se registró correctamente, inicia sesión automáticamente con los datos registrados
             $_SESSION['id'] = $id;
             $_SESSION['nombre'] = $nombre;
+            $_SESSION['correo'] = $correo;
+            $_SESSION['apellido'] = "";
             $_SESSION['rol'] = 'emp'; // Suponiendo que 'emp' es el rol para la empresa
 
             $estado = 1; // Cambia el estado de validación a 1 (validado)
