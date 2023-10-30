@@ -1,4 +1,4 @@
-import { alertSuccess, alertError } from "alertas.js";
+import { alertSuccess, alertError } from "./alertas.js";
 
 // CAMBIAR CONTRASEÑA USUARIO -------------------------------------------------
 const validarContrasenaAprendiz = (contrasena) => {

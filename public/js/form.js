@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
   const stepPrev1 = document.getElementById("step-prev-1");
   const stepPrev2 = document.getElementById("step-prev-2");
   const stepPrev3 = document.getElementById("step-prev-3");
-  const stepPrev4 = document.getElementById("step-prev-4");
+  // const stepPrev4 = document.getElementById("step-prev-4");
 
   const sucessBox = document.getElementById("sucess-box");
   const ResetBtn = document.getElementById("reset-btn");
@@ -60,11 +60,11 @@ window.addEventListener("load", () => {
     step4.classList.remove("active");
   });
 
-  stepPrev4.addEventListener("click", () => {
-      stepGroup4.style.display = "none";
-      stepGroup3.style.display = "block";
-      step4.classList.remove("active");
-  })
+  // stepPrev4.addEventListener("click", () => {
+  //     stepGroup4.style.display = "none";
+  //     stepGroup3.style.display = "block";
+  //     step4.classList.remove("active");
+  // })
 
   stepNext4.addEventListener("click", () => {
     formContainerBox.style.display = "none";

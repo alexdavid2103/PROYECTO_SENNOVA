@@ -1,3 +1,27 @@
+<div class="container">
+    <div class="flex-box">
+        <?php foreach ($this->empresas as $empresa) {
+            echo '<div class="card m-0">
+            <div class="card-info">
+                <div class="card-avatar"><i class="fas fa-user"></i></div>
+                <div class="card-title">' . $empresa["emp_nombre"] . '</div>
+                <div class="card-subtitle">';
+            // foreach ($this->empresas as $empresa) {
+            //     if ($tecnico["tec_empresaFK"] === $empresa["emp_id"]) {
+            //         echo $empresa["emp_nombre"];
+            //     }
+            // }
+            echo '</div>
+            </div>
+            <ul class="card-social">
+                <li class="card-social__item">
+                </li>
+            </ul>
+        </div>';
+        } ?>
+    </div>
+</div>
+
 <!-- PAGE CONTAINER-->
 <section class="container">
     <header>Registration Form</header>

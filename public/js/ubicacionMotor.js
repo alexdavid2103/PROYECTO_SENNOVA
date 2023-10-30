@@ -1,4 +1,4 @@
-import { alertSuccess, alertWarning, alertError } from "./alertas.js";
+import { alertSuccess, alertWarning, alertError, alertInfo } from "./alertas.js";
 // Función que se activa al enviar el formulario
 document.getElementById("form_add_ubimot").onsubmit = () => {
   // Obtiene el valor del textarea con el ID "add_ubimot"
@@ -32,8 +32,8 @@ document.getElementById("form_add_ubimot").onsubmit = () => {
   }
 
   // Imprime el array resultante en la consola para fines de depuración
-  console.log(array_resultante);
-  alertSuccess("Se han registrado correctamente")
+  alertInfo(array_resultante);
+  // alertSuccess("Se han registrado correctamente")
 
   // Aquí puedes realizar operaciones adicionales con el array resultante si es necesario
 

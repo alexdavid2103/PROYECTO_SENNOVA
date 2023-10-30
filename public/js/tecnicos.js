@@ -83,8 +83,9 @@ form_add_tecnico.addEventListener("submit", async (event) => {
 
   // Mostrar un mensaje de éxito o error según la respuesta del servidor
   if (info.estado === 1) {
-    alertSuccess("Se ha registrado correctamente");
-    window.location.reload(); // Recargar la página
+    alertSuccess("Se ha registrado correctamente").then(() => {
+      window.location.reload(); // Recargar la página
+    });
   } else {
     alertError("El técnico ya se encuentra registrado");
   }

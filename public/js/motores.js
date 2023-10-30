@@ -3,7 +3,7 @@ import {
   advanceAlertWarning,
   alertSuccess,
   alertError,
-} from "alertas.js";
+} from "./alertas.js";
 
 // |================================== MOTORES ==================================| //
 
@@ -56,15 +56,14 @@ for (const field of requiredFields) {
 }
 
 // Manejar el evento de envío del formulario
-const form_reg_motor = document.getElementById("reg_motor");
-form_reg_motor.addEventListener("submit", async (event) => {
+const form_add_motor = document.querySelector(".form_add_motor");
+form_add_motor.addEventListener("submit", async (event) => {
   event.preventDefault(); // Evitar el envío del formulario por defecto
 
   if (!areAllFieldsFilled) {
     // Mostrar una alerta si no se llenaron todos los campos
     alertWarning(
-      (text =
-        "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente")
+      "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente"
     );
     return false; // Evitar que se envíe el formulario
   }
@@ -80,11 +79,11 @@ form_reg_motor.addEventListener("submit", async (event) => {
 
   // Mostrar un mensaje de éxito o error según la respuesta del servidor
   if (info.estado === 1) {
-    alertSuccess((text = "Se ha registrado correctamente")).then(() => {
-      form_reg_motor.reset(); // Limpiar el formulario
+    alertSuccess("Se ha registrado correctamente").then(() => {
+      window.location.reload(); // Limpiar el formulario
     });
   } else {
-    alertError((text = "Error al registrar"));
+    alertError("Error al registrar");
   }
 });
 
@@ -169,7 +168,7 @@ let editMotor = async () => {
       });
     } else {
       // Mostrar mensaje de error si hubo un problema durante la edición
-      alertError((text = "Error al editar"));
+      alertError("Error al editar");
     }
   });
 };
