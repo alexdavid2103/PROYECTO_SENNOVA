@@ -52,7 +52,7 @@
           <span class="details">Dirección</span>
           <input type="text" id="add_emp_direccion" placeholder="Ingrese su dirección">
         </div>
-
+            
         <!-- <div class="input-box">
             <span class="details">Ubicación<nav></nav></span>
             <input type="text" id="emp_ubicacion" placeholder="Ingrese la ubicacion del motor" >
