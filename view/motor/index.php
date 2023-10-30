@@ -27,11 +27,21 @@
             <!-- ======================Step Group 1============== -->
             <div class="step-group" id="step-group-1">
                 <div class="form-box">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
                             <option value="">Seleccione la empresa a la que pertenece el motor</option>
                             <?php foreach ($this->empresas as $empresa) {
                                 echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                            } ?>
+                        </select>
+                    </div> -->
+                    <div class="form-group">
+                        <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
+                            <option value="">Seleccione la ubicación en la que se encuetra el motor</option>
+                            <?php foreach ($this->ubicaciones as $ubicacion) {
+                                // if ($ubicacion["ubimot_empresaFK"] == $_SESSION["id"]) {
+                                echo '<option value="' . $ubicacion["ubimot_id"] . '">' . $ubicacion["ubimot_area"] . '</option>';
+                                // }
                             } ?>
                         </select>
                     </div>
@@ -41,7 +51,12 @@
                         <input type="text" id="add_mot_serie" class="form-field" placeholder="Serie">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="add_mot_norma" class="form-field" placeholder="Norma">
+                        <select id="add_mot_norma" class="form-field" placeholder="Norma">
+                            <option value="">Seleccione la norma del motor</option>
+                            <?php foreach ($this->normas as $norma) {
+                                echo '<option value="' . $norma["normot_id"] . '">' . $norma["normot_nombre"] . '</option>';
+                            } ?>
+                        </select>
                     </div>
                 </div>
 
@@ -213,7 +228,7 @@
                         <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
                             <?php foreach ($this->tecnicos as $tecnico) {
-                                echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] .'</option>';
+                                echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</option>';
                             } ?>
                         </select>
 

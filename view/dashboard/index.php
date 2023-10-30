@@ -10,6 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
+    <link rel="shortcut icon" href="public/img/logo.png" type="image/x-icon">
     <title>Dashboard</title>
 
     <!-- Fontfaces CSS-->

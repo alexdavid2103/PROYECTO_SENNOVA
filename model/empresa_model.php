@@ -145,4 +145,24 @@ class empresa_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
+
+    // Función para agregar información de una empresas a la base de datos
+    public static function addUbicacionMotor($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para insertar datos en la tabla motor_ubicacion
+        $sql = "INSERT INTO motor_ubicacion (ubimot_area, ubimot_empresaFK) VALUES (?, ?)";
+
+        $st = $c->prepare($sql);
+
+        $v = array(
+            $data['ubimot_area'],
+            $data['ubimot_empresaFK'],
+        );
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+    }
+
 }

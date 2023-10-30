@@ -277,6 +277,16 @@ class motor_model
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
 
+    public static function listarMotorNorma()
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
 
+        // Consulta SQL para seleccionar todos los registros de la tabla motor_informacion
+        $sql = "SELECT * FROM motor_norma";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
 }
 ?>

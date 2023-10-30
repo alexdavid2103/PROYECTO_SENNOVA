@@ -44,7 +44,18 @@ export function alertSuccess(text) {
   });
 }
 
-export function alertInfo() {}
+export function alertInfo(text) {
+  return new Promise((resolve, reject) => {
+    swal({
+      title: "Información",
+      text: text,
+      icon: "info",
+      button: "Ok",
+    }).then(() => {
+      resolve();
+    });
+  });
+}
 
 export function alertError(text) {
   return new Promise((resolve, reject) => {

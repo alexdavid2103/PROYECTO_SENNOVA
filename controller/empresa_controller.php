@@ -107,6 +107,71 @@ class empresa_controller
         }
     }
 
+    // Función para agregar una empresa a la base de datos
+    public function addUbicacionMotor()
+    {
+        // Verificar si $_SESSION["id"] está definido y no es nulo
+        if (isset($_SESSION["id"]) && $_SESSION["id"] !== null) {
+            $empresaId = $_SESSION["id"]; // Obtener el ID de la empresa de la sesión
+            $url = "?controller=dashboard&action=index";
+
+            $estado = 0; // Estado de validación inicial en 0
+            $mensaje = "Error al registrar"; // Mensaje de error por defecto
+
+            // Si se proporciona un array_resultante válido desde JavaScript
+            if (isset($_POST['array_resultante'])) {
+                $array_resultante = json_decode($_POST['array_resultante']);
+
+                // Recorre el array y registra cada ubicación en la base de datos
+                foreach ($array_resultante as $ubicacion) {
+                    $data = array(
+                        'ubimot_area' => $ubicacion,
+                        // Asigna el valor de ubicación del array
+                        'ubimot_empresaFK' => $empresaId // Agrega el ID de la empresa al campo correspondiente
+                    );
+
+                    // Llamar a la función estática addUbicacionMotor en el modelo empresa_modelo
+                    $r = empresa_model::addUbicacionMotor($data);
+
+                    if ($r > 0) {
+                        $estado = 1; // Cambia el estado de validación a 1 (validado)
+                        $mensaje = "Se registraron las ubicaciones correctamente"; // Mensaje de éxito
+                    } else {
+                        $estado = 0; // Estado de validación en 0 (no validado)
+                        $mensaje = "Error al registrar las ubicaciones"; // Mensaje de error
+                        break; // Sale del bucle si hay un error en la inserción
+                    }
+                }
+            } else {
+                $mensaje = "No se proporcionaron ubicaciones válidas"; // Mensaje de error si no se proporciona un array válido
+            }
+
+            // Preparar la respuesta en formato JSON
+            $response = array(
+                "mensaje" => $mensaje,
+                "estado" => $estado,
+                "url" => $url,
+            );
+
+            // Enviar la respuesta como JSON
+            echo json_encode($response);
+        } else {
+            $mensaje = "No se ha iniciado sesión o no se encontró el ID de la empresa"; // Mensaje de error si no hay sesión o no se encuentra el ID de la empresa
+
+            // Preparar la respuesta de error en formato JSON
+            $response = array(
+                "mensaje" => $mensaje,
+                "estado" => 0,
+                // Estado de error en 0
+                "url" => $url,
+            );
+
+            // Enviar la respuesta de error como JSON
+            echo json_encode($response);
+        }
+    }
+
+
     // public function APImunicipios()
     // {
     //     $id = $_GET["id"];

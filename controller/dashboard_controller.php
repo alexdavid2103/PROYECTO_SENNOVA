@@ -22,6 +22,7 @@ class dashboard_controller
         $this->obj->motores = motor_model::listarMotorInfo();
         $this->obj->estados = motor_model::listarMotorEstado();
         $this->obj->ubicaciones = motor_model::listarMotorUbicacion();
+        $this->obj->normas = motor_model::listarMotorNorma();
         $this->obj->porcentajes = motor_model::listarPorcentajes();
         $this->obj->tecnicos = tecnico_model::listarTecnicos();
         $this->obj->empresas = empresa_model::listarEmpresas();
