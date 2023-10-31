@@ -7,10 +7,31 @@ class motor_model
         $obj = new connection();
         $c = $obj->getConnection();
 
+        // Consulta SQL para insertar datos en la tabla motor_carcasa
+        $sql_motor_carcasa = "INSERT INTO motor_carcasa (carmot_valor, carmot_nombre) VALUES (?, ?)";
+        $st_motor_carcasa = $c->prepare($sql_motor_carcasa);
+        $v_motor_carcasa = array($data["carcasaValor"], $data["carcasaNombre"]);
+        $st_motor_carcasa->execute($v_motor_carcasa);
+        $id_motor_carcasa = $c->lastInsertId();
+
+        // Consulta SQL para insertar datos en la tabla motor_eficiencia
+        $sql_motor_eficiencia = "INSERT INTO motor_eficiencia (efimot_porcentajeFK, efimot_valor) VALUES (?,?)";
+        $st_motor_eficiencia = $c->prepare($sql_motor_eficiencia);
+        $v_motor_eficiencia = array($data["eficienciaPorcentaje"], $data["eficienciaValor"]);
+        $st_motor_eficiencia->execute($v_motor_eficiencia);
+        $id_motor_eficiencia = $c->lastInsertId();
+
+        // Consulta SQL para insertar datos en la tabla motor_factor_potencia
+        $sql_motor_factor_potencia = "INSERT INTO motor_factor_potencia (facpotmot_porcentajeFK, facpotmot_valor) VALUES (?,?)";
+        $st_motor_factor_potencia = $c->prepare($sql_motor_factor_potencia);
+        $v_motor_factor_potencia = array($data["fac_potenciaPorcentaje"], $data["fac_potenciaValor"]);
+        $st_motor_factor_potencia->execute($v_motor_factor_potencia);
+        $id_motor_factor_potencia = $c->lastInsertId();
+
         // Consulta SQL para insertar datos en la tabla motor_informacion
-        $sql = "INSERT INTO motor_informacion (
-                                        infmot_serie, 
-                                        infmot_norma,
+        $sql_motor_informacion = "INSERT INTO motor_informacion (
+                                        infmot_serie,
+                                        infmot_normaFK,
                                         infmot_polos,
                                         infmot_potencia,
                                         infmot_IpIn,
@@ -24,66 +45,44 @@ class motor_model
                                         infmot_rotacion_nominal,
                                         infmot_corriente_nominal,
                                         infmot_altitud,
-                                        infmot_regimen,
                                         infmot_temp_ambiente,
                                         infmot_proteccion,
                                         infmot_carcasaFK,
                                         infmot_eficienciaFK,
                                         infmot_fac_potenciaFK,
-                                        infmot_clienteFK,
-                                        infmot_tecnicoFK)
-                                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                        infmot_empresaFK,
+                                        infmot_tecnicoFK,
+                                        infmot_ubicacionFK)
+                                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        $st = $c->prepare($sql);
+        $st_motor_informacion = $c->prepare($sql_motor_informacion);
 
-        $v = array(
+        $v_motor_informacion = array(
             $data["serie"],
-            // Valor para infmot_serie
-            $data["norma"],
-            // Valor para infmot_norma
+            $data["normaFK"],
             $data["polos"],
-            // Valor para infmot_polos
             $data["potencia"],
-            // Valor para infmot_potencia
             $data["IpIn"],
-            // Valor para infmot_Ip/In
             $data["par_arranque"],
-            // Valor para infmot_par_arranque
             $data["par_maxima"],
-            // Valor para infmot_par_maxima
             $data["mom_inercia"],
-            // Valor para infmot_mom_inercia
             $data["tiempo_rotor_bloq"],
-            // Valor para infmot_tiempo_rotor_bloq
             $data["peso"],
-            // Valor para infmot_peso
             $data["niv_ruido"],
-            // Valor para infmot_niv_ruido
             $data["factor_servicio"],
-            // Valor para infmot_factor_servicio
             $data["rotacion_nominal"],
-            // Valor para infmot_rotacion_nominal
             $data["corriente_nominal"],
-            // Valor para infmot_corriente_nominal
             $data["altitud"],
-            // Valor para infmot_altitud
-            $data["regimen"],
-            // Valor para infmot_regimen
             $data["temp_ambiente"],
-            // Valor para infmot_temp_ambiente
             $data["proteccion"],
-            // Valor para infmot_proteccion
-            $data["carcasaFK"],
-            // Valor para infmot_carcasaFK
-            $data["eficienciaFK"],
-            // Valor para infmot_eficienciaFK
-            $data["fac_potenciaFK"],
-            // Valor para infmot_fac_potenciaFK
-            $data["clienteFK"],
-            // Valor para infmot_clienteFK
-            $data["tecnicoFK"] // Valor para infmot_tecnicoFK
+            $id_motor_carcasa,
+            $id_motor_eficiencia,
+            $id_motor_factor_potencia,
+            $data["empresaFK"],
+            $data["tecnicoFK"],
+            $data["ubicacionFK"],
         );
-        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+        return $st_motor_informacion->execute($v_motor_informacion); // Ejecutar la consulta y retornar el resultado
     }
 
     // Función para editar la información de un motor en la base de datos

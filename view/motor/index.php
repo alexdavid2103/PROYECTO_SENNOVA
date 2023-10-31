@@ -27,31 +27,42 @@
             <!-- ======================Step Group 1============== -->
             <div class="step-group" id="step-group-1">
                 <div class="form-box">
-                    <!-- <div class="form-group">
-                        <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
-                            <option value="">Seleccione la empresa a la que pertenece el motor</option>
-                            <?php foreach ($this->empresas as $empresa) {
-                                echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
-                            } ?>
-                        </select>
-                    </div> -->
-                    <div class="form-group">
-                        <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
-                            <option value="">Seleccione la ubicación en la que se encuetra el motor</option>
-                            <?php foreach ($this->ubicaciones as $ubicacion) {
-                                // if ($ubicacion["ubimot_empresaFK"] == $_SESSION["id"]) {
+                    <?php if ($_SESSION["rol"] === "adm") {
+                        echo '<div class="form-group">
+                            <select class="form-field" id="add_mot_empresaFK">
+                                <option value="">Seleccione la empresa a la que pertenece el motor</option>';
+                        foreach ($this->empresas as $empresa) {
+                            echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                        }
+                        echo '</select>
+                        </div>';
+                        echo '<div class="form-group">
+                            <select class="form-field" id="add_mot_ubicacionFK">
+                                <option value="">Seleccione la ubicación en la que se encuetra el motor</option>';
+                        foreach ($this->ubicaciones as $ubicacion) {
+                            echo '<option value="' . $ubicacion["ubimot_id"] . '">' . $ubicacion["ubimot_area"] . '</option>';
+                        }
+                        echo '</select>
+                        </div>';
+                    } else {
+                        echo '<div class="form-group">
+                            <select class="form-field" id="add_mot_ubicacionFK">
+                                <option value="">Seleccione la ubicación en la que se encuetra el motor</option>';
+                        foreach ($this->ubicaciones as $ubicacion) {
+                            if ($ubicacion["ubimot_empresaFK"] == $_SESSION["id"]) {
                                 echo '<option value="' . $ubicacion["ubimot_id"] . '">' . $ubicacion["ubimot_area"] . '</option>';
-                                // }
-                            } ?>
-                        </select>
-                    </div>
+                            }
+                        }
+                        echo '</select>
+                        </div>';
+                    } ?>
                 </div>
                 <div class="form-box">
                     <div class="form-group">
                         <input type="text" id="add_mot_serie" class="form-field" placeholder="Serie">
                     </div>
                     <div class="form-group">
-                        <select id="add_mot_norma" class="form-field" placeholder="Norma">
+                        <select id="add_mot_normaFK" class="form-field" placeholder="Norma">
                             <option value="">Seleccione la norma del motor</option>
                             <?php foreach ($this->normas as $norma) {
                                 echo '<option value="' . $norma["normot_id"] . '">' . $norma["normot_nombre"] . '</option>';
@@ -75,12 +86,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="form-box">
-                            <div class="form-group">
-                                <input type="text" id="add_mot_potencia" class="form-field" placeholder="Potencia">
-                            </div>
-                        </div>  -->
-
                 <div class="form-box">
                     <div class="btn-step">
                         <button id="step-next-1">Next ￫</button>
@@ -90,27 +95,20 @@
             <!-- ======================Step Group 2============== -->
             <div class="step-group" id="step-group-2">
                 <div class="form-box">
-                    <div class="form-group">
-                        <input type="text" id="add_mot_par_maxima" class="form-field" placeholder="Par máxima">
-                    </div>
 
                     <div class="form-group">
                         <input type="text" id="add_mot_par_arranque" class="form-field" placeholder="Par de arranque">
                     </div>
 
+                    <div class="form-group">
+                        <input type="text" id="add_mot_par_maxima" class="form-field" placeholder="Par máxima">
+                    </div>
+
                 </div>
 
                 <div class="form-box">
-                    <div class="form-box">
-                        <div class="form-group">
-                            <input type="text" id="add_mot_peso" class="form-field" placeholder="Peso">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" id="add_mot_mom_inercia" class="form-field"
-                                placeholder="Momento de inercia">
-                        </div>
-
+                    <div class="form-group">
+                        <input type="text" id="add_mot_mom_inercia" class="form-field" placeholder="Momento de inercia">
                     </div>
                 </div>
 
@@ -119,10 +117,19 @@
                         <input type="text" id="add_mot_tiempo_rotor_bloq" class="form-field"
                             placeholder="Tiempo de rotor bloqueado">
                     </div>
+                    <div class="form-group">
+                        <input type="text" id="add_mot_peso" class="form-field" placeholder="Peso">
+                    </div>
                 </div>
+
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="add_mot_carcasaFK" class="form-field" placeholder="Carcasa">
+                        <input type="text" id="add_mot_niv_ruido" class="form-field" placeholder="Nivel de ruido">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="add_mot_factor_servicio" class="form-field"
+                            placeholder="Factor de servicio">
                     </div>
                 </div>
 
@@ -133,22 +140,10 @@
                     </div>
                 </div>
 
-
             </div>
 
             <!-- ======================Step Group 3============== -->
             <div class="step-group" id="step-group-3">
-                <div class="form-box">
-                    <div class="form-group">
-                        <input type="text" id="add_mot_niv_ruido" class="form-field" placeholder="Nivel de ruido">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="add_mot_factor_servicio" class="form-field"
-                            placeholder="Factor de servicio">
-                    </div>
-
-                </div>
 
                 <div class="form-box">
                     <div class="form-group">
@@ -179,6 +174,17 @@
                 </div>
 
                 <div class="form-box">
+                    <div class="form-group">
+                        <input type="text" id="add_mot_carcasaNombre" class="form-field"
+                            placeholder="Nombre de la carcasa">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="add_mot_carcasaValor" class="form-field"
+                            placeholder="Valor de la carcasa">
+                    </div>
+                </div>
+
+                <div class="form-box">
                     <div class="btn-step">
                         <button id="step-prev-2">￩ Prev</button>
                         <button id="step-next-3">Next ￫</button>
@@ -192,7 +198,7 @@
             <div class="step-group" id="step-group-4">
                 <div class="form-box">
                     <div class="form-group">
-                        <select name="" class="form-field" id="add_mot_eficiencia_porcentaje" required>
+                        <select name="" class="form-field" id="add_mot_eficienciaPorcentaje" required>
                             <option value="">Seleccione el porcentaje de eficiencia</option>
                             <?php foreach ($this->porcentajes as $porcentaje) {
                                 echo '<option value="' . $porcentaje["por_id"] . '">' . $porcentaje["por_nombre"] . '</option>';
@@ -201,15 +207,15 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="add_mot_eficiencia_valor" class="form-field"
+                        <input type="text" id="add_mot_eficienciaValor" class="form-field"
                             placeholder="Valor de eficiencia">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <div class="form-group">
-                        <select name="" class="form-field" id="add_mot_fac_potencia_porcentaje" required>
-                            <option value="">Seleccione el factor de potencia</option>
+                        <select name="" class="form-field" id="add_mot_fac_potenciaPorcentaje" required>
+                            <option value="">Seleccione el porcentaje del factor de potencia</option>
                             <?php foreach ($this->porcentajes as $porcentaje) {
                                 echo '<option value="' . $porcentaje["por_id"] . '">' . $porcentaje["por_nombre"] . '</option>';
                             } ?>
@@ -217,7 +223,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="add_mot_fac_potencia_valor" class="form-field"
+                        <input type="text" id="add_mot_fac_potenciaValor" class="form-field"
                             placeholder="valor del factor de potencia">
                     </div>
 
@@ -225,7 +231,7 @@
 
                 <div class="form-box">
                     <div class="form-group">
-                        <select name="add_mot_clienteFK" class="form-field" id="add_mot_clienteFK">
+                        <select class="form-field" id="add_mot_tecnicoFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
                             <?php foreach ($this->tecnicos as $tecnico) {
                                 echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</option>';
@@ -236,8 +242,7 @@
                             <div class="btn-step">
                                 <button id="step-prev-3">￩ Prev</button>
                                 <!-- <button type="submit" id="step-next-4">Send ￫</button> -->
-                                <button type="submit" id="step-next-4" class="btn_add btn_add_motor"
-                                    onsubmit="RegMotor(event)">Agregar</button>
+                                <button type="submit" id="step-next-4" class="btn_add btn_add_motor">Agregar</button>
                             </div>
                         </div>
 

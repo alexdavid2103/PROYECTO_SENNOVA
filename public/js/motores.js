@@ -17,8 +17,10 @@ const formData = new FormData();
 
 // Lista de campos obligatorios
 const requiredFields = [
+  "empresaFK",
+  "ubicacionFK",
   "serie",
-  "norma",
+  "normaFK",
   "polos",
   "potencia",
   "IpIn",
@@ -32,13 +34,14 @@ const requiredFields = [
   "rotacion_nominal",
   "corriente_nominal",
   "altitud",
-  "regimen",
   "temp_ambiente",
   "proteccion",
-  "carcasaFK",
-  "eficienciaFK",
-  "fac_potenciaFK",
-  "clienteFK",
+  "carcasaNombre",
+  "carcasaValor",
+  "eficienciaPorcentaje",
+  "eficienciaValor",
+  "fac_potenciaPorcentaje",
+  "fac_potenciaValor",
   "tecnicoFK",
 ];
 
@@ -57,6 +60,7 @@ for (const field of requiredFields) {
 
 // Manejar el evento de envío del formulario
 const form_add_motor = document.querySelector(".form_add_motor");
+
 form_add_motor.addEventListener("submit", async (event) => {
   event.preventDefault(); // Evitar el envío del formulario por defecto
 
@@ -100,8 +104,10 @@ let editMotor = async () => {
 
   // Lista de campos obligatorios que deben estar llenos
   const requiredFields = [
+    "empresaFK",
+    "ubicacionFK",
     "serie",
-    "norma",
+    "normaFK",
     "polos",
     "potencia",
     "IpIn",
@@ -115,15 +121,16 @@ let editMotor = async () => {
     "rotacion_nominal",
     "corriente_nominal",
     "altitud",
-    "regimen",
     "temp_ambiente",
     "proteccion",
-    "carcasaFK",
-    "eficienciaFK",
-    "fac_potenciaFK",
-    "clienteFK",
+    "carcasaNombre",
+    "carcasaValor",
+    "eficienciaPorcentaje",
+    "eficienciaValor",
+    "fac_potenciaPorcentaje",
+    "fac_potenciaValor",
+    "empresaFK",
     "tecnicoFK",
-    "estadoFK",
   ];
 
   // Variable para verificar si todos los campos obligatorios están llenos
