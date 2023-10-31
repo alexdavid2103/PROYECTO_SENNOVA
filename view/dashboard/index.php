@@ -221,17 +221,17 @@
                                         <div class="account-dropdown__body">
                                             <div class="account-dropdown__item">
                                                 <a href="#" class="">
-                                                    <i class="zmdi zmdi-account"></i>Account</a>
+                                                    <i class="zmdi zmdi-account"></i>Cuenta</a>
                                             </div>
                                             <div class="account-dropdown__item">
                                                 <a href="#">
-                                                    <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                    <i class="zmdi zmdi-settings"></i>Contraseña</a>
                                             </div>
                                         </div>
                                         <!-- Opción para cerrar sesión -->
                                         <div class="account-dropdown__footer">
                                             <a href="?controller=main&action=salir">
-                                                <i class="zmdi zmdi-power"></i>Logout</a>
+                                                <i class="zmdi zmdi-power"></i>Salir</a>
                                         </div>
                                     </div>
                                 </div>
