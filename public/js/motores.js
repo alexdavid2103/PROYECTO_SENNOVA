@@ -9,89 +9,120 @@ import {
 
 // AGREGAR <----------------------------------------------------------------------|
 
-// Función para obtener el valor de un campo
-const getField = (fieldName) =>
-  document.getElementById(`add_mot_${fieldName}`).value;
-// Objeto FormData para almacenar los datos del formulario
-const formData = new FormData();
-
-// Lista de campos obligatorios
-const requiredFields = [
-  "empresaFK",
-  "ubicacionFK",
-  "serie",
-  "normaFK",
-  "polos",
-  "potencia",
-  "IpIn",
-  "par_arranque",
-  "par_maxima",
-  "mom_inercia",
-  "tiempo_rotor_bloq",
-  "peso",
-  "niv_ruido",
-  "factor_servicio",
-  "rotacion_nominal",
-  "corriente_nominal",
-  "altitud",
-  "temp_ambiente",
-  "proteccion",
-  "carcasaNombre",
-  "carcasaValor",
-  "eficienciaPorcentaje",
-  "eficienciaValor",
-  "fac_potenciaPorcentaje",
-  "fac_potenciaValor",
-  "tecnicoFK",
-];
-
-// Variable para verificar si todos los campos están llenos
-let areAllFieldsFilled = true;
-
-// Validar si todos los campos obligatorios están llenos, excepto empresaFK
-for (const field of requiredFields) {
-  if (field === "empresaFK") {
-    continue; // Saltar este campo y pasar al siguiente
-  }
-  const fieldValue = getField(field);
-  if (fieldValue === "") {
-    areAllFieldsFilled = false;
-    break; // Detener el bucle si se encuentra un campo vacío
-  }
-  formData.append(field, fieldValue); // Agregar campo y valor al FormData
-}
-
-
-// Manejar el evento de envío del formulario
+// Obtener el formulario por su ID
 const form_add_motor = document.querySelector(".form_add_motor");
 
+// Agregar un evento 'submit' al formulario
 form_add_motor.addEventListener("submit", async (event) => {
-  event.preventDefault(); // Evitar el envío del formulario por defecto
+  event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario al enviar
 
-  if (!areAllFieldsFilled) {
-    // Mostrar una alerta si no se llenaron todos los campos
-    alertWarning(
-      "Todos los campos son obligatorios, asegúrese de llenar los campos correctamente"
-    );
-    return false; // Evitar que se envíe el formulario
-  }
+  // Definir los identificadores de los campos y sus etiquetas legibles por humanos
+  const campos = [
+    "add_mot_empresaFK",
+    "add_mot_ubicacionFK",
+    "add_mot_serie",
+    "add_mot_normaFK",
+    "add_mot_polos",
+    "add_mot_potencia",
+    "add_mot_IpIn",
+    "add_mot_par_arranque",
+    "add_mot_par_maxima",
+    "add_mot_mom_inercia",
+    "add_mot_tiempo_rotor_bloq",
+    "add_mot_peso",
+    "add_mot_niv_ruido",
+    "add_mot_factor_servicio",
+    "add_mot_rotacion_nominal",
+    "add_mot_corriente_nominal",
+    "add_mot_altitud",
+    "add_mot_temp_ambiente",
+    "add_mot_proteccion",
+    "add_mot_carcasaNombre",
+    "add_mot_carcasaValor",
+    "add_mot_eficienciaPorcentaje",
+    "add_mot_eficienciaValor",
+    "add_mot_fac_potenciaPorcentaje",
+    "add_mot_fac_potenciaValor",
+    "add_mot_tecnicoFK",
+  ];
 
-  // Realizar la solicitud POST para registrar el motor
-  let respuesta = await fetch("?controller=motor&action=add", {
-    method: "POST",
-    body: formData, // Enviar los datos del formulario
+  const camposLabels = {
+    add_mot_empresaFK: "Empresa",
+    add_mot_ubicacionFK: "Ubicación",
+    add_mot_serie: "Serie",
+    add_mot_normaFK: "Norma",
+    add_mot_polos: "Polos",
+    add_mot_potencia: "Potencia",
+    add_mot_IpIn: "Ip/In",
+    add_mot_par_arranque: "Par de arranque",
+    add_mot_par_maxima: "Par máxima",
+    add_mot_mom_inercia: "Momento de inercia",
+    add_mot_tiempo_rotor_bloq: "Tiempo de rotor bloqueado",
+    add_mot_peso: "Peso",
+    add_mot_niv_ruido: "Nivel de ruido",
+    add_mot_factor_servicio: "Factor de servicio",
+    add_mot_rotacion_nominal: "Rotación nominal",
+    add_mot_corriente_nominal: "Corriente nominal",
+    add_mot_altitud: "Altitud",
+    add_mot_temp_ambiente: "Temperatura ambiente",
+    add_mot_proteccion: "Protección",
+    add_mot_carcasaNombre: "Nombre de la carcasa",
+    add_mot_carcasaValor: "Valor de la carcasa",
+    add_mot_eficienciaPorcentaje: "Porcentaje de eficiencia",
+    add_mot_eficienciaValor: "Valor de eficiencia",
+    add_mot_fac_potenciaPorcentaje: "Porcentaje de factor de potencia",
+    add_mot_fac_potenciaValor: "Valor de factor de potencia",
+    add_mot_tecnicoFK: "Técnico",
+  };
+
+  // Inicializar un arreglo para almacenar los nombres de los campos vacíos
+  let emptyFields = [];
+
+  // Iterar sobre cada campo para verificar si está vacío
+  campos.forEach((campo) => {
+    if (
+      document.getElementById(campo).value.trim() === "" &&
+      campo !== "add_mot_empresaFK"
+    ) {
+      emptyFields.push(camposLabels[campo]); // Agregar el nombre legible del campo al arreglo
+    }
   });
 
-  // Obtener la respuesta del servidor en formato JSON
-  let info = await respuesta.json();
+  // Comprobar si hay campos vacíos y mostrar una alerta si es así
+  if (emptyFields.length > 0) {
+    alertWarning(
+      `Los siguientes campos son obligatorios: ${emptyFields.join(", ")}`
+    );
+    return false; // Detener el envío del formulario
+  }
 
-  // Mostrar un mensaje de éxito o error según la respuesta del servidor
-  if (info.estado === 1) {
-    alertSuccess("Se ha registrado correctamente").then(() => {
-      window.location.reload(); // Limpiar el formulario
+  // Crear un objeto FormData y agregar los valores de los campos
+  const datos = new FormData();
+  campos.forEach((campo) => {
+    datos.append(campo, document.getElementById(campo).value);
+  });
+
+  // Enviar una solicitud POST al servidor para agregar el motor
+  try {
+    const respuesta = await fetch("?controller=motor&action=add", {
+      method: "POST",
+      body: datos,
     });
-  } else {
-    alertError("Error al registrar");
+
+    // Obtener la respuesta del servidor en formato JSON
+    const info = await respuesta.json();
+
+    // Mostrar un mensaje de éxito o error según la respuesta del servidor
+    if (info.estado === 1) {
+      alertSuccess("Se ha registrado correctamente").then(() => {
+        window.location.reload(); // Recargar la página
+      });
+    } else {
+      alertError("Error al registrar el motor");
+    }
+  } catch (error) {
+    console.error("Error al realizar la solicitud:", error);
+    alertError("Error al realizar la solicitud");
   }
 });
 
