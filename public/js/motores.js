@@ -48,8 +48,11 @@ const requiredFields = [
 // Variable para verificar si todos los campos están llenos
 let areAllFieldsFilled = true;
 
-// Validar si todos los campos obligatorios están llenos
+// Validar si todos los campos obligatorios están llenos, excepto empresaFK
 for (const field of requiredFields) {
+  if (field === "empresaFK") {
+    continue; // Saltar este campo y pasar al siguiente
+  }
   const fieldValue = getField(field);
   if (fieldValue === "") {
     areAllFieldsFilled = false;
@@ -57,6 +60,7 @@ for (const field of requiredFields) {
   }
   formData.append(field, fieldValue); // Agregar campo y valor al FormData
 }
+
 
 // Manejar el evento de envío del formulario
 const form_add_motor = document.querySelector(".form_add_motor");

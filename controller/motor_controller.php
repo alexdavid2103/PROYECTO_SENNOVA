@@ -18,7 +18,7 @@ class motor_controller
 
         // Crear un arreglo asociativo con los datos del motor
         $data = array(
-            "empresaFK" => $empresaFK,
+            "empresaFK" => $_SESSION["rol"] === "emp" ? $_SESSION["id"] : $empresaFK,
             "ubicacionFK" => $ubicacionFK,
             "serie" => $serie,
             "normaFK" => $normaFK,
