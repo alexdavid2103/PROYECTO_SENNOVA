@@ -119,4 +119,15 @@ class tecnico_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
+    public static function getTecnicoById($id)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla tecnico
+        $sql = "SELECT * FROM tecnicos WHERE tec_empresaFK = $id";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
 }

@@ -44,10 +44,10 @@
                         <select class="form-field" id="add_mot_ubicacionFK">
                             <option value="">Seleccione la ubicación en la que se encuetra el motor</option>
                             <?php foreach ($this->ubicaciones as $ubicacion) {
-                                if ($ubicacion["ubimot_empresaFK"] == $_SESSION["id"]) {
+                                // if ($ubicacion["ubimot_empresaFK"] == $_SESSION["id"]) {
                                     echo '<option value="' . $ubicacion["ubimot_id"] . '">' . $ubicacion["ubimot_area"]
                                         . '</option>';
-                                }
+                                // }
                             }
                             echo '</select>
                         </div>'; ?>
@@ -263,3 +263,5 @@
 <script type="module" src="public/js/motores.js"></script>
 <script src="public/js/form.js"></script>
 <script src="public/js/graficos.js"></script>
+<script src="public/js/filtroTecnicos.js"></script>
+<script src="public/js/filtroUbicaciones.js"></script>

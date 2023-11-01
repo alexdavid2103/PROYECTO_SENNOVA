@@ -170,12 +170,4 @@ class empresa_controller
             echo json_encode($response);
         }
     }
-
-
-    // public function APImunicipios()
-    // {
-    //     $id = $_GET["id"];
-    //     $municipios = empresa_model::listarMunicipios($id);
-    //     echo json_encode($municipios);
-    // }
 }

@@ -228,6 +228,18 @@ class motor_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
+    public static function getUbicacionById($id)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla motor_informacion
+        $sql = "SELECT * FROM motor_ubicacion WHERE ubimot_empresaFK = $id";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
+
     public static function listarMotorCaptura()
     {
         $obj = new connection();
