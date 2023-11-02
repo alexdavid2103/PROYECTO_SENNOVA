@@ -43,7 +43,7 @@ class main_controller
         $this->obj->loadTemplate("main/registro");
     }
 
-    public function contrasena()
+    public function recoverPassword()
     {
         if (isset($_SESSION['id'])) {
             header("Location: index.php");
@@ -53,7 +53,7 @@ class main_controller
         $this->obj->departamentos = empresa_model::listarDepartamentos();
         $this->obj->municipios = empresa_model::listarMunicipios(5);
         // Cargar la plantilla de vista "main/contrasena"
-        $this->obj->loadTemplate("main/contrasena");
+        $this->obj->loadTemplate("main/recoverPassword");
     }
 
     public function validar()
@@ -107,6 +107,29 @@ class main_controller
                 "url" => $url
             )
         );
+    }
+
+    public function rPassword()
+    {
+        extract($_POST);
+
+        $data = array(
+            "id" => $id,
+            "email" => $email,
+        );
+
+        $roles = [
+            'adm' => 'admin_model',
+            'tec' => 'tecnico_model',
+            'emp' => 'empresa_model'
+        ];
+
+        // Itera a través de los roles y modelos para validar
+        foreach ($roles as $model) {
+            $r = $model::recoverPassword($data);
+
+        }
+        echo json_encode($r);
     }
 
 

@@ -130,4 +130,16 @@ class tecnico_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
+
+    // recuperar contraseña
+    public static function recoverPassword($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+        $sql = "SELECT tec_nombre1, tec_correo FROM tecnicos WHERE tec_id = ? AND tec_correo = ?";
+        $st = $c->prepare($sql);
+        $v = array($data["id"], $data["email"]);
+        $st->execute($v);
+        return $st->fetch(); // Retorna el nombre y el correo del tecnico
+    }
 }

@@ -51,7 +51,7 @@ form_add_tecnico.addEventListener("submit", async (event) => {
   });
 
   // Comprobar si hay campos vacíos y mostrar una alerta si es así
-  if (emptyFields.length > 0) {
+  if (emptyFields.length > 0) { 
     alertWarning(
       `Los siguientes campos son obligatorios: ${emptyFields.join(", ")}`
     );
