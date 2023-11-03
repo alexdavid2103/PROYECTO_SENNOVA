@@ -17,9 +17,11 @@ class admin_model
 
         $st = $c->prepare($sql);
         $v = array(
-            $data["id"],                 // Valor para adm_id
-            $data["nombre"],             // Valor para adm_nombre
-            sha1($data["password"])      // Valor encriptado para adm_contraseña
+            $data["id"],
+            // Valor para adm_id
+            $data["nombre"],
+            // Valor para adm_nombre
+            sha1($data["password"]) // Valor encriptado para adm_contraseña
         );
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
@@ -38,9 +40,11 @@ class admin_model
 
         $st = $c->prepare($sql);
         $v = array(
-            $data["nombre"],             // Nuevo valor para adm_nombre
-            $data["contraseña"],         // Nuevo valor para adm_contraseña
-            $data["id"]                  // Valor para ubicar el registro a actualizar (adm_id)
+            $data["nombre"],
+            // Nuevo valor para adm_nombre
+            $data["contraseña"],
+            // Nuevo valor para adm_contraseña
+            $data["id"] // Valor para ubicar el registro a actualizar (adm_id)
         );
 
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
@@ -84,8 +88,28 @@ class admin_model
         $v = array(
             $data["id"],
             sha1($data["password"])
-        ); 
+        );
         $st->execute($v);
         return $st->fetch(); // Retornar el primer resultado de la consulta
+    }
+
+    public static function recoverPassword($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        $sqlUpdatePassword = "UPDATE administradores SET adm_contrasena = ? WHERE adm_id = ?";
+        $stUpdatePassword = $c->prepare($sqlUpdatePassword);
+        $vUpdatePassword = array(
+            password_hash($data["password"], PASSWORD_ARGON2I),
+            $data["id"]
+        );
+        $stUpdatePassword->execute($vUpdatePassword);
+
+        $sqlVerifyData = "SELECT adm_nombre1, adm_correo FROM administradores WHERE adm_id = ? AND adm_correo = ?";
+        $stVerifyData = $c->prepare($sqlVerifyData);
+        $vVerifyData = array($data["id"], $data["email"]);
+        $stVerifyData->execute($vVerifyData);
+        return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
     }
 }

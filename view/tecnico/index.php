@@ -3,7 +3,7 @@
 <div class="container">
     <div class="flex-box">
         <?php foreach ($this->tecnicos as $tecnico) {
-            if ($tecnico["tec_empresaFK"] === $_SESSION["id"]) {
+            if ($tecnico["tec_empresaFK"] === $_SESSION["id"] || $_SESSION["rol"] === "adm") {
                 echo '<div class="card m-0">
             <div class="card-info">
                 <div class="card-avatar"><i class="fas fa-user"></i></div>

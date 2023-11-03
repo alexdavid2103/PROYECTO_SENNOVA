@@ -165,4 +165,24 @@ class empresa_model
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 
+    public static function recoverPassword($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        $sqlUpdatePassword = "UPDATE empresas SET emp_contrasena = ? WHERE emp_id = ?";
+        $stUpdatePassword = $c->prepare($sqlUpdatePassword);
+        $vUpdatePassword = array(
+            password_hash($data["password"], PASSWORD_ARGON2I),
+            $data["id"]
+        );
+        $stUpdatePassword->execute($vUpdatePassword);
+
+        $sqlVerifyData = "SELECT emp_nombre, emp_correo FROM empresas WHERE emp_id = ? AND emp_correo = ?";
+        $stVerifyData = $c->prepare($sqlVerifyData);
+        $vVerifyData = array($data["id"], $data["email"]);
+        $stVerifyData->execute($vVerifyData);
+        return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
+    }
+
 }

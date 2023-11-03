@@ -136,10 +136,19 @@ class tecnico_model
     {
         $obj = new connection();
         $c = $obj->getConnection();
-        $sql = "SELECT tec_nombre1, tec_correo FROM tecnicos WHERE tec_id = ? AND tec_correo = ?";
-        $st = $c->prepare($sql);
-        $v = array($data["id"], $data["email"]);
-        $st->execute($v);
-        return $st->fetch(); // Retorna el nombre y el correo del tecnico
+
+        $sqlUpdatePassword = "UPDATE tecnicos SET tec_contrasena = ? WHERE tec_id = ?";
+        $stUpdatePassword = $c->prepare($sqlUpdatePassword);
+        $vUpdatePassword = array(
+            password_hash($data["password"], PASSWORD_ARGON2I),
+            $data["id"]
+        );
+        $stUpdatePassword->execute($vUpdatePassword);
+
+        $sqlVerifyData = "SELECT tec_nombre1, tec_correo FROM tecnicos WHERE tec_id = ? AND tec_correo = ?";
+        $stVerifyData = $c->prepare($sqlVerifyData);
+        $vVerifyData = array($data["id"], $data["email"]);
+        $stVerifyData->execute($vVerifyData);
+        return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
     }
 }
