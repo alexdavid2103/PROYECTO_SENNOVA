@@ -295,6 +295,8 @@
   border-radius: 50px;
 }
 
+
+
 @media (max-width: 1160px) {
   .motor .info_motor {
     width: auto;

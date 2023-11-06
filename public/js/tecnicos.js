@@ -90,3 +90,14 @@ form_add_tecnico.addEventListener("submit", async (event) => {
     alertError("El técnico ya se encuentra registrado");
   }
 });
+
+// //ver formulario
+document.getElementById('floatingCircle').addEventListener('click', function() {
+  var formContainer = document.getElementById('formContainer');
+  formContainer.classList.toggle('d-none');
+  formContainer.classList.toggle('d-block');
+});
+
+$(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+});

@@ -26,12 +26,21 @@
     </div>
 </div>
 
-<section class="container">
+<!-- <div id="floatingButton" class="position-fixed bottom-0 end-0 p-3" data-toggle="tooltip" data-title="Crear Tecnico" style="z-index: 1;">
+    <button class="btn btn-primary rounded-circle">
+        <i class="fas fa-plus"></i>
+    </button>
+</div> -->
+<div id="floatingCircle" class="floating-button" data-toggle="tooltip" data-title="Crear Tecnico">
+    <i class="fas fa-plus"></i>
+</div>
+
+<section id="formContainer" class="container d-none">
     <header>Registrar Tecnico</header>
     <form action="?controller=tecnicos&action=add" class="form" id="form_add_tecnico" onsubmit="return false">
         <div class="column">
             <div class="input-box">
-                <label>Numero de documenro</label>
+                <label>Numero de documento</label>
                 <input type="number" id="add_tec_id" placeholder="Ingrese su numero de documento" />
             </div>
         </div>
