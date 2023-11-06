@@ -4,8 +4,8 @@ import { alertWarning, alertError } from "./alertas.js";
 let form = document.querySelector(".form");
 
 form.addEventListener("submit", async (event) => {
-  let id = document.getElementById("id").value;
-  let password = document.getElementById("password").value;
+  const id = document.getElementById("id").value;
+  const password = document.getElementById("password").value;
 
   if (id === "") {
     event.preventDefault();

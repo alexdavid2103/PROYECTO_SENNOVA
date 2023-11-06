@@ -5,89 +5,94 @@ import { generarContrasena } from "./generadorContraseña.js";
 // Obtener el elemento del formulario y los valores de ID y correo electrónico
 const form = document.getElementById("form-recoverPassword");
 
-// Definir los campos requeridos y sus descripciones legibles
-const fields = ["id", "email"];
-const fieldsRequired = {
-  id: "numero de documento o NIT",
-  email: "Correo electrónico",
-};
-
 // Agregar un evento de escucha para el envío del formulario
 form.addEventListener("submit", async (event) => {
   event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
-  // Inicializar un arreglo para almacenar los nombres de los campos vacíos
-  let emptyFields = [];
+  // Generar una nueva contraseña
   const newPassword = generarContrasena();
-
-  // Iterar sobre cada campo para verificar si está vacío, excluyendo el segundo nombre y el segundo apellido
-  fields.forEach((field) => {
-    if (document.getElementById(field).value.trim() === "") {
-      emptyFields.push(fieldsRequired[field]); // Agregar el nombre legible del campo al arreglo
-    }
-  });
-  
-  // Comprobar si hay campos vacíos y mostrar una alerta si es así
-  if (emptyFields.length > 0) {
-    alertWarning(
-      `Ingrese los siguientes datos: ${emptyFields.join(", ")}`
-    );
-    return false; // Detener el envío del formulario
-  }
 
   // Validar el formato del correo electrónico
   const correoValido = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const correo = document.getElementById("email").value;
+  const correo = document.getElementById("validEmail").value;
   if (!correo.match(correoValido)) {
+    // Mostrar una alerta de advertencia si el correo electrónico no tiene un formato válido
     alertWarning("Ingrese un correo electrónico válido");
+    return false; // Detener el envío del formulario
+  }
+
+  // Validar el ID de usuario
+  const id = document.getElementById("validId").value;
+  if (id === "") {
+    // Mostrar una alerta de advertencia si el ID de usuario está vacío
+    alertWarning("Ingrese un ID de usuario válido");
     return false; // Detener el envío del formulario
   }
 
   try {
     // Realizar una solicitud fetch para recuperar los detalles del usuario
     let datos = new FormData();
-    fields.forEach((field) => {
-      datos.append(field, document.getElementById(field).value);
-    });
-    datos.append("password", newPassword);
+    datos.append("id", id);
+    datos.append("email", correo);
 
-    const respuesta = await fetch("?controller=main&action=recoverPassword", {
+    const respuesta = await fetch("?controller=main&action=rPassword", {
       method: "POST",
       body: datos,
     });
 
+    // Obtener la respuesta en formato JSON
     const info = await respuesta.json();
-    const { name, email } = info;
+    console.log(info);
 
-    // código para enviar la nueva contraseña con emailjs.
-    const btn = document.getElementById("form-recoverPassword-btn");
-    btn.value = "Enviando...";
+    if (info.estado === 1) {
+      // Obtener el primer rol disponible dinámicamente
+      const primerRol = Object.keys(info.resultados)[0];
+      const userName = primerRol === "emp" ? `${primerRol}_nombre` : `${primerRol}_nombre1` ;
+      // Obtener el nombre de usuario y el correo electrónico utilizando el primer rol
+      const nombreUsuario = info.resultados[primerRol][userName];
+      const correoUsuario = info.resultados[primerRol][`${primerRol}_correo`];
 
-    const serviceID = "default_service";
-    const templateID = "template_winxwe9";
+      const btn = document.getElementById("form-recoverPassword-btn");
+      btn.value = "Enviando...";
 
-    // Crear un token de recuperación de contraseña aleatorio
-    console.log(newPassword);
+      // Configurar los parámetros del servicio de correo
+      const serviceID = "default_service";
+      const templateID = "template_winxwe9";
 
-    const templateParams = {
-      name: name,
-      newPassword: newPassword,
-      email: email,
-    };
+      // Mostrar información relevante en la consola
+      console.log(`Rol: ${primerRol}`);
+      console.log(`Nombre: ${nombreUsuario}, correo: ${correoUsuario}`);
+      console.log(newPassword);
 
-    // Enviar el correo electrónico utilizando emailjs
-    emailjs.send(serviceID, templateID, templateParams).then(
-      () => {
-        btn.value = "Enviar";
-        alertSuccess(
-          `Se ha enviado un correo electrónico a ${email} para recuperar su contraseña`
-        );
-      },
-      (err) => {
-        btn.value = "Enviar";
-        alertError(JSON.stringify(err));
-      }
-    );
+      // Configurar los parámetros del correo electrónico
+      const templateParams = {
+        name: nombreUsuario,
+        newPassword: newPassword,
+        email: correoUsuario,
+      };
+
+      // Enviar el correo electrónico utilizando la API de emailjs
+      emailjs.send(serviceID, templateID, templateParams).then(
+        () => {
+          // Restaurar el valor del botón y mostrar una alerta de éxito
+          btn.value = "Enviar";
+          alertSuccess(
+            `Se ha enviado un correo electrónico a ${correoUsuario} con tu nueva contraseña`
+          ).then(() => {
+            // Redirigir al usuario a la URL especificada en la respuesta
+            window.location.href = info.url;
+          });
+        },
+        (err) => {
+          // Restaurar el valor del botón y mostrar un mensaje de error en caso de fallo en el envío del correo
+          btn.value = "Enviar";
+          alertError(JSON.stringify(err));
+        }
+      );
+    } else {
+      // Mostrar un mensaje de error si el estado no es 1
+      alertError(info.mensaje);
+    }
   } catch (err) {
     // Capturar y manejar cualquier error que ocurra durante el proceso
     console.error(err);

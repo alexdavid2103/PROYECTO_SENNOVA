@@ -111,12 +111,14 @@ class main_controller
 
     public function rPassword()
     {
-        extract($_POST);
+        // Acceder directamente a los datos del formulario en lugar de extraerlos
+        $id = $_POST['id'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        $data = array(
-            "id" => $id,
-            "email" => $email,
-        );
+        $mensaje = ""; // Mensaje de error por defecto
+        $estado = 0; // Estado de validación (0 para no validado, 1 para validado)
+        $url = "?controller=main&action=login"; // Valor por defecto para URL de redirección
 
         $roles = [
             'adm' => 'admin_model',
@@ -124,13 +126,43 @@ class main_controller
             'emp' => 'empresa_model'
         ];
 
-        // Itera a través de los roles y modelos para validar
-        foreach ($roles as $model) {
+        $resultados = [];
+
+        foreach ($roles as $rol => $model) {
+            // Asegurarse de pasar los datos correctos al método recoverPassword de cada modelo
+            $data = array(
+                "id" => $id,
+                "email" => $email,
+                "password" => $password,
+            );
             $r = $model::recoverPassword($data);
 
+            // Revisar la lógica de verificación para manejar adecuadamente los resultados de recoverPassword
+            if ($r) {
+                $estado = 1;
+                $resultados[$rol] = $r;
+            }
         }
-        echo json_encode($r);
+
+        if ($estado === 1) {
+            echo json_encode(
+                array(
+                    "mensaje" => $mensaje,
+                    "estado" => $estado,
+                    "url" => $url,
+                    "resultados" => $resultados
+                )
+            );
+        } else {
+            $mensaje = "No se encontró ningún resultado en la base de datos";
+            echo json_encode(
+                array(
+                    "mensaje" => $mensaje
+                )
+            );
+        }
     }
+
 
 
     public function salir()

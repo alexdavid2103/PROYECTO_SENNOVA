@@ -3,7 +3,7 @@
 <div class="container">
     <div class="cont_form" id="">
 
-        <form method="POST" action="?controller=usuario&action=validar" class="form" id="form-recoverPassword"
+        <form method="POST" action="?controller=main&action=rPassword" class="form" id="form-recoverPassword"
             onsubmit="return false">
 
             <h2 class="title">Recuperar<br> Contraseña</h2>
@@ -11,14 +11,14 @@
             <div class="cont_input">
                 <label>Numero de documento o NIT</label>
                 <!-- <i class="fa fa-user"></i> -->
-                <input type="number" id="id" inputmode="none" pattern="[0-9]*"
+                <input type="number" id="validId" inputmode="none" pattern="[0-9]*"
                     placeholder="Ingrese su N. Identificación">
             </div>
 
             <div class="cont_input">
                 <label>Corrreo Electronico</label>
                 <!-- <i class="fa fa-user"></i> -->
-                <input type="email" id="email" placeholder="Ingrese su Email">
+                <input type="email" id="validEmail" placeholder="Ingrese su Email">
             </div>
 
             <div class="button">
