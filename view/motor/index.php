@@ -2,13 +2,15 @@
 
 <div class="cont_charts  p-t-100">
     <?php foreach ($this->motores as $captura) {
-        echo '<div class="charts m-auto">
+        if ($captura['infmot_empresaFK'] === $_SESSION['id'] || $_SESSION['rol'] === 'adm' || $captura['infmot_tecnicoFK'] === $_SESSION['id']) {
+            echo '<div class="charts m-auto">
             <h2 class="">' . $captura['infmot_serie'] . '</h2>
             <div class="flex-box">
-                <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
-                <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
+            <div class="chart_temperatura" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
+            <div class="chart_vibracion" data-serie="' . $captura['infmot_serie'] . '" style="width: 400px; height: 200px;"></div>
             </div>
-        </div>';
+            </div>';
+        }
     } ?>
 </div>
 
@@ -17,12 +19,6 @@
         onsubmit="return false">
         <div id="form-container-box">
             <h1 class="form-title">REGISTRAR MOTOR</h1>
-            <!-- <ul class="progress-bar">
-                <li id="step1" class="active">User Info</li>
-                <li id="step2">Address</li>
-                <li id="step3">Comments</li>
-                <li id="step4">sig</li>
-            </ul> -->
 
             <!-- ======================Step Group 1============== -->
             <div class="step-group" id="step-group-1">

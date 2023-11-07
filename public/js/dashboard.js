@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
             e.forEach((enlace) => {
               enlace.classList.remove("active");
             });
-          } else {
-            console.log("No se encontraron elementos para el enlace:", key);
-          }
+          } // else {
+          //   console.log("No se encontraron elementos para el enlace:", key);
+          // }
         }
       }
     }

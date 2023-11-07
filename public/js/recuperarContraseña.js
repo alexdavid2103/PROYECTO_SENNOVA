@@ -34,6 +34,7 @@ form.addEventListener("submit", async (event) => {
     let datos = new FormData();
     datos.append("id", id);
     datos.append("email", correo);
+    datos.append("password", newPassword);
 
     const respuesta = await fetch("?controller=main&action=rPassword", {
       method: "POST",

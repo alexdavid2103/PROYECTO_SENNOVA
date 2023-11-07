@@ -99,5 +99,5 @@
     </form>
 </section>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="module" src="public/js/tecnicos.js"></script>
