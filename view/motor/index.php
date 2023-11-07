@@ -31,10 +31,10 @@
                         echo '<div class="form-group">
                             <select class="form-field" id="add_mot_empresaFK">
                                 <option value="">Seleccione la empresa a la que pertenece el motor</option>';
-                                foreach ($this->empresas as $empresa) {
-                                    echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
-                                }
-                            echo '</select>
+                        foreach ($this->empresas as $empresa) {
+                            echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                        }
+                        echo '</select>
                         </div>';
                     } else {
                         echo '<input type="hidden" value="' . $_SESSION["id"] . '" id="add_mot_empresaFK"></input>';
@@ -45,8 +45,8 @@
                             <option value="">Seleccione la ubicación en la que se encuetra el motor</option>
                             <?php foreach ($this->ubicaciones as $ubicacion) {
                                 // if ($ubicacion["ubimot_empresaFK"] == $_SESSION["id"]) {
-                                    echo '<option value="' . $ubicacion["ubimot_id"] . '">' . $ubicacion["ubimot_area"]
-                                        . '</option>';
+                                echo '<option value="' . $ubicacion["ubimot_id"] . '">' . $ubicacion["ubimot_area"]
+                                    . '</option>';
                                 // }
                             }
                             echo '</select>
@@ -234,17 +234,23 @@
                                     echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</option>';
                                 } ?>
                             </select>
-
-                            <div class="form-box">
-                                <div class="btn-step">
-                                    <button type="button" id="step-prev-3">￩ Prev</button>
-                                    <!-- <button type="submit" id="step-next-4">Send ￫</button> -->
-                                    <button type="submit" id="" class="btn_add btn_add_motor">Agregar</button>
-                                </div>
-                            </div>
-
                         </div>
+                        <div class="form-group">
+                            <select class="form-field" id="add_mot_tipoFK">
+                                <option value="">Seleccione el tipo de motor</option>
+                                <?php foreach ($this->tiposMotores as $tipoM) {
+                                    echo '<option value="' . $tipoM["tipmot_id"] . '">' . $tipoM["tipmot_nombre"] . '</option>';
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
 
+                    <div class="form-box">
+                        <div class="btn-step">
+                            <button type="button" id="step-prev-3">￩ Prev</button>
+                            <!-- <button type="submit" id="step-next-4">Send ￫</button> -->
+                            <button type="submit" id="" class="btn_add btn_add_motor">Agregar</button>
+                        </div>
                     </div>
 
                     <div id="sucess-box">

@@ -52,8 +52,9 @@ class motor_model
                                         infmot_fac_potenciaFK,
                                         infmot_empresaFK,
                                         infmot_tecnicoFK,
-                                        infmot_ubicacionFK)
-                                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                        infmot_ubicacionFK,
+                                        infmot_tipoFK)
+                                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $st_motor_informacion = $c->prepare($sql_motor_informacion);
 
@@ -81,6 +82,7 @@ class motor_model
             $data["empresaFK"],
             $data["tecnicoFK"],
             $data["ubicacionFK"],
+            $data["tipoFK"],
         );
         return $st_motor_informacion->execute($v_motor_informacion); // Ejecutar la consulta y retornar el resultado
     }
@@ -299,5 +301,18 @@ class motor_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
+    
+    public static function listarMotorTipo()
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla motor_informacion
+        $sql = "SELECT * FROM motor_tipo";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
+
 }
 ?>

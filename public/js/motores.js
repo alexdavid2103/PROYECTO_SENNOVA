@@ -129,91 +129,125 @@ form_add_motor.addEventListener("submit", async (event) => {
 // EDITAR <-----------------------------------------------------------------------|
 
 // Función para editar un motor
-let editMotor = async () => {
-  // Función para obtener el valor de un campo del formulario
-  const getField = (fieldName) =>
-    document.getElementById(`edit_mot_${fieldName}`).value;
+// Obtener el formulario por su ID
+const form_edit_motor = document.querySelector(".form_edit_motor");
 
-  // Objeto FormData para almacenar los datos del formulario
-  const formData = new FormData();
+// Agregar un evento 'submit' al formulario
+form_edit_motor.addEventListener("submit", async (event) => {
+  event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario al enviar
 
-  // Lista de campos obligatorios que deben estar llenos
-  const requiredFields = [
-    "empresaFK",
-    "ubicacionFK",
-    "serie",
-    "normaFK",
-    "polos",
-    "potencia",
-    "IpIn",
-    "par_arranque",
-    "par_maxima",
-    "mom_inercia",
-    "tiempo_rotor_bloq",
-    "peso",
-    "niv_ruido",
-    "factor_servicio",
-    "rotacion_nominal",
-    "corriente_nominal",
-    "altitud",
-    "temp_ambiente",
-    "proteccion",
-    "carcasaNombre",
-    "carcasaValor",
-    "eficienciaPorcentaje",
-    "eficienciaValor",
-    "fac_potenciaPorcentaje",
-    "fac_potenciaValor",
-    "empresaFK",
-    "tecnicoFK",
+  // Definir los identificadores de los campos y sus etiquetas legibles por humanos
+
+  const campos = [
+    "edit_mot_empresaFK",
+    "edit_mot_ubicacionFK",
+    "edit_mot_serie",
+    "edit_mot_normaFK",
+    "edit_mot_polos",
+    "edit_mot_potencia",
+    "edit_mot_IpIn",
+    "edit_mot_par_arranque",
+    "edit_mot_par_maxima",
+    "edit_mot_mom_inercia",
+    "edit_mot_tiempo_rotor_bloq",
+    "edit_mot_peso",
+    "edit_mot_niv_ruido",
+    "edit_mot_factor_servicio",
+    "edit_mot_rotacion_nominal",
+    "edit_mot_corriente_nominal",
+    "edit_mot_altitud",
+    "edit_mot_temp_ambiente",
+    "edit_mot_proteccion",
+    "edit_mot_carcasaNombre",
+    "edit_mot_carcasaValor",
+    "edit_mot_eficienciaPorcentaje",
+    "edit_mot_eficienciaValor",
+    "edit_mot_fac_potenciaPorcentaje",
+    "edit_mot_fac_potenciaValor",
+    "edit_mot_tecnicoFK",
+    "edit_mot_tipoFK",
   ];
 
-  // Variable para verificar si todos los campos obligatorios están llenos
-  let areAllFieldsFilled = true;
+  const camposLabels = {
+    edit_mot_empresaFK: "Empresa",
+    edit_mot_ubicacionFK: "Ubicación",
+    edit_mot_serie: "Serie",
+    edit_mot_normaFK: "Norma",
+    edit_mot_polos: "Polos",
+    edit_mot_potencia: "Potencia",
+    edit_mot_IpIn: "Ip/In",
+    edit_mot_par_arranque: "Par de arranque",
+    edit_mot_par_maxima: "Par máxima",
+    edit_mot_mom_inercia: "Momento de inercia",
+    edit_mot_tiempo_rotor_bloq: "Tiempo de rotor bloqueado",
+    edit_mot_peso: "Peso",
+    edit_mot_niv_ruido: "Nivel de ruido",
+    edit_mot_factor_servicio: "Factor de servicio",
+    edit_mot_rotacion_nominal: "Rotación nominal",
+    edit_mot_corriente_nominal: "Corriente nominal",
+    edit_mot_altitud: "Altitud",
+    edit_mot_temp_ambiente: "Temperatura ambiente",
+    edit_mot_proteccion: "Protección",
+    edit_mot_carcasaNombre: "Nombre de la carcasa",
+    edit_mot_carcasaValor: "Valor de la carcasa",
+    edit_mot_eficienciaPorcentaje: "Porcentaje de eficiencia",
+    edit_mot_eficienciaValor: "Valor de eficiencia",
+    edit_mot_fac_potenciaPorcentaje: "Porcentaje de factor de potencia",
+    edit_mot_fac_potenciaValor: "Valor de factor de potencia",
+    edit_mot_tecnicoFK: "Técnico",
+    edit_mot_tipoFK: "Tipo de motor",
+  };
 
-  // Validar si todos los campos obligatorios están llenos
-  for (const field of requiredFields) {
-    const fieldValue = getField(field);
-    if (fieldValue === "") {
-      areAllFieldsFilled = false;
-      break; // Si se encuentra un campo vacío, se detiene la validación
+  // Inicializar un arreglo para almacenar los nombres de los campos vacíos
+  let emptyFields = [];
+
+  // Iterar sobre cada campo para verificar si está vacío
+  campos.forEach((campo) => {
+    if (
+      document.getElementById(campo).value.trim() === "" &&
+      campo !== "edit_mot_empresaFK"
+    ) {
+      emptyFields.push(camposLabels[campo]); // Agregar el nombre legible del campo al arreglo
     }
-    formData.append(field, fieldValue); // Agregar campo y valor al FormData
+  });
+
+  // Comprobar si hay campos vacíos y mostrar una alerta si es así
+  if (emptyFields.length > 0) {
+    alertWarning(
+      `Los siguientes campos son obligatorios: ${emptyFields.join(", ")}`
+    );
+    return false; // Detener el envío del formulario
   }
 
-  // Obtener el formulario de edición por su ID
-  const form_edit_motor = document.getElementById("edit_motor");
+  // Crear un objeto FormData y agregar los valores de los campos
+  const datos = new FormData();
+  campos.forEach((campo) => {
+    datos.append(campo, document.getElementById(campo).value);
+  });
 
-  // Manejar el evento de envío del formulario
-  form_edit_motor.addEventListener("submit", async (event) => {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
-
-    if (!areAllFieldsFilled) {
-      // Mostrar una alerta si no se llenaron todos los campos
-      alertWarning((text = "Todos los campos son obligatorios"));
-      return false; // Evitar que se envíe el formulario
-    }
-
-    // Realizar una solicitud POST al servidor para editar el motor
-    let respuesta = await fetch("?controller=motor&action=edit", {
+  // Enviar una solicitud POST al servidor para agregar el motor
+  try {
+    const respuesta = await fetch("?controller=motor&action=edit", {
       method: "POST",
-      body: formData, // Enviar los datos del formulario
+      body: datos,
     });
 
     // Obtener la respuesta del servidor en formato JSON
-    let info = await respuesta.json();
+    const info = await respuesta.json();
 
+    // Mostrar un mensaje de éxito o error según la respuesta del servidor
     if (info.estado === 1) {
-      // Mostrar mensaje de éxito si la edición fue exitosa
-      alertSuccess((text = "Se ha editado correctamente")).then(() => {
-        window.location.reload(); // Recargar la página después de la edición
+      alertSuccess("Se ha editado correctamente").then(() => {
+        window.location.reload(); // Recargar la página
       });
     } else {
-      // Mostrar mensaje de error si hubo un problema durante la edición
-      alertError("Error al editar");
+      alertError("No se pudo editar el motor");
     }
-  });
-};
+  } catch (error) {
+    console.error("Error al realizar la solicitud:", error);
+    alertError("Error al realizar la solicitud");
+  }
+});
 
 // ELIMINAR <---------------------------------------------------------------------|
 

@@ -44,6 +44,7 @@ class motor_controller
             "fac_potenciaPorcentaje" => $add_mot_fac_potenciaPorcentaje,
             "fac_potenciaValor" => $add_mot_fac_potenciaValor,
             "tecnicoFK" => $add_mot_tecnicoFK,
+            "tipoFK" => $add_mot_tipoFK,
         );
 
         // Llamar a la función estática add en el modelo motor_modelo
