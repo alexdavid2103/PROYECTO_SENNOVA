@@ -26,6 +26,7 @@ class dashboard_controller
         $this->obj->porcentajes = motor_model::listarPorcentajes();
         $this->obj->tecnicos = tecnico_model::listarTecnicos();
         $this->obj->empresas = empresa_model::listarEmpresas();
+        $this->obj->municipios = empresa_model::listarMunicipios(8);
         $this->obj->loadTemplate("dashboard/index");
     }
 }

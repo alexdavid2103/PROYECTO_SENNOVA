@@ -31,7 +31,7 @@
         <i class="fas fa-plus"></i>
     </button>
 </div> -->
-<div id="floatingCircle" class="floating-button" data-toggle="tooltip" data-title="Crear Tecnico">
+<div id="floatingCircle" class="floating-button" data-toggle="tooltip" data-title="Agregar Tecnico">
     <i class="fas fa-plus"></i>
 </div>
 
