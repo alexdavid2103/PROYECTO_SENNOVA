@@ -29,13 +29,13 @@
   max-width: 500px;
   height: 250px;
 }
-
+/* 
 @media (max-width: 850px) {
   .flex-box {
     flex-direction: column;
   }
-}
-
+} 
+*/
 .title {
   max-width: max-content;
   margin: auto;

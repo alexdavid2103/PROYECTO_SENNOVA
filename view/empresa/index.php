@@ -1,4 +1,4 @@
-<div class="container">
+<div class="row">
     <div class="flex-box">
         <?php foreach ($this->empresas as $empresa) {
             echo '<div class="card m-0">

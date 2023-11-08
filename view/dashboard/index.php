@@ -260,7 +260,7 @@
         <div class="page-container" id="viewDashboard">
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+            <div class="main-content p-sm-t-0">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
@@ -502,22 +502,40 @@
         </div>
         <!-- END PAGE CONTAINER-->
 
-        <div class="page-container d-none p-md-b-100" id="viewEmpresas">
-            <?php
-            include("view/empresa/index.php");
-            ?>
+        <div class="page-container d-none" id="viewEmpresas">
+            <div class="main-content p-sm-t-0">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <?php
+                        include("view/empresa/index.php");
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="page-container d-none p-md-b-100" id="viewTecnicos">
-            <?php
-            include("view/tecnico/index.php");
-            ?>
+        <div class="page-container d-none" id="viewTecnicos">
+            <div class="main-content p-sm-t-0">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <?php
+                        include("view/tecnico/index.php");
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="page-container d-none p-md-b-100" id="viewMotores">
-            <?php
-            include("view/motor/index.php");
-            ?>
+        <div class="page-container d-none" id="viewMotores">
+            <div class="main-content p-sm-t-0">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <?php
+                        include("view/motor/index.php");
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

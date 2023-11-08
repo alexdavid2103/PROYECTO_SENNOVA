@@ -30,4 +30,10 @@ class dashboard_controller
         $this->obj->municipios = empresa_model::listarMunicipios(8);
         $this->obj->loadTemplate("dashboard/index");
     }
+
+    public function cuenta()
+    {
+        $this->obj->setLoadHeaderFooter(false);
+        $this->obj->loadTemplate("dashboard/cuenta");
+    }
 }

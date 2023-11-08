@@ -51,7 +51,7 @@ form_add_tecnico.addEventListener("submit", async (event) => {
   });
 
   // Comprobar si hay campos vacíos y mostrar una alerta si es así
-  if (emptyFields.length > 0) { 
+  if (emptyFields.length > 0) {
     alertWarning(
       `Los siguientes campos son obligatorios: ${emptyFields.join(", ")}`
     );
@@ -140,7 +140,7 @@ form_edit_tecnico.addEventListener("submit", async (event) => {
   });
 
   // Comprobar si hay campos vacíos y mostrar una alerta si es así
-  if (emptyFields.length > 0) { 
+  if (emptyFields.length > 0) {
     alertWarning(
       `Los siguientes campos son obligatorios: ${emptyFields.join(", ")}`
     );
@@ -182,18 +182,15 @@ form_edit_tecnico.addEventListener("submit", async (event) => {
 
 // ELIMINAR <---------------------------------------------------------------------|
 
-
-
 // OTROS <---------------------------------------------------------------------|
 
 // //ver formulario
-document.getElementById('floatingCircle').addEventListener('click', function() {
-  var formContainer = document.getElementById('formContainer');
-  formContainer.classList.toggle('d-none');
-  formContainer.classList.toggle('d-block');
+document.getElementById("floatingCircle").addEventListener("click", () => {
+  var formContainer = document.getElementById("formContainer");
+  formContainer.classList.toggle("d-none");
+  formContainer.classList.toggle("d-block");
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
-
