@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button type="button" class="editMotorBtn" data-id="1">1</button>
+    <button type="button" class="editMotorBtn" data-id="2">2</button>
+    <button type="button" class="editMotorBtn" data-id="3">3</button>
+
+    <div class="contForm" data-id="1">
+      <button type="button" class="fa-solid fa-xmark close" data-id="1">x</button>
+      1
+    </div>
+    <div class="contForm" data-id="2">
+      <button type="button" class="fa-solid fa-xmark close" data-id="2">x</button>
+      2
+    </div>
+    <div class="contForm" data-id="3">
+      <button type="button" class="fa-solid fa-xmark close" data-id="3">x</button>
+      3
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      emailjs.init("pdkSkxkJpo7uoM93W");
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
