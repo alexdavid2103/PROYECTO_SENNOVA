@@ -126,7 +126,7 @@
                                     <!-- Lista de correos electrónicos desplegable -->
                                     <div class="email-dropdown js-dropdown">
                                         <div class="email__title">
-                                            <p>You have 3 New Emails</p>
+                                            <p>You have 3 Nuevo Emails</p>
                                         </div>
                                         <!-- Correo electrónico individual -->
                                         <div class="email__item">
