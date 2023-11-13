@@ -55,9 +55,9 @@
 /*Text*/
 .card-title {
   color: #333;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-weight: 600;
-  line-height: 2rem;
+  line-height: 1.5rem;
   text-align: center;
 }
 

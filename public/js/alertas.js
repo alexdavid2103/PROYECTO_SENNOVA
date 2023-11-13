@@ -23,9 +23,9 @@ export function advanceAlertWarning() {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        resolve();
+        resolve(true);
       } else {
-        reject();
+        reject(false);
       }
     });
   });

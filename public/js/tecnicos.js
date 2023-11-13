@@ -1,4 +1,10 @@
-import { alertWarning, alertSuccess, alertError } from "./alertas.js";
+import {
+  alertWarning,
+  alertSuccess,
+  alertError,
+  advanceAlertWarning,
+  alertInfo,
+} from "./alertas.js";
 
 // |================================== TECNICOS ==================================| //
 
@@ -20,7 +26,6 @@ form_add_tecnico.addEventListener("submit", async (event) => {
     "add_tec_apellido2",
     "add_tec_correo",
     "add_tec_telefono",
-    "add_tec_direccion",
     "add_tec_empresa",
   ];
 
@@ -32,7 +37,6 @@ form_add_tecnico.addEventListener("submit", async (event) => {
     add_tec_apellido2: "Segundo apellido",
     add_tec_correo: "Correo",
     add_tec_telefono: "Teléfono",
-    add_tec_direccion: "Dirección",
     add_tec_empresa: "Empresa",
   };
 
@@ -109,8 +113,6 @@ form_edit_tecnico.addEventListener("submit", async (event) => {
     "edit_tec_apellido2",
     "edit_tec_correo",
     "edit_tec_telefono",
-    "edit_tec_direccion",
-    "edit_tec_empresa",
   ];
 
   const camposLabels = {
@@ -121,8 +123,6 @@ form_edit_tecnico.addEventListener("submit", async (event) => {
     edit_tec_apellido2: "Segundo apellido",
     edit_tec_correo: "Correo",
     edit_tec_telefono: "Teléfono",
-    edit_tec_direccion: "Dirección",
-    edit_tec_empresa: "Empresa",
   };
 
   // Inicializar un arreglo para almacenar los nombres de los campos vacíos
@@ -181,6 +181,44 @@ form_edit_tecnico.addEventListener("submit", async (event) => {
 });
 
 // ELIMINAR <---------------------------------------------------------------------|
+const deleteTecnicoButton = document.querySelectorAll(
+  ".deleteTecnicoButton[data-id]"
+);
+
+deleteTecnicoButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = button.getAttribute("data-id");
+    deleteTecnico(id);
+  });
+});
+
+const deleteTecnico = async (id) => {
+  try {
+    const willDelete = await advanceAlertWarning();
+
+    if (willDelete) {
+      const datos = new FormData();
+      datos.append("id", id);
+
+      const respuesta = await fetch("?controller=tecnico&action=delete", {
+        method: "POST",
+        body: datos,
+      });
+
+      const info = await respuesta.json();
+
+      if (info.estado === 1) {
+        alertSuccess("Ha sido eliminado correctamente").then(() => {
+          window.location.reload();
+        });
+      } else {
+        alertError("No se pudo eliminar");
+      }
+    }
+  } catch (error) {
+    alertInfo("No ha sido eliminado");
+  }
+};
 
 // OTROS <---------------------------------------------------------------------|
 

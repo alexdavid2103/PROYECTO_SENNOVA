@@ -295,8 +295,6 @@
   border-radius: 50px;
 }
 
-
-
 @media (max-width: 1160px) {
   .motor .info_motor {
     width: auto;
@@ -324,4 +322,16 @@
 }
 
 @media (max-width: 350px) {
+}
+
+.editMotorButton {
+  padding: 5px 15px;
+  background: #0000ff;
+  color: #fff;
+  border-radius: 5px;
+  transition: 0.25s linear;
+}
+
+.editMotorButton:hover {
+  background: #00009f;
 }

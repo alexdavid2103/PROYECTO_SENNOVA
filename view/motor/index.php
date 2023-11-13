@@ -19,6 +19,7 @@
                         <th>Ubicación</th>
                         <th>Estado</th>
                         <th>Registro</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,6 +60,7 @@
                             }
                             echo '</td>';
                             echo '<td>' . $motor["infmot_registro"] . '</td>';
+                            echo '<td> <button value="' . $motor['infmot_serie'] . '" class="editMotorButton">Editar</button> </td>';
                             echo '</tr>';
                         }
                     } ?>
@@ -96,5 +98,4 @@
 <script type="module" src="public/js/motores.js"></script>
 <script src="public/js/form.js"></script>
 <script src="public/js/graficos.js"></script>
-<script src="public/js/filtroTecnicos.js"></script>
-<script src="public/js/filtroUbicaciones.js"></script>
+<script src="public/js/filtrosFormMotor.js"></script>

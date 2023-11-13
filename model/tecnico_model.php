@@ -16,10 +16,9 @@ class tecnico_model
                                     tec_apellido2, 
                                     tec_correo, 
                                     tec_telefono, 
-                                    tec_direccion, 
                                     tec_contrasena, 
                                     tec_empresaFK)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $st = $c->prepare($sql);
 
@@ -31,7 +30,6 @@ class tecnico_model
             $data["apellido2"],
             $data["correo"],
             $data["telefono"],
-            $data["direccion"],
             password_hash($data["id"], PASSWORD_ARGON2I),
             $data["empresa"],
         );
@@ -46,30 +44,24 @@ class tecnico_model
         $c = $obj->getConnection();
 
         // Consulta SQL para actualizar datos en la tabla tecnico
-        $sql = "UPDATE tecnicos SET 
-                                    tec_empresa = ?,
-                                    tec_nombre = ?,
-                                    tec_apellido = ?,
-                                    tec_direccion = ?,
-                                    tec_telefono = ?,
-                                    tec_registro = ?
+        $sql = "UPDATE tecnicos SET
+                                    tec_nombre1 = ?,
+                                    tec_nombre2 = ?,
+                                    tec_apellido1 = ?,
+                                    tec_apellido2 = ?,
+                                    tec_correo = ?,
+                                    tec_telefono = ?
                                     WHERE tec_id = ?";
 
         $st = $c->prepare($sql);
         $v = array(
-            $data["empresa"],
-            // Nuevo valor para tec_empresa
-            $data["nombre"],
-            // Nuevo valor para tec_nombre
-            $data["apellido"],
-            // Nuevo valor para tec_apellido
-            $data["direccion"],
-            // Nuevo valor para tec_direccion
+            $data["nombre1"],
+            $data["nombre2"],
+            $data["apellido1"],
+            $data["apellido2"],
+            $data["correo"],
             $data["telefono"],
-            // Nuevo valor para tec_telefono
-            $data["registro"],
-            // Nuevo valor para tec_registro
-            $data["id"] // Valor para ubicar el registro a actualizar (tec_id)
+            $data["id"],
         );
 
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
@@ -81,11 +73,21 @@ class tecnico_model
         $obj = new connection();
         $c = $obj->getConnection();
 
-        // Consulta SQL para eliminar un registro de la tabla tecnico
-        $sql = "DELETE FROM tecnicos WHERE tec_id = ?";
-        $st = $c->prepare($sql);
-        $v = array($id); // Valor para ubicar el registro a eliminar (tec_id)
-        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+        $c->exec("SET foreign_key_checks = 0");
+
+        try {
+            $sqlUpdateMotor = "UPDATE motor_informacion SET infmot_tecnicoFK = NULL WHERE infmot_tecnicoFK = $id";
+            $stUpdateMotor = $c->prepare($sqlUpdateMotor);
+            $stUpdateMotor->execute();
+
+            // Consulta SQL para eliminar un registro de la tabla tecnico
+            $sqlDeleteTecnico = "DELETE FROM tecnicos WHERE tec_id = $id";
+            $stDeleteTecnico = $c->prepare($sqlDeleteTecnico);
+            $successDeleteTecnico = $stDeleteTecnico->execute();
+            return $successDeleteTecnico;
+        } finally {
+            $c->exec("SET foreign_key_checks = 1");
+        }
     }
 
     // Función para validar las credenciales de un técnico

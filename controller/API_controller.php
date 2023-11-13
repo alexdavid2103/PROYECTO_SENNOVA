@@ -25,5 +25,11 @@ class API_controller
         $ubicaciones = motor_model::getUbicacionById($id);
         echo json_encode($ubicaciones);
     }
+
+    public function getDataMotores() {
+        $id = $_GET["serie"];
+        $data = motor_model::getMotorById($id);
+        echo json_encode($data);
+    }
 }
 ?>

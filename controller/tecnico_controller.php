@@ -28,7 +28,6 @@ class tecnico_controller
             "apellido2" => $add_tec_apellido2,
             "correo" => $add_tec_correo,
             "telefono" => $add_tec_telefono,
-            "direccion" => $add_tec_direccion,
             "empresa" => $add_tec_empresa,
         );
 
@@ -47,13 +46,15 @@ class tecnico_controller
     {
         extract($_POST); // Extraer los datos del formulario POST
 
-        $data["empresa"] = $empresa;
-        $data["nombre"] = $nombre;
-        $data["apellido"] = $apellido;
-        $data["direccion"] = $direccion;
-        $data["telefono"] = $telefono;
-        $data["registro"] = $registro;
-        $data["id"] = $id;
+        $data = array(
+            "id" => $edit_tec_id,
+            "nombre1" => $edit_tec_nombre1,
+            "nombre2" => $edit_tec_nombre2,
+            "apellido1" => $edit_tec_apellido1,
+            "apellido2" => $edit_tec_apellido2,
+            "correo" => $edit_tec_correo,
+            "telefono" => $edit_tec_telefono,
+        );
 
         // Llamar a la función estática edit en el modelo tecnico_modelo
         $r = tecnico_model::edit($data);

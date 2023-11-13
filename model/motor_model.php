@@ -301,7 +301,7 @@ class motor_model
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
-    
+
     public static function listarMotorTipo()
     {
         $obj = new connection();
@@ -314,5 +314,16 @@ class motor_model
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
     }
 
+    public static function getMotorById($id)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para seleccionar todos los registros de la tabla motor_informacion
+        $sql = "SELECT * FROM motor_informacion WHERE infmot_series = $id";
+        $st = $c->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(); // Retornar todos los registros como un arreglo
+    }
 }
 ?>

@@ -28,19 +28,15 @@
         </div>
     </div>
 
-    <div class="input-box">
-        <label>Correo Electronico</label>
-        <input type="text" id="add_tec_correo" placeholder="Ingrese su correo electronico" />
-    </div>
-
     <div class="column">
+        <div class="input-box">
+            <label>Correo Electronico</label>
+            <input type="text" id="add_tec_correo" placeholder="Ingrese su correo electronico" />
+        </div>
+
         <div class="input-box">
             <label>Telefono</label>
             <input type="number" id="add_tec_telefono" placeholder="Ingrese su numero de telefono" />
-        </div>
-        <div class="input-box">
-            <label>Dirección</label>
-            <input type="text" id="add_tec_direccion" placeholder="Ingrese su dirección" />
         </div>
     </div>
 

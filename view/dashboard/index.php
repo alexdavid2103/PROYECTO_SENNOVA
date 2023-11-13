@@ -464,11 +464,21 @@
                                                     }
                                                     if ($_SESSION['rol'] !== 'tec') {
                                                         echo '<td>';
+
+                                                        $asignado = false;
+
                                                         foreach ($this->tecnicos as $tecnico) {
-                                                            if ($tecnico["tec_id"] == $motor["infmot_tecnicoFK"]) {
+                                                            if ($tecnico["tec_id"] === $motor["infmot_tecnicoFK"]) {
                                                                 echo $tecnico["tec_nombre1"] . ' ' . $tecnico["tec_apellido1"];
+                                                                $asignado = true;
+                                                                break;
                                                             }
                                                         }
+
+                                                        if (!$asignado) {
+                                                            echo "No asignado";
+                                                        }
+
                                                         echo '</td>';
                                                     }
                                                     echo '<td>';
@@ -562,6 +572,8 @@
     <!-- Main JS-->
     <script src="public/dashboard/js/main.js"></script>
     <script src="public/js/dashboard.js"></script>
+    <script src="https://kit.fontawesome.com/575d3461ce.js" crossorigin="anonymous"></script>
+
 
 </body>
 
