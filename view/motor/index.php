@@ -20,6 +20,7 @@
                         <th>Estado</th>
                         <th>Registro</th>
                         <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +31,7 @@
                             if ($_SESSION['rol'] === 'adm') {
                                 echo '<td>';
                                 foreach ($this->empresas as $empresa) {
-                                    if ($empresa["emp_id"] == $motor["infmot_empresaFK"]) {
+                                    if ($empresa["emp_id"] === $motor["infmot_empresaFK"]) {
                                         echo $empresa["emp_nombre"];
                                     }
                                 }
@@ -38,29 +39,102 @@
                             }
                             if ($_SESSION['rol'] !== 'tec') {
                                 echo '<td>';
+                                $asignado = false;
+
                                 foreach ($this->tecnicos as $tecnico) {
-                                    if ($tecnico["tec_id"] == $motor["infmot_tecnicoFK"]) {
+                                    if ($tecnico["tec_id"] === $motor["infmot_tecnicoFK"]) {
                                         echo $tecnico["tec_nombre1"] . ' ' . $tecnico["tec_apellido1"];
+                                        $asignado = true;
+                                        break;
                                     }
+                                }
+
+                                if (!$asignado) {
+                                    echo "No asignado";
                                 }
                                 echo '</td>';
                             }
                             echo '<td>';
                             foreach ($this->ubicaciones as $ubicacion) {
-                                if ($motor["infmot_ubicacionFK"] == $ubicacion["ubimot_id"]) {
+                                if ($motor["infmot_ubicacionFK"] === $ubicacion["ubimot_id"]) {
                                     echo $ubicacion["ubimot_area"];
                                 }
                             }
                             echo '</td>';
                             echo '<td>';
                             foreach ($this->estados as $estado) {
-                                if ($motor["infmot_estadoFK"] == $estado["est_id"]) {
+                                if ($motor["infmot_estadoFK"] === $estado["est_id"]) {
                                     echo $estado["est_nombre"];
                                 }
                             }
                             echo '</td>';
                             echo '<td>' . $motor["infmot_registro"] . '</td>';
-                            echo '<td> <button value="' . $motor['infmot_serie'] . '" class="editMotorButton">Editar</button> </td>';
+                            echo '<td> <button class="editMotorButton openFormEditMotor"
+                                data-empresaFK = "' . $motor["infmot_empresaFK"] . '"
+                                data-ubicacionFK = "' . $motor["infmot_ubicacionFK"] . '"
+                                data-serie = "' . $motor["infmot_serie"] . '"
+                                data-normaFK = "' . $motor["infmot_normaFK"] . '"
+                                data-polos = "' . $motor["infmot_polos"] . '"
+                                data-potencia = "' . $motor["infmot_potencia"] . '"
+                                data-IpIn = "' . $motor["infmot_IpIn"] . '"
+                                data-par_arranque = "' . $motor["infmot_par_arranque"] . '"
+                                data-par_maxima = "' . $motor["infmot_par_maxima"] . '"
+                                data-mom_inercia = "' . $motor["infmot_mom_inercia"] . '"
+                                data-tiempo_rotor_bloq = "' . $motor["infmot_tiempo_rotor_bloq"] . '"
+                                data-peso = "' . $motor["infmot_peso"] . '"
+                                data-niv_ruido = "' . $motor["infmot_niv_ruido"] . '"
+                                data-factor_servicio = "' . $motor["infmot_factor_servicio"] . '"
+                                data-rotacion_nominal = "' . $motor["infmot_rotacion_nominal"] . '"
+                                data-corriente_nominal = "' . $motor["infmot_corriente_nominal"] . '"
+                                data-altitud = "' . $motor["infmot_altitud"] . '"
+                                data-temp_ambiente = "' . $motor["infmot_temp_ambiente"] . '"
+                                data-proteccion = "' . $motor["infmot_proteccion"] . '"
+                                data-carcasaNombre = "';
+                            foreach ($this->motorCarcasa as $carcasa) {
+                                if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
+                                    echo $carcasa["carmot_nombre"];
+                                }
+                            }
+                            echo '"
+                                data-carcasaValor = "';
+                            foreach ($this->motorCarcasa as $carcasa) {
+                                if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
+                                    echo $carcasa["carmot_valor"];
+                                }
+                            }
+                            echo '"
+                                data-eficienciaPorcentaje = "';
+                            foreach ($this->motorEficiencia as $eficiencia) {
+                                if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
+                                    echo $eficiencia["efimot_porcentajeFK"];
+                                }
+                            }
+                            echo '"
+                                data-eficienciaValor = "';
+                            foreach ($this->motorEficiencia as $eficiencia) {
+                                if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
+                                    echo $eficiencia["efimot_valor"];
+                                }
+                            }
+                            echo '"
+                                data-fac_potenciaPorcentaje = "';
+                            foreach ($this->motorFacPotencia as $facPotencia) {
+                                if ($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
+                                    echo $facPotencia["facpotmot_porcentajeFK"];
+                                }
+                            }
+                            echo '"
+                                data-fac_potenciaValor = "';
+                            foreach ($this->motorFacPotencia as $facPotencia) {
+                                if ($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
+                                    echo $facPotencia["facpotmot_porcentajeFK"];
+                                }
+                            }
+                            echo '"
+                                data-tecnicoFK = "' . $motor["infmot_tecnicoFK"] . '"
+                                data-tipoFK = "' . $motor["infmot_tipoFK"] . '"
+                            >Editar</button> </td>';
+                            echo '<td> <button class="deleteMotorButton" data-id="' . $motor['infmot_serie'] . '">Eliminar</button> </td>';
                             echo '</tr>';
                         }
                     } ?>
@@ -96,6 +170,8 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
 <script type="module" src="public/js/motores.js"></script>
-<script src="public/js/form.js"></script>
+<script src="public/js/formMotorAdd.js"></script>
+<script src="public/js/formMotorEdit.js"></script>
 <script src="public/js/graficos.js"></script>
-<script src="public/js/filtrosFormMotor.js"></script>
+<!-- <script src="public/js/filtrosFormMotor.js"></script> -->
+<script src="public/js/dataFormEditMotor.js"></script>

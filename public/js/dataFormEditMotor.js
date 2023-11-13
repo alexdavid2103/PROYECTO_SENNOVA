@@ -2,52 +2,7 @@
 
 const closeFormEditMotor = document.querySelectorAll(".closeFormEditMotor");
 const openFormEditMotor = document.querySelectorAll(".openFormEditMotor");
-const FormEditMotor = document.querySelectorAll(".contForm");
-
-const toggleActiveForm = (button) => {
-  FormEditMotor.forEach((container) => {
-    if (button.getAttribute("data-id") === container.getAttribute("data-id")) {
-      container.classList.toggle("activeForm");
-    }
-  });
-};
-
-openFormEditMotor.forEach((button) => {
-  button.addEventListener("click", () => {
-    toggleActiveForm(button);
-  });
-});
-
-closeFormEditMotor.forEach((button) => {
-  button.addEventListener("click", () => {
-    toggleActiveForm(button);
-  });
-});
-
-// CARGAR DATOS DEL MOTOR EN EL FORMULARIO <--------------------------------------------|
-
-const uploadData = async (serie) => {
-  try {
-    const respuesta = await fetch(
-      `?controller=API&action=getDataMotores&serie=${serie}`
-    );
-    const data = await respuesta.json();
-    console.log(data);
-  } catch (error) {
-    console.log(`Ha ocurrido un error: ${error}`);
-  }
-};
-
-editMotorButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    const serie = button.getAttribute("data-serie");
-    uploadData(serie);
-  });
-});
-
-// OPCIÓN 1 <----------------------------------------------|
-
-const editMotorButton = document.querySelectorAll(".editMotorButton");
+const FormEditMotor = document.getElementById("FormEditMotor");
 
 // Array que contiene los IDs de los campos en el formulario
 const fields = [
@@ -112,7 +67,7 @@ const dataAttribute = [
 ];
 
 // Iterar sobre cada botón de edición de motor
-editMotorButton.forEach((motor) => {
+openFormEditMotor.forEach((motor) => {
   motor.addEventListener("click", () => {
     // Iterar sobre los atributos de datos y establecer los valores correspondientes en los campos del formulario
     dataAttribute.forEach((attribute, index) => {
@@ -131,5 +86,12 @@ editMotorButton.forEach((motor) => {
         field.value = value; // Para campos de entrada de texto, establecer el valor directamente
       }
     });
+    FormEditMotor.classList.toggle("activeForm");
+  });
+});
+
+closeFormEditMotor.forEach((button) => {
+  button.addEventListener("click", () => {
+    FormEditMotor.classList.toggle("activeForm");
   });
 });
