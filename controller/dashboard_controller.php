@@ -39,4 +39,10 @@ class dashboard_controller
         $this->obj->setLoadHeaderFooter(false);
         $this->obj->loadTemplate("dashboard/cuenta");
     }
+
+    public function password()
+    {
+        $this->obj->setLoadHeaderFooter(false);
+        $this->obj->loadTemplate("dashboard/password");
+    }
 }

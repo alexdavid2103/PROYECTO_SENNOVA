@@ -237,7 +237,7 @@
                                                     <i class="zmdi zmdi-account"></i>Cuenta</a>
                                             </div>
                                             <div class="account-dropdown__item">
-                                                <a href="#">
+                                                <a href="?controller=dashboard&action=password">
                                                     <i class="zmdi zmdi-settings"></i>Contraseña</a>
                                             </div>
                                         </div>
