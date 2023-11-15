@@ -233,7 +233,7 @@
                                         <!-- Opciones de la cuenta del usuario -->
                                         <div class="account-dropdown__body">
                                             <div class="account-dropdown__item">
-                                                <a href="#" class="">
+                                                <a href="?controller=dashboard&action=cuenta" class="">
                                                     <i class="zmdi zmdi-account"></i>Cuenta</a>
                                             </div>
                                             <div class="account-dropdown__item">

@@ -11,22 +11,22 @@
 </head>
 
 <body>
-    <form action="thank-you.html">
+    <form action="#" id="passwordContainer">
         <h2>Cambiar Contraseña</h2>
         <div class="form-group password">
             <label for="cont_anterior">Contraseña Anterior</label>
-            <input type="password" id="cont_anterior" placeholder="Ingrese su contraseña anterior">
-            <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
+            <input type="password" id="cont_anterior" placeholder="Ingrese su contraseña anterior" required>
+            <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="cont_anterior"></i>
         </div>
         <div class="form-group password">
             <label for="password">Contraseña Nueva</label>
-            <input type="password" id="password" placeholder="Ingrese su nueva contraseña">
-            <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
+            <input type="password" id="password" placeholder="Ingrese su nueva contraseña" required>
+            <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="password"></i>
         </div>
         <div class="form-group password">
             <label for="confirm_password">Confirmar Contraseña</label>
-            <input type="password" id="confirm_password" placeholder="confirmar contraseña">
-            <i id="pass-toggle-btn" class="fa-solid fa-eye"></i>
+            <input type="password" id="confirm_password" placeholder="confirmar contraseña" required>
+            <i id="pass-toggle-btn" class="fa-solid fa-eye"  data-target="confirm_password"></i>
         </div>
         <div class="form-group submit-btn">
             <input type="submit" value="Cambiar">

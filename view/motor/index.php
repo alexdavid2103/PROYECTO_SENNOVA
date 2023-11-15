@@ -173,5 +173,5 @@
 <script src="public/js/formMotorAdd.js"></script>
 <script src="public/js/formMotorEdit.js"></script>
 <script src="public/js/graficos.js"></script>
-<!-- <script src="public/js/filtrosFormMotor.js"></script> -->
+<script src="public/js/filtrosFormMotor.js"></script>
 <script src="public/js/dataFormEditMotor.js"></script>
