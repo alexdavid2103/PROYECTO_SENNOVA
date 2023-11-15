@@ -70,6 +70,7 @@
                 <div class="form-box">
 
                     <div class="form-group">
+                    <label>Par de Arranque</label>
                         <input type="text" id="edit_mot_par_arranque" class="form-field" placeholder="Par de arranque">
                     </div>
 

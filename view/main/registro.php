@@ -20,7 +20,7 @@
 
         <div class="input-box">
           <span class="details">Correo</span>
-          <input type="text" id="add_emp_correo" placeholder="Ingrese el correo">
+          <input type="email" id="add_emp_correo" placeholder="Ingrese el correo">
         </div>
 
         <div class="input-box">

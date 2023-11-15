@@ -17,6 +17,9 @@
   overflow-y: auto;
 }
 
+.form-group label {
+  color: black;
+}
 .closeFormEdit {
   position: absolute;
   top: 10px;

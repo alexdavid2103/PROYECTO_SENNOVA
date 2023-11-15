@@ -24,66 +24,49 @@
 
 <!-- PAGE CONTAINER-->
 <section class="container">
-    <header>Registration Form</header>
-    <form action="#" class="form">
+    <header>Registrar Empresa</header>
+    <form method="POST" action="?controller=empresa&action=add" class="form">
+
         <div class="input-box">
-            <label>Full Name</label>
-            <input type="text" placeholder="Enter full name" required />
+            <label>NIT</label>
+            <input type="text" placeholder="Ingrese el NIT de la empresa" required />
         </div>
 
         <div class="input-box">
-            <label>Email Address</label>
-            <input type="text" placeholder="Enter email address" required />
+            <label>Nombre</label>
+            <input type="text" placeholder="Ingrese el nombre" required />
         </div>
 
         <div class="column">
             <div class="input-box">
-                <label>Phone Number</label>
-                <input type="number" placeholder="Enter phone number" required />
+                <label>Correo</label>
+                <input type="email" placeholder="Ingrese el correo" required />
             </div>
             <div class="input-box">
-                <label>Birth Date</label>
-                <input type="date" placeholder="Enter birth date" required />
+                <label>Telefono</label>
+                <input type="number" placeholder="Ingrese su telefono" required />
             </div>
         </div>
-        <div class="gender-box">
-            <h3>Gender</h3>
-            <div class="gender-option">
-                <div class="gender">
-                    <input type="radio" id="check-male" name="gender" checked />
-                    <label for="check-male">male</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" id="check-female" name="gender" />
-                    <label for="check-female">Female</label>
-                </div>
-                <div class="gender">
-                    <input type="radio" id="check-other" name="gender" />
-                    <label for="check-other">prefer not to say</label>
-                </div>
+
+        <div class="column">
+            <div class="input-box">
+                <label>Direccion</label>
+                <input type="text" placeholder="Ingrese su direccion" required />
+            </div>
+
+            <div class="input-box">
+                <label>Municipio</label>
+                <select class="select" name="Sexo" id="add_emp_municipio">
+                    <option value="" selected>Seleciona tu municipio</option>
+                    <?php foreach ($this->municipios as $municipio) {
+                        echo '<option value="' . $municipio['mun_id'] . '">' . $municipio['mun_nombre'] . '</option>';
+                    } ?>
+                </select>
             </div>
         </div>
-        <div class="input-box address">
-            <label>Address</label>
-            <input type="text" placeholder="Enter street address" required />
-            <input type="text" placeholder="Enter street address line 2" required />
-            <div class="column">
-                <div class="select-box">
-                    <select>
-                        <option hidden>Country</option>
-                        <option>America</option>
-                        <option>Japan</option>
-                        <option>India</option>
-                        <option>Nepal</option>
-                    </select>
-                </div>
-                <input type="text" placeholder="Enter your city" required />
-            </div>
-            <div class="column">
-                <input type="text" placeholder="Enter your region" required />
-                <input type="number" placeholder="Enter postal code" required />
-            </div>
-        </div>
-        <button>Submit</button>
+
+
+
+        <button>Registrar</button>
     </form>
 </section>
