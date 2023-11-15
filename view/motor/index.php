@@ -89,6 +89,13 @@
                                 data-altitud = "' . $motor["infmot_altitud"] . '"
                                 data-temp_ambiente = "' . $motor["infmot_temp_ambiente"] . '"
                                 data-proteccion = "' . $motor["infmot_proteccion"] . '"
+                                data-carcasaId = "';
+                            foreach ($this->motorCarcasa as $carcasa) {
+                                if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
+                                    echo $carcasa["carmot_id"];
+                                }
+                            }
+                            echo '"
                                 data-carcasaNombre = "';
                             foreach ($this->motorCarcasa as $carcasa) {
                                 if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
@@ -103,6 +110,13 @@
                                 }
                             }
                             echo '"
+                                data-eficienciaId = "';
+                            foreach ($this->motorEficiencia as $eficiencia) {
+                                if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
+                                    echo $eficiencia["efimot_id"];
+                                }
+                            }
+                            echo '"
                                 data-eficienciaPorcentaje = "';
                             foreach ($this->motorEficiencia as $eficiencia) {
                                 if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
@@ -114,6 +128,13 @@
                             foreach ($this->motorEficiencia as $eficiencia) {
                                 if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
                                     echo $eficiencia["efimot_valor"];
+                                }
+                            }
+                            echo '"
+                                data-fac_potenciaId = "';
+                            foreach ($this->motorFacPotencia as $facPotencia) {
+                                if ($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
+                                    echo $facPotencia["facpotmot_id"];
                                 }
                             }
                             echo '"
@@ -173,5 +194,5 @@
 <script src="public/js/formMotorAdd.js"></script>
 <script src="public/js/formMotorEdit.js"></script>
 <script src="public/js/graficos.js"></script>
-<!-- <script src="public/js/filtrosFormMotor.js"></script> -->
+<script src="public/js/filtrosFormMotor.js"></script>
 <script src="public/js/dataFormEditMotor.js"></script>

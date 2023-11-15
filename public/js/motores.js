@@ -3,6 +3,7 @@ import {
   advanceAlertWarning,
   alertSuccess,
   alertError,
+  alertInfo,
 } from "./alertas.js";
 
 // |================================== MOTORES ==================================| //
@@ -158,10 +159,13 @@ form_edit_motor.addEventListener("submit", async (event) => {
     "edit_mot_altitud",
     "edit_mot_temp_ambiente",
     "edit_mot_proteccion",
+    "edit_mot_carcasaId",
     "edit_mot_carcasaNombre",
     "edit_mot_carcasaValor",
+    "edit_mot_eficienciaId",
     "edit_mot_eficienciaPorcentaje",
     "edit_mot_eficienciaValor",
+    "edit_mot_fac_potenciaId",
     "edit_mot_fac_potenciaPorcentaje",
     "edit_mot_fac_potenciaValor",
     "edit_mot_tecnicoFK",
@@ -188,10 +192,13 @@ form_edit_motor.addEventListener("submit", async (event) => {
     edit_mot_altitud: "Altitud",
     edit_mot_temp_ambiente: "Temperatura ambiente",
     edit_mot_proteccion: "Protección",
+    edit_mot_carcasaId: "Id de la carcasa",
     edit_mot_carcasaNombre: "Nombre de la carcasa",
     edit_mot_carcasaValor: "Valor de la carcasa",
+    edit_mot_eficienciaId: "Id de eficiencia",
     edit_mot_eficienciaPorcentaje: "Porcentaje de eficiencia",
     edit_mot_eficienciaValor: "Valor de eficiencia",
+    edit_mot_fac_potenciaId: "Id de factor de potencia",
     edit_mot_fac_potenciaPorcentaje: "Porcentaje de factor de potencia",
     edit_mot_fac_potenciaValor: "Valor de factor de potencia",
     edit_mot_tecnicoFK: "Técnico",
@@ -250,38 +257,41 @@ form_edit_motor.addEventListener("submit", async (event) => {
 });
 
 // ELIMINAR <---------------------------------------------------------------------|
+const deleteMotorButton = document.querySelectorAll(
+  ".deleteMotorButton[data-id]"
+);
 
-// Función para eliminar un motor
-function deleteMotor(id) {
+deleteMotorButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = button.getAttribute("data-id").trim();
+    deleteMotor(id);
+  });
+});
+
+const deleteMotor = async (id) => {
   try {
-    advanceAlertWarning().then(async (willDelete) => {
-      if (willDelete) {
-        let datos = new FormData();
-        datos.append("id", id);
+    const willDelete = await advanceAlertWarning();
 
-        // Enviar la solicitud POST al servidor para eliminar el motor
-        let respuesta = await fetch("?controller=motor&action=delete", {
-          method: "POST",
-          body: datos,
+    if (willDelete) {
+      const datos = new FormData();
+      datos.id = id;
+      console.log(datos.id);
+      const respuesta = await fetch(`?controller=motor&action=delete`, {
+        method: "POST",
+        body: datos,
+      });
+
+      const info = await respuesta.json();
+
+      if (info.estado === 1) {
+        alertSuccess("Ha sido eliminado correctamente").then(() => {
+          window.location.reload();
         });
-
-        // Obtener la respuesta del servidor en formato JSON
-        let info = await respuesta.json();
-
-        // Mostrar mensaje de éxito o error según la respuesta del servidor
-        if (info.estado === 1) {
-          alertSuccess("Ha sido eliminado correctamente").then(() => {
-            window.location.reload();
-          });
-        } else {
-          alertError("No se pudo eliminar");
-        }
       } else {
-        swal("No ha sido eliminado");
+        alertError("No se pudo eliminar");
       }
-    });
+    }
   } catch (error) {
-    console.log(error);
-    // Manejar el error de la solicitud
+    alertInfo("No ha sido eliminado");
   }
-}
+};
