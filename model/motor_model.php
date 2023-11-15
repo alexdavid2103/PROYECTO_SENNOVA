@@ -86,102 +86,85 @@ class motor_model
         );
         return $st_motor_informacion->execute($v_motor_informacion); // Ejecutar la consulta y retornar el resultado
     }
-
-    // Función para editar la información de un motor en la base de datos
+    // Función para agregar información de un motor a la base de datos
     public static function edit($data)
     {
         $obj = new connection();
         $c = $obj->getConnection();
 
-        // Consulta SQL para actualizar datos en la tabla motor_informacion
-        $sql = "UPDATE motor_informacion SET 
-                                    infmot_norma = ?, 
-                                    infmot_frecuencia = ?,
-                                    infmot_vol_nominal = ?,
-                                    infmot_polos = ?,
-                                    infmot_potencia = ?,
-                                    infmot_IpIn = ?,
-                                    infmot_par_arranque = ?,
-                                    infmot_par_maxima = ?,
-                                    infmot_mom_inercia = ?,
-                                    infmot_tiempo_rotor_bloq = ?,
-                                    infmot_peso = ?,
-                                    infmot_niv_ruido = ?,
-                                    infmot_factor_servicio = ?,
-                                    infmot_rotacion_nominal = ?,
-                                    infmot_corriente_nominal = ?,
-                                    infmot_altitud = ?,
-                                    infmot_regimen = ?,
-                                    infmot_temp_ambiente = ?,
-                                    infmot_proteccion = ?,
-                                    infmot_carcasaFK = ?,
-                                    infmot_eficienciaFK = ?,
-                                    infmot_fac_potenciaFK = ?,
-                                    infmot_clienteFK = ?,
-                                    infmot_tecnicoFK = ?,
-                                    infmot_estadoFK = ?
-                                    WHERE infmot_serie = ?";
+        $sql_motor_carcasa = "UPDATE motor_carcasa SET carmot_valor = ?, carmot_nombre = ? WHERE carmot_id = ?";
+        $st_motor_carcasa = $c->prepare($sql_motor_carcasa);
+        $v_motor_carcasa = array($data["carcasaValor"], $data["carcasaNombre"], $data["carcasaId"]);
+        $st_motor_carcasa->execute($v_motor_carcasa);
 
-        $st = $c->prepare($sql);
-        $v = array(
-            $data["norma"],
-            // Nuevo valor para infmot_norma
-            $data["frecuencia"],
-            // Nuevo valor para infmot_frecuencia
-            $data["vol_nominal"],
-            // Nuevo valor para infmot_vol_nominal
+        // Actualización de datos en la tabla motor_eficiencia
+        $sql_motor_eficiencia = "UPDATE motor_eficiencia SET efimot_valor = ?, efimot_porcentajeFK = ? WHERE efimot_id = ?";
+        $st_motor_eficiencia = $c->prepare($sql_motor_eficiencia);
+        $v_motor_eficiencia = array($data["eficienciaValor"], $data["eficienciaPorcentaje"], $data["eficienciaId"]);
+        $st_motor_eficiencia->execute($v_motor_eficiencia);
+
+        // Actualización de datos en la tabla motor_factor_potencia
+        $sql_motor_factor_potencia = "UPDATE motor_factor_potencia SET facpotmot_valor = ?, facpotmot_porcentajeFK = ? WHERE facpotmot_id = ?";
+        $st_motor_factor_potencia = $c->prepare($sql_motor_factor_potencia);
+        $v_motor_factor_potencia = array($data["fac_potenciaValor"], $data["fac_potenciaPorcentaje"], $data["fac_potenciaId"]);
+        $st_motor_factor_potencia->execute($v_motor_factor_potencia);
+
+        // Consulta SQL para insertar datos en la tabla motor_informacion
+        $sql_motor_informacion = "UPDATE motor_informacion SET
+                                        infmot_normaFK = ?,
+                                        infmot_polos = ?,
+                                        infmot_potencia = ?,
+                                        infmot_IpIn = ?,
+                                        infmot_par_arranque = ?,
+                                        infmot_par_maxima = ?,
+                                        infmot_mom_inercia = ?,
+                                        infmot_tiempo_rotor_bloq = ?,
+                                        infmot_peso = ?,
+                                        infmot_niv_ruido = ?,
+                                        infmot_factor_servicio = ?,
+                                        infmot_rotacion_nominal = ?,
+                                        infmot_corriente_nominal = ?,
+                                        infmot_altitud = ?,
+                                        infmot_temp_ambiente = ?,
+                                        infmot_proteccion = ?,
+                                        infmot_empresaFK = ?,
+                                        infmot_tecnicoFK = ?,
+                                        infmot_ubicacionFK = ?,
+                                        infmot_tipoFK = ?
+                                        WHERE infmot_serie = ?";
+
+        $st_motor_informacion = $c->prepare($sql_motor_informacion);
+
+        $v_motor_informacion = array(
+            $data["normaFK"],
             $data["polos"],
-            // Nuevo valor para infmot_polos
             $data["potencia"],
-            // Nuevo valor para infmot_potencia
-            $data["Ip/In"],
-            // Nuevo valor para infmot_Ip/In
+            $data["IpIn"],
             $data["par_arranque"],
-            // Nuevo valor para infmot_par_arranque
             $data["par_maxima"],
-            // Nuevo valor para infmot_par_maxima
             $data["mom_inercia"],
-            // Nuevo valor para infmot_mom_inercia
             $data["tiempo_rotor_bloq"],
-            // Nuevo valor para infmot_tiempo_rotor_bloq
             $data["peso"],
-            // Nuevo valor para infmot_peso
             $data["niv_ruido"],
-            // Nuevo valor para infmot_niv_ruido
             $data["factor_servicio"],
-            // Nuevo valor para infmot_factor_servicio
             $data["rotacion_nominal"],
-            // Nuevo valor para infmot_rotacion_nominal
             $data["corriente_nominal"],
-            // Nuevo valor para infmot_corriente_nominal
             $data["altitud"],
-            // Nuevo valor para infmot_altitud
-            $data["regimen"],
-            // Nuevo valor para infmot_regimen
             $data["temp_ambiente"],
-            // Nuevo valor para infmot_temp_ambiente
             $data["proteccion"],
-            // Nuevo valor para infmot_proteccion
-            $data["carcasaFK"],
-            // Nuevo valor para infmot_carcasaFK
-            $data["eficienciaFK"],
-            // Nuevo valor para infmot_eficienciaFK
-            $data["fac_potenciaFK"],
-            // Nuevo valor para infmot_fac_potenciaFK
-            $data["clienteFK"],
-            // Nuevo valor para infmot_clienteFK
+            $data["empresaFK"],
             $data["tecnicoFK"],
-            // Nuevo valor para infmot_tecnicoFK
-            $data["estadoFK"],
-            // Nuevo valor para infmot_estadoFK
-            $data["serie"] // Valor para ubicar el registro a actualizar (infmot_serie)
+            $data["ubicacionFK"],
+            $data["tipoFK"],
+            $data["serie"],
         );
-
-        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+        return $st_motor_informacion->execute($v_motor_informacion); // Ejecutar la consulta y retornar el resultado
     }
 
+
+
     // Función para eliminar información de un motor de la base de datos
-    public static function delete($serie)
+    public static function delete($data)
     {
         $obj = new connection();
         $c = $obj->getConnection();
@@ -189,7 +172,7 @@ class motor_model
         // Consulta SQL para eliminar un registro de la tabla motor_informacion
         $sql = "DELETE FROM motor_informacion WHERE infmot_serie = ?";
         $st = $c->prepare($sql);
-        $v = array($serie); // Valor para ubicar el registro a eliminar (infmot_serie)
+        $v = array($data["id"]); // Valor para ubicar el registro a eliminar (infmot_serie)
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 

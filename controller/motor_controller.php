@@ -56,49 +56,52 @@ class motor_controller
             echo json_encode(array("mensaje" => "Error al registrar", "estado" => 0));
         }
     }
-
-    // Función para editar los datos de un motor en la base de datos
+    // Función para agregar un motor a la base de datos
     public function edit()
     {
         extract($_POST); // Extraer los datos del formulario POST
 
-        // Crear un arreglo asociativo con los datos actualizados del motor
+        // Crear un arreglo asociativo con los datos del motor
         $data = array(
-            "serie" => $infmot_serie,
-            "norma" => $infmot_norma,
-            "frecuencia" => $infmot_frecuencia,
-            "vol_nominal" => $infmot_vol_nominal,
-            "polos" => $infmot_polos,
-            "potencia" => $infmot_potencia,
-            "IpIn" => $infmot_IpIn,
-            "par_arranque" => $infmot_par_arranque,
-            "par_maxima" => $infmot_par_maxima,
-            "mom_inercia" => $infmot_mom_inercia,
-            "tiempo_rotor_bloq" => $infmot_tiempo_rotor_bloq,
-            "peso" => $infmot_peso,
-            "niv_ruido" => $infmot_niv_ruido,
-            "factor_servicio" => $infmot_factor_servicio,
-            "rotacion_nominal" => $infmot_rotacion_nominal,
-            "corriente_nominal" => $infmot_corriente_nominal,
-            "altitud" => $infmot_altitud,
-            "regimen" => $infmot_regimen,
-            "temp_ambiente" => $infmot_temp_ambiente,
-            "proteccion" => $infmot_proteccion,
-            "carcasaFK" => $infmot_carcasaFK,
-            "eficienciaFK" => $infmot_eficienciaFK,
-            "fac_potenciaFK" => $infmot_fac_potenciaFK,
-            "clienteFK" => $infmot_clienteFK,
-            "tecnicoFK" => $infmot_tecnicoFK,
-            "estadoFK" => $infmot_estadoFK,
+            "empresaFK" => $edit_mot_empresaFK,
+            "ubicacionFK" => $edit_mot_ubicacionFK,
+            "serie" => $edit_mot_serie,
+            "normaFK" => $edit_mot_normaFK,
+            "polos" => $edit_mot_polos,
+            "potencia" => $edit_mot_potencia,
+            "IpIn" => $edit_mot_IpIn,
+            "par_arranque" => $edit_mot_par_arranque,
+            "par_maxima" => $edit_mot_par_maxima,
+            "mom_inercia" => $edit_mot_mom_inercia,
+            "tiempo_rotor_bloq" => $edit_mot_tiempo_rotor_bloq,
+            "peso" => $edit_mot_peso,
+            "niv_ruido" => $edit_mot_niv_ruido,
+            "factor_servicio" => $edit_mot_factor_servicio,
+            "rotacion_nominal" => $edit_mot_rotacion_nominal,
+            "corriente_nominal" => $edit_mot_corriente_nominal,
+            "altitud" => $edit_mot_altitud,
+            "temp_ambiente" => $edit_mot_temp_ambiente,
+            "proteccion" => $edit_mot_proteccion,
+            "carcasaId" => $edit_mot_carcasaId,
+            "carcasaNombre" => $edit_mot_carcasaNombre,
+            "carcasaValor" => $edit_mot_carcasaValor,
+            "eficienciaId" => $edit_mot_eficienciaId,
+            "eficienciaPorcentaje" => $edit_mot_eficienciaPorcentaje,
+            "eficienciaValor" => $edit_mot_eficienciaValor,
+            "fac_potenciaId" => $edit_mot_fac_potenciaId,
+            "fac_potenciaPorcentaje" => $edit_mot_fac_potenciaPorcentaje,
+            "fac_potenciaValor" => $edit_mot_fac_potenciaValor,
+            "tecnicoFK" => $edit_mot_tecnicoFK,
+            "tipoFK" => $edit_mot_tipoFK,
         );
 
-        // Llamar a la función estática edit en el modelo motor_modelo
+        // Llamar a la función estática add en el modelo motor_modelo
         $r = motor_model::edit($data);
 
         if ($r) {
-            echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1));
+            echo json_encode(array("mensaje" => "Se Edito", "estado" => 1));
         } else {
-            echo json_encode(array("mensaje" => "Error al actualizar", "estado" => 0));
+            echo json_encode(array("mensaje" => "Error al Editar", "estado" => 0));
         }
     }
 
@@ -106,10 +109,13 @@ class motor_controller
     public function delete()
     {
         if (isset($_POST["id"])) {
-            $serie = $_POST["id"];
 
-            // Llamar a la función estática delete en el modelo motor_modelo
-            $r = motor_model::delete($serie);
+            $data = array(
+                "id" => $_POST["id"],
+            );
+
+            // Llamar a la función estática delete en el modelo tecnico_modelo
+            $r = motor_model::delete($data);
 
             if ($r) {
                 echo json_encode(array("mensaje" => "Se eliminó", "estado" => 1));

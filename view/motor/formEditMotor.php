@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_serie" class="form-field" placeholder="Serie">
+                        <input type="text" id="edit_mot_serie" class="form-field" placeholder="Serie" readonly="true">
                     </div>
                     <div class="form-group">
                         <select id="edit_mot_normaFK" class="form-field" placeholder="Norma">
@@ -70,7 +70,6 @@
                 <div class="form-box">
 
                     <div class="form-group">
-                    <label>Par de Arranque</label>
                         <input type="text" id="edit_mot_par_arranque" class="form-field" placeholder="Par de arranque">
                     </div>
 
@@ -149,6 +148,7 @@
                 </div>
 
                 <div class="form-box">
+                    <input type="hidden" id="edit_mot_carcasaId">
                     <div class="form-group">
                         <input type="text" id="edit_mot_carcasaNombre" class="form-field"
                             placeholder="Nombre de la carcasa">
@@ -172,6 +172,7 @@
             <!-- ======================Step Group 4============== -->
             <div class="step-group" id="step-group-4-edit">
                 <div class="form-box">
+                    <input type="hidden" id="edit_mot_eficienciaId">
                     <div class="form-group">
                         <select name="" class="form-field" id="edit_mot_eficienciaPorcentaje">
                             <option value="">Seleccione el porcentaje de eficiencia</option>
@@ -188,6 +189,7 @@
                 </div>
 
                 <div class="form-box">
+                    <input type="hidden" id="edit_mot_fac_potenciaId">
                     <div class="form-group">
                         <select name="" class="form-field" id="edit_mot_fac_potenciaPorcentaje">
                             <option value="">Seleccione el porcentaje del factor de potencia</option>
