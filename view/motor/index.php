@@ -194,10 +194,6 @@
 <script src="public/js/formMotorAdd.js"></script>
 <script src="public/js/formMotorEdit.js"></script>
 <script src="public/js/graficos.js"></script>
-<<<<<<< HEAD
-<script src="public/js/filtrosFormMotor.js"></script>
-=======
 <script src="public/js/filtroTecnicos.js"></script>
 <script src="public/js/filtroUbicaciones.js"></script>
->>>>>>> a19e9514f5d49e7dd629815440906b2b5c367c62
 <script src="public/js/dataFormEditMotor.js"></script>
