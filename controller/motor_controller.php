@@ -56,7 +56,7 @@ class motor_controller
             echo json_encode(array("mensaje" => "Error al registrar", "estado" => 0));
         }
     }
-    // Función para agregar un motor a la base de datos
+    // Función para editar un motor a la base de datos
     public function edit()
     {
         extract($_POST); // Extraer los datos del formulario POST
@@ -95,7 +95,7 @@ class motor_controller
             "tipoFK" => $edit_mot_tipoFK,
         );
 
-        // Llamar a la función estática add en el modelo motor_modelo
+        // Llamar a la función estática edit en el modelo motor_modelo
         $r = motor_model::edit($data);
 
         if ($r) {
@@ -114,7 +114,7 @@ class motor_controller
                 "id" => $_POST["id"],
             );
 
-            // Llamar a la función estática delete en el modelo tecnico_modelo
+            // Llamar a la función estática delete en el modelo motor_modelo
             $r = motor_model::delete($data);
 
             if ($r) {
@@ -129,7 +129,7 @@ class motor_controller
 
     public function graficas()
     {
-        // Llamar a la función estática delete en el modelo motor_modelo
+        // Llamar a la función estática graficas en el modelo motor_modelo
         $r = motor_model::graficas();
         $json = json_encode($r);
         echo $json;
