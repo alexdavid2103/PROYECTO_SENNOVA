@@ -167,13 +167,13 @@ class main_controller
     {
         $mensaje = "";
         $estado = 0;
-        $url = "?controller=main&action=login";
+        $url = "";
 
-        if (isset($_POST["currentPassword"], $_POST["newPassword"])) {
+        if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["id"])) {
             $data = array(
                 "currentPassword" => $_POST["currentPassword"],
                 "newPassword" => $_POST["newPassword"],
-                "id" => $_SESSION["id"],
+                "id" => $_POST["id"],
             );
 
             switch ($_SESSION["rol"]) {
@@ -192,8 +192,10 @@ class main_controller
             }
 
             if ($r) {
+                session_destroy();
                 $mensaje = "Se actualizó la contraseña";
                 $estado = 1;
+                $url = "?controller=main&action=login";
             } else {
                 $mensaje = "Error al actualizar la contraseña";
             }

@@ -11,29 +11,31 @@
 </head>
 
 <body>
-    <form action="#" id="passwordContainer">
+    <form action="?controller=main&action=updatePassword" id="form-update-password" onsubmit="return false">
         <h2>Cambiar Contraseña</h2>
         <div class="form-group password">
-            <label for="cont_anterior">Contraseña Anterior</label>
+            <label for="currentPassword">Contraseña Anterior</label>
             <input type="password" id="currentPassword" placeholder="Ingrese su contraseña anterior">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="cont_anterior"></i>
         </div>
         <div class="form-group password">
-            <label for="password">Contraseña Nueva</label>
+            <label for="newPassword">Contraseña Nueva</label>
             <input type="password" id="newPassword" placeholder="Ingrese su nueva contraseña">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="password"></i>
         </div>
         <div class="form-group password">
-            <label for="confirm_password">Confirmar Contraseña</label>
+            <label for="confirmNewPassword">Confirmar Contraseña</label>
             <input type="password" id="confirmNewPassword" placeholder="confirmar contraseña">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="confirm_password"></i>
         </div>
         <div class="form-group submit-btn">
             <input type="submit" value="Cambiar">
+            <input type="hidden" id="id" value="<?php $_SESSION["id"] ?>">
         </div>
     </form>
 
-    <script src="public/js/updatePassword.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
+    <script type="module" src="public/js/updatePassword.js"></script>
 </body>
 
 </html>

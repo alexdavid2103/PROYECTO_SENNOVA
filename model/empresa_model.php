@@ -185,4 +185,19 @@ class empresa_model
         return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
     }
 
+    public static function updatePassword($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        $sql = "UPDATE empresas SET emp_contrasena = ? WHERE emp_id = ? AND emp_contrasena = ?";
+        $st = $c->prepare($sql);
+        $v = array(
+            password_hash($data["newPassword"], PASSWORD_ARGON2I),
+            $data["id"],
+            password_hash($data["currentPassword"], PASSWORD_ARGON2I)
+        );
+        return $st->execute($v);
+    }
+
 }

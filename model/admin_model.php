@@ -120,7 +120,11 @@ class admin_model
 
         $sql = "UPDATE administradores SET adm_contrasena = ? WHERE adm_id = ? AND adm_contrasena = ?";
         $st = $c->prepare($sql);
-        $v = array($data["newPassword"], $data["id"], $data["currentPassword"]);
+        $v = array(
+            password_hash($data["newPassword"], PASSWORD_ARGON2I),
+            $data["id"],
+            password_hash($data["currentPassword"], PASSWORD_ARGON2I)
+        );
         return $st->execute($v);
     }
 }

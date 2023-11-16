@@ -153,4 +153,19 @@ class tecnico_model
         $stVerifyData->execute($vVerifyData);
         return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
     }
+
+    public static function updatePassword($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        $sql = "UPDATE tecnicos SET tec_contrasena = ? WHERE tec_id = ? AND tec_contrasena = ?";
+        $st = $c->prepare($sql);
+        $v = array(
+            password_hash($data["newPassword"], PASSWORD_ARGON2I),
+            $data["id"],
+            password_hash($data["currentPassword"], PASSWORD_ARGON2I)
+        );
+        return $st->execute($v);
+    }
 }
