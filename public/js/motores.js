@@ -45,6 +45,7 @@ form_add_motor.addEventListener("submit", async (event) => {
     "add_mot_fac_potenciaPorcentaje",
     "add_mot_fac_potenciaValor",
     "add_mot_tecnicoFK",
+    "add_mot_tipoFK",
   ];
 
   const camposLabels = {
@@ -74,6 +75,7 @@ form_add_motor.addEventListener("submit", async (event) => {
     add_mot_fac_potenciaPorcentaje: "Porcentaje de factor de potencia",
     add_mot_fac_potenciaValor: "Valor de factor de potencia",
     add_mot_tecnicoFK: "Técnico",
+    add_mot_tipoFK: "tipo de motor",
   };
 
   // Inicializar un arreglo para almacenar los nombres de los campos vacíos
@@ -274,8 +276,8 @@ const deleteMotor = async (id) => {
 
     if (willDelete) {
       const datos = new FormData();
-      datos.id = id;
-      console.log(datos.id);
+      datos.append("id", id);
+      console.log(id);
       const respuesta = await fetch(`?controller=motor&action=delete`, {
         method: "POST",
         body: datos,
