@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -15,25 +15,25 @@
         <h2>Cambiar Contraseña</h2>
         <div class="form-group password">
             <label for="cont_anterior">Contraseña Anterior</label>
-            <input type="password" id="cont_anterior" placeholder="Ingrese su contraseña anterior" required>
+            <input type="password" id="currentPassword" placeholder="Ingrese su contraseña anterior">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="cont_anterior"></i>
         </div>
         <div class="form-group password">
             <label for="password">Contraseña Nueva</label>
-            <input type="password" id="password" placeholder="Ingrese su nueva contraseña" required>
+            <input type="password" id="newPassword" placeholder="Ingrese su nueva contraseña">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="password"></i>
         </div>
         <div class="form-group password">
             <label for="confirm_password">Confirmar Contraseña</label>
-            <input type="password" id="confirm_password" placeholder="confirmar contraseña" required>
-            <i id="pass-toggle-btn" class="fa-solid fa-eye"  data-target="confirm_password"></i>
+            <input type="password" id="confirmNewPassword" placeholder="confirmar contraseña">
+            <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="confirm_password"></i>
         </div>
         <div class="form-group submit-btn">
             <input type="submit" value="Cambiar">
         </div>
     </form>
 
-    <script src="public/js/password.js"></script>
+    <script src="public/js/updatePassword.js"></script>
 </body>
 
 </html>

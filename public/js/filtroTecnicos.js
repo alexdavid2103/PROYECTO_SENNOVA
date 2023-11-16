@@ -21,8 +21,10 @@ const getTecnicos = async (id) => {
     let respuesta = await fetch(`?controller=API&action=getTecnicos&id=${id}`);
     let tecnicosRes = await respuesta.json();
 
-    // QUITAR OPCIONES ACTUALES -------------------------------------------
-    tecnicos.innerHTML = "";
+    // QUITAR OPCIONES ACTUALES (excepto la primera) ------------------------
+    for (let i = tecnicos.options.length - 1; i >= 1; i--) {
+      tecnicos.remove(i);
+    }
 
     // AGREGAR OPCIONES NUEVAS --------------------------------------------
     tecnicosRes.forEach((tecnico) => {

@@ -211,7 +211,7 @@
                         <select class="form-field" id="edit_mot_tecnicoFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
                             <?php foreach ($this->tecnicos as $tecnico) {
-                                if ($tecnico["tec_empresaFK"] === $_SESSION['id']) {
+                                if ($tecnico["tec_empresaFK"] === $_SESSION['id'] || $_SESSION["rol"] === "adm") {
                                     echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</option>';
                                 }
                             } ?>

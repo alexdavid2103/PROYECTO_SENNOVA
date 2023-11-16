@@ -163,6 +163,52 @@ class main_controller
         }
     }
 
+    public function updatePassword()
+    {
+        $mensaje = "";
+        $estado = 0;
+        $url = "?controller=main&action=login";
+
+        if (isset($_POST["currentPassword"], $_POST["newPassword"])) {
+            $data = array(
+                "currentPassword" => $_POST["currentPassword"],
+                "newPassword" => $_POST["newPassword"],
+                "id" => $_SESSION["id"],
+            );
+
+            switch ($_SESSION["rol"]) {
+                case "adm":
+                    $r = admin_model::updatePassword($data);
+                    break;
+                case "emp":
+                    $r = empresa_model::updatePassword($data);
+                    break;
+                case "tec":
+                    $r = tecnico_model::updatePassword($data);
+                    break;
+                default:
+                    $mensaje = "Rol desconocido";
+                    break;
+            }
+
+            if ($r) {
+                $mensaje = "Se actualizó la contraseña";
+                $estado = 1;
+            } else {
+                $mensaje = "Error al actualizar la contraseña";
+            }
+        } else {
+            $mensaje = "Datos incompletos";
+        }
+
+        echo json_encode(
+            array(
+                "mensaje" => $mensaje,
+                "estado" => $estado,
+                "url" => $url
+            )
+        );
+    }
 
 
     public function salir()

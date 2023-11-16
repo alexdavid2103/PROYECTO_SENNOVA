@@ -112,4 +112,15 @@ class admin_model
         $stVerifyData->execute($vVerifyData);
         return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
     }
+
+    public static function updatePassword($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        $sql = "UPDATE administradores SET adm_contrasena = ? WHERE adm_id = ? AND adm_contrasena = ?";
+        $st = $c->prepare($sql);
+        $v = array($data["newPassword"], $data["id"], $data["currentPassword"]);
+        return $st->execute($v);
+    }
 }
