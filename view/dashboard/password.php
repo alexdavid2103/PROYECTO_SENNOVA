@@ -30,7 +30,6 @@
         </div>
         <div class="form-group submit-btn">
             <input type="submit" value="Cambiar">
-            <input type="hidden" id="id" value="<?php $_SESSION["id"] ?>">
         </div>
     </form>
 

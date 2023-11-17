@@ -169,13 +169,16 @@ class main_controller
         $estado = 0;
         $url = "";
 
-        if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["id"])) {
+        // Verificar si se enviaron los datos necesarios
+        if (isset($_POST["currentPassword"], $_POST["newPassword"])) {
+            // Obtener los datos del formulario
             $data = array(
                 "currentPassword" => $_POST["currentPassword"],
                 "newPassword" => $_POST["newPassword"],
-                "id" => $_POST["id"],
+                "id" => $_SESSION["id"],
             );
 
+            // Realizar la actualización de la contraseña basado en el rol del usuario
             switch ($_SESSION["rol"]) {
                 case "adm":
                     $r = admin_model::updatePassword($data);
@@ -191,26 +194,37 @@ class main_controller
                     break;
             }
 
+            // Verificar el resultado de la actualización
             if ($r) {
-                session_destroy();
-                $mensaje = "Se actualizó la contraseña";
                 $estado = 1;
                 $url = "?controller=main&action=login";
+                $mensaje = "Se actualizó la contraseña";
             } else {
                 $mensaje = "Error al actualizar la contraseña";
             }
-        } else {
-            $mensaje = "Datos incompletos";
-        }
 
-        echo json_encode(
-            array(
-                "mensaje" => $mensaje,
-                "estado" => $estado,
-                "url" => $url
-            )
-        );
+            // Manejar la respuesta y destruir la sesión si la actualización fue exitosa
+            if ($estado === 1) {
+                session_destroy();
+                echo json_encode([
+                    "mensaje" => $mensaje,
+                    "estado" => $estado,
+                    "url" => $url
+                ]);
+            } else {
+                echo json_encode([
+                    "mensaje" => $mensaje,
+                    "estado" => $estado,
+                    "url" => $url
+                ]);
+            }
+        } else {
+            // Si faltan datos en el formulario
+            $mensaje = "Datos incompletos";
+            echo json_encode(["mensaje" => $mensaje]);
+        }
     }
+
 
 
     public function salir()

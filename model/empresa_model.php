@@ -190,14 +190,29 @@ class empresa_model
         $obj = new connection();
         $c = $obj->getConnection();
 
-        $sql = "UPDATE empresas SET emp_contrasena = ? WHERE emp_id = ? AND emp_contrasena = ?";
-        $st = $c->prepare($sql);
-        $v = array(
-            password_hash($data["newPassword"], PASSWORD_ARGON2I),
-            $data["id"],
-            password_hash($data["currentPassword"], PASSWORD_ARGON2I)
-        );
-        return $st->execute($v);
+        // Obtener la contraseña encriptada almacenada en la base de datos
+        $sqlCurrentPassword = "SELECT emp_contrasena FROM empresas WHERE emp_id = ?";
+        $stCurrentPassword = $c->prepare($sqlCurrentPassword);
+        $stCurrentPassword->execute([$data["id"]]);
+        $storedPassword = $stCurrentPassword->fetchColumn();
+
+        // Verificar si la contraseña actual coincide con la contraseña encriptada almacenada
+        if (password_verify($data["currentPassword"], $storedPassword)) {
+            // Las contraseñas coinciden, proceder con la actualización
+            $sqlUpdatePassword = "UPDATE empresas SET emp_contrasena = ? WHERE emp_id = ?";
+            $stUpdatePassword = $c->prepare($sqlUpdatePassword);
+            $vUpdatePasswored = array(
+                password_hash($data["newPassword"], PASSWORD_ARGON2I),
+                $data["id"]
+            );
+            $stUpdatePassword->execute($vUpdatePasswored);
+
+            return true; // Indicar que la contraseña se actualizó correctamente
+        } else {
+            // Las contraseñas no coinciden
+            return false; // Indicar que la actualización no se realizó
+        }
     }
+
 
 }

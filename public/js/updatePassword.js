@@ -41,7 +41,6 @@ formUpdatePassword.addEventListener("submit", async (event) => {
   const newPassword = document.getElementById("newPassword").value;
   const confirmNewPassword =
     document.getElementById("confirmNewPassword").value;
-  const id = document.getElementById("id").value;
 
   // Verificar si alguno de los campos está vacío
   if (!currentPassword || !newPassword || !confirmNewPassword) {
@@ -63,7 +62,6 @@ formUpdatePassword.addEventListener("submit", async (event) => {
 
   // Crear un objeto FormData para enviar los datos del formulario
   const datos = new FormData();
-  datos.append("id", id);
   datos.append("currentPassword", currentPassword);
   datos.append("newPassword", newPassword);
 
@@ -80,8 +78,9 @@ formUpdatePassword.addEventListener("submit", async (event) => {
     // Verificar el estado de la respuesta
     if (info.estado === 1) {
       // Mostrar una alerta de éxito y redirigir a una URL específica
-      await alertSuccess("Se ha editado correctamente");
-      window.location.href = info.url;
+      alertSuccess("Se ha editado correctamente").then(() => {
+        window.location.href = info.url;
+      });
     } else {
       // Mostrar una alerta de error en caso de problemas al editar
       alertError("Error al editar");
