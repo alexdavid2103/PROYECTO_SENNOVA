@@ -231,7 +231,7 @@
                     <div class="btn-step">
                         <button type="button" id="step-prev-3-edit">￩ Prev</button>
                         <!-- <button type="submit" id="step-next-4-edit">Send ￫</button> -->
-                        <button type="submit" id="" class="btn_add btn_edit_motor">Agregar</button>
+                        <button type="submit" id="" class="btn_add btn_edit_motor">Guardar</button>
                     </div>
                 </div>
 
