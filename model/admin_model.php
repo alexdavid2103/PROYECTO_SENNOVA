@@ -64,13 +64,13 @@ class admin_model
     }
 
     // Función para obtener una lista de todos los administradores
-    public static function listar()
+    public static function listarAdmins()
     {
         $obj = new connection();
         $c = $obj->getConnection();
 
         // Consulta SQL para seleccionar todos los registros de la tabla administrador
-        $sql = "SELECT * FROM administrador ";
+        $sql = "SELECT * FROM administradores";
         $st = $c->prepare($sql);
         $st->execute();
         return $st->fetchAll(); // Retornar todos los registros como un arreglo
@@ -118,13 +118,27 @@ class admin_model
         $obj = new connection();
         $c = $obj->getConnection();
 
-        $sql = "UPDATE administradores SET adm_contrasena = ? WHERE adm_id = ? AND adm_contrasena = ?";
-        $st = $c->prepare($sql);
-        $v = array(
-            password_hash($data["newPassword"], PASSWORD_ARGON2I),
-            $data["id"],
-            password_hash($data["currentPassword"], PASSWORD_ARGON2I)
-        );
-        return $st->execute($v);
+        // Obtener la contraseña encriptada almacenada en la base de datos
+        $sqlCurrentPassword = "SELECT adm_contrasena FROM administradores WHERE adm_id = ?";
+        $stCurrentPassword = $c->prepare($sqlCurrentPassword);
+        $stCurrentPassword->execute([$data["id"]]);
+        $storedPassword = $stCurrentPassword->fetchColumn();
+
+        // Verificar si la contraseña actual coincide con la contraseña encriptada almacenada
+        if (password_verify($data["currentPassword"], $storedPassword)) {
+            // Las contraseñas coinciden, proceder con la actualización
+            $sqlUpdatePassword = "UPDATE administradores SET adm_contrasena = ? WHERE adm_id = ?";
+            $stUpdatePassword = $c->prepare($sqlUpdatePassword);
+            $vUpdatePasswored = array(
+                password_hash($data["newPassword"], PASSWORD_ARGON2I),
+                $data["id"]
+            );
+            $stUpdatePassword->execute($vUpdatePasswored);
+
+            return true; // Indicar que la contraseña se actualizó correctamente
+        } else {
+            // Las contraseñas no coinciden
+            return false; // Indicar que la actualización no se realizó
+        }
     }
 }

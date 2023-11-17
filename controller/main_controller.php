@@ -170,7 +170,7 @@ class main_controller
         $url = "";
 
         // Verificar si se enviaron los datos necesarios
-        if (isset($_POST["currentPassword"], $_POST["newPassword"])) {
+        if (isset($_POST["currentPassword"], $_POST["newPassword"], $_SESSION["id"], $_SESSION["rol"])) {
             // Obtener los datos del formulario
             $data = array(
                 "currentPassword" => $_POST["currentPassword"],
@@ -202,29 +202,25 @@ class main_controller
             } else {
                 $mensaje = "Error al actualizar la contraseña";
             }
-
-            // Manejar la respuesta y destruir la sesión si la actualización fue exitosa
-            if ($estado === 1) {
-                session_destroy();
-                echo json_encode([
-                    "mensaje" => $mensaje,
-                    "estado" => $estado,
-                    "url" => $url
-                ]);
-            } else {
-                echo json_encode([
-                    "mensaje" => $mensaje,
-                    "estado" => $estado,
-                    "url" => $url
-                ]);
-            }
         } else {
             // Si faltan datos en el formulario
             $mensaje = "Datos incompletos";
+        }
+
+        // Manejar la respuesta y destruir la sesión si la actualización fue exitosa
+        if ($estado === 1) {
+            session_destroy();
+            echo json_encode([
+                "mensaje" => $mensaje,
+                "estado" => $estado,
+                "url" => $url
+            ]);
+        } else {
             echo json_encode(["mensaje" => $mensaje]);
         }
-    }
 
+        // Enviar la respuesta como JSON
+    }
 
 
     public function salir()

@@ -2,6 +2,7 @@
 require_once "model/motor_model.php";
 require_once "model/empresa_model.php";
 require_once "model/tecnico_model.php";
+require_once "model/admin_model.php";
 
 class dashboard_controller
 {
@@ -36,6 +37,10 @@ class dashboard_controller
 
     public function cuenta()
     {
+        $this->obj->municipios = empresa_model::listarMunicipios(8);
+        $this->obj->admins = admin_model::listarAdmins();
+        $this->obj->empresas = empresa_model::listarEmpresas();
+        $this->obj->tecnicos = tecnico_model::listarTecnicos();
         $this->obj->setLoadHeaderFooter(false);
         $this->obj->loadTemplate("dashboard/cuenta");
     }

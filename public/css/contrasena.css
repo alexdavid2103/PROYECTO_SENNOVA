@@ -103,7 +103,8 @@ body {
   background: linear-gradient(to left, #a8dadc, #457b9d);
 }
 
-.cont_input input {
+.cont_input input,
+.cont_input select {
   height: 40px;
   width: 100%;
   outline: none;
