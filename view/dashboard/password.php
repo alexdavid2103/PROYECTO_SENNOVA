@@ -30,10 +30,16 @@
         </div>
         <div class="form-group submit-btn">
             <input type="submit" value="Cambiar">
+            <button type="button" onclick="goBack()">Regresar</button>
         </div>
     </form>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="module" src="public/js/updatePassword.js"></script>
 </body>
 
