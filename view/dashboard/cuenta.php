@@ -59,7 +59,7 @@
                   </div>
                   </div>
                   <div class="button">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Guardar">
                   </div>';
             break;
           }
