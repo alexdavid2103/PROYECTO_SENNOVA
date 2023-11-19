@@ -5,39 +5,43 @@
     <div class="flex-box">
         <?php foreach ($this->tecnicos as $tecnico) {
             if ($tecnico["tec_empresaFK"] === $_SESSION["id"] || $_SESSION["rol"] === "adm") {
+                $avatar = strtoupper(substr($tecnico["tec_nombre1"], 0, 1) . substr($tecnico["tec_apellido1"], 0, 1));
+                
                 echo '<div class="card m-0">
-            <div class="card-info">
-                <div class="card-avatar"><i class="fas fa-user"></i></div>
-                <div class="card-title">' . $tecnico["tec_nombre1"] . "<br/>" . $tecnico["tec_apellido1"] . '</div>
-                <div class="card-subtitle">';
+                    <div class="card-info">
+                        <div class="card-avatar">' . $avatar . '</div>
+                        <div class="card-title">' . $tecnico["tec_nombre1"] . "<br/>" . $tecnico["tec_apellido1"] . '</div>
+                        <div class="card-subtitle">';
+                
                 foreach ($this->empresas as $empresa) {
                     if ($tecnico["tec_empresaFK"] === $empresa["emp_id"]) {
                         echo $empresa["emp_nombre"];
                     }
                 }
+                
                 echo '</div>
-            </div>
-            <ul class="card-social">
-                <li class="card-social__item">
-                    <button class="openFormEditTecnico" 
-                    data-id="' . $tecnico["tec_id"] . '"
-                    data-nombre1="' . $tecnico["tec_nombre1"] . '"
-                    data-nombre2="' . $tecnico["tec_nombre2"] . '"
-                    data-apellido1="' . $tecnico["tec_apellido1"] . '"
-                    data-apellido2="' . $tecnico["tec_apellido2"] . '"
-                    data-correo="' . $tecnico["tec_correo"] . '"
-                    data-telefono="' . $tecnico["tec_telefono"] . '"
-                    >
-                        <i class="fa-solid fa-pencil"></i>
-                    </button>
-                </li>
-                <li class="card-social__item">
-                    <button type="button" class="deleteButton deleteTecnicoButton" data-id="' . $tecnico["tec_id"] . '">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </li>
-            </ul>
-        </div>';
+                    </div>
+                    <ul class="card-buttons">
+                        <li class="card-buttons__item">
+                            <button class="editButton openFormEditTecnico" 
+                                data-id="' . $tecnico["tec_id"] . '"
+                                data-nombre1="' . $tecnico["tec_nombre1"] . '"
+                                data-nombre2="' . $tecnico["tec_nombre2"] . '"
+                                data-apellido1="' . $tecnico["tec_apellido1"] . '"
+                                data-apellido2="' . $tecnico["tec_apellido2"] . '"
+                                data-correo="' . $tecnico["tec_correo"] . '"
+                                data-telefono="' . $tecnico["tec_telefono"] . '"
+                            >
+                                Editar
+                            </button>
+                        </li>
+                        <li class="card-buttons__item">
+                            <button type="button" class="deleteButton deleteTecnicoButton" data-id="' . $tecnico["tec_id"] . '">
+                                Borrar
+                            </button>
+                        </li>
+                    </ul>
+                </div>';
             }
         } ?>
     </div>

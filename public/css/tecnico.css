@@ -39,7 +39,7 @@
 }
 
 /*Card footer*/
-.card-social {
+.card-buttons {
   transform: translateY(200%);
   display: flex;
   justify-content: space-around;
@@ -48,9 +48,24 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.card-social__item {
+.card-buttons__item {
   list-style: none;
 }
+
+.card-buttons__item button {
+  background-color: #457B9D;
+  color: #fff;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-buttons__item button:hover {
+  background-color: #1D3557;
+}
+
 
 /*Text*/
 .card-title {
@@ -75,7 +90,7 @@
   transform: translateY(-5%);
 }
 
-.card:hover .card-social {
+.card:hover .card-buttons {
   transform: translateY(100%);
   opacity: 1;
 }
