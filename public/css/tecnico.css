@@ -24,7 +24,8 @@
 /*Image*/
 .card-avatar {
   --size: 60px;
-  background: linear-gradient(to top, #f1e1c1 0%, #fcbc97 100%);
+  color: #766868;
+  background: linear-gradient(to top, #A8DADC 50%, #457B9D 100%);
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
@@ -39,7 +40,7 @@
 }
 
 /*Card footer*/
-.card-social {
+.card-buttons {
   transform: translateY(200%);
   display: flex;
   justify-content: space-around;
@@ -48,9 +49,24 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.card-social__item {
+.card-buttons__item {
   list-style: none;
 }
+
+.card-buttons__item button {
+  background-color: #457B9D;
+  color: #fff;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-buttons__item button:hover {
+  background-color: #1D3557;
+}
+
 
 /*Text*/
 .card-title {
@@ -75,7 +91,7 @@
   transform: translateY(-5%);
 }
 
-.card:hover .card-social {
+.card:hover .card-buttons {
   transform: translateY(100%);
   opacity: 1;
 }

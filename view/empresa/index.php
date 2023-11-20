@@ -1,27 +1,26 @@
+<link rel="stylesheet" href="public/css/empresa.css">
+
 <div class="row">
     <div class="flex-box">
-        <?php foreach ($this->empresas as $empresa) {
-            echo '<div class="card m-0">
-            <div class="card-info">
-                <div class="card-avatar"><i class="fas fa-user"></i></div>
-                <div class="card-title">' . $empresa["emp_nombre"] . '</div>
-                <div class="card-subtitle">';
-            // foreach ($this->empresas as $empresa) {
-            //     if ($tecnico["tec_empresaFK"] === $empresa["emp_id"]) {
-            //         echo $empresa["emp_nombre"];
-            //     }
-            // }
-            echo '</div>
+        <?php foreach ($this->empresas as $empresa) : ?>
+            <div class="profile-card">
+                <div class="image">
+                    <i class="fas fa-user profile-img"></i>
+                </div>
+
+                <div class="text-data">
+                    <span class="name"><?= $empresa["emp_nombre"] ?></span>
+                </div>
             </div>
-            <ul class="card-social">
-                <li class="card-social__item">
-                </li>
-            </ul>
-        </div>';
-        } ?>
+        <?php endforeach; ?>
     </div>
 </div>
 
+<!-- <div id="floatingButton" class="position-fixed bottom-0 end-0 p-3" data-toggle="tooltip" data-title="Crear Tecnico" style="z-index: 1;">
+    <button class="btn btn-primary rounded-circle">
+        <i class="fas fa-plus"></i>
+    </button>
+</div> -->
 <!-- PAGE CONTAINER-->
 <section class="container">
     <header>Registrar Empresa</header>
