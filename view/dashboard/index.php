@@ -278,7 +278,7 @@
                                                     <th>Correo</th>
                                                     <th>Telefono</th>
                                                     <th>Municipio</th>
-                                                    <th>Dierección</th>
+                                                    <th>Dirección</th>
                                                     <th>Registro</th>
                                                 </tr>
                                             </thead>
