@@ -15,17 +15,17 @@
         <h2>Cambiar Contraseña</h2>
         <div class="form-group password">
             <label for="currentPassword">Contraseña Anterior</label>
-            <input type="password" id="currentPassword" placeholder="Ingrese su contraseña anterior">
+            <input type="password" id="currentPassword" placeholder=" ">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="cont_anterior"></i>
         </div>
         <div class="form-group password">
             <label for="newPassword">Contraseña Nueva</label>
-            <input type="password" id="newPassword" placeholder="Ingrese su nueva contraseña">
+            <input type="password" id="newPassword" placeholder=" ">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="password"></i>
         </div>
         <div class="form-group password">
             <label for="confirmNewPassword">Confirmar Contraseña</label>
-            <input type="password" id="confirmNewPassword" placeholder="confirmar contraseña">
+            <input type="password" id="confirmNewPassword" placeholder=" ">
             <i id="pass-toggle-btn" class="fa-solid fa-eye" data-target="confirm_password"></i>
         </div>
         <div class="form-group submit-btn">
