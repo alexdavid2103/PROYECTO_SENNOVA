@@ -1,7 +1,6 @@
 <div class="contForm" id="FormEditMotor">
     <button type="button" class="fa-solid fa-xmark closeFormEdit closeFormEditMotor"></button>
-    <form action="?controller=motor&action=edit" id="multi-step-form-edit" class="form form_edit_motor"
-        onsubmit="return false">
+    <form action="?controller=motor&action=edit" id="multi-step-form-edit" class="form form_edit_motor" onsubmit="return false">
         <div id="form-container-box">
             <h1 class="form-title">EDITAR MOTOR</h1>
 
@@ -10,6 +9,7 @@
                 <div class="form-box">
                     <?php if ($_SESSION["rol"] === "adm") {
                         echo '<div class="form-group">
+                        <label for="edit_mot_empresaFK">Empresa a la que pertenece el motor</label>
                             <select class="form-field" id="edit_mot_empresaFK">
                                 <option value="">Seleccione la empresa a la que pertenece el motor</option>';
                         foreach ($this->empresas as $empresa) {
@@ -22,6 +22,7 @@
                     } ?>
 
                     <div class="form-group">
+                        <label for="edit_mot_ubicacionFK">Ubicación del motor</label>
                         <select class="form-field" id="edit_mot_ubicacionFK">
                             <option value="">Seleccione la ubicación en la que se encuetra el motor</option>
                             <?php foreach ($this->ubicaciones as $ubicacion) {
@@ -32,10 +33,12 @@
                 </div>
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_serie" class="form-field" placeholder="Serie" readonly="true">
+                        <label for="edit_mot_serie">Número de Serie:</label>
+                        <input type="text" id="edit_mot_serie" class="form-field" value="" readonly="true">
                     </div>
                     <div class="form-group">
-                        <select id="edit_mot_normaFK" class="form-field" placeholder="Norma">
+                        <label for="edit_mot_normaFK">Norma del Motor:</label>
+                        <select id="edit_mot_normaFK" class="form-field">
                             <option value="">Seleccione la norma del motor</option>
                             <?php foreach ($this->normas as $norma) {
                                 echo '<option value="' . $norma["normot_id"] . '">' . $norma["normot_nombre"] . '</option>';
@@ -46,16 +49,19 @@
 
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_polos" class="form-field" placeholder="Polos">
+                        <label for="edit_mot_polos">Polos:</label>
+                        <input type="text" id="edit_mot_polos" class="form-field" value="">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="edit_mot_potencia" class="form-field" placeholder="Potencia">
+                        <label for="edit_mot_potencia">Potencia:</label>
+                        <input type="text" id="edit_mot_potencia" class="form-field" value="">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_IpIn" class="form-field" placeholder="IpIn">
+                        <label for="edit_mot_IpIn">IpIn:</label>
+                        <input type="text" id="edit_mot_IpIn" class="form-field" value="">
                     </div>
                 </div>
 
@@ -68,42 +74,43 @@
             <!-- ======================Step Group 2============== -->
             <div class="step-group" id="step-group-2-edit">
                 <div class="form-box">
-
                     <div class="form-group">
-                        <input type="text" id="edit_mot_par_arranque" class="form-field" placeholder="Par de arranque">
+                        <label for="edit_mot_par_arranque">Par de Arranque:</label>
+                        <input type="text" id="edit_mot_par_arranque" class="form-field" value="">
                     </div>
-
                     <div class="form-group">
-                        <input type="text" id="edit_mot_par_maxima" class="form-field" placeholder="Par máxima">
-                    </div>
-
-                </div>
-
-                <div class="form-box">
-                    <div class="form-group">
-                        <input type="text" id="edit_mot_mom_inercia" class="form-field"
-                            placeholder="Momento de inercia">
+                        <label for="edit_mot_par_maxima">Par Máxima:</label>
+                        <input type="text" id="edit_mot_par_maxima" class="form-field" value="">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_tiempo_rotor_bloq" class="form-field"
-                            placeholder="Tiempo de rotor bloqueado">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="edit_mot_peso" class="form-field" placeholder="Peso">
+                        <label for="edit_mot_mom_inercia">Momento de inercia:</label>
+                        <input type="text" id="edit_mot_mom_inercia" class="form-field" value="">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_niv_ruido" class="form-field" placeholder="Nivel de ruido">
+                        <label for="edit_mot_tiempo_rotor_bloq">Tiempo de rotor bloqueado:</label>
+                        <input type="text" id="edit_mot_tiempo_rotor_bloq" class="form-field" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_mot_peso">Peso:</label>
+                        <input type="text" id="edit_mot_peso" class="form-field" value="">
+                    </div>
+                </div>
+
+                <div class="form-box">
+                    <div class="form-group">
+                        <label for="edit_mot_niv_ruido">Nivel de ruido:</label>
+                        <input type="text" id="edit_mot_niv_ruido" class="form-field" value="">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="edit_mot_factor_servicio" class="form-field"
-                            placeholder="Factor de servicio">
+                        <label for="edit_mot_factor_servicio">Factor de servicio:</label>
+                        <input type="text" id="edit_mot_factor_servicio" class="form-field" value="">
                     </div>
                 </div>
 
@@ -121,41 +128,43 @@
 
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_rotacion_nominal" class="form-field"
-                            placeholder="Rotación nominal">
+                        <label for="edit_mot_rotacion_nominal">Rotación nominal:</label>
+                        <input type="text" id="edit_mot_rotacion_nominal" class="form-field" value="">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="edit_mot_corriente_nominal" class="form-field"
-                            placeholder="Corriente nominal">
+                        <label for="edit_mot_corriente_nominal">Corriente nominal:</label>
+                        <input type="text" id="edit_mot_corriente_nominal" class="form-field" value="">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_altitud" class="form-field" placeholder="Altitud">
+                        <label for="edit_mot_altitud">Altitud:</label>
+                        <input type="text" id="edit_mot_altitud" class="form-field" value="">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="edit_mot_temp_ambiente" class="form-field"
-                            placeholder="Temperatura ambiente">
+                        <label for="edit_mot_temp_ambiente">Temperatura ambiente:</label>
+                        <input type="text" id="edit_mot_temp_ambiente" class="form-field" value="">
                     </div>
                 </div>
                 <div class="form-box">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_proteccion" class="form-field" placeholder="Protección">
+                        <label for="edit_mot_proteccion">Protección:</label>
+                        <input type="text" id="edit_mot_proteccion" class="form-field" value="">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <input type="hidden" id="edit_mot_carcasaId">
                     <div class="form-group">
-                        <input type="text" id="edit_mot_carcasaNombre" class="form-field"
-                            placeholder="Nombre de la carcasa">
+                        <label for="edit_mot_carcasaNombre">Nombre de la carcasa:</label>
+                        <input type="text" id="edit_mot_carcasaNombre" class="form-field" value="">
                     </div>
                     <div class="form-group">
-                        <input type="text" id="edit_mot_carcasaValor" class="form-field"
-                            placeholder="Valor de la carcasa">
+                        <label for="edit_mot_carcasaValor">Valor de la carcasa:</label>
+                        <input type="text" id="edit_mot_carcasaValor" class="form-field" value="">
                     </div>
                 </div>
 
@@ -174,6 +183,7 @@
                 <div class="form-box">
                     <input type="hidden" id="edit_mot_eficienciaId">
                     <div class="form-group">
+                        <label for="edit_mot_eficienciaPorcentaje">porcentaje de eficiencia</label>
                         <select name="" class="form-field" id="edit_mot_eficienciaPorcentaje">
                             <option value="">Seleccione el porcentaje de eficiencia</option>
                             <?php foreach ($this->porcentajes as $porcentaje) {
@@ -183,14 +193,15 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="edit_mot_eficienciaValor" class="form-field"
-                            placeholder="Valor de eficiencia">
+                        <label for="edit_mot_eficienciaValor">Valor de eficiencia:</label>
+                        <input type="text" id="edit_mot_eficienciaValor" class="form-field" value="">
                     </div>
                 </div>
 
                 <div class="form-box">
                     <input type="hidden" id="edit_mot_fac_potenciaId">
                     <div class="form-group">
+                        <label for="edit_mot_fac_potenciaPorcentaje">porcentaje del factor de potencia</label>
                         <select name="" class="form-field" id="edit_mot_fac_potenciaPorcentaje">
                             <option value="">Seleccione el porcentaje del factor de potencia</option>
                             <?php foreach ($this->porcentajes as $porcentaje) {
@@ -200,14 +211,15 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="edit_mot_fac_potenciaValor" class="form-field"
-                            placeholder="valor del factor de potencia">
+                        <label for="edit_mot_fac_potenciaValor">valor del factor de potencia</label>
+                        <input type="text" id="edit_mot_fac_potenciaValor" class="form-field" value="">
                     </div>
 
                 </div>
 
                 <div class="form-box">
                     <div class="form-group">
+                        <label for="edit_mot_tecnicoFK">Técnico a cargo del motor</label>
                         <select class="form-field" id="edit_mot_tecnicoFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
                             <?php foreach ($this->tecnicos as $tecnico) {
@@ -218,6 +230,7 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="edit_mot_tipoFK">Tipo de motor</label>
                         <select class="form-field" id="edit_mot_tipoFK">
                             <option value="">Seleccione el tipo de motor</option>
                             <?php foreach ($this->tiposMotores as $tipoM) {
