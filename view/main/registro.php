@@ -28,16 +28,6 @@
           <input type="text" id="add_emp_telefono" placeholder="Ingrese su telefono">
         </div>
 
-        <!-- <div class="input-box">
-          <span class="details" for="Sexo">Departamento</span>
-          <select class="select" name="Sexo" id="add_emp_departamento">
-            <option value="" selected>Seleciona tu departamento</option>
-            <?php foreach ($this->departamentos as $departamento) {
-              echo '<option value="' . $departamento['dep_id'] . '">' . $departamento['dep_nombre'] . '</option>';
-            } ?>
-          </select>
-        </div> -->
-
         <div class="input-box">
           <span class="details" for="Sexo">Municipio</span>
           <select class="select" name="Sexo" id="add_emp_municipio">
@@ -53,10 +43,6 @@
           <input type="text" id="add_emp_direccion" placeholder="Ingrese su dirección">
         </div>
             
-        <!-- <div class="input-box">
-            <span class="details">Ubicación<nav></nav></span>
-            <input type="text" id="emp_ubicacion" placeholder="Ingrese la ubicacion del motor" >
-          </div> -->
       </div>
 
       <div class="button">

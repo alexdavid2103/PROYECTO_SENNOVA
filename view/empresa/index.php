@@ -66,8 +66,6 @@
             </div>
         </div>
 
-
-
         <button>Registrar</button>
     </form>
 </section>
