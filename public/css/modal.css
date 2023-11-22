@@ -1,0 +1,72 @@
+
+.open-button {
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    background-color: #1d3557;
+    color: #f7f9ff;
+    border: none;
+    transition: transform .3 cubic-bezier(.36, .37, .76, .75);
+    cursor: pointer;
+}
+
+.open-button:active {
+    transform: scale(.95);
+}
+
+.window-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: -40px;
+    overflow-y: auto;
+}
+
+/* .window-container {
+    padding: 1.5rem;
+    border-radius: 8px;
+    animation-name: modal;
+    animation-duration: .5s;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, .4);
+    z-index: 10;
+} */
+
+/* @keyframes modal {
+    from {
+        transform: translateY(50vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+} */
+
+.close {
+    transition: transform 1s cubic-bezier(0, -0.42, 1, -0.41);
+    transform: translateY(60vh);
+}
+
+.close-button {
+    position: absolute;
+    border-radius: 50%;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.icon-x {
+    fill: rgb(54, 54, 54);
+}

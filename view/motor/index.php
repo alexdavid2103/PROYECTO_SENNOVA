@@ -1,4 +1,6 @@
+<link rel="stylesheet" href="public/css/modal.css">
 <link rel="stylesheet" href="public/css/motor.css">
+
 
 <?php if ($_SESSION["rol"] !== "tec") {
     echo '<div class="row">
@@ -180,12 +182,22 @@
         }
     } ?>
 </div>
-
+<button class="open-button" id="open-button">Agregar Motor</button>
 <div class="cont_form cont_form_add_motor">
-    <?php if ($_SESSION["rol"] !== "tec") {
-        include("view/motor/formAddMotor.php");
-    } ?>
-</div>';
+    <div class="window-background" id="window-background">
+        <div class="window-container" id="window-container">
+            <button class="close-button" id="close-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon-x">
+                    <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+                </svg>
+            </button>
+            <?php if ($_SESSION["rol"] !== "tec") {
+                include("view/motor/formAddMotor.php");
+            } ?>
+        </div>
+    </div>
+
+</div>
 
 <div class="cont_form cont_form_edit_motor">
     <?php if ($_SESSION["rol"] !== "tec") {
@@ -197,6 +209,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
 <script type="module" src="public/js/motores.js"></script>
+<script src="public/js/modal.js"></script>
 <script src="public/js/formMotorAdd.js"></script>
 <script src="public/js/formMotorEdit.js"></script>
 <script src="public/js/graficos.js"></script>
