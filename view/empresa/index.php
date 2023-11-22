@@ -2,14 +2,16 @@
 
 <div class="row">
     <div class="flex-box">
-        <?php foreach ($this->empresas as $empresa) : ?>
+        <?php foreach ($this->empresas as $empresa): ?>
             <div class="profile-card">
                 <div class="image">
                     <i class="fas fa-user profile-img"></i>
                 </div>
 
                 <div class="text-data">
-                    <span class="name"><?= $empresa["emp_nombre"] ?></span>
+                    <span class="name">
+                        <?= $empresa["emp_nombre"] ?>
+                    </span>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -27,34 +29,34 @@
     <form method="POST" action="?controller=empresa&action=add" class="form">
 
         <div class="input-box">
-            <label>NIT</label>
-            <input type="text" placeholder="Ingrese el NIT de la empresa" required />
+            <label for="add_emp_id">NIT</label>
+            <input type="text" id="add_emp_id" placeholder="Ingrese el NIT de la empresa" required />
         </div>
 
         <div class="input-box">
-            <label>Nombre</label>
-            <input type="text" placeholder="Ingrese el nombre" required />
+            <label for="add_emp_nombre">Nombre</label>
+            <input type="text" id="add_emp_nombre" placeholder="Ingrese el nombre" required />
         </div>
 
         <div class="column">
             <div class="input-box">
-                <label>Correo</label>
-                <input type="email" placeholder="Ingrese el correo" required />
+                <label for="add_emp_correo">Correo</label>
+                <input type="email" id="add_emp_correo" placeholder="Ingrese el correo" required />
             </div>
             <div class="input-box">
-                <label>Telefono</label>
-                <input type="number" placeholder="Ingrese su telefono" required />
+                <label for="add_emp_telefono">Telefono</label>
+                <input type="number" id="add_emp_telefono" placeholder="Ingrese su telefono" required />
             </div>
         </div>
 
         <div class="column">
             <div class="input-box">
-                <label>Direccion</label>
-                <input type="text" placeholder="Ingrese su direccion" required />
+                <label for="add_emp_direccion">Direccion</label>
+                <input type="text" id="add_emp_direccion" placeholder="Ingrese su direccion" required />
             </div>
 
             <div class="input-box">
-                <label>Municipio</label>
+                <label for="add_emp_municipio">Municipio</label>
                 <select class="select" name="Sexo" id="add_emp_municipio">
                     <option value="" selected>Seleciona tu municipio</option>
                     <?php foreach ($this->municipios as $municipio) {

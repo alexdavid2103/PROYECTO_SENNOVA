@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  showStepEdit(0);
+
   stepNextButtonsEdit.forEach((button, index) => {
     button.addEventListener("click", () => {
       nextStepEdit();
