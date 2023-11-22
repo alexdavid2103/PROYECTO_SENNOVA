@@ -96,9 +96,9 @@
   opacity: 1;
 }
 
-.card-avatar:hover {
+/* .card-avatar:hover {
   transform: scale(1.1);
-}
+} */
 
 .floating-button {
   position: fixed;
