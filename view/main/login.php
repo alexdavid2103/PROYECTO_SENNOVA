@@ -3,10 +3,6 @@
 <div class="container">
     <div class="cont_form" id="">
 
-        <!-- <figure class="login_img">
-            <img src="public\img/Logo_blanco.png" alt="">
-        </figure> -->
-
         <form method="POST" action="?controller=usuario&action=validar" class="form" onsubmit="return false">
 
             <h2 class="title">Iniciar sesión</h2>
@@ -19,7 +15,6 @@
 
             <div class="cont_input">
                 <label>Contraseña</label>
-                <!-- <i class="fa fa-lock"></i> -->
                 <input type="password" id="password">
             </div>
 

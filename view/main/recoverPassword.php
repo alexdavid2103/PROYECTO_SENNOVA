@@ -10,14 +10,12 @@
 
             <div class="cont_input">
                 <label>Numero de documento o NIT</label>
-                <!-- <i class="fa fa-user"></i> -->
                 <input type="number" id="validId" inputmode="none" pattern="[0-9]*"
                     placeholder="Ingrese su N. Identificación">
             </div>
 
             <div class="cont_input">
                 <label>Corrreo Electronico</label>
-                <!-- <i class="fa fa-user"></i> -->
                 <input type="email" id="validEmail" placeholder="Ingrese su Email">
             </div>
 

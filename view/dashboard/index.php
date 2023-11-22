@@ -52,20 +52,19 @@
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </li>
-                <?php if ($_SESSION['rol'] === 'adm') {
-                    echo '<li class="empresasLink">
+                <?php if ($_SESSION['rol'] === 'adm'): ?>
+                    <li class="empresasLink">
                         <i class="fas fa-building"></i>
                         <span>Empresas</span>
-                    </li>';
-                }
+                    </li>
+                <?php endif ?>
 
-                if ($_SESSION['rol'] === 'emp' || $_SESSION['rol'] === 'adm') {
-                    echo '<li class="tecnicosLink">
+                <?php if ($_SESSION['rol'] === 'emp' || $_SESSION['rol'] === 'adm'): ?>
+                    <li class="tecnicosLink">
                         <i class="fas fa-user"></i>
                         <span>Tecnicos</span>
-                    </li>';
-                }
-                ?>
+                    </li>
+                <?php endif ?>
                 <li class="motoresLink">
                     <i class="fas fa-gear"></i>
                     <span>Motores</span>
@@ -87,18 +86,17 @@
                         <li class="dashboardLink active">
                             <a class="" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <?php
-                        if ($_SESSION['rol'] === 'adm') {
-                            echo '<li class="empresasLink">
+                        <?php if ($_SESSION['rol'] === 'adm'): ?>
+                            <li class="empresasLink">
                                 <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
-                            </li>';
-                        }
-                        if ($_SESSION['rol'] === 'emp' || $_SESSION['rol'] === 'adm') {
-                            echo '<li class="tecnicosLink">
+                            </li>
+                        <?php endif ?>
+                        <?php if ($_SESSION['rol'] === 'emp' || $_SESSION['rol'] === 'adm'): ?>
+                            <li class="tecnicosLink">
                                 <a class="" href="#"><i class="fas fa-user"></i>Tecnicos</a>
-                            </li>';
-                        }
-                        ?>
+                            </li>
+                        <?php endif ?>
+
                         <li class="motoresLink">
                             <a class="" href="#"><i class="fas fa-gear"></i>Motores</a>
                         </li>
@@ -195,52 +193,57 @@
                             </div>
                         </div>
                         <div class="row m-t-25">
-                            <?php if ($_SESSION['rol'] === 'adm') {
-                                echo '<div class="col-sm-6 col-lg-4">
+                            <?php if ($_SESSION['rol'] === 'adm'): ?>
+                                <div class="col-sm-6 col-lg-4">
                                     <div class="overview-item overview-item--c1">
                                         <div class="overview__inner">
                                             <div class="overview-box clearfix">
                                                 <div class="icon">
                                                     <i class="fas fa-building"></i>
                                                 </div>
-                                                <div class="text">';
-                                $count = 0;
-                                foreach ($this->empresas as $empresa) {
-                                    $count++;
-                                }
-                                echo '<h2>' . $count . '</h2>';
+                                                <div class="text">
+                                                    <?php $count = 0;
+                                                    foreach ($this->empresas as $empresa) {
+                                                        $count++;
+                                                    } ?>
+                                                    <h2>
+                                                        <?= $count ?>
+                                                    </h2>
 
-                                echo '<span>Empresas</span>
+                                                    <span>Empresas</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>';
-                            } ?>
-                            <?php if ($_SESSION['rol'] === 'adm' || $_SESSION['rol'] === 'emp') {
-                                echo '
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="fas fa-user"></i>
-                                            </div>
-                                            <div class="text">';
-                                $count = 0;
-                                foreach ($this->tecnicos as $tecnico) {
-                                    if ($tecnico['tec_empresaFK'] === $_SESSION['id'] || $_SESSION['rol'] === 'adm') {
-                                        $count++;
-                                    }
-                                }
-                                echo '<h2>' . $count . '</h2>';
-                                echo '<span>Tecnicos</span>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if ($_SESSION['rol'] === 'adm' || $_SESSION['rol'] === 'emp'): ?>
+
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="overview-item overview-item--c2">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <?php $count = 0;
+                                                    foreach ($this->tecnicos as $tecnico) {
+                                                        if ($tecnico['tec_empresaFK'] === $_SESSION['id'] || $_SESSION['rol'] === 'adm') {
+                                                            $count++;
+                                                        }
+                                                    } ?>
+                                                    <h2>
+                                                        <?= $count ?>
+                                                    </h2>
+                                                    <span>Tecnicos</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>';
-                            } ?>
+                            <?php endif ?>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
@@ -252,12 +255,18 @@
                                                 <?php
                                                 $count = 0;
                                                 foreach ($this->motores as $motor) {
-                                                    if ($motor['infmot_empresaFK'] === $_SESSION['id'] || $_SESSION['rol'] === 'adm' || $motor['infmot_tecnicoFK'] === $_SESSION['id']) {
+                                                    if (
+                                                        $motor['infmot_empresaFK'] === $_SESSION['id'] ||
+                                                        $motor['infmot_tecnicoFK'] === $_SESSION['id'] ||
+                                                        $_SESSION['rol'] === 'adm'
+                                                    ) {
                                                         $count++;
                                                     }
                                                 }
-                                                echo '<h2>' . $count . '</h2>';
                                                 ?>
+                                                <h2>
+                                                    <?= $count ?>
+                                                </h2>
                                                 <span>Motores</span>
                                             </div>
                                         </div>
@@ -265,8 +274,8 @@
                                 </div>
                             </div>
                         </div>
-                        <?php if ($_SESSION['rol'] === 'adm') {
-                            echo '<div class="row">
+                        <?php if ($_SESSION['rol'] === 'adm'): ?>
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <h2 class="title-1 m-b-25">Empresas registradas</h2>
                                     <div class="table-responsive table--no-card m-b-40">
@@ -282,74 +291,97 @@
                                                     <th>Registro</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>';
-                            foreach ($this->empresas as $empresa) {
-                                echo '<tr>';
-                                echo '<td>' . $empresa["emp_id"] . '</td>';
-                                echo '<td>' . $empresa["emp_nombre"] . '</td>';
-                                echo '<td>' . $empresa["emp_correo"] . '</td>';
-                                echo '<td>' . $empresa["emp_telefono"] . '</td>';
-                                echo '<td>';
-                                foreach ($this->municipios as $municipio) {
-                                    if ($municipio["mun_id"] === $empresa["emp_municipioFK"]) {
-                                        echo $municipio["mun_nombre"];
-                                    }
-                                }
-                                echo '</td>';
-                                echo '<td>' . $empresa["emp_direccion"] . '</td>';
-                                echo '<td>' . $empresa["emp_registro"] . '</td>';
-                            }
-                            echo '</tbody>
+                                            <tbody>
+                                                <?php foreach ($this->empresas as $empresa): ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?= $empresa["emp_id"] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $empresa["emp_nombre"] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $empresa["emp_correo"] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $empresa["emp_telefono"] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php foreach ($this->municipios as $municipio) {
+                                                                if ($municipio["mun_id"] === $empresa["emp_municipioFK"]) {
+                                                                    echo $municipio["mun_nombre"];
+                                                                }
+                                                            } ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $empresa["emp_direccion"] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $empresa["emp_registro"] ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach ?>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>';
-                        } ?>
-                        <?php if ($_SESSION['rol'] === 'adm' || $_SESSION['rol'] === 'emp') {
-                            echo '<div class="row">
-                            <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Tecnicos registrados</h2>
-                                <div class="table-responsive table--no-card m-b-40">
-                                    <table class="table table-borderless table-striped table-earning">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nombre</th>
-                                                <th>Correo</th>
-                                                <th>Telefono</th>';
-                            if ($_SESSION['rol'] !== 'emp') {
-                                echo '<th>Empresa</th>';
-                            }
-                            echo '<th>Registro</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
-                            foreach ($this->tecnicos as $tecnico) {
-                                if ($_SESSION['rol'] === 'adm' || $tecnico['tec_empresaFK'] === $_SESSION['id']) {
-                                    echo '<tr>';
-                                    echo '<td>' . $tecnico["tec_id"] . '</td>';
-                                    echo '<td>' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</td>';
-                                    echo '<td>' . $tecnico["tec_correo"] . '</td>';
-                                    echo '<td>' . $tecnico["tec_telefono"] . '</td>';
-                                    if ($_SESSION['rol'] !== 'emp') {
-                                        echo '<td>';
-                                        foreach ($this->empresas as $empresa) {
-                                            if ($empresa["emp_id"] === $tecnico["tec_empresaFK"]) {
-                                                echo $empresa["emp_nombre"];
-                                            }
-                                        }
-                                    }
-                                    echo '</td>';
-                                    echo '<td>' . $tecnico["tec_registro"] . '</td>';
-                                    echo '</tr>';
-                                }
-                            }
-                            echo '</tbody>
-                                    </table>
+                            </div>
+                        <?php endif ?>
+                        <?php if ($_SESSION['rol'] === 'adm' || $_SESSION['rol'] === 'emp'): ?>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h2 class="title-1 m-b-25">Tecnicos registrados</h2>
+                                    <div class="table-responsive table--no-card m-b-40">
+                                        <table class="table table-borderless table-striped table-earning">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre</th>
+                                                    <th>Correo</th>
+                                                    <th>Telefono</th>
+                                                    <?php if ($_SESSION['rol'] !== 'emp'): ?>
+                                                        <th>Empresa</th>
+                                                    <?php endif ?>
+                                                    <th>Registro</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($this->tecnicos as $tecnico): ?>
+                                                    <?php if ($_SESSION['rol'] === 'adm' || $tecnico['tec_empresaFK'] === $_SESSION['id']): ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?= $tecnico["tec_id"] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= $tecnico["tec_correo"] ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= $tecnico["tec_telefono"] ?>
+                                                            </td>
+                                                            <?php if ($_SESSION['rol'] !== 'emp'): ?>
+                                                                <td>
+                                                                    <?php foreach ($this->empresas as $empresa) {
+                                                                        if ($empresa["emp_id"] === $tecnico["tec_empresaFK"]) {
+                                                                            echo $empresa["emp_nombre"];
+                                                                        }
+                                                                    } ?>
+                                                                </td>
+                                                            <?php endif ?>
+                                                            <td>
+                                                                <?= $tecnico["tec_registro"] ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endif ?>
+                                                <?php endforeach ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>';
-                        } ?>
+                        <?php endif ?>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -360,69 +392,76 @@
                                             <tr>
                                                 <th>Serie</th>
                                                 <?php
-                                                if ($_SESSION['rol'] === 'adm') {
-                                                    echo '<th>Empresa</th>';
-                                                }
-                                                if ($_SESSION['rol'] !== 'tec') {
-                                                    echo ' <th>Tecnico</th>';
-                                                }
-                                                ?>
+                                                if ($_SESSION['rol'] === 'adm'): ?>
+                                                    <th>Empresa</th>
+                                                <?php endif ?>
+                                                <?php if ($_SESSION['rol'] !== 'tec'): ?>
+                                                    <th>Tecnico</th>
+                                                <?php endif ?>
                                                 <th>Ubicación</th>
                                                 <th>Estado</th>
                                                 <th>Registro</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($this->motores as $motor) {
-                                                if ($_SESSION['rol'] === 'adm' || $motor['infmot_empresaFK'] === $_SESSION['id'] || $motor['infmot_tecnicoFK'] === $_SESSION['id']) {
-                                                    echo '<tr>';
-                                                    echo '<td>' . $motor["infmot_serie"] . '</td>';
-                                                    if ($_SESSION['rol'] === 'adm') {
-                                                        echo '<td>';
-                                                        foreach ($this->empresas as $empresa) {
-                                                            if ($empresa["emp_id"] == $motor["infmot_empresaFK"]) {
-                                                                echo $empresa["emp_nombre"];
-                                                            }
-                                                        }
-                                                        echo '</td>';
-                                                    }
-                                                    if ($_SESSION['rol'] !== 'tec') {
-                                                        echo '<td>';
+                                            <?php foreach ($this->motores as $motor): ?>
+                                                <?php if (
+                                                    $_SESSION['rol'] === 'adm' ||
+                                                    $motor['infmot_empresaFK'] === $_SESSION['id'] ||
+                                                    $motor['infmot_tecnicoFK'] === $_SESSION['id']
+                                                ): ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?= $motor["infmot_serie"] ?>
+                                                        </td>
+                                                        <?php if ($_SESSION['rol'] === 'adm'): ?>
+                                                            <td>
+                                                                <?php foreach ($this->empresas as $empresa) {
+                                                                    if ($empresa["emp_id"] === $motor["infmot_empresaFK"]) {
+                                                                        echo $empresa["emp_nombre"];
+                                                                    }
+                                                                } ?>
+                                                            </td>
+                                                        <?php endif ?>
+                                                        <?php if ($_SESSION['rol'] !== 'tec'): ?>
+                                                            <td>
+                                                                <?php
+                                                                $asignado = false;
 
-                                                        $asignado = false;
+                                                                foreach ($this->tecnicos as $tecnico) {
+                                                                    if ($tecnico["tec_id"] === $motor["infmot_tecnicoFK"]) {
+                                                                        echo $tecnico["tec_nombre1"] . ' ' . $tecnico["tec_apellido1"];
+                                                                        $asignado = true;
+                                                                        break;
+                                                                    }
+                                                                }
 
-                                                        foreach ($this->tecnicos as $tecnico) {
-                                                            if ($tecnico["tec_id"] === $motor["infmot_tecnicoFK"]) {
-                                                                echo $tecnico["tec_nombre1"] . ' ' . $tecnico["tec_apellido1"];
-                                                                $asignado = true;
-                                                                break;
-                                                            }
-                                                        }
-
-                                                        if (!$asignado) {
-                                                            echo "No asignado";
-                                                        }
-
-                                                        echo '</td>';
-                                                    }
-                                                    echo '<td>';
-                                                    foreach ($this->ubicaciones as $ubicacion) {
-                                                        if ($motor["infmot_ubicacionFK"] == $ubicacion["ubimot_id"]) {
-                                                            echo $ubicacion["ubimot_area"];
-                                                        }
-                                                    }
-                                                    echo '</td>';
-                                                    echo '<td>';
-                                                    foreach ($this->estados as $estado) {
-                                                        if ($motor["infmot_estadoFK"] == $estado["est_id"]) {
-                                                            echo $estado["est_nombre"];
-                                                        }
-                                                    }
-                                                    echo '</td>';
-                                                    echo '<td>' . $motor["infmot_registro"] . '</td>';
-                                                    echo '</tr>';
-                                                }
-                                            } ?>
+                                                                if (!$asignado) {
+                                                                    echo "No asignado";
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                        <?php endif ?>
+                                                        <td>
+                                                            <?php foreach ($this->ubicaciones as $ubicacion) {
+                                                                if ($motor["infmot_ubicacionFK"] === $ubicacion["ubimot_id"]) {
+                                                                    echo $ubicacion["ubimot_area"];
+                                                                }
+                                                            } ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php foreach ($this->estados as $estado) {
+                                                                if ($motor["infmot_estadoFK"] === $estado["est_id"]) {
+                                                                    echo $estado["est_nombre"];
+                                                                }
+                                                            } ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $motor["infmot_registro"] ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -440,9 +479,7 @@
             <div class="main-content p-sm-t-0">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <?php
-                        include("view/empresa/index.php");
-                        ?>
+                        <?php include("view/empresa/index.php") ?>
                     </div>
                 </div>
             </div>
@@ -452,9 +489,7 @@
             <div class="main-content p-sm-t-0">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <?php
-                        include("view/tecnico/index.php");
-                        ?>
+                        <?php include("view/tecnico/index.php") ?>
                     </div>
                 </div>
             </div>
@@ -464,9 +499,7 @@
             <div class="main-content p-sm-t-0">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <?php
-                        include("view/motor/index.php");
-                        ?>
+                        <?php include("view/motor/index.php") ?>
                     </div>
                 </div>
             </div>

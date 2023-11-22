@@ -76,7 +76,7 @@ const dataAttribute = [
 openFormEditMotor.forEach((motor) => {
   motor.addEventListener("click", () => {
     dataAttribute.forEach((attribute, index) => {
-      let value = motor.getAttribute(attribute);
+      let value = motor.getAttribute(attribute).trim();
       let field = document.getElementById(fields[index]);
 
       if (field.tagName === "SELECT") {

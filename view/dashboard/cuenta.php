@@ -33,57 +33,65 @@
             $userData = $this->admins;
             $fields = ['Nombre' => 'adm_nombre1', 'Email' => 'adm_correo', 'Telefono' => 'adm_telefono'];
             break;
-        }
+        } ?>
 
-        foreach ($userData as $data) {
-          if ($_SESSION["id"] === $data[$_SESSION["rol"] . "_id"]) {
-            echo '<div class="user-details">';
-            foreach ($fields as $label => $field) {
-              echo '<div class="input-box">
-                      <span class="details">' . $label . '</span>
-                      <input value="' . $data[$field] . '" type="text" placeholder="Ingrese su ' . strtolower($label) . '" required>
-                    </div>';
-            }
-            if ($_SESSION["rol"] === "emp") {
-              echo '<div class="input-box">
-                      <span class="details">Municipio</span>
-                      <select id="edit-perfil-mun" data-municipio="' . $data["emp_municipioFK"] . '">';
-              foreach ($selectData as $municipio) {
-                echo '<option value="' . $municipio['mun_id'] . '">' . $municipio['mun_nombre'] . '</option>';
-              }
-              echo '</select></div>';
-            }
-            echo '<div class="input-box">
-                    <span class="details">Imagen</span>
-                    <input type="file" required>
-                  </div>
-                  </div>
-                  <div class="button">
-                    <input type="submit" value="Guardar">
-                  </div>';
-            break;
-          }
-        }
-        ?>
+        <?php foreach ($userData as $data): ?>
+          <?php if ($_SESSION["id"] === $data[$_SESSION["rol"] . "_id"]): ?>
+            <div class="user-details">
+
+              <?php foreach ($fields as $label => $field): ?>
+                <div class="input-box">
+                  <span class="details">
+                    <?= $label ?>
+                  </span>
+                  <input value="<?= $data[$field] ?>" type="text" placeholder="Ingrese su <?= strtolower($label) ?>" required>
+                </div>
+              <?php endforeach ?>
+
+              <?php if ($_SESSION["rol"] === "emp"): ?>
+                <div class="input-box">
+                  <span class="details">Municipio</span>
+                  <select id="edit-perfil-mun" data-municipio="<?= $data[" emp_municipioFK"] ?>">
+
+                    <?php foreach ($selectData as $municipio): ?>
+                      <option value="<?= $municipio['mun_id'] ?>">
+                        <?= $municipio['mun_nombre'] ?>
+                      </option>
+                    <?php endforeach ?>
+
+                  </select>
+                </div>
+              <?php endif ?>
+
+              <div class="input-box">
+                <span class="details">Imagen</span>
+                <input type="file" required>
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Guardar">
+            </div>
+
+          <?php endif ?>
+        <?php endforeach ?>
+
       </form>
     </div>
   </div>
-  <?php if ($_SESSION['rol'] === 'emp') {
-    echo '
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      let value = document.getElementById("edit-perfil-mun").getAttribute("data-municipio");
-      let select = document.getElementById("edit-perfil-mun");
-      for (let option of select.options) {
-        if (option.value === value) {
-          option.selected = true;
-          break;
+  <?php if ($_SESSION['rol'] === 'emp'): ?>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        let value = document.getElementById("edit-perfil-mun").getAttribute("data-municipio");
+        let select = document.getElementById("edit-perfil-mun");
+        for (let option of select.options) {
+          if (option.value === value) {
+            option.selected = true;
+            break;
+          }
         }
-      }
-    })
-  </script>';
-  }
-  ?>
+      })
+    </script>
+  <?php endif ?>
 </body>
 
 </html>

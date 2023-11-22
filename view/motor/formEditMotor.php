@@ -1,25 +1,26 @@
 <div class="contForm" id="FormEditMotor">
     <button type="button" class="fa-solid fa-xmark closeFormEdit closeFormEditMotor"></button>
-    <form action="?controller=motor&action=edit" id="multi-step-form-edit" class="form form_edit_motor" onsubmit="return false">
+    <form action="?controller=motor&action=edit" id="multi-step-form-edit" class="form form_edit_motor"
+        onsubmit="return false">
         <div id="form-container-box">
             <h1 class="form-title">EDITAR MOTOR</h1>
 
             <!-- ======================Step Group 1============== -->
             <div class="step-group" id="step-group-1-edit">
                 <div class="form-box">
-                    <?php if ($_SESSION["rol"] === "adm") {
-                        echo '<div class="form-group">
-                        <label for="edit_mot_empresaFK">Empresa a la que pertenece el motor</label>
+                    <?php if ($_SESSION["rol"] === "adm"): ?>
+                        <div class="form-group">
+                            <label for="edit_mot_empresaFK">Empresa a la que pertenece el motor</label>
                             <select class="form-field" id="edit_mot_empresaFK">
-                                <option value="">Seleccione la empresa a la que pertenece el motor</option>';
-                        foreach ($this->empresas as $empresa) {
-                            echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
-                        }
-                        echo '</select>
-                        </div>';
-                    } else {
-                        echo '<input type="hidden" value="' . $_SESSION["id"] . '" id="edit_mot_empresaFK"></input>';
-                    } ?>
+                                <option value="">Seleccione la empresa a la que pertenece el motor</option>
+                                <?php foreach ($this->empresas as $empresa) {
+                                    echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                                } ?>
+                            </select>
+                        </div>
+                    <?php else: ?>
+                        <input type="hidden" value="<?= $_SESSION["id"] ?>" id="edit_mot_empresaFK"></input>
+                    <?php endif ?>
 
                     <div class="form-group">
                         <label for="edit_mot_ubicacionFK">Ubicación del motor</label>

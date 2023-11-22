@@ -84,22 +84,24 @@ https://templatemo.com/tm-562-space-dynamic
                             <li class="scroll-to-section">
                                 <a href="#contact">Contacto</a>
                             </li>
-                            <?php if (isset($_SESSION['id'])) {
-                                echo '<li class="scroll-to-section">
+                            <?php if (isset($_SESSION['id'])): ?>
+                                <li class="scroll-to-section">
                                     <a href="?controller=dashboard&action=index">Dashboard</a>
-                                </li>';
-                                echo '<li class="scroll-to-section">
+                                </li>
+                                <li class="scroll-to-section">
                                     <div><a class="text-dark" href="?controller=main&action=salir">Salir</a></div>
-                                </li>';
-                            } else {
-                                echo '<li class="scroll-to-section">
+                                </li>
+                            <?php else: ?>
+                                <li class="scroll-to-section">
                                     <a href="?controller=main&action=login">Iniciar sesión</a>
-                                </li>';
+                                </li>
 
-                                echo '<li class="btn-register">
-                                    <div class="main-red-button"><a href="?controller=main&action=registro">Registrarse</a></div>
-                                </li>';
-                            } ?>
+                                <li class="btn-register">
+                                    <div class="main-red-button">
+                                        <a href="?controller=main&action=registro">Registrarse</a>
+                                    </div>
+                                </li>
+                            <?php endif ?>
                         </ul>
                         <a class="menu-trigger">
                             <span>Menu</span>

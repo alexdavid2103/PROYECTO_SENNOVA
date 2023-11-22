@@ -1,16 +1,17 @@
 <?php
 class connection
 {
-	// host='baeoxbyp7fasj6vrw6x8-mysql.services.clever-cloud.com',
-    // user='uq2beuohyvcojewk',
-    // password='sXE58ZBWXl4vhCIO9UpV',
-    // database='baeoxbyp7fasj6vrw6x8'
 	private $con;
-	private $hostname = "baeoxbyp7fasj6vrw6x8-mysql.services.clever-cloud.com";
-	private $port = "";
-	private $username = "uq2beuohyvcojewk";
-	private $password = "sXE58ZBWXl4vhCIO9UpV";
-	private $database = "baeoxbyp7fasj6vrw6x8";
+	// private $hostname = "baeoxbyp7fasj6vrw6x8-mysql.services.clever-cloud.com";
+	// private $port = "";
+	// private $username = "uq2beuohyvcojewk";
+	// private $password = "sXE58ZBWXl4vhCIO9UpV";
+	// private $database = "baeoxbyp7fasj6vrw6x8";
+	private $hostname = "localhost";
+	private $port = 3306;
+	private $username = "root";
+	private $password = "";
+	private $database = "senatech";
 
 	public function __construct()
 	{

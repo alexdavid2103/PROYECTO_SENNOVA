@@ -39,21 +39,21 @@
             <input type="number" id="add_tec_telefono" placeholder="Ingrese su numero de telefono" />
         </div>
     </div>
-    <?php if ($_SESSION["rol"] === "adm") {
-        echo '<div class="column">
-        <div class="input-box">
-        <label for="add_tec_empresa">Empresa</label>
-        <select name="" id="add_tec_empresa" class="">
-        <option value="">Seleccione la empresa a la que pertenece</option>';
-        foreach ($this->empresas as $empresa) {
-            echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
-        }
-        echo '</select>
+    <?php if ($_SESSION["rol"] === "adm"): ?>
+        <div class="column">
+            <div class="input-box">
+                <label for="add_tec_empresa">Empresa</label>
+                <select name="" id="add_tec_empresa" class="">
+                    <option value="">Seleccione la empresa a la que pertenece</option>';
+                    <?php foreach ($this->empresas as $empresa) {
+                        echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
+                    } ?>
+                </select>
+            </div>
         </div>
-        </div>';
-    } else {
-        echo '<input type="hidden" id="add_tec_empresa" value="' . $_SESSION["id"] . '">';
-    } ?>
+    <?php else: ?>
+        <input type="hidden" id="add_tec_empresa" value="<?= $_SESSION["id"] ?>">
+    <?php endif ?>
 
     <button type="submit">Guardar Datos</button>
 </form>

@@ -14,15 +14,10 @@
                     </span>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach ?>
     </div>
 </div>
 
-<!-- <div id="floatingButton" class="position-fixed bottom-0 end-0 p-3" data-toggle="tooltip" data-title="Crear Tecnico" style="z-index: 1;">
-    <button class="btn btn-primary rounded-circle">
-        <i class="fas fa-plus"></i>
-    </button>
-</div> -->
 <!-- PAGE CONTAINER-->
 <section class="container">
     <header>Registrar Empresa</header>
@@ -59,9 +54,9 @@
                 <label for="add_emp_municipio">Municipio</label>
                 <select class="select" name="Sexo" id="add_emp_municipio">
                     <option value="" selected>Seleciona tu municipio</option>
-                    <?php foreach ($this->municipios as $municipio) {
-                        echo '<option value="' . $municipio['mun_id'] . '">' . $municipio['mun_nombre'] . '</option>';
-                    } ?>
+                    <?php foreach ($this->municipios as $municipio): ?>
+                        <option value="<?= $municipio['mun_id'] ?>"><?=$municipio['mun_nombre'] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>

@@ -32,9 +32,9 @@
           <span class="details" for="Sexo">Municipio</span>
           <select class="select" name="Sexo" id="add_emp_municipio">
             <option value="" selected>Seleciona tu municipio</option>
-            <?php foreach ($this->municipios as $municipio) {
-              echo '<option value="' . $municipio['mun_id'] . '">' . $municipio['mun_nombre'] . '</option>';
-            } ?>
+            <?php foreach ($this->municipios as $municipio): ?>
+              <option value="<?= $municipio['mun_id'] ?>"><?= $municipio['mun_nombre']?></option>
+            <?php endforeach ?>
           </select>
         </div>
 
@@ -42,7 +42,7 @@
           <span class="details">Dirección</span>
           <input type="text" id="add_emp_direccion" placeholder="Ingrese su dirección">
         </div>
-            
+
       </div>
 
       <div class="button">
@@ -57,6 +57,5 @@
   </div>
 </div>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>;
-<!-- <script src="public/js/filtroMunicipios.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="module" src="public/js/registro.js"></script>

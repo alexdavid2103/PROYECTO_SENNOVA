@@ -5,18 +5,18 @@
         <!-- ======================Step Group 1============== -->
         <div class="step-group" id="step-group-1">
             <div class="form-box">
-                <?php if ($_SESSION["rol"] === "adm") {
-                    echo '<div class="form-group">
-                            <select class="form-field" id="add_mot_empresaFK">
-                                <option value="">Seleccione la empresa a la que pertenece el motor</option>';
-                    foreach ($this->empresas as $empresa) {
-                        echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
-                    }
-                    echo '</select>
-                        </div>';
-                } else {
-                    echo '<input type="hidden" value="' . $_SESSION["id"] . '" id="add_mot_empresaFK"></input>';
-                } ?>
+                <?php if ($_SESSION["rol"] === "adm"): ?>
+                    <div class="form-group">
+                        <select class="form-field" id="add_mot_empresaFK">
+                            <option value="">Seleccione la empresa a la que pertenece el motor</option>
+                            <?php foreach ($this->empresas as $empresa): ?>
+                                <option value="<?= $empresa["emp_id"] ?>"><?= $empresa["emp_nombre"] ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                <?php else: ?>
+                    <input type="hidden" value="<?= $_SESSION["id"] ?>" id="add_mot_empresaFK"></input>
+                <?php endif ?>
 
                 <div class="form-group">
                     <select class="form-field" id="add_mot_ubicacionFK">
@@ -210,7 +210,6 @@
             <div class="form-box">
                 <div class="btn-step">
                     <button type="button" id="step-prev-3">￩ Prev</button>
-                    <!-- <button type="submit" id="step-next-4">Send ￫</button> -->
                     <button type="submit" id="btn_add_motor" class="btn_add btn_add_motor">Agregar</button>
                 </div>
             </div>
