@@ -11,7 +11,7 @@
                     <?php if ($_SESSION["rol"] === "adm"): ?>
                         <div class="form-group">
                             <label for="edit_mot_empresaFK">Empresa a la que pertenece el motor</label>
-                            <select class="form-field" id="edit_mot_empresaFK">
+                            <select class="form-field" id="edit_mot_empresaFK" disabled>
                                 <option value="">Seleccione la empresa a la que pertenece el motor</option>
                                 <?php foreach ($this->empresas as $empresa) {
                                     echo '<option value="' . $empresa["emp_id"] . '">' . $empresa["emp_nombre"] . '</option>';
@@ -223,20 +223,24 @@
                         <label for="edit_mot_tecnicoFK">Técnico a cargo del motor</label>
                         <select class="form-field" id="edit_mot_tecnicoFK">
                             <option value="">Seleccione el tecnico a cargo del motor</option>
-                            <?php foreach ($this->tecnicos as $tecnico) {
-                                if ($tecnico["tec_empresaFK"] === $_SESSION['id'] || $_SESSION["rol"] === "adm") {
-                                    echo '<option value="' . $tecnico["tec_id"] . '">' . $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] . '</option>';
-                                }
-                            } ?>
+                            <?php foreach ($this->tecnicos as $tecnico): ?>
+                                <?php if ($tecnico["tec_empresaFK"] === $_SESSION['id'] || $_SESSION["rol"] === "adm"): ?>
+                                    <option value="<?= $tecnico["tec_id"] ?>">
+                                        <?= $tecnico["tec_nombre1"] . " " . $tecnico["tec_apellido1"] ?>
+                                    </option>
+                                <?php endif ?>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="edit_mot_tipoFK">Tipo de motor</label>
                         <select class="form-field" id="edit_mot_tipoFK">
                             <option value="">Seleccione el tipo de motor</option>
-                            <?php foreach ($this->tiposMotores as $tipoM) {
-                                echo '<option value="' . $tipoM["tipmot_id"] . '">' . $tipoM["tipmot_nombre"] . '</option>';
-                            } ?>
+                            <?php foreach ($this->tiposMotores as $tipoM): ?>
+                                <option value="<?= $tipoM["tipmot_id"] ?>">
+                                    <?= $tipoM["tipmot_nombre"] ?>
+                                </option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                 </div>

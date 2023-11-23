@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const empresaSelect = document.getElementById("add_mot_empresaFK");
 
   empresaSelect.addEventListener("change", () => {
