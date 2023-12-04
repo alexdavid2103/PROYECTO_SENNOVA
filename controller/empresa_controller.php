@@ -74,9 +74,14 @@ class empresa_controller
         extract($_POST); // Extraer los datos del formulario POST
 
         // Crear un arreglo asociativo con los datos actualizados de la empresa
-        $data["nombre"] = $nombre;
-        $data["telefono"] = $telefono;
-        $data["ceo"] = $ceo;
+        $data = [
+            "nombre" => $nombre,
+            "correo" => $correo,
+            "telefono" => $telefono,
+            "direccion" => $direccion,
+            "municipio" => $municipio,
+            "id" => $id,
+        ];
 
         // Llamar a la función estática edit en el modelo empresa_modelo
         $r = empresa_model::edit($data);
@@ -169,5 +174,10 @@ class empresa_controller
             // Enviar la respuesta de error como JSON
             echo json_encode($response);
         }
+    }
+
+    public function versionPHP()
+    {
+        echo phpinfo();
     }
 }

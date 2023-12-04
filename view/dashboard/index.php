@@ -113,12 +113,16 @@
                 <div class="container-fluid">
                     <div class="header-wrap">
                         <!-- Botones y notificaciones -->
-                        <div class="header-button">
+                        <div class="header-button justify-content-end">
                             <!-- Información de la cuenta del usuario -->
                             <div class="account-wrap">
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
-                                        <img src="public/dashboard/images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <?php if (isset($_SESSION['image'])): ?>
+                                            <img src="" alt="">
+                                        <?php else: ?>
+                                            <i class="fa-solid fa-user" style="font-size: 50px"></i></i>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="content">
                                         <a class="js-acc-btn" href="#">
@@ -130,11 +134,12 @@
                                     <!-- Opciones de la cuenta del usuario desplegable -->
                                     <div class="account-dropdown js-dropdown">
                                         <div class="info clearfix">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="public/dashboard/images/icon/avatar-01.jpg"
-                                                        alt="John Doe" />
-                                                </a>
+                                            <div class="image text-center">
+                                                <?php if (isset($_SESSION['image'])): ?>
+                                                    <img src="" alt="">
+                                                <?php else: ?>
+                                                    <i class="fa-solid fa-user" style="font-size: 70px"></i></i>
+                                                <?php endif; ?>
                                             </div>
                                             <div class="content">
                                                 <h5 class="name">

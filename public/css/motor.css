@@ -324,26 +324,26 @@
 @media (max-width: 350px) {
 }
 
-.editMotorButton,
-.deleteMotorButton {
+.basicEditButton,
+.basicDeleteButton {
   padding: 5px 15px;
   color: #fff;
   border-radius: 5px;
   transition: 0.25s linear;
 }
 
-.editMotorButton {
+.basicEditButton {
   background: #0000ff;
 }
 
-.editMotorButton:hover {
+.basicEditButton:hover {
   background: #00009f;
 }
 
-.deleteMotorButton {
+.basicDeleteButton {
   background: #ff0000;
 }
 
-.deleteMotorButton:hover {
+.basicDeleteButton:hover {
   background: #9f0000;
 }

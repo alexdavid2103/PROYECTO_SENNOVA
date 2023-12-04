@@ -155,38 +155,42 @@ form_edit_empresa.addEventListener("submit", async (event) => {
   }
 });
 
-// Funcionalidad de Eliminar Empresa
-function deleteEmpresa(id) {
+// ELIMINAR <---------------------------------------------------------------------|
+const deleteEmpresaButton = document.querySelectorAll(
+  ".deleteEmpresaButton[data-id]"
+);
+
+deleteEmpresaButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = button.getAttribute("data-id");
+    deleteTecnico(id);
+  });
+});
+
+const deleteTecnico = async (id) => {
   try {
-    // Muestra una alerta de advertencia para confirmar si el usuario realmente desea eliminar la empresa
-    advanceAlertWarning().then(async (willDelete) => {
-      if (willDelete) {
-        let datos = new FormData();
-        datos.append("id", id);
+    const willDelete = await advanceAlertWarning();
 
-        // Envía una solicitud POST al servidor para eliminar la empresa
-        let respuesta = await fetch("?controller=empresa&action=delete", {
-          method: "POST",
-          body: datos,
+    if (willDelete) {
+      const datos = new FormData();
+      datos.append("id", id);
+
+      const respuesta = await fetch("?controller=empresa&action=delete", {
+        method: "POST",
+        body: datos,
+      });
+
+      const info = await respuesta.json();
+
+      if (info.estado === 1) {
+        alertSuccess("Ha sido eliminado correctamente").then(() => {
+          window.location.reload();
         });
-
-        // Obtiene la respuesta del servidor en formato JSON
-        let info = await respuesta.json();
-
-        // Muestra un mensaje de éxito y recarga la página si la operación fue exitosa, de lo contrario muestra un mensaje de error
-        if (info.estado === 1) {
-          alertSuccess("Ha sido eliminado correctamente").then(() => {
-            window.location.reload();
-          });
-        } else {
-          alertError("No se pudo eliminar");
-        }
       } else {
-        swal("No ha sido eliminado");
+        alertError("No se pudo eliminar");
       }
-    });
+    }
   } catch (error) {
-    console.log(error);
-    // Maneja el error de la solicitud
+    alertInfo("No ha sido eliminado");
   }
-}
+};

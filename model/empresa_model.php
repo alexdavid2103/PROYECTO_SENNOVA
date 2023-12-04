@@ -49,13 +49,26 @@ class empresa_model
         // Consulta SQL para actualizar datos en la tabla empresa
         $sql = "UPDATE empresas SET 
                                     emp_nombre = ?,
+                                    emp_correo = ?,
                                     emp_telefono = ?,
-                                    emp_ceo = ?
+                                    emp_direccion = ?,
+                                    emp_municipioFK = ?
                                     WHERE emp_id = ?";
 
         $st = $c->prepare($sql);
         $v = array(
-            // Valor para emp_id (ubicar el registro a actualizar)
+            // Valor para emp_nombre
+            $data["nombre"],
+            // Valor para emp_correo
+            $data["correo"],
+            // Valor para emp_telefono
+            $data["telefono"],
+            // Valor para emp_direccion
+            $data["direccion"],
+            // Valor para emp_municipio
+            $data["municipio"],
+            // Valor pasa emp_id
+            $data["id"]
         );
 
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado

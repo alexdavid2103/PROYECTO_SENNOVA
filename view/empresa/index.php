@@ -18,6 +18,45 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="title-1 m-t-25 m-b-25">Ubicaciones registradas</h2>
+        <div class="table-responsive table--no-card m-b-40">
+            <table class="table table-borderless table-striped table-earning">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->ubicaciones as $ubicacion): ?>
+                        <tr>
+                            <td>
+                                <?= $ubicacion["ubimot_area"] ?>
+                            </td>
+                            <td>
+                                <?php foreach ($this->empresas as $empresa) {
+                                    if ($empresa["emp_id"] === $ubicacion["ubimot_empresaFK"]) {
+                                        echo $empresa["emp_nombre"];
+                                    }
+                                } ?>
+                            </td>
+                            <td>
+                                <button class="basicEditButton openFormEditMotor">Editar</button>
+                            </td>
+                            <td>
+                                <button class="basicDeleteButton" data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <!-- PAGE CONTAINER-->
 <section class="container">
     <header>Registrar Empresa</header>
@@ -55,7 +94,9 @@
                 <select class="select" name="Sexo" id="add_emp_municipio">
                     <option value="" selected>Seleciona tu municipio</option>
                     <?php foreach ($this->municipios as $municipio): ?>
-                        <option value="<?= $municipio['mun_id'] ?>"><?=$municipio['mun_nombre'] ?></option>
+                        <option value="<?= $municipio['mun_id'] ?>">
+                            <?= $municipio['mun_nombre'] ?>
+                        </option>
                     <?php endforeach ?>
                 </select>
             </div>

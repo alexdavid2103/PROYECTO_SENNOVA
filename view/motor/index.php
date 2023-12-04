@@ -80,7 +80,7 @@
                                         <?= $motor["infmot_registro"] ?>
                                     </td>
                                     <td>
-                                        <button class="editMotorButton openFormEditMotor"
+                                        <button class="basicEditButton openFormEditMotor"
                                             data-empresaFK="<?= $motor["infmot_empresaFK"] ?>"
                                             data-ubicacionFK="<?= $motor["infmot_ubicacionFK"] ?>"
                                             data-serie="<?= $motor["infmot_serie"] ?>"
@@ -139,7 +139,7 @@
                                             data-tipoFK="<?= $motor["infmot_tipoFK"] ?>">Editar</button>
                                     </td>
                                     <td>
-                                        <button class="deleteMotorButton" data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
+                                        <button class="basicDeleteButton" data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -208,3 +208,4 @@
 <script src="public/js/filtroTecnicos.js"></script>
 <script src="public/js/filtroUbicaciones.js"></script>
 <script src="public/js/dataFormEditMotor.js"></script>
+<script type="module" src="public/js/validacionesMotores.js"></script>
