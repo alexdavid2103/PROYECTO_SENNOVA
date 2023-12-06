@@ -9,6 +9,7 @@
   padding: 25px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   position: relative;
+  transition: .25s;
 }
 
 .profile-card .image {
