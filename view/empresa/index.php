@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="flex-box">
-        <?php foreach ($this->empresas as $empresa): ?>
+        <?php foreach($this->empresas as $empresa): ?>
             <div class="profile-card">
                 <div class="image">
                     <i class="fas fa-user profile-img"></i>
@@ -13,6 +13,26 @@
                         <?= $empresa["emp_nombre"] ?>
                     </span>
                 </div>
+
+                <ul class="card-buttons">
+                    <li class="card-buttons__item">
+                        <button class="editButton openFormEditEmpresa" 
+                            data-id="<?= $empresa["emp_id"] ?>"
+                            data-nombre="<?= $empresa["emp_nombre"] ?>" 
+                            data-correo="<?= $empresa["emp_correo"] ?>"
+                            data-telefono="<?= $empresa["emp_telefono"] ?>"
+                            data-direccion="<?= $empresa["emp_direccion"] ?>"
+                            data-municipio="<?= $empresa["emp_municipioFK"] ?>"
+                            >
+                            Editar
+                        </button>
+                    </li>
+                    <li class="card-buttons__item">
+                        <button type="button" class="deleteButton deleteTecnicoButton" data-id="<?= $empresa["emp_id"] ?>">
+                            Borrar
+                        </button>
+                    </li>
+                </ul>
             </div>
         <?php endforeach ?>
     </div>
@@ -32,14 +52,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($this->ubicaciones as $ubicacion): ?>
+                    <?php foreach($this->ubicaciones as $ubicacion): ?>
                         <tr>
                             <td>
                                 <?= $ubicacion["ubimot_area"] ?>
                             </td>
                             <td>
-                                <?php foreach ($this->empresas as $empresa) {
-                                    if ($empresa["emp_id"] === $ubicacion["ubimot_empresaFK"]) {
+                                <?php foreach($this->empresas as $empresa) {
+                                    if($empresa["emp_id"] === $ubicacion["ubimot_empresaFK"]) {
                                         echo $empresa["emp_nombre"];
                                     }
                                 } ?>
@@ -58,50 +78,14 @@
     </div>
 </div>
 <!-- PAGE CONTAINER-->
-<section class="container">
-    <header>Registrar Empresa</header>
-    <form method="POST" action="?controller=empresa&action=add" class="form">
 
-        <div class="input-box">
-            <label for="add_emp_id">NIT</label>
-            <input type="text" id="add_emp_id" placeholder="Ingrese el NIT de la empresa" required />
-        </div>
+<div id="floatingCircle" class="floating-button btnAddEmpresa" data-toggle="tooltip" data-title="Agregar Empresa">
+    <i class="fas fa-plus"></i>
+</div>
 
-        <div class="input-box">
-            <label for="add_emp_nombre">Nombre</label>
-            <input type="text" id="add_emp_nombre" placeholder="Ingrese el nombre" required />
-        </div>
+<?php include("view/empresa/formAddEmpresa.php") ?>
 
-        <div class="column">
-            <div class="input-box">
-                <label for="add_emp_correo">Correo</label>
-                <input type="email" id="add_emp_correo" placeholder="Ingrese el correo" required />
-            </div>
-            <div class="input-box">
-                <label for="add_emp_telefono">Telefono</label>
-                <input type="number" id="add_emp_telefono" placeholder="Ingrese su telefono" required />
-            </div>
-        </div>
+<?php include("view/empresa/formEditEmpresa.php") ?>
 
-        <div class="column">
-            <div class="input-box">
-                <label for="add_emp_direccion">Direccion</label>
-                <input type="text" id="add_emp_direccion" placeholder="Ingrese su direccion" required />
-            </div>
-
-            <div class="input-box">
-                <label for="add_emp_municipio">Municipio</label>
-                <select class="select" name="Sexo" id="add_emp_municipio">
-                    <option value="" selected>Seleciona tu municipio</option>
-                    <?php foreach ($this->municipios as $municipio): ?>
-                        <option value="<?= $municipio['mun_id'] ?>">
-                            <?= $municipio['mun_nombre'] ?>
-                        </option>
-                    <?php endforeach ?>
-                </select>
-            </div>
-        </div>
-
-        <button>Registrar</button>
-    </form>
-</section>
+<script type="module" src="public/js/empresa.js"></script>
+<script type="module" src="public/js/dataFormEditEmpresa.js"></script>

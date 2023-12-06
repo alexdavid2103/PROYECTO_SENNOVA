@@ -7,11 +7,15 @@ import {
 } from "./alertas.js";
 
 // Funcionalidad de Agregar Empresa
+
 const form_add_empresa = document.getElementById("form_add_empresa"); // Obtiene el formulario de agregar empresa por su ID
 form_add_empresa.addEventListener("submit", async (event) => {
   // Escucha el evento de envío del formulario
-  event.preventDefault(); // Evita el comportamiento predeterminado del evento de envío
+  event.preventDefault();
+  addEmpresa();
+});
 
+const addEmpresa = async () => {
   // Define los campos y sus etiquetas correspondientes
   const campos = [
     "add_emp_id",
@@ -79,10 +83,11 @@ form_add_empresa.addEventListener("submit", async (event) => {
   } else {
     alertError("La empresa ya se encuentra registrada");
   }
-});
+};
 
 // Funcionalidad de Editar Empresa
-const form_edit_empresa = document.getElementById("form_edit_empresa"); // Obtiene el formulario de editar empresa por su ID
+const form_edit_empresa = document.getElementById("form_edit_empresa");
+// Obtiene el formulario de editar empresa por su ID
 form_edit_empresa.addEventListener("submit", async (event) => {
   // Escucha el evento de envío del formulario
   event.preventDefault(); // Evita el comportamiento predeterminado del evento de envío
@@ -194,3 +199,20 @@ const deleteTecnico = async (id) => {
     alertInfo("No ha sido eliminado");
   }
 };
+
+export { addEmpresa };
+// OTROS <----------------------------------------------------------------|
+
+const openButton = document.querySelector(".btnAddEmpresa");
+const formAddTecnico = document.getElementById("formAddEmpresa");
+const closeFormAddTecnico = document.querySelector(".closeFormAddEmpresa");
+
+openButton.addEventListener("click", () => {
+  formAddTecnico.classList.toggle("activeForm");
+  openButton.classList.toggle("d-none");
+});
+
+closeFormAddTecnico.addEventListener("click", () => {
+  formAddTecnico.classList.toggle("activeForm");
+  openButton.classList.toggle("d-none");
+});

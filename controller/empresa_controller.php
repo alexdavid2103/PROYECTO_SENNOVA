@@ -27,17 +27,23 @@ class empresa_controller
     public function add()
     {
         // Obtener los datos del formulario POST
-        extract($_POST);
         $url = "?controller=empresa&action=ubicacionMotor";
+
+        $id = $_POST['add_emp_id'];
+        $nombre = $_POST['add_emp_nombre'];
+        $correo = $_POST['add_emp_correo'];
+        $telefono = $_POST['add_emp_telefono'];
+        $direccion = $_POST['add_emp_direccion'];
+        $municipio = $_POST['add_emp_municipio'];
         // Crear un arreglo asociativo con los datos de la empresa
-        $data = array(
+        $data = [
             "id" => $id,
             "nombre" => $nombre,
             "correo" => $correo,
             "telefono" => $telefono,
             "direccion" => $direccion,
             "municipio" => $municipio
-        );
+        ];
 
         // Llamar a la función estática add en el modelo empresa_modelo
         $r = empresa_model::add($data);
@@ -118,6 +124,7 @@ class empresa_controller
         // Verificar si $_SESSION["id"] está definido y no es nulo
         if (isset($_SESSION["id"]) && $_SESSION["id"] !== null) {
             $empresaId = $_SESSION["id"]; // Obtener el ID de la empresa de la sesión
+
             $url = "?controller=dashboard&action=index";
 
             $estado = 0; // Estado de validación inicial en 0
@@ -129,11 +136,11 @@ class empresa_controller
 
                 // Recorre el array y registra cada ubicación en la base de datos
                 foreach ($array_resultante as $ubicacion) {
-                    $data = array(
+                    $data = [
                         'ubimot_area' => $ubicacion,
                         // Asigna el valor de ubicación del array
                         'ubimot_empresaFK' => $empresaId // Agrega el ID de la empresa al campo correspondiente
-                    );
+                    ];
 
                     // Llamar a la función estática addUbicacionMotor en el modelo empresa_modelo
                     $r = empresa_model::addUbicacionMotor($data);
@@ -164,12 +171,12 @@ class empresa_controller
             $mensaje = "No se ha iniciado sesión o no se encontró el ID de la empresa"; // Mensaje de error si no hay sesión o no se encuentra el ID de la empresa
 
             // Preparar la respuesta de error en formato JSON
-            $response = array(
+            $response = [
                 "mensaje" => $mensaje,
                 "estado" => 0,
                 // Estado de error en 0
                 "url" => $url,
-            );
+            ];
 
             // Enviar la respuesta de error como JSON
             echo json_encode($response);

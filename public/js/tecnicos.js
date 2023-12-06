@@ -222,13 +222,16 @@ const deleteTecnico = async (id) => {
 
 // OTROS <---------------------------------------------------------------------|
 
-// //ver formulario
-document.getElementById("floatingCircle").addEventListener("click", () => {
-  var formContainer = document.getElementById("formContainer");
-  formContainer.classList.toggle("d-none");
-  formContainer.classList.toggle("d-block");
+const openButton = document.querySelector(".btnAddTecnico");
+const formAddTecnico = document.getElementById("formAddTecnico");
+const closeFormAddTecnico = document.querySelector(".closeFormAddTecnico");
+
+openButton.addEventListener("click", () => {
+  formAddTecnico.classList.toggle("activeForm");
+  openButton.classList.toggle("d-none");
 });
 
-$(document).ready(function () {
-  $('[data-toggle="tooltip"]').tooltip();
+closeFormAddTecnico.addEventListener("click", () => {
+  formAddTecnico.classList.toggle("activeForm");
+  openButton.classList.toggle("d-none");
 });

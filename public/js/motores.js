@@ -260,7 +260,7 @@ form_edit_motor.addEventListener("submit", async (event) => {
 
 // ELIMINAR <---------------------------------------------------------------------|
 const deleteMotorButton = document.querySelectorAll(
-  ".deleteMotorButton[data-id]"
+  "#deleteMotorButton[data-id]"
 );
 
 deleteMotorButton.forEach((button) => {
@@ -297,3 +297,19 @@ const deleteMotor = async (id) => {
     alertInfo("No ha sido eliminado");
   }
 };
+
+// OTROS <----------------------------------------------------------------|
+
+const openButton = document.querySelector(".btnAddMotor");
+const formAddTecnico = document.getElementById("formAddMotor");
+const closeFormAddTecnico = document.querySelector(".closeFormAddMotor");
+
+openButton.addEventListener("click", () => {
+  formAddTecnico.classList.toggle("activeForm");
+  openButton.classList.toggle("d-none");
+});
+
+closeFormAddTecnico.addEventListener("click", () => {
+  formAddTecnico.classList.toggle("activeForm");
+  openButton.classList.toggle("d-none");
+});

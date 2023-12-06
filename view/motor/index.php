@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="public/css/motor.css">
 
 
-<?php if ($_SESSION["rol"] !== "tec"): ?>
+<?php if($_SESSION["rol"] !== "tec"): ?>
     <div class="row">
         <div class="col-lg-12">
             <h2 class="title-1 m-b-25 text-sm-center">Motores registrados</h2>
@@ -11,10 +11,10 @@
                     <thead>
                         <tr>
                             <th>Serie</th>
-                            <?php if ($_SESSION['rol'] === 'adm'): ?>
+                            <?php if($_SESSION['rol'] === 'adm'): ?>
                                 <th>Empresa</th>
                             <?php endif ?>
-                            <?php if ($_SESSION['rol'] !== 'tec'): ?>
+                            <?php if($_SESSION['rol'] !== 'tec'): ?>
                                 <th>Tecnico</th>
                             <?php endif ?>
                             <th>Ubicación</th>
@@ -25,8 +25,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($this->motores as $motor): ?>
-                            <?php if (
+                        <?php foreach($this->motores as $motor): ?>
+                            <?php if(
                                 $_SESSION['rol'] === 'adm' ||
                                 $motor['infmot_empresaFK'] === $_SESSION['id'] ||
                                 $motor['infmot_tecnicoFK'] === $_SESSION['id']
@@ -35,43 +35,43 @@
                                     <td>
                                         <?= $motor["infmot_serie"] ?>
                                     </td>
-                                    <?php if ($_SESSION['rol'] === 'adm'): ?>
+                                    <?php if($_SESSION['rol'] === 'adm'): ?>
                                         <td>
-                                            <?php foreach ($this->empresas as $empresa) {
-                                                if ($empresa["emp_id"] === $motor["infmot_empresaFK"]) {
+                                            <?php foreach($this->empresas as $empresa) {
+                                                if($empresa["emp_id"] === $motor["infmot_empresaFK"]) {
                                                     echo $empresa["emp_nombre"];
                                                 }
                                             } ?>
                                         </td>
                                     <?php endif ?>
-                                    <?php if ($_SESSION['rol'] !== 'tec'): ?>
+                                    <?php if($_SESSION['rol'] !== 'tec'): ?>
                                         <td>
                                             <?php
                                             $asignado = false;
 
-                                            foreach ($this->tecnicos as $tecnico) {
-                                                if ($tecnico["tec_id"] === $motor["infmot_tecnicoFK"]) {
-                                                    echo $tecnico["tec_nombre1"] . ' ' . $tecnico["tec_apellido1"];
+                                            foreach($this->tecnicos as $tecnico) {
+                                                if($tecnico["tec_id"] === $motor["infmot_tecnicoFK"]) {
+                                                    echo $tecnico["tec_nombre1"].' '.$tecnico["tec_apellido1"];
                                                     $asignado = true;
                                                     break;
                                                 }
                                             }
 
-                                            if (!$asignado) {
+                                            if(!$asignado) {
                                                 echo "No asignado";
                                             } ?>
                                         </td>
                                     <?php endif ?>
                                     <td>
-                                        <?php foreach ($this->ubicaciones as $ubicacion) {
-                                            if ($motor["infmot_ubicacionFK"] === $ubicacion["ubimot_id"]) {
+                                        <?php foreach($this->ubicaciones as $ubicacion) {
+                                            if($motor["infmot_ubicacionFK"] === $ubicacion["ubimot_id"]) {
                                                 echo $ubicacion["ubimot_area"];
                                             }
                                         } ?>
                                     </td>
                                     <td>
-                                        <?php foreach ($this->estados as $estado) {
-                                            if ($motor["infmot_estadoFK"] === $estado["est_id"]) {
+                                        <?php foreach($this->estados as $estado) {
+                                            if($motor["infmot_estadoFK"] === $estado["est_id"]) {
                                                 echo $estado["est_nombre"];
                                             }
                                         } ?>
@@ -99,47 +99,48 @@
                                             data-corriente_nominal="<?= $motor["infmot_corriente_nominal"] ?>"
                                             data-altitud="<?= $motor["infmot_altitud"] ?>"
                                             data-temp_ambiente="<?= $motor["infmot_temp_ambiente"] ?>"
-                                            data-proteccion="<?= $motor["infmot_proteccion"] ?>" data-carcasaId="<?php foreach ($this->motorCarcasa as $carcasa) {
-                                                  if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
+                                            data-proteccion="<?= $motor["infmot_proteccion"] ?>" data-carcasaId="<?php foreach($this->motorCarcasa as $carcasa) {
+                                                  if($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
                                                       echo $carcasa["carmot_id"];
                                                   }
-                                              } ?>" data-carcasaNombre="<?php foreach ($this->motorCarcasa as $carcasa) {
-                                                   if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
+                                              } ?>" data-carcasaNombre="<?php foreach($this->motorCarcasa as $carcasa) {
+                                                   if($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
                                                        echo $carcasa["carmot_nombre"];
                                                    }
-                                               } ?>" data-carcasaValor="<?php foreach ($this->motorCarcasa as $carcasa) {
-                                                    if ($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
+                                               } ?>" data-carcasaValor="<?php foreach($this->motorCarcasa as $carcasa) {
+                                                    if($carcasa["carmot_id"] === $motor["infmot_carcasaFK"]) {
                                                         echo $carcasa["carmot_valor"];
                                                     }
-                                                } ?>" data-eficienciaId="<?php foreach ($this->motorEficiencia as $eficiencia) {
-                                                     if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
+                                                } ?>" data-eficienciaId="<?php foreach($this->motorEficiencia as $eficiencia) {
+                                                     if($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
                                                          echo $eficiencia["efimot_id"];
                                                      }
-                                                 } ?>" data-eficienciaPorcentaje="<?php foreach ($this->motorEficiencia as $eficiencia) {
-                                                      if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
+                                                 } ?>" data-eficienciaPorcentaje="<?php foreach($this->motorEficiencia as $eficiencia) {
+                                                      if($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
                                                           echo $eficiencia["efimot_porcentajeFK"];
                                                       }
-                                                  } ?>" data-eficienciaValor="<?php foreach ($this->motorEficiencia as $eficiencia) {
-                                                       if ($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
+                                                  } ?>" data-eficienciaValor="<?php foreach($this->motorEficiencia as $eficiencia) {
+                                                       if($eficiencia["efimot_id"] === $motor["infmot_eficienciaFK"]) {
                                                            echo $eficiencia["efimot_valor"];
                                                        }
-                                                   } ?>" data-fac_potenciaId="<?php foreach ($this->motorFacPotencia as $facPotencia) {
-                                                        if ($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
+                                                   } ?>" data-fac_potenciaId="<?php foreach($this->motorFacPotencia as $facPotencia) {
+                                                        if($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
                                                             echo $facPotencia["facpotmot_id"];
                                                         }
-                                                    } ?>" data-fac_potenciaPorcentaje="<?php foreach ($this->motorFacPotencia as $facPotencia) {
-                                                         if ($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
+                                                    } ?>" data-fac_potenciaPorcentaje="<?php foreach($this->motorFacPotencia as $facPotencia) {
+                                                         if($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
                                                              echo $facPotencia["facpotmot_porcentajeFK"];
                                                          }
-                                                     } ?>" data-fac_potenciaValor="<?php foreach ($this->motorFacPotencia as $facPotencia) {
-                                                          if ($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
+                                                     } ?>" data-fac_potenciaValor="<?php foreach($this->motorFacPotencia as $facPotencia) {
+                                                          if($facPotencia["facpotmot_id"] === $motor["infmot_fac_potenciaFK"]) {
                                                               echo $facPotencia["facpotmot_porcentajeFK"];
                                                           }
                                                       } ?>" data-tecnicoFK="<?= $motor["infmot_tecnicoFK"] ?>"
                                             data-tipoFK="<?= $motor["infmot_tipoFK"] ?>">Editar</button>
                                     </td>
                                     <td>
-                                        <button class="basicDeleteButton" data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
+                                        <button class="basicDeleteButton" id="deleteMotorButton"
+                                            data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
                                     </td>
                                 </tr>
                             <?php endif ?>
@@ -152,8 +153,8 @@
 <?php endif ?>
 
 <div class="cont_charts">
-    <?php foreach ($this->motores as $captura): ?>
-        <?php if (
+    <?php foreach($this->motores as $captura): ?>
+        <?php if(
             $captura['infmot_empresaFK'] === $_SESSION['id'] ||
             $captura['infmot_tecnicoFK'] === $_SESSION['id'] ||
             $_SESSION['rol'] === 'adm'
@@ -172,30 +173,18 @@
         <?php endif ?>
     <?php endforeach ?>
 </div>
-<button class="open-button" id="open-button">Agregar Motor</button>
-<div class="cont_form cont_form_add_motor">
-    <div class="window-background" id="window-background">
-        <div class="window-container" id="window-container">
-            <button class="close-button" id="close-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="icon-x">
-                    <path
-                        d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
-                    </path>
-                </svg>
-            </button>
-            <?php if ($_SESSION["rol"] !== "tec") {
-                include("view/motor/formAddMotor.php");
-            } ?>
-        </div>
-    </div>
 
+<div id="floatingCircle" class="floating-button btnAddMotor" data-toggle="tooltip" data-title="Agregar Motor">
+    <i class="fas fa-plus"></i>
 </div>
 
 <div class="cont_form cont_form_edit_motor">
-    <?php if ($_SESSION["rol"] !== "tec") {
+    <?php if($_SESSION["rol"] !== "tec") {
         include("view/motor/formEditMotor.php");
     } ?>
 </div>
+
+<?php include("view/motor/formAddMotor.php") ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

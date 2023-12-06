@@ -54,3 +54,16 @@
   font-size: 22px;
   font-weight: 500;
 }
+
+.profile-card:hover {
+  box-shadow: 0 8px 50px #23232333;
+}
+
+.profile-card:hover .card-info {
+  transform: translateY(-5%);
+}
+
+.profile-card:hover .card-buttons {
+  transform: translateY(50%);
+  opacity: 1;
+}
