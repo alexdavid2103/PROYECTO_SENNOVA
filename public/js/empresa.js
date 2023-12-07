@@ -4,6 +4,7 @@ import {
   alertWarning,
   alertError,
   advanceAlertWarning,
+  alertInfo,
 } from "./alertas.js";
 
 // Funcionalidad de Agregar Empresa
@@ -168,22 +169,18 @@ const deleteEmpresaButton = document.querySelectorAll(
 deleteEmpresaButton.forEach((button) => {
   button.addEventListener("click", () => {
     const id = button.getAttribute("data-id");
-    deleteTecnico(id);
+    deleteEmpresa(id);
   });
 });
 
-const deleteTecnico = async (id) => {
+const deleteEmpresa = async (id) => {
   try {
     const willDelete = await advanceAlertWarning();
 
     if (willDelete) {
-      const datos = new FormData();
-      datos.append("id", id);
-
-      const respuesta = await fetch("?controller=empresa&action=delete", {
-        method: "POST",
-        body: datos,
-      });
+      const respuesta = await fetch(
+        `?controller=empresa&action=delete&id=${id}`
+      );
 
       const info = await respuesta.json();
 

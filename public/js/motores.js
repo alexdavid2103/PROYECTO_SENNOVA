@@ -260,12 +260,13 @@ form_edit_motor.addEventListener("submit", async (event) => {
 
 // ELIMINAR <---------------------------------------------------------------------|
 const deleteMotorButton = document.querySelectorAll(
-  "#deleteMotorButton[data-id]"
+  ".deleteMotorButton[data-id]"
 );
 
 deleteMotorButton.forEach((button) => {
   button.addEventListener("click", () => {
     const id = button.getAttribute("data-id").trim();
+    console.log(id);
     deleteMotor(id);
   });
 });

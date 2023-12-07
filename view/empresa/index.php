@@ -28,7 +28,7 @@
                         </button>
                     </li>
                     <li class="card-buttons__item">
-                        <button type="button" class="deleteButton deleteTecnicoButton" data-id="<?= $empresa["emp_id"] ?>">
+                        <button type="button" class="deleteButton deleteEmpresaButton" data-id="<?= $empresa["emp_id"] ?>">
                             Borrar
                         </button>
                     </li>
@@ -65,10 +65,10 @@
                                 } ?>
                             </td>
                             <td>
-                                <button class="basicEditButton openFormEditMotor">Editar</button>
+                                <button class="basicEditButton openFormEditUbicacion">Editar</button>
                             </td>
                             <td>
-                                <button class="basicDeleteButton" data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
+                                <button class="basicDeleteButton deleteUbicacionButton" id="" data-id="<?= $ubicacion['ubimot_id'] ?>">Eliminar</button>
                             </td>
                         </tr>
                     <?php endforeach ?>

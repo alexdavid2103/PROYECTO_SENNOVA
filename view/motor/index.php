@@ -139,7 +139,7 @@
                                             data-tipoFK="<?= $motor["infmot_tipoFK"] ?>">Editar</button>
                                     </td>
                                     <td>
-                                        <button class="basicDeleteButton" id="deleteMotorButton"
+                                        <button class="basicDeleteButton deleteMotorButton" id=""
                                             data-id="<?= $motor['infmot_serie'] ?>">Eliminar</button>
                                     </td>
                                 </tr>

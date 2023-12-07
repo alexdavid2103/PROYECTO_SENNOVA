@@ -7,29 +7,29 @@
 
             <div class="input-box">
                 <label for="edit_emp_id">NIT</label>
-                <input type="text" id="edit_emp_id" placeholder="Ingrese el NIT de la empresa" required />
+                <input type="text" id="edit_emp_id" placeholder="Ingrese el NIT de la empresa"/>
             </div>
 
             <div class="input-box">
                 <label for="edit_emp_nombre">Nombre</label>
-                <input type="text" id="edit_emp_nombre" placeholder="Ingrese el nombre" required />
+                <input type="text" id="edit_emp_nombre" placeholder="Ingrese el nombre"/>
             </div>
 
             <div class="column">
                 <div class="input-box">
                     <label for="edit_emp_correo">Correo</label>
-                    <input type="email" id="edit_emp_correo" placeholder="Ingrese el correo" required />
+                    <input type="email" id="edit_emp_correo" placeholder="Ingrese el correo"/>
                 </div>
                 <div class="input-box">
                     <label for="edit_emp_telefono">Telefono</label>
-                    <input type="number" id="edit_emp_telefono" placeholder="Ingrese su telefono" required />
+                    <input type="number" id="edit_emp_telefono" placeholder="Ingrese su telefono"/>
                 </div>
             </div>
 
             <div class="column">
                 <div class="input-box">
                     <label for="edit_emp_direccion">Direccion</label>
-                    <input type="text" id="edit_emp_direccion" placeholder="Ingrese su direccion" required />
+                    <input type="text" id="edit_emp_direccion" placeholder="Ingrese su direccion"/>
                 </div>
 
                 <div class="input-box">
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <button>Registrar</button>
+            <button>Guardar</button>
         </form>
     </section>
 </div>

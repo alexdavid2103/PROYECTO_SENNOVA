@@ -1,31 +1,26 @@
 <?php
 require_once "model/empresa_model.php";
 
-class empresa_controller
-{
+class empresa_controller {
     // Constructor de la clase, inicializa un objeto de la clase template
-    function __construct()
-    {
+    function __construct() {
         $this->obj = new template();
     }
 
     // Función para cargar la vista principal de empresas
-    public function index()
-    {
+    public function index() {
         $this->obj->setLoadHeaderFooter(false);
         // Cargar la plantilla de vista "empresa/index"
         $this->obj->loadTemplate("empresa/index");
     }
-    public function ubicacionMotor()
-    {
+    public function ubicacionMotor() {
         $this->obj->setLoadHeaderFooter(false);
         // Cargar la plantilla de vista "empresa/index"
         $this->obj->loadTemplate("empresa/ubicacion_motor");
     }
 
     // Función para agregar una empresa a la base de datos
-    public function add()
-    {
+    public function add() {
         // Obtener los datos del formulario POST
         $url = "?controller=empresa&action=ubicacionMotor";
 
@@ -48,7 +43,7 @@ class empresa_controller
         // Llamar a la función estática add en el modelo empresa_modelo
         $r = empresa_model::add($data);
 
-        if ($r > 0) {
+        if($r > 0) {
             // Si se registró correctamente, inicia sesión automáticamente con los datos registrados
             $_SESSION['id'] = $id;
             $_SESSION['nombre'] = $nombre;
@@ -75,24 +70,21 @@ class empresa_controller
     }
 
     // Función para editar los datos de una empresa en la base de datos
-    public function edit()
-    {
-        extract($_POST); // Extraer los datos del formulario POST
-
+    public function edit() {
         // Crear un arreglo asociativo con los datos actualizados de la empresa
         $data = [
-            "nombre" => $nombre,
-            "correo" => $correo,
-            "telefono" => $telefono,
-            "direccion" => $direccion,
-            "municipio" => $municipio,
-            "id" => $id,
+            "nombre" => $_POST["edit_emp_nombre"],
+            "correo" => $_POST["edit_emp_correo"],
+            "telefono" => $_POST["edit_emp_telefono"],
+            "direccion" => $_POST["edit_emp_direccion"],
+            "municipio" => $_POST["edit_emp_municipio"],
+            "id" => $_POST["edit_emp_id"],
         ];
 
         // Llamar a la función estática edit en el modelo empresa_modelo
         $r = empresa_model::edit($data);
 
-        if ($r > 0) {
+        if($r > 0) {
             echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1));
         } else {
             echo json_encode(array("mensaje" => "Error al actualizar", "estado" => 0));
@@ -100,29 +92,28 @@ class empresa_controller
     }
 
     // Función para eliminar una empresa de la base de datos
-    public function delete()
+    public function delete() 
     {
-        if (isset($_POST["id"])) {
-            $id = $_POST["id"];
+        if(isset($_GET["id"])) {
+            $id = $_GET["id"];
 
             // Llamar a la función estática delete en el modelo empresa_modelo
             $r = empresa_model::delete($id);
 
-            if ($r) {
-                echo json_encode(array("mensaje" => "Se eliminó", "estado" => 1));
+            if($r) {
+                echo json_encode(["mensaje" => "Se eliminó", "estado" => 1]);
             } else {
-                echo json_encode(array("mensaje" => "Error al eliminar", "estado" => 0));
+                echo json_encode(["mensaje" => "Error al eliminar", "estado" => 0]);
             }
         } else {
-            echo json_encode(array("mensaje" => "ID no encontrado", "estado" => 2));
+            echo json_encode(["mensaje" => "ID no encontrado", "estado" => 2]);
         }
     }
 
     // Función para agregar una empresa a la base de datos
-    public function addUbicacionMotor()
-    {
+    public function addUbicacionMotor() {
         // Verificar si $_SESSION["id"] está definido y no es nulo
-        if (isset($_SESSION["id"]) && $_SESSION["id"] !== null) {
+        if(isset($_SESSION["id"]) && $_SESSION["id"] !== null) {
             $empresaId = $_SESSION["id"]; // Obtener el ID de la empresa de la sesión
 
             $url = "?controller=dashboard&action=index";
@@ -131,11 +122,11 @@ class empresa_controller
             $mensaje = "Error al registrar"; // Mensaje de error por defecto
 
             // Si se proporciona un array_resultante válido desde JavaScript
-            if (isset($_POST['array_resultante'])) {
+            if(isset($_POST['array_resultante'])) {
                 $array_resultante = json_decode($_POST['array_resultante']);
 
                 // Recorre el array y registra cada ubicación en la base de datos
-                foreach ($array_resultante as $ubicacion) {
+                foreach($array_resultante as $ubicacion) {
                     $data = [
                         'ubimot_area' => $ubicacion,
                         // Asigna el valor de ubicación del array
@@ -145,7 +136,7 @@ class empresa_controller
                     // Llamar a la función estática addUbicacionMotor en el modelo empresa_modelo
                     $r = empresa_model::addUbicacionMotor($data);
 
-                    if ($r > 0) {
+                    if($r > 0) {
                         $estado = 1; // Cambia el estado de validación a 1 (validado)
                         $mensaje = "Se registraron las ubicaciones correctamente"; // Mensaje de éxito
                     } else {
@@ -175,7 +166,7 @@ class empresa_controller
                 "mensaje" => $mensaje,
                 "estado" => 0,
                 // Estado de error en 0
-                "url" => $url,
+                // "url" => $url,
             ];
 
             // Enviar la respuesta de error como JSON
@@ -183,8 +174,7 @@ class empresa_controller
         }
     }
 
-    public function versionPHP()
-    {
+    public function versionPHP() {
         echo phpinfo();
     }
 }
