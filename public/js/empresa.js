@@ -203,16 +203,16 @@ const deleteTecnico = async (id) => {
 export { addEmpresa };
 // OTROS <----------------------------------------------------------------|
 
-const openButton = document.querySelector(".btnAddEmpresa");
-const formAddTecnico = document.getElementById("formAddEmpresa");
-const closeFormAddTecnico = document.querySelector(".closeFormAddEmpresa");
+const openButtonEmpresa = document.querySelector(".btnAddEmpresa");
+const formAddEmpresa = document.getElementById("formAddEmpresa");
+const closeFormAddEmpresa = document.querySelector(".closeFormAddEmpresa");
 
-openButton.addEventListener("click", () => {
-  formAddTecnico.classList.toggle("activeForm");
-  openButton.classList.toggle("d-none");
+openButtonEmpresa.addEventListener("click", () => {
+  formAddEmpresa.classList.toggle("activeForm");
+  openButtonEmpresa.classList.toggle("d-none");
 });
 
-closeFormAddTecnico.addEventListener("click", () => {
-  formAddTecnico.classList.toggle("activeForm");
-  openButton.classList.toggle("d-none");
+closeFormAddEmpresa.addEventListener("click", () => {
+  formAddEmpresa.classList.toggle("activeForm");
+  openButtonEmpresa.classList.toggle("d-none");
 });

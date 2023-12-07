@@ -300,16 +300,16 @@ const deleteMotor = async (id) => {
 
 // OTROS <----------------------------------------------------------------|
 
-const openButton = document.querySelector(".btnAddMotor");
-const formAddTecnico = document.getElementById("formAddMotor");
-const closeFormAddTecnico = document.querySelector(".closeFormAddMotor");
+const openButtonMotor = document.querySelector(".btnAddMotor");
+const formAddMotor = document.getElementById("formAddMotor");
+const closeFormAddMotor = document.querySelector(".closeFormAddMotor");
 
-openButton.addEventListener("click", () => {
-  formAddTecnico.classList.toggle("activeForm");
-  openButton.classList.toggle("d-none");
+openButtonMotor.addEventListener("click", () => {
+  formAddMotor.classList.toggle("activeForm");
+  openButtonMotor.classList.toggle("d-none");
 });
 
-closeFormAddTecnico.addEventListener("click", () => {
-  formAddTecnico.classList.toggle("activeForm");
-  openButton.classList.toggle("d-none");
+closeFormAddMotor.addEventListener("click", () => {
+  formAddMotor.classList.toggle("activeForm");
+  openButtonMotor.classList.toggle("d-none");
 });

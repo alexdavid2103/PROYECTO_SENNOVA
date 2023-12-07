@@ -222,16 +222,16 @@ const deleteTecnico = async (id) => {
 
 // OTROS <---------------------------------------------------------------------|
 
-const openButton = document.querySelector(".btnAddTecnico");
+const openButtonTecnico = document.querySelector(".btnAddTecnico");
 const formAddTecnico = document.getElementById("formAddTecnico");
 const closeFormAddTecnico = document.querySelector(".closeFormAddTecnico");
 
-openButton.addEventListener("click", () => {
+openButtonTecnico.addEventListener("click", () => {
   formAddTecnico.classList.toggle("activeForm");
-  openButton.classList.toggle("d-none");
+  openButtonTecnico.classList.toggle("d-none");
 });
 
 closeFormAddTecnico.addEventListener("click", () => {
   formAddTecnico.classList.toggle("activeForm");
-  openButton.classList.toggle("d-none");
+  openButtonTecnico.classList.toggle("d-none");
 });
