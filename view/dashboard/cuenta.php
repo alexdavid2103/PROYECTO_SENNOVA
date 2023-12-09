@@ -22,16 +22,35 @@
         switch ($_SESSION["rol"]) {
           case "emp":
             $userData = $this->empresas;
-            $fields = ['Nombre' => 'emp_nombre', 'Email' => 'emp_correo', 'Telefono' => 'emp_telefono', 'Direccion' => 'emp_direccion'];
+            $fields = [
+              'Nombre' => 'emp_nombre',
+              'Correo' => 'emp_correo',
+              'Telefono' => 'emp_telefono',
+              'Direccion' => 'emp_direccion'
+            ];
             $selectData = $this->municipios;
             break;
           case "tec":
             $userData = $this->tecnicos;
-            $fields = ['Nombre' => 'tec_nombre1', 'Email' => 'tec_correo', 'Telefono' => 'tec_telefono'];
+            $fields = [
+              'Primer Nombre' => 'tec_nombre1',
+              'Segundo Nombre' => 'tec_nombre2',
+              'Primer apellido' => 'tec_apellido1',
+              'Segundo apellido' => 'tec_apellido2',
+              'Correo' => 'tec_correo',
+              'Telefono' => 'tec_telefono'
+            ];
             break;
           case "adm":
             $userData = $this->admins;
-            $fields = ['Nombre' => 'adm_nombre1', 'Email' => 'adm_correo', 'Telefono' => 'adm_telefono'];
+            $fields = [
+              'Primer Nombre' => 'adm_nombre1',
+              'Segundo Nombre' => 'adm_nombre2',
+              'Primer apellido' => 'adm_apellido1',
+              'Segundo apellido' => 'adm_apellido2',
+              'Correo' => 'adm_correo',
+              'Telefono' => 'adm_telefono'
+            ];
             break;
         } ?>
 
