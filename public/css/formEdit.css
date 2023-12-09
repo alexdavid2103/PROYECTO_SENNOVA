@@ -1,11 +1,15 @@
 .contForm {
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: grid;
-  place-items: center;
+  justify-content: center;
+  align-items: start;
   width: 100%;
   height: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
   background: #000000c9;
   backdrop-filter: blur(7px);
   transition: 0.25s;
@@ -15,6 +19,13 @@
   z-index: 100;
   top: -40px;
   overflow-y: auto;
+}
+
+@media (max-width: 950px) {
+  .contForm {
+    align-items: center;
+    top: -88px;
+  }
 }
 
 .form-group label {

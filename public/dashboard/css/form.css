@@ -9,18 +9,25 @@
 .container {
   position: relative;
   max-width: 800px;
+  max-height: 80%;
+  overflow: hidden;
+  overflow-y: auto;
   width: 100%;
   background: #fff;
   padding: 25px;
   margin: 60px auto;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  
 }
 
 @media (max-width: 900px) {
   .container {
     max-width: calc(100% - 2em);
     margin-top: 0;
+    max-height: 70%;
+    overflow: hidden;
+    overflow-y: auto;
   }
 }
 

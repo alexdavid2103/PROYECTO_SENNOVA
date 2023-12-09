@@ -178,11 +178,11 @@
     <i class="fas fa-plus"></i>
 </div>
 
-<div class="cont_form cont_form_edit_motor">
+<!-- <div class="cont_form cont_form_edit_motor"> -->
     <?php if($_SESSION["rol"] !== "tec") {
         include("view/motor/formEditMotor.php");
     } ?>
-</div>
+<!-- </div> -->
 
 <?php include("view/motor/formAddMotor.php") ?>
 

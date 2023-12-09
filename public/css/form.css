@@ -8,8 +8,15 @@
 #form-container-box {
   border-radius: 10px;
   background: #fff;
-  max-width: 800px;
+  max-width: 600px;
   padding: 2em;
+  overflow-y: auto;
+}
+
+@media (min-width: 968px) {
+  #form-container-box {
+    max-height: 530px;
+  }
 }
 
 .form-wrap {
@@ -125,9 +132,9 @@
 
 .form-box .form-group label {
   font-size: 15px;
-    font-weight: 500;
-    color: #2e2e2e;
-    margin-bottom: 5px;
+  font-weight: 500;
+  color: #2e2e2e;
+  margin-bottom: 5px;
 }
 
 .form-box .form-group .form-field {

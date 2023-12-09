@@ -282,7 +282,7 @@ section {
 
 @media (max-width: 991px) {
   .page-wrapper {
-    overflow: auto;
+    /* overflow: auto; */
     background: #e5e5e5;
     padding-bottom: 12vh;
   }
@@ -326,6 +326,7 @@ section {
   .main-content {
     padding-top: 50px;
     padding-bottom: 100px;
+    min-height: calc(100vh - 220px);
   }
 }
 
