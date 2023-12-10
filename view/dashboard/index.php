@@ -52,7 +52,7 @@
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </li>
-                <?php if ($_SESSION['rol'] === 'adm'): ?>
+                <?php if ($_SESSION['rol'] !== 'tec'): ?>
                     <li class="empresasLink">
                         <i class="fas fa-building"></i>
                         <span>Empresas</span>
@@ -86,7 +86,7 @@
                         <li class="dashboardLink active">
                             <a class="" href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <?php if ($_SESSION['rol'] === 'adm'): ?>
+                        <?php if ($_SESSION['rol'] !== 'tec'): ?>
                             <li class="empresasLink">
                                 <a class="" href="#"><i class="fas fa-building"></i>Empresas</a>
                             </li>

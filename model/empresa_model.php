@@ -203,6 +203,21 @@ class empresa_model
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 
+    public static function deleteUbicacionMotor($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para insertar datos en la tabla motor_ubicacion
+        $sql = "DELETE FROM motor_ubicacion WHERE ubimot_id = ?";
+
+        $st = $c->prepare($sql);
+
+        $v = [$data["id"]];
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+    }
+
     public static function recoverPassword($data)
     {
         $obj = new connection();

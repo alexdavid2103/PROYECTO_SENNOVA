@@ -213,3 +213,40 @@ closeFormAddEmpresa.addEventListener("click", () => {
   formAddEmpresa.classList.toggle("activeForm");
   openButtonEmpresa.classList.toggle("d-none");
 });
+
+// DELETE UBICACIONES MOTOR <---------------------------------------------|
+
+const deleteUbicacionButton = document.querySelectorAll(
+  ".deleteUbicacionButton[data-id]"
+);
+
+deleteUbicacionButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const id = button.getAttribute("data-id");
+    deleteUbicacionMotor(id);
+  });
+});
+
+const deleteUbicacionMotor = async (id) => {
+  try {
+    const willDelete = await advanceAlertWarning();
+
+    if (willDelete) {
+      const respuesta = await fetch(
+        `?controller=empresa&action=deleteUbicacionMotor&id=${id}`
+      );
+
+      const info = await respuesta.json();
+
+      if (info.estado === 1) {
+        alertSuccess("Ha sido eliminado correctamente").then(() => {
+          window.location.reload();
+        });
+      } else {
+        alertError("No se pudo eliminar");
+      }
+    }
+  } catch (error) {
+    alertInfo("No ha sido eliminado");
+  }
+};
