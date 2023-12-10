@@ -119,7 +119,8 @@
                                 <div class="account-item clearfix js-item-menu">
                                     <div class="image">
                                         <?php if (isset($_SESSION['image'])): ?>
-                                            <img src="" alt="">
+                                            <img src="<?= "public/userImages/{$_SESSION['image']}" ?>"
+                                                alt="<?= $_SESSION['image'] ?>">
                                         <?php else: ?>
                                             <i class="fa-solid fa-user" style="font-size: 50px"></i></i>
                                         <?php endif; ?>
@@ -136,7 +137,8 @@
                                         <div class="info clearfix">
                                             <div class="image text-center">
                                                 <?php if (isset($_SESSION['image'])): ?>
-                                                    <img src="" alt="">
+                                                    <img src="<?= "public/userImages/{$_SESSION['image']}" ?>"
+                                                        alt="<?= $_SESSION['image'] ?>">
                                                 <?php else: ?>
                                                     <i class="fa-solid fa-user" style="font-size: 70px"></i></i>
                                                 <?php endif; ?>

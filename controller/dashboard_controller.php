@@ -37,6 +37,10 @@ class dashboard_controller
 
     public function cuenta()
     {
+        if (!isset($_SESSION['id'])) {
+            header("Location: /PROYECTO_SENNOVA");
+            exit();
+        }
         $this->obj->municipios = empresa_model::listarMunicipios(8);
         $this->obj->admins = admin_model::listarAdmins();
         $this->obj->empresas = empresa_model::listarEmpresas();

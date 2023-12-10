@@ -32,20 +32,28 @@ class admin_model
         $obj = new connection();
         $c = $obj->getConnection();
 
-        // Consulta SQL para actualizar los datos en la tabla administrador
-        $sql = "UPDATE administrador SET  
-                                    adm_nombre = ?,
-                                    adm_contraseña = ?
+        // Consulta SQL para actualizar datos en la tabla tecnico
+        $sql = "UPDATE administradores SET
+                                    adm_nombre1 = ?,
+                                    adm_nombre2 = ?,
+                                    adm_apellido1 = ?,
+                                    adm_apellido2 = ?,
+                                    adm_correo = ?,
+                                    adm_telefono = ?,
+                                    adm_foto = ?
                                     WHERE adm_id = ?";
 
         $st = $c->prepare($sql);
-        $v = array(
-            $data["nombre"],
-            // Nuevo valor para adm_nombre
-            $data["contraseña"],
-            // Nuevo valor para adm_contraseña
-            $data["id"] // Valor para ubicar el registro a actualizar (adm_id)
-        );
+        $v = [
+            $data["nombre1"],
+            $data["nombre2"],
+            $data["apellido1"],
+            $data["apellido2"],
+            $data["correo"],
+            $data["telefono"],
+            $data["image"],
+            $data["id"],
+        ];
 
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
@@ -140,5 +148,36 @@ class admin_model
             // Las contraseñas no coinciden
             return false; // Indicar que la actualización no se realizó
         }
+    }
+
+    public static function updateInfo($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para actualizar datos en la tabla tecnico
+        $sql = "UPDATE administradores SET
+                                    adm_nombre1 = ?,
+                                    adm_nombre2 = ?,
+                                    adm_apellido1 = ?,
+                                    adm_apellido2 = ?,
+                                    adm_correo = ?,
+                                    adm_telefono = ?,
+                                    adm_foto = ?
+                                    WHERE adm_id = ?";
+
+        $st = $c->prepare($sql);
+        $v = [
+            $data["nombre1"],
+            $data["nombre2"],
+            $data["apellido1"],
+            $data["apellido2"],
+            $data["correo"],
+            $data["telefono"],
+            $data["image"],
+            $data["id"],
+        ];
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 }

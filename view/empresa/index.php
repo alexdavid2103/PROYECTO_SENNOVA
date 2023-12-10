@@ -2,10 +2,16 @@
 
 <div class="row">
     <div class="flex-box">
-        <?php foreach($this->empresas as $empresa): ?>
+        <?php foreach ($this->empresas as $empresa): ?>
             <div class="profile-card">
                 <div class="image">
-                    <i class="fas fa-user profile-img"></i>
+                    <?php if (isset($empresa['emp_logo'])): ?>
+                        <div class="cont_image">
+                            <img src=<?= "public/userImages/{$empresa['emp_logo']}" ?> alt="">
+                        </div>
+                    <?php else: ?>
+                        <i class="fas fa-user profile-img"></i>
+                    <?php endif ?>
                 </div>
 
                 <div class="text-data">
@@ -16,14 +22,11 @@
 
                 <ul class="card-buttons">
                     <li class="card-buttons__item">
-                        <button class="editButton openFormEditEmpresa" 
-                            data-id="<?= $empresa["emp_id"] ?>"
-                            data-nombre="<?= $empresa["emp_nombre"] ?>" 
-                            data-correo="<?= $empresa["emp_correo"] ?>"
+                        <button class="editButton openFormEditEmpresa" data-id="<?= $empresa["emp_id"] ?>"
+                            data-nombre="<?= $empresa["emp_nombre"] ?>" data-correo="<?= $empresa["emp_correo"] ?>"
                             data-telefono="<?= $empresa["emp_telefono"] ?>"
                             data-direccion="<?= $empresa["emp_direccion"] ?>"
-                            data-municipio="<?= $empresa["emp_municipioFK"] ?>"
-                            >
+                            data-municipio="<?= $empresa["emp_municipioFK"] ?>">
                             Editar
                         </button>
                     </li>
@@ -52,14 +55,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($this->ubicaciones as $ubicacion): ?>
+                    <?php foreach ($this->ubicaciones as $ubicacion): ?>
                         <tr>
                             <td>
                                 <?= $ubicacion["ubimot_area"] ?>
                             </td>
                             <td>
-                                <?php foreach($this->empresas as $empresa) {
-                                    if($empresa["emp_id"] === $ubicacion["ubimot_empresaFK"]) {
+                                <?php foreach ($this->empresas as $empresa) {
+                                    if ($empresa["emp_id"] === $ubicacion["ubimot_empresaFK"]) {
                                         echo $empresa["emp_nombre"];
                                     }
                                 } ?>
@@ -68,7 +71,8 @@
                                 <button class="basicEditButton openFormEditUbicacion">Editar</button>
                             </td>
                             <td>
-                                <button class="basicDeleteButton deleteUbicacionButton" id="" data-id="<?= $ubicacion['ubimot_id'] ?>">Eliminar</button>
+                                <button class="basicDeleteButton deleteUbicacionButton" id=""
+                                    data-id="<?= $ubicacion['ubimot_id'] ?>">Eliminar</button>
                             </td>
                         </tr>
                     <?php endforeach ?>

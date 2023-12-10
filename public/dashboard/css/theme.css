@@ -1469,6 +1469,10 @@ section {
 }
 
 .account-item .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
   width: 45px;
   height: 45px;
   float: left;
@@ -1540,6 +1544,9 @@ section {
 }
 
 .account-dropdown .info .image {
+  display: flex;
+  align-items: center;
+  background: black;
   float: left;
   height: 65px;
   width: 65px;

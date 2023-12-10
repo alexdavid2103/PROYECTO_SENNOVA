@@ -13,7 +13,7 @@
   <div class="container">
     <div class="title">Cambiar Información</div>
     <div class="content">
-      <form action="#">
+      <form onsubmit="return false" id="formUpdateInfo">
         <?php
         $userData = [];
         $fields = [];
@@ -59,18 +59,22 @@
             <div class="user-details">
 
               <?php foreach ($fields as $label => $field): ?>
+                <?php
+                $id = $fields[$label];
+                ?>
                 <div class="input-box">
                   <span class="details">
                     <?= $label ?>
                   </span>
-                  <input value="<?= $data[$field] ?>" type="text" placeholder="Ingrese su <?= strtolower($label) ?>" required>
+                  <input id="<?= $id ?>" value="<?= $data[$field] ?>" type="text"
+                    placeholder="Ingrese su <?= strtolower($label) ?>">
                 </div>
               <?php endforeach ?>
 
               <?php if ($_SESSION["rol"] === "emp"): ?>
                 <div class="input-box">
                   <span class="details">Municipio</span>
-                  <select id="edit-perfil-mun" data-municipio="<?= $data[" emp_municipioFK"] ?>">
+                  <select id="emp_municipio" data-municipio="<?= $data["emp_municipioFK"] ?>">
 
                     <?php foreach ($selectData as $municipio): ?>
                       <option value="<?= $municipio['mun_id'] ?>">
@@ -82,9 +86,10 @@
                 </div>
               <?php endif ?>
 
-              <div class="input-box">
+              <div class="input-box input-box-image">
                 <span class="details">Imagen</span>
-                <input type="file" required>
+                <?php $image = $_SESSION['rol'] === 'emp' ? $data[$_SESSION["rol"] . "_logo"] : $data[$_SESSION["rol"] . "_foto"] ?>
+                <input id="UpdateImage" type="file" value="<?= "public/userImages/{$image}" ?>">
               </div>
             </div>
             <div class="button">
@@ -100,8 +105,8 @@
   <?php if ($_SESSION['rol'] === 'emp'): ?>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-        let value = document.getElementById("edit-perfil-mun").getAttribute("data-municipio");
-        let select = document.getElementById("edit-perfil-mun");
+        let value = document.getElementById("emp_municipio").getAttribute("data-municipio");
+        let select = document.getElementById("emp_municipio");
         for (let option of select.options) {
           if (option.value === value) {
             option.selected = true;
@@ -111,6 +116,20 @@
       })
     </script>
   <?php endif ?>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <?php
+  switch ($_SESSION['rol']) {
+    case 'adm':
+      echo '<script type="module" src="public/js/admin.js"></script>';
+      break;
+    case 'emp':
+      echo '<script type="module" src="public/js/emp.js"></script>';
+      break;
+    case 'tec':
+      echo '<script type="module" src="public/js/tec.js"></script>';
+      break;
+  }
+  ?>
 </body>
 
 </html>

@@ -1,38 +1,29 @@
-import {
-  alertError,
-  alertInfo,
-  alertSuccess,
-  alertWarning,
-} from "./alertas.js";
+import { updateInfo } from "./updateInfo.js";
 
-const form = document.getElementById("");
-const controller = document.getElementById("");
-const image = document.getElementById("");
-const name = document.getElementById("");
-const email = document.getElementById("");
-const direccion = document.getElementById("");
-const municipio = document.getElementById("");
-form.addEventListener("submit", () => {
-  updateImage();
+const formAdmin = document.getElementById("formUpdateInfo");
+
+formAdmin.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const controller = "admin";
+  const correo = "adm_correo";
+
+  const campos = [
+    "adm_nombre1",
+    "adm_nombre2",
+    "adm_apellido1",
+    "adm_apellido2",
+    "adm_correo",
+    "adm_telefono",
+  ];
+  const camposLabels = {
+    adm_nombre1: "Primer nombre",
+    adm_nombre2: "Segundo nombre",
+    adm_apellido1: "Primer apellido",
+    adm_apellido2: "Segundo apellido",
+    adm_correo: "Correo",
+    adm_telefono: "Teléfono",
+  };
+  // Llama a la función
+  updateInfo(campos, camposLabels, controller, correo);
 });
-
-const updateImage = async () => {
-  let datos = new FormData();
-  datos.append("imagen", $(image)[0].files[0]);
-
-  let respuesta = await fetch("?controller=admin&action=updateImage", {
-    method: "POST",
-    body: datos,
-  });
-
-  let info = await respuesta.json();
-  if (info.estado === 1) {
-    alertSuccess("Se ha actualizado foto correctamente").then(() => {
-      window.location.reload();
-    });
-  } else {
-    alertError("Error al guardar foto").then(() => {
-      window.location.reload();
-    });
-  }
-};

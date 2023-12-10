@@ -182,4 +182,35 @@ class tecnico_model
             return false; // Indicar que la actualización no se realizó
         }
     }
+
+    public static function updateInfo($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para actualizar datos en la tabla tecnico
+        $sql = "UPDATE tecnicos SET
+                                    tec_nombre1 = ?,
+                                    tec_nombre2 = ?,
+                                    tec_apellido1 = ?,
+                                    tec_apellido2 = ?,
+                                    tec_correo = ?,
+                                    tec_telefono = ?,
+                                    tec_foto = ?
+                                    WHERE tec_id = ?";
+
+        $st = $c->prepare($sql);
+        $v = [
+            $data["nombre1"],
+            $data["nombre2"],
+            $data["apellido1"],
+            $data["apellido2"],
+            $data["correo"],
+            $data["telefono"],
+            $data["image"],
+            $data["id"],
+        ];
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+    }
 }

@@ -84,5 +84,40 @@ class tecnico_controller
             echo json_encode(array("mensaje" => "ID no encontrado", "estado" => 2));
         }
     }
+
+    public function updateInfo()
+    {
+        extract($_POST); // Extraer los datos del formulario POST
+        $url = "?controller=main&action=login";
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+            $nombre_foto = $_FILES['imagen']['name'];
+            $archivo = $_FILES['imagen']['tmp_name'];
+            if (move_uploaded_file($archivo, "public/userImages/$nombre_foto")) {
+                $data = [
+                    "id" => $_SESSION["id"],
+                    "nombre1" => $tec_nombre1,
+                    "nombre2" => $tec_nombre2,
+                    "apellido1" => $tec_apellido1,
+                    "apellido2" => $tec_apellido2,
+                    "correo" => $tec_correo,
+                    "telefono" => $tec_telefono,
+                    "image" => $nombre_foto
+                ];
+
+                $r = tecnico_model::updateInfo($data);
+
+                if ($r > 0) {
+                    session_destroy();
+                    echo json_encode(array("mensaje" => "Se actualizó correctamente", "estado" => 1, "url" => $url));
+                } else {
+                    echo json_encode(array("mensaje" => "Error al actualizar", "estado" => 2));
+                }
+            } else {
+                echo json_encode(array("mensaje" => "ERROR: No se pudo mover el archivo", "estado" => 3));
+            }
+        } else {
+            echo json_encode(array("mensaje" => "ERROR: No se seleccionó ningún archivo", "estado" => 4));
+        }
+    }
 }
 ?>

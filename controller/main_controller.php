@@ -86,6 +86,7 @@ class main_controller
                     $_SESSION['id'] = $r["{$rol}_id"];
                     $model === $roles['emp'] ? $_SESSION['nombre'] = $r["{$rol}_nombre"] : $_SESSION['nombre'] = $r["{$rol}_nombre1"];
                     $model === $roles['emp'] ? $_SESSION['apellido'] = "" : $_SESSION['apellido'] = $r["{$rol}_apellido1"];
+                    $model === $roles['emp'] ? $_SESSION['image'] = $r["{$rol}_logo"] : $_SESSION['image'] = $r["{$rol}_foto"];
                     $_SESSION['rol'] = $rol;
                     $_SESSION['correo'] = $r["{$rol}_correo"];
                     $estado = 1; // Cambia el estado de validación a 1 (validado)

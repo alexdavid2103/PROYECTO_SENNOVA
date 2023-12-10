@@ -1,7 +1,9 @@
 <?php
-class empresa_model {
+class empresa_model
+{
     // Función para agregar información de una empresas a la base de datos
-    public static function add($data) {
+    public static function add($data)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -39,7 +41,8 @@ class empresa_model {
     }
 
     // Función para editar la información de una empresas en la base de datos
-    public static function edit($data) {
+    public static function edit($data)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -72,7 +75,8 @@ class empresa_model {
     }
 
     // Función para eliminar información de una empresas de la base de datos
-    public static function delete($id) {
+    public static function delete($id)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -91,7 +95,7 @@ class empresa_model {
             $stDeleteEmpresa->bindParam(':id', $id, PDO::PARAM_INT);
             $successDeleteEmpresa = $stDeleteEmpresa->execute();
 
-            if($successDeleteEmpresa) {
+            if ($successDeleteEmpresa) {
                 $c->commit();
                 return true;
             } else {
@@ -102,14 +106,15 @@ class empresa_model {
             $c->rollBack();
             // Manejar cualquier excepción que pueda ocurrir
             // Por ejemplo, podrías imprimir el mensaje de error para depurar
-            echo "Error: ".$e->getMessage();
+            echo "Error: " . $e->getMessage();
             return false; // Retorna falso para indicar un error
         }
     }
 
 
     // Función para obtener una lista de todos los registros de empresas
-    public static function listarEmpresas() {
+    public static function listarEmpresas()
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -121,7 +126,8 @@ class empresa_model {
     }
 
     // Función para obtener información de una empresas por su ID
-    public static function findById($id) {
+    public static function findById($id)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -133,7 +139,8 @@ class empresa_model {
     }
 
     // Función para validar las credenciales de una empresa
-    public static function validar($data) {
+    public static function validar($data)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -143,7 +150,7 @@ class empresa_model {
         $st->execute(array($data["id"]));
         $result = $st->fetch();
 
-        if($result && password_verify($data["password"], $result["emp_contrasena"])) {
+        if ($result && password_verify($data["password"], $result["emp_contrasena"])) {
             return $result; // Retornar el resultado si las credenciales son válidas
         } else {
             return false; // Retornar falso si las credenciales no son válidas
@@ -152,7 +159,8 @@ class empresa_model {
 
 
     // Función para obtener una lista de todos los registros de departamentos
-    public static function listarDepartamentos() {
+    public static function listarDepartamentos()
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -164,7 +172,8 @@ class empresa_model {
     }
 
     // Función para obtener una lista de todos los registros de municipios
-    public static function listarMunicipios($id) {
+    public static function listarMunicipios($id)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -176,7 +185,8 @@ class empresa_model {
     }
 
     // Función para agregar información de una empresas a la base de datos
-    public static function addUbicacionMotor($data) {
+    public static function addUbicacionMotor($data)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -193,7 +203,8 @@ class empresa_model {
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 
-    public static function recoverPassword($data) {
+    public static function recoverPassword($data)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -212,7 +223,8 @@ class empresa_model {
         return $stVerifyData->fetch(); // Retorna el nombre y el correo del tecnico
     }
 
-    public static function updatePassword($data) {
+    public static function updatePassword($data)
+    {
         $obj = new connection();
         $c = $obj->getConnection();
 
@@ -223,7 +235,7 @@ class empresa_model {
         $storedPassword = $stCurrentPassword->fetchColumn();
 
         // Verificar si la contraseña actual coincide con la contraseña encriptada almacenada
-        if(password_verify($data["currentPassword"], $storedPassword)) {
+        if (password_verify($data["currentPassword"], $storedPassword)) {
             // Las contraseñas coinciden, proceder con la actualización
             $sqlUpdatePassword = "UPDATE empresas SET emp_contrasena = ? WHERE emp_id = ?";
             $stUpdatePassword = $c->prepare($sqlUpdatePassword);
@@ -240,5 +252,33 @@ class empresa_model {
         }
     }
 
+    public static function updateInfo($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para actualizar datos en la tabla tecnico
+        $sql = "UPDATE empresas SET
+                                    emp_nombre = ?,
+                                    emp_correo = ?,
+                                    emp_telefono = ?,
+                                    emp_direccion = ?,
+                                    emp_logo = ?,
+                                    emp_municipioFK = ?
+                                    WHERE emp_id = ?";
+
+        $st = $c->prepare($sql);
+        $v = [
+            $data["nombre"],
+            $data["correo"],
+            $data["telefono"],
+            $data["direccion"],
+            $data["image"],
+            $data["municipio"],
+            $data["id"],
+        ];
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+    }
 
 }
