@@ -203,6 +203,24 @@ class empresa_model
         return $st->execute($v); // Ejecutar la consulta y retornar el resultado
     }
 
+    public static function editUbicacionMotor($data)
+    {
+        $obj = new connection();
+        $c = $obj->getConnection();
+
+        // Consulta SQL para insertar datos en la tabla motor_ubicacion
+        $sql = "UPDATE motor_ubicacion SET ubimot_area = ? WHERE ubimot_id = ?";
+
+        $st = $c->prepare($sql);
+
+        $v = [
+            $data['nombre'],
+            $data['id']
+        ];
+
+        return $st->execute($v); // Ejecutar la consulta y retornar el resultado
+    }
+
     public static function deleteUbicacionMotor($data)
     {
         $obj = new connection();

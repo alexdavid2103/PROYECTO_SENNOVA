@@ -199,6 +199,27 @@ class empresa_controller
         }
     }
 
+    public function editUbicacionMotor()
+    {
+        if (isset($_POST["id"], $_POST["nombre"])) {
+            $data = [
+                "id" => $_POST["id"],
+                "nombre" => $_POST["nombre"]
+            ];
+
+            // Llamar a la función estática delete en el modelo empresa_modelo
+            $r = empresa_model::editUbicacionMotor($data);
+
+            if ($r) {
+                echo json_encode(["mensaje" => "Se eliminó", "estado" => 1]);
+            } else {
+                echo json_encode(["mensaje" => "Error al eliminar", "estado" => 0]);
+            }
+        } else {
+            echo json_encode(["mensaje" => "ID no encontrado", "estado" => 2]);
+        }
+    }
+
     public function updateInfo()
     {
         extract($_POST); // Extraer los datos del formulario POST

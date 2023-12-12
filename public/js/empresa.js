@@ -250,3 +250,76 @@ const deleteUbicacionMotor = async (id) => {
     alertInfo("No ha sido eliminado");
   }
 };
+
+// Funcionalidad de Editar Empresa
+const editUbicacionForm = document.getElementById("editUbicacionForm");
+// Obtiene el formulario de editar empresa por su ID
+editUbicacionForm.addEventListener("submit", async (event) => {
+  // Escucha el evento de envío del formulario
+  event.preventDefault(); // Evita el comportamiento predeterminado del evento de envío
+
+  // Define los campos y sus etiquetas correspondientes
+  const name = document.getElementById("ubimot_nombre");
+  const id = name.getAttribute("data-id");
+
+  // Muestra una alerta si hay campos obligatorios vacíos
+  if (!name.value) {
+    alertWarning(`Ingrese un nombre valido`);
+    return false; // Detiene el envío del formulario
+  }
+
+  // Crea un objeto FormData con los datos del formulario
+  const datos = new FormData();
+  datos.append("nombre", name.value);
+  datos.append("id", id);
+  console.log(id, name.value);
+  // Envía una solicitud POST al servidor para editar la empresa
+  const respuesta = await fetch("?controller=empresa&action=editUbicaion", {
+    method: "POST",
+    body: datos,
+  });
+
+  // Obtiene la respuesta del servidor en formato JSON
+  const info = await respuesta.json();
+
+  // Muestra un mensaje de éxito y recarga la página si la operación fue exitosa, de lo contrario muestra un mensaje de error
+  if (info.estado === 1) {
+    alertSuccess("Se ha editado correctamente").then(() => {
+      window.location.reload();
+    });
+  } else {
+    alertError("No se pudo editar");
+  }
+});
+
+// OTROS <----------------------------------------------------------------|
+const editUbicacionButtons = document.querySelectorAll(".editUbicacionButton");
+const ubicacionNames = document.querySelectorAll(".ubimot_nombre");
+const saveEditUbicacionButtons = document.querySelectorAll(
+  ".saveEditUbicacionButton"
+);
+
+editUbicacionButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const idButton = button.getAttribute("data-id");
+    mostrarYocular(idButton, index);
+  });
+});
+
+const mostrarYocular = (idButton, index) => {
+  const idName = ubicacionNames[index].getAttribute("data-id");
+  const idSave = saveEditUbicacionButtons[index].getAttribute("data-id");
+
+  if (idName === idButton) {
+    ubicacionNames[index].classList.toggle("border-bottom");
+    saveEditUbicacionButtons[index].classList.toggle("d-none");
+
+    // Cambiar el atributo readOnly
+    ubicacionNames[index].readOnly = !ubicacionNames[index].readOnly;
+
+    const button = editUbicacionButtons[index];
+    button.innerHTML = button.innerHTML === "Editar" ? "Cancelar" : "Editar";
+    button.classList.toggle("basicDeleteButton")
+    button.classList.toggle("basicEditButton")
+  }
+};

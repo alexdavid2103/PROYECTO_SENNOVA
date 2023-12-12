@@ -60,18 +60,35 @@
                     <?php foreach ($this->ubicaciones as $ubicacion): ?>
                         <?php if ($ubicacion['ubimot_empresaFK'] === $_SESSION['id'] || $_SESSION['rol'] === 'adm'): ?>
                             <tr>
-                                <td>
-                                    <?= $ubicacion["ubimot_area"] ?>
+                                <td class="position-relative flex-box align-items-center justify-content-end">
+                                    <form action="" id="editUbicacionForm" onsubmit="return false">
+                                        <input 
+                                            id="" 
+                                            class="bg-transparent p-l-10 border-dark ubimot_nombre" 
+                                            type="text"
+                                            value="<?= $ubicacion["ubimot_area"] ?>" 
+                                            data-id="<?= $ubicacion["ubimot_id"] ?>"
+                                            readonly="true">
+                                        <button 
+                                            type="submit" 
+                                            class="position-absolute m-r-5 saveEditUbicacionButton d-none" 
+                                            data-id="<?= $ubicacion["ubimot_id"] ?>"   >
+                                            <i class="fa-solid fa-save"></i>
+                                        </button>
+                                    </form>
                                 </td>
                                 <td>
                                     <?php foreach ($this->empresas as $empresa) {
                                         if ($empresa["emp_id"] === $ubicacion["ubimot_empresaFK"]) {
                                             echo $empresa["emp_nombre"];
+                                            break;
                                         }
                                     } ?>
                                 </td>
                                 <td>
-                                    <button class="basicEditButton openFormEditUbicacion">Editar</button>
+                                    <button 
+                                        class="basicEditButton editUbicacionButton"
+                                        data-id="<?= $ubicacion['ubimot_id'] ?>">Editar</button>
                                 </td>
                                 <td>
                                     <button class="basicDeleteButton deleteUbicacionButton" id=""
@@ -94,8 +111,7 @@
 
 <?php if ($_SESSION['rol'] === 'emp'): ?>
     <a href="?controller=empresa&action=ubicacionMotor">
-        <div id="floatingCircle" class="floating-button" data-toggle="tooltip"
-            data-title="Agregar Ubicación">
+        <div id="floatingCircle" class="floating-button" data-toggle="tooltip" data-title="Agregar Ubicación">
             <i class="fas fa-plus"></i>
         </div>
     </a>
