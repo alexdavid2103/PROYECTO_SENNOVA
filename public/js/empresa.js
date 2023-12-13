@@ -251,38 +251,23 @@ const deleteUbicacionMotor = async (id) => {
   }
 };
 
-// Funcionalidad de Editar Empresa
-const editUbicacionForm = document.getElementById("editUbicacionForm");
-// Obtiene el formulario de editar empresa por su ID
-editUbicacionForm.addEventListener("submit", async (event) => {
-  // Escucha el evento de envío del formulario
-  event.preventDefault(); // Evita el comportamiento predeterminado del evento de envío
-
-  // Define los campos y sus etiquetas correspondientes
-  const name = document.getElementById("ubimot_nombre");
-  const id = name.getAttribute("data-id");
-
-  // Muestra una alerta si hay campos obligatorios vacíos
-  if (!name.value) {
-    alertWarning(`Ingrese un nombre valido`);
-    return false; // Detiene el envío del formulario
+const editarUbicacion = async (id, name) => {
+  if (!name) {
+    alertWarning(`Ingrese un nombre válido`);
+    return false;
   }
 
-  // Crea un objeto FormData con los datos del formulario
   const datos = new FormData();
-  datos.append("nombre", name.value);
+  datos.append("nombre", name);
   datos.append("id", id);
-  console.log(id, name.value);
-  // Envía una solicitud POST al servidor para editar la empresa
-  const respuesta = await fetch("?controller=empresa&action=editUbicaion", {
+
+  const respuesta = await fetch("?controller=empresa&action=editUbicacionMotor", {
     method: "POST",
     body: datos,
   });
 
-  // Obtiene la respuesta del servidor en formato JSON
   const info = await respuesta.json();
 
-  // Muestra un mensaje de éxito y recarga la página si la operación fue exitosa, de lo contrario muestra un mensaje de error
   if (info.estado === 1) {
     alertSuccess("Se ha editado correctamente").then(() => {
       window.location.reload();
@@ -290,6 +275,19 @@ editUbicacionForm.addEventListener("submit", async (event) => {
   } else {
     alertError("No se pudo editar");
   }
+};
+const editUbicacionForms = document.querySelectorAll(".editUbicacionForm");
+const ubicacionesFields = document.querySelectorAll(".ubimot_nombre");
+
+editUbicacionForms.forEach((form, index) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const id = ubicacionesFields[index].getAttribute("data-id");
+    const name = ubicacionesFields[index].value;
+    console.log(`id: ${id}, name: ${name}`);
+    editarUbicacion(id, name);
+  });
 });
 
 // OTROS <----------------------------------------------------------------|
@@ -308,18 +306,31 @@ editUbicacionButtons.forEach((button, index) => {
 
 const mostrarYocular = (idButton, index) => {
   const idName = ubicacionNames[index].getAttribute("data-id");
-  const idSave = saveEditUbicacionButtons[index].getAttribute("data-id");
 
   if (idName === idButton) {
-    ubicacionNames[index].classList.toggle("border-bottom");
+    const inputField = ubicacionNames[index];
+    inputField.classList.toggle("border-bottom");
     saveEditUbicacionButtons[index].classList.toggle("d-none");
 
     // Cambiar el atributo readOnly
-    ubicacionNames[index].readOnly = !ubicacionNames[index].readOnly;
+    inputField.readOnly = !inputField.readOnly;
 
     const button = editUbicacionButtons[index];
     button.innerHTML = button.innerHTML === "Editar" ? "Cancelar" : "Editar";
-    button.classList.toggle("basicDeleteButton")
-    button.classList.toggle("basicEditButton")
+
+    // Si se presiona "Editar", guarda el valor actual
+    if (button.innerHTML === "Cancelar") {
+      inputField.dataset.previousValue = inputField.value;
+    } else {
+      // Si se presiona "Cancelar", restaura el valor guardado
+      inputField.value = inputField.dataset.previousValue || "";
+    }
+
+    button.classList.toggle("basicDeleteButton");
+    button.classList.toggle("basicEditButton");
+
+    const name = inputField.value;
+
+    return { idButton, name };
   }
 };

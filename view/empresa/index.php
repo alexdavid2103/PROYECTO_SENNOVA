@@ -61,7 +61,7 @@
                         <?php if ($ubicacion['ubimot_empresaFK'] === $_SESSION['id'] || $_SESSION['rol'] === 'adm'): ?>
                             <tr>
                                 <td class="position-relative flex-box align-items-center justify-content-end">
-                                    <form action="" id="editUbicacionForm" onsubmit="return false">
+                                    <form action="" id="editUbicacionForm" class="editUbicacionForm" onsubmit="return false">
                                         <input 
                                             id="" 
                                             class="bg-transparent p-l-10 border-dark ubimot_nombre" 
