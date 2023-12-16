@@ -7,7 +7,7 @@
 
             <div class="input-box">
                 <label for="edit_emp_id">NIT</label>
-                <input type="text" id="edit_emp_id" placeholder="Ingrese el NIT de la empresa"/>
+                <input type="text" id="edit_emp_id" placeholder="Ingrese el NIT de la empresa" readonly/>
             </div>
 
             <div class="input-box">

@@ -63,12 +63,13 @@
                                 <td class="position-relative flex-box align-items-center justify-content-end">
                                     <form action="" id="editUbicacionForm" class="editUbicacionForm" onsubmit="return false">
                                         <input 
-                                            id="" 
+                                            id="<?= $ubicacion["ubimot_area"] ?>" 
                                             class="bg-transparent p-l-10 border-dark ubimot_nombre" 
                                             type="text"
                                             value="<?= $ubicacion["ubimot_area"] ?>" 
                                             data-id="<?= $ubicacion["ubimot_id"] ?>"
-                                            readonly="true">
+                                            readonly="true"
+                                        >
                                         <button 
                                             type="submit" 
                                             class="position-absolute m-r-5 saveEditUbicacionButton d-none" 
@@ -103,8 +104,8 @@
     </div>
 </div>
 <!-- PAGE CONTAINER-->
-<?php if ($_SESSION['rol'] === 'adm'): ?>
-    <div id="floatingCircle" class="floating-button btnAddEmpresa" data-toggle="tooltip" data-title="Agregar Empresa">
+<?php if ($_SESSION['rol'] !== 'tec'): ?>
+    <div id="floatingCircle" class="floating-button btnAddEmpresa " data-toggle="tooltip" data-title="Agregar Empresa">
         <i class="fas fa-plus"></i>
     </div>
 <?php endif ?>

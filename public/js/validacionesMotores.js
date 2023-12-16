@@ -159,4 +159,4 @@ const iniciarVerificacionFallas = async () => {
 };
 
 // Llamar a la función para iniciar la verificación de fallas
-iniciarVerificacionFallas();
+setTimeout(iniciarVerificacionFallas, 1000);
